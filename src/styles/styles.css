@@ -1,0 +1,14 @@
+/* Reset / Normalize */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    appearance: none;
+}
+
+html {
+    font-size: max(16px, 1rem);
+    line-height: 1.6;
+}
