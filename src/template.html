@@ -28,5 +28,50 @@
             <button type="button" class="category-btn">Custom Proj 3</button>
         </nav>
     </section>
+
+    <section class="content-view">
+        <!-- This header will be inline with the header of the side bar -->
+        <header>
+            <h1>My Todos</h1>
+        </header>
+
+        <!-- This container is populated with todo cards via javascript -->
+        <!-- The kind of todo cards it is populated with is dependent on which tab -->
+        <!-- is selected -->
+        <section class="display-box">
+             <article class="todo-card">
+                <header>
+                    <button type="radio"></button>
+                    <h3>Card Title</h3>
+                    <p># Project Category</p>
+                    <p>Date (DD/MM/YYYY)</p>
+                </header>
+
+                <div class="todo-desc">
+                    <h4>DESCRIPTION</h4>
+                    <p>If you selected the description option, then a text box will appear</p>
+                </div>
+
+                <div class="todo-checklist">
+                    <fieldset>
+                        <legend>To Complete</legend>
+                        <div>
+                            <input type="checkbox" id="step1">
+                            <label for="step1">Step One</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="step2">
+                            <label for="step2">Step Two</label>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="todo-notes">
+                    <h4>NOTES</h4>
+                    <p>If you want to add any notes, this container will appear.</p>
+                </div>
+             </article>
+        </section>
+    </section>
 </body>
 </html>
