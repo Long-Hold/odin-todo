@@ -78,5 +78,41 @@
              </article>
         </section>
     </section>
+
+    <template id="todo-card-template">
+        <article class="todo-card">
+            <header>
+                <button type="radio" name="todo-status"></button>
+                <h3>Card Title</h3>
+                <p># Project Category</p>
+                <time datetime=""></time>
+            </header>
+
+            <div class="todo-desc">
+                <h4>DESCRIPTION</h4>
+                <p></p>
+            </div>
+
+            <div class="todo-checklist">
+                <fieldset>
+                    <legend>To Complete</legend>
+                    <div>
+                        <input type="checkbox" id="step#">
+                        <label for="step1"></label>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="todo-notes">
+                <h4>NOTES</h4>
+                <p></p>
+            </div>
+
+            <div class="modify-btns">
+                <button type="button" class="delete-btn">Delete</button>
+                <button type="button" class="edit-btn">Edit</button>
+            </div>
+        </article>
+    </template>
 </body>
 </html>
