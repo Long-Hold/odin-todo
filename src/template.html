@@ -37,6 +37,30 @@
             <button type="button">+ Add Task</button>
         </header>
 
+        <section>
+            <dialog closedby="any" open>
+                <form id="new-task" method="post">
+                    <fieldset>
+                        <legend><strong>Task Info</strong></legend>
+                        <div>
+                            <label for="title">Title*
+                                <input 
+                                type="text" 
+                                name="title" 
+                                id="title" 
+                                maxlength="64" 
+                                required="required">
+                            </label>
+                        </div>
+
+                        <div>
+                            <label for="project">Project (Optional):</label>
+                        </div>
+                    </fieldset>
+                </form>
+            </dialog>
+        </section>
+
         <!-- This container is populated with todo cards via javascript -->
         <!-- The kind of todo cards it is populated with is dependent on which tab -->
         <!-- is selected -->
