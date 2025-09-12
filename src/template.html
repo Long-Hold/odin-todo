@@ -43,13 +43,23 @@
                     <fieldset>
                         <legend><strong>Task Info</strong></legend>
                         <div>
-                            <label for="title">Title*
+                            <label for="title">Title*:
                                 <input 
                                 type="text" 
                                 name="title" 
                                 id="title" 
                                 maxlength="64" 
                                 required>
+                            </label>
+                        </div>
+
+                        <div>
+                            <label for="priority">Priority*:
+                                <select name="priority" id="priority">
+                                    <option value="low">Low</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="high">High</option>
+                                </select>
                             </label>
                         </div>
 
