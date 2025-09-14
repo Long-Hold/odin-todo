@@ -11,6 +11,6 @@ class TodoCard {
     get priority() { return this.#priority; }
 }
 
-export function createTodoCard(fromData) {
+export function createTodoCard(formData) {
     return new TodoCard(formData.get('title'), formData.get('priority'));
 }
