@@ -1,7 +1,9 @@
 const formController = (function() {
     const form = document.getElementById('new-task');
+    const dialog = document.querySelector('dialog');
 
     form.addEventListener('submit', (event) => {
+        dialog.close();
         event.preventDefault();
     })
 
