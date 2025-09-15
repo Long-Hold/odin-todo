@@ -16,10 +16,15 @@ function addChecklistStep(containerNode, stepCounter) {
 }
 
 export function formController() {
+    const headerbtn = document.getElementById('add-task');
     const formNode = document.getElementById('new-task');
     const dialog = document.querySelector('dialog');
     const checkListContainer = document.getElementById('checklist-container');
     let stepCounter = 1;
+
+    headerbtn.addEventListener('click', () => {
+        checkListContainer.querySelector('section').innerHTML = '';
+        dialog.showModal()});
 
     checkListContainer.addEventListener('click', (event) => {
         if (event.target.type === 'button') {
@@ -32,9 +37,10 @@ export function formController() {
         formNode.addEventListener('submit', (event) => {
             event.preventDefault();
             stepCounter = 1;
-            dialog.close();
 
             const formData = new FormData(event.target);
+            formNode.reset();
+            dialog.close();
             resolve(formData);
         })
     })
