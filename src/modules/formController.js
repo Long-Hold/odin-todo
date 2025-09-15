@@ -25,6 +25,9 @@ const formManipulator = (function() {
 
         todoStepsContainer.querySelector('section').appendChild(stepDivContainer);
     }
+
+    const resetStepCountner = () => { stepCounter = 1; }
+    return {resetStepCountner};
 })();
 
 export function formController() {
@@ -34,6 +37,7 @@ export function formController() {
     return new Promise((resolve) => {
         formNode.addEventListener('submit', (event) => {
             event.preventDefault();
+            formManipulator.resetStepCountner();
             dialog.close();
 
             const formData = new FormData(event.target);
