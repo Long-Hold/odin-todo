@@ -1,4 +1,4 @@
-import { createTodoObject } from "./modules/createCard";
+import { createTodoObject } from "./modules/createTodoObj";
 
 const form = document.getElementById('new-task');
 
