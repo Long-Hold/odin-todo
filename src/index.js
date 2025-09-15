@@ -1,12 +1,10 @@
 import { createTodoObject } from "./modules/createTodoObj";
 import { formController } from "./modules/formController";
 
-const form = document.getElementById('new-task');
-
-form.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
+formController().then((formData) => {
+    // Wait for the formController to return submitted user data
+    // When that happens, an object is created with said data and stored
+    // in a master array
     const newCard = createTodoObject(formData);
     console.log(newCard);
 })
