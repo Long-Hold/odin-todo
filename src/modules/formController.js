@@ -34,15 +34,18 @@ export function formController() {
         }
     })
 
-    return new Promise((resolve) => {
-        formNode.addEventListener('submit', (event) => {
-            event.preventDefault();
-            stepCounter = 1;
+    formNode.addEventListener('submit', (event) => {
+        event.preventDefault();
+        stepCounter = 1;
 
-            const formData = new FormData(event.target);
-            formNode.reset();
-            dialog.close();
-            resolve(formData);
-        })
+        const formData = new FormData(event.target);
+        formNode.reset();
+        dialog.close();
+
+        const formSubmitted = new CustomEvent('onSubmit', {
+            detail: { formData }
+        });
+
+        document.dispatchEvent(formSubmitted);
     })
 }
