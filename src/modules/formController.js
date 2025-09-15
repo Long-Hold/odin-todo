@@ -24,7 +24,8 @@ export function formController() {
 
     headerbtn.addEventListener('click', () => {
         checkListContainer.querySelector('section').innerHTML = '';
-        dialog.showModal()});
+        dialog.showModal()
+    });
 
     checkListContainer.addEventListener('click', (event) => {
         if (event.target.type === 'button') {
