@@ -1,9 +1,15 @@
 class Todo {
     #completed;
+    #taskID;
 
-    constructor() { this.#completed = false; }
+    constructor() { 
+        this.#completed = false;
+        this.#taskID = self.crypto.randomUUID();
+    }
 
     get completed() { return this.#completed; }
+
+    get taskID() { return this.#taskID; }
 
     markComplete() { this.#completed = true; }
 }
