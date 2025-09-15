@@ -1,14 +1,4 @@
-const formManipulator = (function() {
-    const todoStepsContainer = document.getElementById('checklist-container');
-    let stepCounter = 1;
-
-    todoStepsContainer.addEventListener('click', (event) => {
-        if (event.target.type === 'button') {
-            createChecklistNode();
-        }
-    })
-
-    const createChecklistNode = () => {
+function addChecklistStep(containerNode, stepCounter) {
         const inputField = document.createElement('input');
         inputField.type = 'text';
         inputField.name = `step${stepCounter}`;
@@ -18,26 +8,30 @@ const formManipulator = (function() {
         label.textContent = `Step ${stepCounter}: `;
 
         label.appendChild(inputField);
-        ++stepCounter;
 
         const stepDivContainer = document.createElement('div');
         stepDivContainer.appendChild(label);
 
-        todoStepsContainer.querySelector('section').appendChild(stepDivContainer);
-    }
-
-    const resetStepCountner = () => { stepCounter = 1; }
-    return {resetStepCountner};
-})();
+        containerNode.querySelector('section').appendChild(stepDivContainer);
+}
 
 export function formController() {
     const formNode = document.getElementById('new-task');
     const dialog = document.querySelector('dialog');
+    const checkListContainer = document.getElementById('checklist-container');
+    let stepCounter = 1;
+
+    checkListContainer.addEventListener('click', (event) => {
+        if (event.target.type === 'button') {
+            addChecklistStep(checkListContainer, stepCounter);
+            ++stepCounter;
+        }
+    })
 
     return new Promise((resolve) => {
         formNode.addEventListener('submit', (event) => {
             event.preventDefault();
-            formManipulator.resetStepCountner();
+            stepCounter = 1;
             dialog.close();
 
             const formData = new FormData(event.target);
