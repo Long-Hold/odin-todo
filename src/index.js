@@ -1,4 +1,5 @@
 import { createTodoObject } from "./modules/createTodoObj";
+import { formController } from "./modules/formController";
 
 const form = document.getElementById('new-task');
 
