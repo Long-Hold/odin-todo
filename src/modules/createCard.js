@@ -14,7 +14,7 @@ class Todo {
     markComplete() { this.#completed = true; }
 }
 
-export function createTodoCard(formData) {
+export function createTodoObject(formData) {
     const card = new Todo();
     for (const [key, value] of formData.entries()) {
         if (value) {
