@@ -5,6 +5,8 @@ const formController = (function() {
     form.addEventListener('submit', (event) => {
         dialog.close();
         event.preventDefault();
+
+        getFormData(event);
     })
 
     /**Each time the user wants to 'add step',
@@ -16,6 +18,10 @@ const formController = (function() {
             console.log('User added new step');
         }
     })
+
+    const getFormData = (event) => { return new FormData(event.target); }
+
+    return { getFormData }
 });
 
 export { formController } ;
