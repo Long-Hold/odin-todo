@@ -5,6 +5,7 @@ export function formController() {
     return new Promise((resolve) => {
         formNode.addEventListener('submit', (event) => {
             event.preventDefault();
+            dialog.close();
 
             const formData = new FormData(event.target);
             resolve(formData);
