@@ -12,14 +12,18 @@ const formManipulator = (function() {
         const inputField = document.createElement('input');
         inputField.type = 'text';
         inputField.name = `step${stepCounter}`;
+        inputField.maxLength = 64;
 
         const label = document.createElement('label');
-        label.textContent = `Step ${stepCounter}`;
+        label.textContent = `Step ${stepCounter}: `;
 
         label.appendChild(inputField);
         ++stepCounter;
 
-        todoStepsContainer.appendChild(label);
+        const stepDivContainer = document.createElement('div');
+        stepDivContainer.appendChild(label);
+
+        todoStepsContainer.querySelector('section').appendChild(stepDivContainer);
     }
 })();
 
