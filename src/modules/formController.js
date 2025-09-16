@@ -1,5 +1,19 @@
 class formControl {
     static #formNode = document.getElementById('new-todo-form');
+    static #dialog = document.querySelector('dialog');
+    static #checkListContainer = document.getElementById('checklist-container');
+
+    static #dialogController() {
+        formControl.#dialog.addEventListener('click', (event) => {
+            if (event.target.type === 'button' && event.target.textContent === 'Cancel') {
+                formControl.#dialog.close();
+            }
+        })
+    }
+
+    static initializeEventListeners() {
+        formControl.#dialogController();
+    }
 }
 
 function addChecklistStep(containerNode, stepCounter) {
