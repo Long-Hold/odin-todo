@@ -11,13 +11,17 @@ export class formControl {
         document.dispatchEvent(formSubmitted);
     }
 
+    static #resetAndClose() {
+        formControl.#formNode.reset();
+        formControl.#dialog.close();
+    }
+
     static #eventDelegator() {
-        formControl.#cancelBtn.addEventListener('click', () => formControl.#dialog.close())
+        formControl.#cancelBtn.addEventListener('click', () => formControl.#resetAndClose())
         formControl.#formNode.addEventListener('submit', (event) => {
             event.preventDefault();
             formControl.#processSubmit(event);
-            formControl.#formNode.reset();
-            formControl.#dialog.close();
+            formControl.#resetAndClose();
         })
     }
 
