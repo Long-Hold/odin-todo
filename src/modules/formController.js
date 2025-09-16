@@ -36,6 +36,10 @@ export class FormControl {
         checkListStepsSection.appendChild(templateContent);
     }
 
+    static #deleteChecklistStep(selectedContainer) {
+        selectedContainer.parentElement.remove();
+    }
+
     static #eventDelegator() {
         FormControl.#formNode.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -55,6 +59,10 @@ export class FormControl {
             // Reset button will not delete the checklist step fields, so we need to do it manually
             if (event.target.dataset.action === 'reset') {
                 FormControl.#deleteAllChecklistSteps();
+            }
+
+            if (event.target.dataset.action === 'delete') {
+                FormControl.#deleteChecklistStep(event.target);
             }
         })
     }
