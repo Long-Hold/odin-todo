@@ -5,8 +5,8 @@ export class formControl {
     static #checkListContainer = document.getElementById('checklist-container');
 
     static #processSubmit(event) {
-        const newTodoData = new FormData(event.target);
-        const formSubmitted = new CustomEvent('todoSubmitted', { detail: {newTodoData} });
+        const formData = new FormData(event.target);
+        const formSubmitted = new CustomEvent('todoSubmitted', { detail: {formData} });
         document.dispatchEvent(formSubmitted);
     }
 
