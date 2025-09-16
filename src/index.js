@@ -1,9 +1,9 @@
 import { createTodoObject } from "./modules/createTodoObj";
-import { formController } from "./modules/formController";
+import { formControl } from "./modules/formController";
 
-formController();
+formControl.initializeEventListeners();
 
-document.addEventListener('onSubmit', (event) => {
+document.addEventListener('todoSubmitted', (event) => {
     const { formData } = event.detail;
     const newCard = createTodoObject(formData);
     console.log(newCard);
