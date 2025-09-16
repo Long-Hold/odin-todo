@@ -3,6 +3,7 @@ export class formControl {
     static #formNode = document.getElementById('new-todo-form');
     static #dialog = document.querySelector('dialog');
     static #checkListContainer = document.getElementById('checklist-container');
+    static #cancelBtn = document.getElementById('form-control-btns').lastElementChild;
 
     static #processSubmit(event) {
         const formData = new FormData(event.target);
@@ -11,6 +12,7 @@ export class formControl {
     }
 
     static #eventDelegator() {
+        formControl.#cancelBtn.addEventListener('click', () => formControl.#dialog.close())
         formControl.#formNode.addEventListener('submit', (event) => {
             event.preventDefault();
             formControl.#processSubmit(event);
