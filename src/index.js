@@ -1,7 +1,7 @@
 import { createTodoObject } from "./modules/createTodoObj";
-import { formControl } from "./modules/formController";
+import { FormControl } from "./modules/formController";
 
-formControl.initializeEventListeners();
+FormControl.initializeEventListeners();
 
 document.addEventListener('todoSubmitted', (event) => {
     const { formData } = event.detail;

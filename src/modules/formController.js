@@ -1,4 +1,4 @@
-export class formControl {
+export class FormControl {
     static #classInvoked = false;
     static #formNode = document.getElementById('new-todo-form');
     static #dialog = document.querySelector('dialog');
@@ -12,27 +12,28 @@ export class formControl {
     }
 
     static #resetAndClose() {
-        formControl.#formNode.reset();
-        formControl.#dialog.close();
+        FormControl.#formNode.reset();
+        FormControl.#dialog.close();
     }
 
     static #eventDelegator() {
-        formControl.#cancelBtn.addEventListener('click', () => formControl.#resetAndClose())
-        formControl.#formNode.addEventListener('submit', (event) => {
+        FormControl.#cancelBtn.addEventListener('click', () => FormControl.#resetAndClose())
+
+        FormControl.#formNode.addEventListener('submit', (event) => {
             event.preventDefault();
-            formControl.#processSubmit(event);
-            formControl.#resetAndClose();
+            FormControl.#processSubmit(event);
+            FormControl.#resetAndClose();
         })
     }
 
     static initializeEventListeners() {
-        if (formControl.#classInvoked) {
-            console.error('formControl class already invoked');
+        if (FormControl.#classInvoked) {
+            console.error('FormControl class already invoked');
             return;
         }
 
-        formControl.#classInvoked = true;
-        formControl.#eventDelegator();
+        FormControl.#classInvoked = true;
+        FormControl.#eventDelegator();
     }
 }
 
