@@ -40,6 +40,25 @@ export class FormControl {
         selectedContainer.parentElement.remove();
     }
 
+    static #renumberChecklistSteps() {
+        const stepsContainer = FormControl.#checkListContainer.querySelector('section');
+        const childNodes = stepsContainer.children;
+        let stepCounter = 1;
+
+        for (const node of childNodes) {
+            const stepLabel = node.children[0];
+            const stepInput = node.children[1];
+
+            stepLabel.htmlFor = `step${stepCounter}`;
+            stepLabel.textContent = `Step ${stepCounter}: `;
+
+            stepInput.setAttribute('name', `step${stepCounter}`);
+            stepInput.id = `step${stepCounter}`;
+
+            ++stepCounter;
+        };
+    }
+
     static #eventDelegator() {
         FormControl.#formNode.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -63,6 +82,7 @@ export class FormControl {
 
             if (event.target.dataset.action === 'delete') {
                 FormControl.#deleteChecklistStep(event.target);
+                FormControl.#renumberChecklistSteps();
             }
         })
     }
