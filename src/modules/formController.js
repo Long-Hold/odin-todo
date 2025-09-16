@@ -16,6 +16,22 @@ export class FormControl {
         FormControl.#dialog.close();
     }
 
+    static #addChecklistStep() {
+        const checkListInputTemplate = document.getElementById('checklist-step-input');
+        const templateContent = checkListInputTemplate.content.cloneNode(true);
+
+        const checkListStepsSection = FormControl.#checkListContainer.querySelector('section')
+        const currentStep = checkListStepsSection.childElementCount + 1
+
+        templateContent.querySelector('label').htmlFor = `step${currentStep}`;
+        templateContent.querySelector('label').textContent = `Step ${currentStep}: `;
+
+        templateContent.querySelector('input').setAttribute('name', `step${currentStep}`);
+        templateContent.querySelector('input').id = `step${currentStep}`;
+
+        checkListStepsSection.appendChild(templateContent);
+    }
+
     static #eventDelegator() {
         FormControl.#cancelBtn.addEventListener('click', () => FormControl.#resetAndClose())
 
@@ -23,6 +39,12 @@ export class FormControl {
             event.preventDefault();
             FormControl.#processSubmit(event);
             FormControl.#resetAndClose();
+        })
+
+        FormControl.#formNode.addEventListener('click', (event) => {
+            if (event.target.id === 'add-step') {
+                FormControl.#addChecklistStep();
+            }
         })
     }
 
