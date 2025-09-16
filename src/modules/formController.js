@@ -52,6 +52,7 @@ export class FormControl {
                 FormControl.#resetAndClose();
             }
 
+            // Reset button will not delete the checklist step fields, so we need to do it manually
             if (event.target.dataset.action === 'reset') {
                 FormControl.#deleteAllChecklistSteps();
             }
