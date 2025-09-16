@@ -3,7 +3,6 @@ export class FormControl {
     static #formNode = document.getElementById('new-todo-form');
     static #dialog = document.querySelector('dialog');
     static #checkListContainer = document.getElementById('checklist-container');
-    static #cancelBtn = document.getElementById('form-control-btns').lastElementChild;
 
     static #processSubmit(event) {
         const formData = new FormData(event.target);
@@ -38,8 +37,6 @@ export class FormControl {
     }
 
     static #eventDelegator() {
-        FormControl.#cancelBtn.addEventListener('click', () => FormControl.#resetAndClose())
-
         FormControl.#formNode.addEventListener('submit', (event) => {
             event.preventDefault();
             FormControl.#processSubmit(event);
@@ -49,6 +46,14 @@ export class FormControl {
         FormControl.#formNode.addEventListener('click', (event) => {
             if (event.target.id === 'add-step') {
                 FormControl.#addChecklistStep();
+            }
+
+            if (event.target.dataset.action === 'cancel') {
+                FormControl.#resetAndClose();
+            }
+
+            if (event.target.dataset.action === 'reset') {
+                FormControl.#deleteAllChecklistSteps();
             }
         })
     }
