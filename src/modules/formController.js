@@ -11,7 +11,12 @@ export class FormControl {
         document.dispatchEvent(formSubmitted);
     }
 
+    static #deleteAllChecklistSteps() {
+        FormControl.#checkListContainer.querySelector('section').innerHTML = '';
+    }
+
     static #resetAndClose() {
+        FormControl.#deleteAllChecklistSteps();
         FormControl.#formNode.reset();
         FormControl.#dialog.close();
     }
