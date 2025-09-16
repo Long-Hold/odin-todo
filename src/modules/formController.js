@@ -1,3 +1,7 @@
+class formControl {
+    static #formNode = document.getElementById('new-todo-form');
+}
+
 function addChecklistStep(containerNode, stepCounter) {
         const inputField = document.createElement('input');
         inputField.type = 'text';
@@ -17,7 +21,7 @@ function addChecklistStep(containerNode, stepCounter) {
 
 export function formController() {
     const headerbtn = document.getElementById('add-task');
-    const formNode = document.getElementById('new-task');
+    const formNode = document.getElementById('new-todo-form');
     const dialog = document.querySelector('dialog');
     const checkListContainer = document.getElementById('checklist-container');
     let stepCounter = 1;
