@@ -14,9 +14,11 @@ const todoObjManager = (function() {
 
     const addTodoObj = (todoObj) => activeTodos[todoObj.taskID] = todoObj;
     
-    const getTodoObjs = () => activeTodos;
+    const getAllTodoObjs = () => activeTodos;
+
+    const getTodoObj = (taskID) => activeTodos[taskID];
 
     const deleteTodoObj = (taskID) => delete activeTodos[taskID];
 
-    return {addTodoObj, getTodoObjs, deleteTodoObj};
+    return {addTodoObj, getAllTodoObjs, getTodoObj, deleteTodoObj};
 })();
