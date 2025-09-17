@@ -6,17 +6,17 @@ FormControl.initializeEventListeners();
 document.addEventListener('todoSubmitted', (event) => {
     const { formData } = event.detail;
     const newCard = createTodoObject(formData);
-    todoManager.addNewTodo(newCard);
+    todoObjManager.addNewTodo(newCard);
 })
 
-const todoManager = (function() {
+const todoObjManager = (function() {
     const activeTodos = {};
 
-    const addNewTodo = (todoObj) => activeTodos[todoObj.taskID] = todoObj;
+    const addTodoObj = (todoObj) => activeTodos[todoObj.taskID] = todoObj;
     
-    const getActiveTodos = () => activeTodos;
+    const getTodoObjs = () => activeTodos;
 
-    return {addNewTodo, getActiveTodos};
+    const deleteTodoObj = (taskID) => delete activeTodos.taskID;
+
+    return {addTodoObj, getTodoObjs, deleteTodoObj};
 })();
-
-console.log(todoManager.getActiveTodos());
