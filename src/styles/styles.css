@@ -1,5 +1,5 @@
 /* Reset / Normalize */
-*,
+/* *,
 *::before,
 *::after {
     margin: 0;
@@ -11,4 +11,9 @@
 html {
     font-size: max(16px, 1rem);
     line-height: 1.6;
+} */
+
+html, dialog {
+    background-color: rgb(44, 42, 42);
+    color: white;
 }

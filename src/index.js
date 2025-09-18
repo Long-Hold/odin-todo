@@ -1,3 +1,4 @@
+import "./styles/styles.css";
 import { createTodoObject } from "./modules/createTodoObj";
 import { FormControl } from "./modules/formController";
 
