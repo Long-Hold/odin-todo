@@ -3,7 +3,7 @@
  * as needed.
  */
 
-const todoDisplayer = () => {
+const todoCardCreator = () => {
     const todoCard = {};
 
     const init = () => {
