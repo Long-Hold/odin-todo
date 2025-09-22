@@ -17,6 +17,20 @@ export class TodoCard {
         this.taskID.dataset.taskid = taskID;
     }
 
+    get title() { return this.#title; }
+
+    get priority() { return this.#priority; }
+
+    get project() { return this.#project; }
+
+    get deadline() { return this.#deadline; }
+
+    get description() { return this.#description; }
+
+    get checklistSteps() { return this.#checklistSteps; }
+
+    get taskID() { return this.#taskID.dataset.taskid; }
+
     set title(title) {
         if (typeof(title) !== 'string') {
             throw new TypeError('Title must be a string');
