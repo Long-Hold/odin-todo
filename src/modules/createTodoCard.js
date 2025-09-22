@@ -3,6 +3,8 @@
  * as needed.
  */
 export class TodoCard {
+    static #validPriorities = ['low','medium','high'];
+
     #template = document.getElementById('todo-card-template').content.cloneNode(true);
 
     #title = this.#template.querySelector('.todo-title');
@@ -14,7 +16,7 @@ export class TodoCard {
     #taskID = this.#template.querySelector('.todo-card');
 
     constructor(taskID) {
-        this.taskID.dataset.taskid = taskID;
+        this.#taskID.dataset.taskid = taskID;
     }
 
     get template() { return this.#template; }
@@ -47,5 +49,15 @@ export class TodoCard {
         }
 
         this.#title.textContent = title.trim();
+    }
+
+    set priority(priority) {
+        if (TodoCard.#validPriorities.includes(priority.toLowerCase())) {
+            this.#priority.textContent = priority;
+        }
+
+        else {
+            throw new Error('Invalid priority passed to setter');
+        }
     }
 }
