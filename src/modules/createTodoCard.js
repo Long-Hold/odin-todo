@@ -60,4 +60,8 @@ export class TodoCard {
             throw new Error('Invalid priority passed to setter');
         }
     }
+
+    set project(project) {
+        this.#project = project;
+    }
 }
