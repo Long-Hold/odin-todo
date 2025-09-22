@@ -2,7 +2,22 @@
  * iterate through the object properties, and assign them to the template
  * as needed.
  */
+export class TodoCard {
+    #template = document.getElementById('todo-card-template').contentEditable.cloneNode(true);
 
-export const createTodoCard = () => {
-    const todoCard = {};
+    title = this.#template.querySelector('.todo-title');
+    priority = this.#template.querySelector('.priority');
+    project = this.#template.querySelector('.project-category');
+    deadline = this.#template.querySelector('time');
+    description = this.#template.querySelector('.description');
+    checklistSteps = this.#template.querySelector('.todo-checklist');
+    taskID = this.#template.dataset.taskID;
+
+    constructor(taskID) {
+        this.taskID = taskID;
+    }
+
+    get template() {
+        return this.#template;
+    }
 }
