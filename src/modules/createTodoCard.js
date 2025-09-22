@@ -17,6 +17,8 @@ export class TodoCard {
         this.taskID.dataset.taskid = taskID;
     }
 
+    get template() { return this.#template; }
+
     get title() { return this.#title; }
 
     get priority() { return this.#priority; }
@@ -45,9 +47,5 @@ export class TodoCard {
         }
 
         this.#title.textContent = title.trim();
-    }
-
-    get template() {
-        return this.#template;
     }
 }
