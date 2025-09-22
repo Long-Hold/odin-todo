@@ -1,4 +1,5 @@
-import { format, comapreAsc } from "date-fns"
+import { format, comapreAsc, isMatch } from "date-fns"
+import { de } from "date-fns/locale";
 
 export class TodoCard {
     static #validPriorities = ['low','medium','high'];
@@ -64,6 +65,11 @@ export class TodoCard {
     }
 
     set deadline(deadline) {
-        
+        if (isMatch(deadline, 'yyyy-mm-dd')){
+            this.#deadline = deadline;
+        }
+        else {
+            throw new TypeError('Deadline format must be yyyy-mm-dd');
+        }
     }
 }
