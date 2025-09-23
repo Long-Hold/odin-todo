@@ -6,7 +6,24 @@ export class FormControl {
 
     static #processSubmit(event) {
         const formData = new FormData(event.target);
-        const formSubmitted = new CustomEvent('todoSubmitted', { detail: {formData} });
+
+        const data = {};
+        const steps = {};
+
+        for (const [key, value] of formData.entries()) {
+            if (key.startsWith('step') && value) {
+                steps[key] = value;
+            }
+
+            else if (value) {
+                data[key] = value;
+            }
+        }
+
+        if (Object.keys(steps).length > 0) {
+            data[steps] = steps;
+        }
+        const formSubmitted = new CustomEvent('todoSubmitted', { detail: {data} });
         document.dispatchEvent(formSubmitted);
     }
 
