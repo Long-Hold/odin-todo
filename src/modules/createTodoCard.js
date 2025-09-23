@@ -64,10 +64,23 @@ const cardCreator = (function() {
         if (startOfDay(date) < startOfToday()) {
             throw new Error('Deadline cannot be past date');
         }
-        
+
         todoCard.querySelector('time').textContent = format(date, 'yyyy-MM-dd');
     }
-    return {initializeTemplate, getTodoCard, setTitle, setProject, setPriority, setDeadline};
+
+    const setDescription = (description) => {
+        if (typeof(description) !== 'string') {
+            throw new TypeError('Description must be passed as string');
+        }
+
+        todoCard.querySelector('.description').textContent = description;
+    }
+
+    return {
+        initializeTemplate, getTodoCard, setTitle, 
+        setProject, setPriority, setDeadline,
+        setDescription,
+    };
 })
 
 export {cardCreator};
