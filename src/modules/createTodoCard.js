@@ -38,7 +38,15 @@ const cardCreator = (function() {
 
         todoCard.querySelector('.priority').textContent = text;
     }
-    return {initializeTemplate, getTodoCard, setTitle, setPriority};
+
+    const setProject = (project) => {
+        if (typeof(project) !== 'string') {
+            throw new TypeError('Project must be passed as string');
+        }
+
+        todoCard.querySelector('.project-category').textContent = project;
+    }
+    return {initializeTemplate, getTodoCard, setTitle, setProject, setPriority};
 })
 
 export {cardCreator};
