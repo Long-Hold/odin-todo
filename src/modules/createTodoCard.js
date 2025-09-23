@@ -1,5 +1,5 @@
 import { format, comapreAsc, isMatch, isValid, set } from "date-fns"
-import { de } from "date-fns/locale";
+import { de, te } from "date-fns/locale";
 
 const cardCreator = (function() {
     const template = document.getElementById('todo-card-template');
@@ -28,6 +28,10 @@ const cardCreator = (function() {
 
     const setPriority = (priority) => {
         const text = priority.trim();
+        if (typeof(text) !== 'string') {
+            throw new TypeError('Priority must be passed as string');
+        }
+
         if (text.length === 0) {
             throw new Error('Priority field cannot be blank');
         }
@@ -40,11 +44,13 @@ const cardCreator = (function() {
     }
 
     const setProject = (project) => {
-        if (typeof(project) !== 'string') {
+        const text = project.trim();
+
+        if (typeof(text) !== 'string') {
             throw new TypeError('Project must be passed as string');
         }
 
-        todoCard.querySelector('.project-category').textContent = project;
+        todoCard.querySelector('.project-category').textContent = text;
     }
     return {initializeTemplate, getTodoCard, setTitle, setProject, setPriority};
 })
