@@ -1,7 +1,7 @@
 import "./styles/styles.css";
 import { createTodoObject } from "./modules/createTodoObj";
 import { FormControl } from "./modules/formController";
-import { TodoCard } from "./modules/createTodoCard";
+import { cardCreator } from "./modules/createTodoCard";
 
 FormControl.initializeEventListeners();
 
@@ -25,4 +25,4 @@ const todoObjManager = (function() {
     return {addTodoObj, getAllTodoObjs, getTodoObj, deleteTodoObj};
 })();
 
-window.TodoCard = TodoCard;
+window.cardCreator = cardCreator;
