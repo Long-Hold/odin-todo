@@ -21,7 +21,7 @@ export class FormControl {
         }
 
         if (Object.keys(steps).length > 0) {
-            data[steps] = steps;
+            data.steps = {...steps};
         }
         const formSubmitted = new CustomEvent('todoSubmitted', { detail: {data} });
         document.dispatchEvent(formSubmitted);
