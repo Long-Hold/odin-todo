@@ -8,6 +8,8 @@ const cardCreator = (function() {
 
     const initializeTemplate = () => { todoCard = template.content.cloneNode(true); }
 
+    const getTodoCard = () => todoCard;
+
     const setTitle = (title) => {
         if (typeof(title) !== 'string') {
             throw new TypeError('Title must be of type: String');
@@ -36,7 +38,7 @@ const cardCreator = (function() {
 
         todoCard.querySelector('.priority').textContent = text;
     }
-    return {initializeTemplate, setTitle, setPriority};
+    return {initializeTemplate, getTodoCard, setTitle, setPriority};
 })
 
 export {cardCreator};
