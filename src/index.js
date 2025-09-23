@@ -25,4 +25,4 @@ const todoObjManager = (function() {
     return {addTodoObj, getAllTodoObjs, getTodoObj, deleteTodoObj};
 })();
 
-window.cardCreator = cardCreator;
+window.cardCreator = cardCreator();
