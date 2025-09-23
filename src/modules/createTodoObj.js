@@ -15,16 +15,8 @@ class Todo {
 }
 
 export function createTodoObject(formData) {
-    /**Composes object properties based on the non-empty fields in the fromData
-     * This allows the class Todo to account for optional fields that have been filled in,
-     * or left blank
-     */
-    const card = new Todo();
-    for (const [key, value] of formData.entries()) {
-        if (value) {
-            card[key] = value;
-        }
-    }
+    const todo = new Todo();
+    Object.assign(todo, formData);
 
-    return card;
+    return todo;
 }
