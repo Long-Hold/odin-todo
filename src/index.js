@@ -6,8 +6,7 @@ import { cardCreator } from "./modules/createTodoCard";
 FormControl.initializeEventListeners();
 
 document.addEventListener('todoSubmitted', (event) => {
-    const { formData } = event.detail;
-    const newCard = createTodoObject(formData);
+    const newCard = createTodoObject(event.detail);
     todoObjManager.addTodoObj(newCard);
 })
 
