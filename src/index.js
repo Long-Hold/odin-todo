@@ -7,6 +7,24 @@ FormControl.initializeEventListeners();
 
 document.addEventListener('todoSubmitted', (event) => {
     const { formData } = event.detail;
+
+    const processedData = new FormData();
+    const steps = {};
+
+    for (const [key, value] of formData.entries()) {
+        if (key.startsWith('step')) {
+            steps[key] = value;
+        }
+
+        else {
+            processedData.append(key, value);
+        }
+    }
+
+    if (Object.keys(steps).length > 0) {
+        processedData.append('steps', JSON.stringify(steps));
+    }
+
     const newCard = createTodoObject(formData);
     todoObjManager.addTodoObj(newCard);
 })
