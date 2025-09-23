@@ -1,5 +1,4 @@
-import { format, comapreAsc, isMatch, isValid, set } from "date-fns"
-import { de, te } from "date-fns/locale";
+import { format } from "date-fns"
 
 const cardCreator = (function() {
     const template = document.getElementById('todo-card-template');
