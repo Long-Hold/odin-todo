@@ -1,4 +1,4 @@
-import { format } from "date-fns"
+import { format, startOfDay, startOfToday } from "date-fns"
 
 const cardCreator = (function() {
     const template = document.getElementById('todo-card-template');
@@ -61,6 +61,10 @@ const cardCreator = (function() {
             throw new Error('Invalid Date object passed');
         }
 
+        if (startOfDay(date) < startOfToday()) {
+            throw new Error('Deadline cannot be past date');
+        }
+        
         todoCard.querySelector('time').textContent = format(date, 'yyyy-MM-dd');
     }
     return {initializeTemplate, getTodoCard, setTitle, setProject, setPriority, setDeadline};
