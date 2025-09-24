@@ -133,3 +133,28 @@ function createCheckboxContainer(label) {
 }
 
 export {cardCreator};
+
+export const createCardCreator = () => {
+    const template = document.getElementById('todo-card-template');
+    const todoCard = template.content.cloneNode(true);
+    const validPriorities = ['Low','Medium','High'];
+
+    return {
+        getTodoCard: () => todoCard,
+        setTitle: (title) => {
+            if (typeof(title) !== 'string') {
+                throw new TypeError('Title must be of type: String');
+            }
+
+            if (title.trim().length === 0) {
+                throw new Error('Title cannot be empty');
+            }
+            
+            if (title.length > 64) {
+                throw new Error('Title cannot be longer than 64 characters');
+            }
+
+            todoCard.querySelector('.todo-title').textContent = title; 
+        }
+    }
+}
