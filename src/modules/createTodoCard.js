@@ -89,14 +89,14 @@ const cardCreator = (function() {
 
         for (const [key, value] of Object.entries(steps)) {
             const checkListStep = createCheckboxContainer(value);
-            template.querySelector('.checklist-container').append(checkListStep);
+            todoCard.querySelector('.checklist-container').append(checkListStep);
         }
     }
 
     return {
         initializeTemplate, getTodoCard, setTitle, 
         setProject, setPriority, setDeadline,
-        setDescription,
+        setDescription, setChecklistSteps,
     };
 })
 
