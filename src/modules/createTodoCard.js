@@ -141,6 +141,21 @@ export const createCardCreator = () => {
 
     return {
         getTodoCard: () => todoCard,
+
+        setCardID: (taskID) => {
+            const trimmedID = taskID.trim();
+
+            if (typeof(trimmedID) !== 'string') {
+                throw new TypeError('Task ID must be a string');
+            }
+
+            if (trimmedID.length === 0) {
+                throw new Error('Task ID cannot be blank');
+            }
+
+            todoCard.querySelector('.todo-card').dataset.taskid = taskid;
+        },
+
         setTitle: (title) => {
             if (typeof(title) !== 'string') {
                 throw new TypeError('Title must be of type: String');
