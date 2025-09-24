@@ -76,6 +76,18 @@ const cardCreator = (function() {
         todoCard.querySelector('.description').textContent = description;
     }
 
+    const setChecklistSteps = (steps) => {
+        /**Each step requires the following markup:
+         *  - Checkbox button
+         *  - Label
+         *  - Encapsulating div
+         * 
+         * The steps parameter is expected to be of Type: Object.
+         * Each step is expected to be stored as Key: Value where:
+         *      Step : Step Description
+         */
+    }
+
     return {
         initializeTemplate, getTodoCard, setTitle, 
         setProject, setPriority, setDeadline,
