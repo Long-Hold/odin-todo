@@ -1,6 +1,6 @@
 import "./styles/styles.css";
 import { createTodoObject } from "./modules/createTodoObj";
-import { FormControl, bundleFormData, hasPartialKey } from "./modules/formController";
+import { FormControl } from "./modules/formController";
 import { cardCreator } from "./modules/createTodoCard";
 
 FormControl.initializeEventListeners();
