@@ -172,6 +172,23 @@ export const createCardCreator = () => {
             }
 
             todoCard.querySelector('.todo-title').textContent = cleanedTitle; 
-        }
+        },
+
+        setPriority: (priority) => {
+            const text = priority.trim();
+            if (typeof(text) !== 'string') {
+                throw new TypeError('Priority must be passed as string');
+            }
+
+            if (text.length === 0) {
+                throw new Error('Priority field cannot be blank');
+            }
+
+            if (!validPriorities.includes(text)) {
+                throw new TypeError('Invalid string passed as priority');
+            }
+
+            todoCard.querySelector('.priority').textContent = text;
+        },
     }
 }
