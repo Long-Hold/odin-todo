@@ -143,17 +143,17 @@ export const createCardCreator = () => {
         getTodoCard: () => todoCard,
 
         setCardID: (taskID) => {
-            const trimmedID = taskID.trim();
+            const cleanedID = taskID.trim();
 
-            if (typeof(trimmedID) !== 'string') {
+            if (typeof(cleanedID) !== 'string') {
                 throw new TypeError('Task ID must be a string');
             }
 
-            if (trimmedID.length === 0) {
+            if (cleanedID.length === 0) {
                 throw new Error('Task ID cannot be blank');
             }
 
-            todoCard.querySelector('.todo-card').dataset.taskid = taskid;
+            todoCard.querySelector('.todo-card').dataset.taskid = cleanedID;
         },
 
         setTitle: (title) => {
@@ -161,15 +161,17 @@ export const createCardCreator = () => {
                 throw new TypeError('Title must be of type: String');
             }
 
-            if (title.trim().length === 0) {
+            const cleanedTitle = title.trim();
+
+            if (cleanedTitle.length === 0) {
                 throw new Error('Title cannot be empty');
             }
             
-            if (title.length > 64) {
+            if (cleanedTitle.length > 64) {
                 throw new Error('Title cannot be longer than 64 characters');
             }
 
-            todoCard.querySelector('.todo-title').textContent = title; 
+            todoCard.querySelector('.todo-title').textContent = cleanedTitle; 
         }
     }
 }
