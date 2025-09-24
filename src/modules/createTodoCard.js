@@ -86,6 +86,11 @@ const cardCreator = (function() {
          * Each step is expected to be stored as Key: Value where:
          *      Step : Step Description
          */
+
+        for (const [key, value] of Object.entries(steps)) {
+            const checkListStep = createCheckboxContainer(value);
+            template.querySelector('.checklist-container').append(checkListStep);
+        }
     }
 
     return {
@@ -94,5 +99,23 @@ const cardCreator = (function() {
         setDescription,
     };
 })
+
+function createCheckboxContainer(label) {
+    const div = document.createElement('div');
+
+    const elementID = crypto.randomUUID();
+
+    const checkBox = document.createElement('input');
+    checkBox.type = 'checkbox';
+    checkBox.id = elementID;
+
+    const checkBoxLabel = document.createElement('label');
+    checkBoxLabel.setAttribute('for', elementID);
+    checkBoxLabel.textContent = label;
+
+    div.append(checkBox, checkBoxLabel);
+
+    return div;
+}
 
 export {cardCreator};
