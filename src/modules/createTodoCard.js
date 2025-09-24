@@ -9,6 +9,20 @@ const cardCreator = (function() {
 
     const getTodoCard = () => todoCard;
 
+    const setCardID = (taskid) => {
+        const trimmedID = taskid.trim();
+
+        if (typeof(trimmedID) !== 'string') {
+            throw new TypeError('Task ID must be a string');
+        }
+
+        if (trimmedID.length === 0) {
+            throw new Error('Task ID cannot be blank');
+        }
+
+        todoCard.querySelector('.todo-card').dataset.taskid = taskid;
+    }
+
     const setTitle = (title) => {
         if (typeof(title) !== 'string') {
             throw new TypeError('Title must be of type: String');
@@ -96,7 +110,7 @@ const cardCreator = (function() {
     return {
         initializeTemplate, getTodoCard, setTitle, 
         setProject, setPriority, setDeadline,
-        setDescription, setChecklistSteps,
+        setDescription, setChecklistSteps, setCardID,
     };
 })
 
