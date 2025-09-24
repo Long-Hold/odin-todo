@@ -5,6 +5,14 @@ export class FormControl {
     static #checkListContainer = document.getElementById('checklist-container');
 
     static #processSubmit(event) {
+        /**This method takes a submit event, creates a formData object,
+         * parses it, and repacks it.
+         * 
+         * If the user adds checklist steps to their Todo task,
+         * we parse the formData and bundle the steps into their own object.
+         * 
+         * This "checklist" object is then added as a property to the proccessed data.
+         */
         const formData = new FormData(event.target);
 
         const data = {};
