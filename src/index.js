@@ -29,7 +29,7 @@ window.todoObjManager = todoObjManager;
 window.cardCreator = createCardCreator();
 const myCard = createCardCreator();
 
-myCard.setCardID('TestID'),
-myCard.setTitle('Test Title!'),
-myCard.setPriority('Medium'),
+myCard.setCardID('TestID');
+myCard.setTitle('Test Title!');
+myCard.setPriority('Medium');
 console.log(myCard.getTodoCard());
