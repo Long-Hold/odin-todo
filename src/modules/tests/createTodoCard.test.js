@@ -39,9 +39,8 @@ beforeEach(() => {
     `;
 });
 
-const cardCreator = createCardCreator();
 
 test('setCardID rejects non-string parameter', () => {
     const cardCreator = createCardCreator();
-    expect(cardCreator.setCardID(1)).toThrow(TypeError);
+    expect(() => cardCreator.setCardID(1)).toThrow(TypeError);
 })
