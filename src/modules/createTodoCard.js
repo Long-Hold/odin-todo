@@ -154,6 +154,7 @@ export const createCardCreator = () => {
             }
 
             todoCard.querySelector('.todo-card').dataset.taskid = cleanedID;
+            return todoCard.querySelector('.todo-card').dataset.taskID;
         },
 
         setTitle: (title) => {
