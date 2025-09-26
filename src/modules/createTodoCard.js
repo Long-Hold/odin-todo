@@ -173,6 +173,7 @@ export const createCardCreator = () => {
             }
 
             todoCard.querySelector('.todo-title').textContent = cleanedTitle; 
+            return todoCard.querySelector('.todo-title');
         },
 
         setPriority: (priority) => {
