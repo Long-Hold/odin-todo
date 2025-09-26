@@ -1,4 +1,4 @@
-import { cardCreator, createCardCreator } from "../createTodoCard";
+import { createCardCreator } from "../createTodoCard";
 
 beforeEach(() => {
     document.body.innerHTML = `
@@ -60,4 +60,11 @@ test('setTitle rejects non-string parameter', () => {
     expect(() => cardCreator.setTitle([]).toThrow(TypeError));
     expect(() => cardCreator.setTitle({hey: 'hey'}).toThrow(TypeError));
     expect(() => cardCreator.setTitle(new String()).toThrow(TypeError));
+})
+
+test('setTItle reject empty string parameter', () => {
+    const cardCreator = createCardCreator();
+    expect(() => cardCreator.setTitle('')).toThrow(Error);
+    expect(() => cardCreator.setTitle('     ')).toThrow(Error);
+    expect(() => cardCreator.setTitle(` `)).toThrow(Error);
 })
