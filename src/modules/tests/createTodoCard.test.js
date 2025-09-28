@@ -89,7 +89,7 @@ describe('createCardCreator', () => {
                 {description: 'array', input: []},
                 {description: 'object', input: {text: 'Hello, world!'}},
 
-            ])('throws TypeError for %s input', (input) => {
+            ])('throws TypeError for $description input', ({description, input}) => {
                 expect(() => cardCreator.setCardID(input)).toThrow(TypeError);
             });
 
