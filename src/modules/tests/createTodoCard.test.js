@@ -90,7 +90,15 @@ describe('createCardCreator', () => {
                 [{}, 'object']
             ])('throws TypeError for %s input', (input) => {
                 expect(() => cardCreator.setCardID(input)).toThrow(TypeError);
-            })
+            });
+
+            test.each([
+                {description: 'whitespace only', input: '   '},
+                {description: 'single space only', input: ' '},
+                {description: 'empty string', input: ''},
+            ])('throws Error for $description', ({description, input}) => {
+                expect(() => cardCreator.setCardID(input)).toThrow(Error);
+            });
         })
     })
 })
