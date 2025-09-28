@@ -1,4 +1,3 @@
-import { experiments } from "webpack";
 import { createCardCreator } from "../createTodoCard";
 
 beforeEach(() => {
