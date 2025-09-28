@@ -85,9 +85,10 @@ describe('createCardCreator', () => {
     describe('setCardID', () => {
         describe('when given invalid input', () => {
             test.each([
-                [1, 'number'],
-                [undefined, 'undefined'],
-                [{}, 'object']
+                {description: 'number', input: 1},
+                {description: 'array', input: []},
+                {description: 'object', input: {text: 'Hello, world!'}},
+
             ])('throws TypeError for %s input', (input) => {
                 expect(() => cardCreator.setCardID(input)).toThrow(TypeError);
             });
