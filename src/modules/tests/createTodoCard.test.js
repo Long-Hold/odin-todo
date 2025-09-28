@@ -1,3 +1,4 @@
+import { experiments } from "webpack";
 import { createCardCreator } from "../createTodoCard";
 
 beforeEach(() => {
@@ -67,4 +68,10 @@ test('setTItle reject empty string parameter', () => {
     expect(() => cardCreator.setTitle('')).toThrow(Error);
     expect(() => cardCreator.setTitle('     ')).toThrow(Error);
     expect(() => cardCreator.setTitle(` `)).toThrow(Error);
+})
+
+test('setTitle rejects strings that exceed max length', () => {
+    const cardCreator = createCardCreator();
+    expect(() => cardCreator.setTitle('A'.repeat(65))).toThrow(Error);
+    expect(() => cardCreator.setTitle('A'.repeat(80))).toThrow(Error);
 })
