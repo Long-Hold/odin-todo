@@ -177,10 +177,11 @@ export const createCardCreator = () => {
         },
 
         setPriority: (priority) => {
-            const text = priority.trim();
-            if (typeof(text) !== 'string') {
+            if (typeof(priority) !== 'string') {
                 throw new TypeError('Priority must be passed as string');
             }
+
+            const text = priority.trim();
 
             if (text.length === 0) {
                 throw new Error('Priority field cannot be blank');
@@ -191,6 +192,8 @@ export const createCardCreator = () => {
             }
 
             todoCard.querySelector('.priority').textContent = text;
+
+            return todoCard.querySelector('.priority');
         },
     }
 }
