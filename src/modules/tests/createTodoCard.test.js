@@ -191,4 +191,26 @@ describe('createCardCreator', () => {
             })
         })
     })
+
+    describe('setDeadline', () => {
+        describe('when give invalid input', () => {
+            describe('non Date objects', () => {
+                test.each([
+                    {description: 'object-literal with date string', input: {date: '09-29-2025'}},
+                    {description: 'empty object', input: {}},
+                    {description: 'Non-Date instance object', input: new String('09-29-2025')},
+                ])('Throws TypeError for $description input', ({description, input}) => {
+                    expect(() => cardCreator.setDeadline(input)).toThrow(TypeError);
+                })
+            })
+
+            test.each([
+                {description: 'invalid date string', input: new Date('invalid')},
+                {description: 'invalid date', input: new Date('32-12-2025')},
+                {description: 'NaN date', input: new Date(NaN)}
+            ])('throws Error for $description input', ({description, input}) => {
+                expect(() => cardCreator.setDeadline(input)).toThrow(Error);
+            })
+        })
+    })
 })
