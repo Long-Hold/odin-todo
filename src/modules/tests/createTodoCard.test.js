@@ -211,6 +211,14 @@ describe('createCardCreator', () => {
             ])('throws Error for $description input', ({description, input}) => {
                 expect(() => cardCreator.setDeadline(input)).toThrow(Error);
             })
+
+            test.each([
+                {description: 'past date', input: new Date(1,1,2000)},
+                {description: 'past date as string', input: new Date('January 1, 2000')},
+                {description: 'yesterdays date', input: new Date().getDate() - 1}
+            ])('throws Error for $description input', ({description, input}) => {
+                expect(() => cardCreator.setDeadline(input)).toThrow(Error);
+            })
         })
     })
 })
