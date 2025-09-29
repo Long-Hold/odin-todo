@@ -135,6 +135,14 @@ describe('createCardCreator', () => {
             ])('throws Error for $description input', ({description, input}) => {
                 expect(() => cardCreator.setPriority(input)).toThrow(Error);
             });
+
+            test.each([
+                {description: 'invalid keyword', input: 'Super Important'},
+                {description: 'improper capitalization', input: 'lOw'},
+                {description: 'uppercase', input: 'MEDIUM'}
+            ])('throws TypeError for $description input', ({description, input}) => {
+                expect(() => cardCreator.setPriority(input)).toThrow(TypeError);
+            });
         })
     })
 })
