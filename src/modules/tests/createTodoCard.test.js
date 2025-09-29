@@ -179,5 +179,16 @@ describe('createCardCreator', () => {
                 expect(() => cardCreator.setProject(input)).toThrow(TypeError);
             });
         });
+
+        describe('when given valid input', () => {
+            test.each([
+                {description: 'string with no space', input: 'Some Category'},
+                {description: 'string with whitespace padding', input: '  Some Category  '}
+            ])('accepts and trims $description', ({description, input}) => {
+                const result = cardCreator.setProject(input).textContent;
+                const expected = input.trim();
+                expect(result).toBe(expected);
+            })
+        })
     })
 })
