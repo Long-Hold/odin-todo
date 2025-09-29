@@ -73,7 +73,7 @@ describe('createCardCreator', () => {
                 expect(result).toBe(expected);
             })
         });
-    })
+    });
 
     describe('setTitle', () => {
         describe('when given invalid input', () => {
@@ -113,6 +113,18 @@ describe('createCardCreator', () => {
                 const expected = input.trim();
 
                 expect(result).toBe(expected);
+            });
+        })
+    });
+
+    describe('setPriority', () => {
+        describe('when given invalid input', () => {
+            test.each([
+                {description: 'number', input: 1},
+                {description: 'array', input: ['Priority in Array!']},
+                {description: 'object', input: {title: 'Title in an object!'}},
+            ])('throws TypeError for $description input', ({description, input}) => {
+                expect(() => cardCreator.setPriority(input)).toThrow(TypeError);
             });
         })
     })
