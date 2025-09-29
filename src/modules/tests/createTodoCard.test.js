@@ -1,4 +1,5 @@
 import { createCardCreator } from "../createTodoCard";
+import { format, addDays } from "date-fns";
 
 describe('createCardCreator', () => {
     let cardCreator;
@@ -193,7 +194,7 @@ describe('createCardCreator', () => {
     })
 
     describe('setDeadline', () => {
-        describe('when give invalid input', () => {
+        describe('when givenn invalid input', () => {
             describe('non Date objects', () => {
                 test.each([
                     {description: 'object-literal with date string', input: {date: '09-29-2025'}},
@@ -218,6 +219,19 @@ describe('createCardCreator', () => {
                 {description: 'yesterdays date', input: new Date().getDate() - 1}
             ])('throws Error for $description input', ({description, input}) => {
                 expect(() => cardCreator.setDeadline(input)).toThrow(Error);
+            })
+        });
+
+        describe('when given valid input', () => {
+            test.each([
+                {description: 'current date', input: new Date()},
+                {description: "tomorrow's date", input: addDays(new Date(), 1)},
+                {description: 'next week', input: addDays(new Date(), 7)},
+                {description: 'a very far off, future date', input: new Date(2050, 0, 1)}
+            ])('accepts and displays $description input', ({description, input}) => {
+                const result = cardCreator.setDeadline(input).textContent;
+                const expected = format(input, 'yyyy-MM-dd');
+                expect(result).toBe(expected);
             })
         })
     })
