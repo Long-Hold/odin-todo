@@ -1,4 +1,5 @@
 import { format, startOfDay, startOfToday } from "date-fns"
+import { te } from "date-fns/locale";
 
 const cardCreator = (function() {
     const template = document.getElementById('todo-card-template');
@@ -221,6 +222,16 @@ export const createCardCreator = () => {
 
             todoCard.querySelector('time').textContent = format(date, 'yyyy-MM-dd');
             return todoCard.querySelector('time');
+        },
+
+        setDescription: (description) => {
+            if (typeof(description) !== 'string') {
+                throw new TypeError('Description must be passed as string');
+            }
+
+            const text = description.trim();
+            todoCard.querySelector('.description').textContent = text;
+            return todoCard.querySelector('.description');
         }
     }
 }
