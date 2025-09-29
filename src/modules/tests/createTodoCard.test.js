@@ -168,7 +168,7 @@ describe('createCardCreator', () => {
                 expect(result).toBe(expected);
             })
         })
-    })
+    });
 
     describe('setProject', () => {
         describe('when given invalid input', () => {
@@ -191,10 +191,10 @@ describe('createCardCreator', () => {
                 expect(result).toBe(expected);
             })
         })
-    })
+    });
 
     describe('setDeadline', () => {
-        describe('when givenn invalid input', () => {
+        describe('when given invalid input', () => {
             describe('non Date objects', () => {
                 test.each([
                     {description: 'object-literal with date string', input: {date: '09-29-2025'}},
@@ -234,5 +234,18 @@ describe('createCardCreator', () => {
                 expect(result).toBe(expected);
             })
         })
+    });
+
+    describe('setDescription', () => {
+        describe('when given invalid input', () => {
+            test.each([
+                {description: 'number', input: 1},
+                {description: 'array', input: ['ARRRRRRRGHHH']},
+                {description: 'object', input: {}},
+                {description: 'new String() constructor', input: new String()}
+            ])('throws TypeError when given $description', ({description, input}) => {
+                expect(() => cardCreator.setDescription(input)).toThrow(TypeError);
+            });
+        });
     })
 })
