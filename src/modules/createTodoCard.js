@@ -220,7 +220,7 @@ export const createCardCreator = () => {
             }
 
             todoCard.querySelector('time').textContent = format(date, 'yyyy-MM-dd');
-            return todoCard.querySelector('time').textContent;
+            return todoCard.querySelector('time');
         }
     }
 }
