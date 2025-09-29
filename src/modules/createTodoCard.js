@@ -195,5 +195,15 @@ export const createCardCreator = () => {
 
             return todoCard.querySelector('.priority');
         },
+
+        setProject: (project) => {
+            if (typeof(project) !== 'string') {
+                throw new TypeError('Project must be passed as string');
+            }
+
+            const text = project.trim();
+            todoCard.querySelector('.project-category').textContent = text;
+            return todoCard.querySelector('.project-category');
+        }
     }
 }
