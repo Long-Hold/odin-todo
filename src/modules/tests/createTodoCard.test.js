@@ -62,5 +62,16 @@ describe('createCardCreator', () => {
                 expect(() => cardCreator.setCardID(input)).toThrow(Error);
             });
         })
+
+        describe('when given valid input', () => {
+            test.each([
+                {description: 'string with no padded whitespace', input: 'SomeID', expected: 'SomeID'},
+                {description: 'string with whitespace padding', input: '  PaddedIDWhitespace  ', expected: 'PaddedIDWhitespace'}, 
+            ])('updates ID with passed input: $description', ({description, input}) => {
+                const result = cardCreator.setCardID(input);
+                const expected = input.trim();
+                expect(result).toBe(expected);
+            })
+        })
     })
 })
