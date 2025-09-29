@@ -168,4 +168,16 @@ describe('createCardCreator', () => {
             })
         })
     })
+
+    describe('setProject', () => {
+        describe('when given invalid input', () => {
+            test.each([
+                {description: 'number', input: 1},
+                {description: 'array', input: ['My Project']},
+                {description: 'object', input: {bad: {idea: 'I agree'}}},
+            ])('throws TypeError for $description input', ({description, input}) => {
+                expect(() => cardCreator.setProject(input)).toThrow(TypeError);
+            });
+        });
+    })
 })
