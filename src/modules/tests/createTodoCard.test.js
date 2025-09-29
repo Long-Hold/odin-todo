@@ -92,6 +92,14 @@ describe('createCardCreator', () => {
             ])('throws Error for $description input', ({description, input}) => {
                 expect(() => cardCreator.setTitle(input)).toThrow(Error);
             });
+
+            test.each([
+                {description: '65 char string', input: 'A'.repeat(65)},
+                {description: '70 char string', input: 'A'.repeat(70)},
+                {description: 'string with chars and spaces', input:'A A'.repeat(64)}
+            ])('throws Error for $description input', ({description, input}) => {
+                expect(() => cardCreator.setTitle(input)).toThrow(Error);
+            });
         });
     })
 })
