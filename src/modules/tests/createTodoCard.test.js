@@ -61,7 +61,7 @@ describe('createCardCreator', () => {
             ])('throws Error for $description', ({description, input}) => {
                 expect(() => cardCreator.setCardID(input)).toThrow(Error);
             });
-        })
+        });
 
         describe('when given valid input', () => {
             test.each([
@@ -72,6 +72,18 @@ describe('createCardCreator', () => {
                 const expected = input.trim();
                 expect(result).toBe(expected);
             })
-        })
+        });
+    })
+
+    describe('setTitle', () => {
+        describe('when given invalid input', () => {
+            test.each([
+                {description: 'number', input: 1},
+                {description: 'array', input: ['Title in array!']},
+                {description: 'object', input: {title: 'Title in object!'}},
+            ])('throws TypeError for $description input', ({description, input}) => {
+                expect(() => cardCreator.setTitle(input)).toThrow(TypeError);
+            })
+        });
     })
 })
