@@ -83,7 +83,15 @@ describe('createCardCreator', () => {
                 {description: 'object', input: {title: 'Title in object!'}},
             ])('throws TypeError for $description input', ({description, input}) => {
                 expect(() => cardCreator.setTitle(input)).toThrow(TypeError);
-            })
+            });
+
+            test.each([
+                {description: 'empty string', input: ''},
+                {description: 'whitespace only', input: '    '},
+                {description: 'single space only', input: ' '},
+            ])('throws Error for $description input', ({description, input}) => {
+                expect(() => cardCreator.setTitle(input)).toThrow(Error);
+            });
         });
     })
 })
