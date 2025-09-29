@@ -143,6 +143,29 @@ describe('createCardCreator', () => {
             ])('throws TypeError for $description input', ({description, input}) => {
                 expect(() => cardCreator.setPriority(input)).toThrow(TypeError);
             });
+        });
+
+        describe('when given valid input', () => {
+            test.each([
+                {description: 'Low priority', input: 'Low'},
+                {description: 'Medium priority', input: 'Medium'},
+                {description: 'High priority', input: 'High'}
+            ])('accepts $description keyword', ({description, input}) => {
+                const result = cardCreator.setPriority(input).textContent;
+                const expected = input.trim();
+
+                expect(result).toBe(expected);
+            })
+
+            test.each([
+                {description: 'Low with whitespace', input: '  Low  '},
+                {description: 'Medium with whitespace', input: ' Medium'},
+                {description: 'High with whitespace', input: 'High    '},
+            ])('trims $description keyword', ({description, input}) => {
+                const result = cardCreator.setPriority(input).textContent;
+                const expected = input.trim();
+                expect(result).toBe(expected);
+            })
         })
     })
 })
