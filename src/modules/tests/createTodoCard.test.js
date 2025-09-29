@@ -247,5 +247,27 @@ describe('createCardCreator', () => {
                 expect(() => cardCreator.setDescription(input)).toThrow(TypeError);
             });
         });
+
+        describe('when given valid input', () => {
+            const noWhiteSpaceParagraphs = `Hello world,
+            
+            This text contains paragraphs, but not padded whitespace.
+            
+            Ideally, this will be accepted`;
+
+            const paddedParagraphs = `          
+                    Well, isn't that intriguing.
+                    There is plenty of white space all around...    `;
+
+            test.each([
+                {description: 'formatted string with paragraphs', input: noWhiteSpaceParagraphs},
+                {description: 'formatted string with paragraphs and whitespace', input: paddedParagraphs}
+            ])('accepts $description and uses as textContent', ({description, input}) => {
+                const result = cardCreator.setDescription(input).textContent;
+                const expected = input.trim();
+
+                expect(result).toBe(expected);
+            })
+        })
     })
 })
