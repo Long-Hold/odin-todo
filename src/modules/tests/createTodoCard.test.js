@@ -126,6 +126,15 @@ describe('createCardCreator', () => {
             ])('throws TypeError for $description input', ({description, input}) => {
                 expect(() => cardCreator.setPriority(input)).toThrow(TypeError);
             });
+
+            test.each([
+                {description: 'empty string', input: ''},
+                {description: 'whitespace only', input: '    '},
+                {description: 'single space', input: ' '},
+                {description: 'formatted empty string', input: `  `}
+            ])('throws Error for $description input', ({description, input}) => {
+                expect(() => cardCreator.setPriority(input)).toThrow(Error);
+            });
         })
     })
 })
