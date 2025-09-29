@@ -206,7 +206,7 @@ export const createCardCreator = () => {
             return todoCard.querySelector('.project-category');
         },
 
-        setDeadline: (deadline) => {
+        setDeadline: (date) => {
             if ((date instanceof Date) === false) {
                 throw new TypeError('Date must be passed as Date Object');
             }
