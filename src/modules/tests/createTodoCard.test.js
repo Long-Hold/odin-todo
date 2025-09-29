@@ -101,5 +101,17 @@ describe('createCardCreator', () => {
                 expect(() => cardCreator.setTitle(input)).toThrow(Error);
             });
         });
+
+        describe('when given valid input', () => {
+            test.each([
+                {description: 'character limit string', input: 'A'.repeat(64)},
+                {description: 'character limit string with whitespace', input: (' ' + 'A'.repeat(64) + ' ')}
+            ])('accepts $description input', ({description, input}) => {
+                const result = cardCreator.setTitle(input).textContent;
+                const expected = input.trim();
+
+                expect(result).toBe(expected);
+            })
+        })
     })
 })
