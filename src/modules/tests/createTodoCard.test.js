@@ -342,6 +342,18 @@ describe('createCardCreator', () => {
                     expect(child.querySelector('label').textContent).toBe(label);
                 });
             });
+
+            test('checklist label and input id values match', () => {
+                const result = cardCreator.setChecklistSteps(validCheckList);
+                const childElements = result.children;
+
+                for (const child of childElements) {
+                    const labelID = child.querySelector('label');
+                    const inputID = child.querySelector('input');
+
+                    expect(labelID.htmlFor).toBe(inputID.id);
+                }
+            })
         })
     })
 })
