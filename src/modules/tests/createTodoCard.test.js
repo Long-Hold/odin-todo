@@ -304,7 +304,7 @@ describe('createCardCreator', () => {
             test('creates correct number of checklist items', () => {
                 const result = cardCreator.setChecklistSteps(validCheckList);
                 expect(result.children.length).toBe(3);
-            })
+            });
 
             test('filters out empty and whitespace only steps', () => {
                 const listWithEmptyInputs = {
@@ -315,12 +315,10 @@ describe('createCardCreator', () => {
                     step5: '  ',
                     step6: 'Take over the world',
                 }
-                
+
                 const result = cardCreator.setChecklistSteps(listWithEmptyInputs);
                 expect(result.children.length).toBe(3);
-            })
-
-
+            });
         })
     })
 })
