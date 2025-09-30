@@ -270,4 +270,28 @@ describe('createCardCreator', () => {
             })
         })
     })
+
+    describe('setChecklistSteps', () => {
+        describe('when given invalid input', () => {
+            test.each([
+                {description: 'null', input: null},
+                {description: 'undefined', input: undefined},
+            ])('throws Error when passed $description', ({description, input}) => {
+                expect(() => cardCreator.setChecklistSteps(input)).toThrow(Error);
+            });
+
+            test.each([
+                {description: 'string', input: 'Take out the trash'},
+                {description: 'array', input: ['My', 'array']},
+                {description: 'array using new Array()', input: new Array()},
+                {description: 'number', input: 1},
+            ])('throws TypeError when passed $description', ({description, input}) => {
+                expect(() => cardCreator.setChecklistSteps(input)).toThrow(TypeError);
+            });
+
+            test('throws Error when passed empty object', () => {
+                expect(() => cardCreator.setChecklistSteps({})).toThrow(Error);
+            });
+        })
+    })
 })
