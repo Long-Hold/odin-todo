@@ -301,21 +301,21 @@ describe('createCardCreator', () => {
                 step3: 'Cook food',
             }
 
+            const listWithEmptyInputs = {
+                step1: 'Get stones',
+                step2: ' ',
+                step3: 'Build house',
+                step4: '   ',
+                step5: '  ',
+                step6: 'Take over the world',
+            }
+
             test('creates correct number of checklist items', () => {
                 const result = cardCreator.setChecklistSteps(validCheckList);
                 expect(result.children.length).toBe(3);
             });
 
             test('filters out empty and whitespace only steps', () => {
-                const listWithEmptyInputs = {
-                    step1: 'Get stones',
-                    step2: ' ',
-                    step3: 'Build house',
-                    step4: '   ',
-                    step5: '  ',
-                    step6: 'Take over the world',
-                }
-
                 const result = cardCreator.setChecklistSteps(listWithEmptyInputs);
                 expect(result.children.length).toBe(3);
             });
@@ -367,6 +367,15 @@ describe('createCardCreator', () => {
                     expect(labelID.htmlFor).toBe(inputID.id);
                 }
             });
+
+            test('steps from non-empty, spaarse ', () => {
+                const result = cardCreator.setChecklistSteps(listWithEmptyInputs);
+                const labels = result.querySelectorAll('label');
+
+                expect(labels[0].textContent).toBe('Get stones');
+                expect(labels[1].textContent).toBe('Build house');
+                expect(labels[2].textContent).toBe('Take over the world');
+            })
         })
     })
 })
