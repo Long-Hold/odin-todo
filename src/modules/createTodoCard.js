@@ -253,7 +253,7 @@ export const createCardCreator = () => {
                 // Ignore empty steps
                 if (!text) { continue; }
 
-                const checkListStep = createCheckboxContainer(value);
+                const checkListStep = createCheckboxContainer(text);
                 todoCard.querySelector('.checklist-container').append(checkListStep);
             }
 
