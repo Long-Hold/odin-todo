@@ -343,6 +343,19 @@ describe('createCardCreator', () => {
                 });
             });
 
+            test('checklist label for and input id values are not empty', () => {
+                const result = cardCreator.setChecklistSteps(validCheckList);
+                const childElements = result.children;
+
+                for (const child of childElements) {
+                    const label = child.querySelector('label');
+                    const input = child.querySelector('input');
+
+                    expect(label.htmlFor).toBeTruthy();
+                    expect(input.id).toBeTruthy();
+                }
+            })
+
             test('checklist label and input id values match', () => {
                 const result = cardCreator.setChecklistSteps(validCheckList);
                 const childElements = result.children;
