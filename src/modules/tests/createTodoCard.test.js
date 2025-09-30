@@ -376,6 +376,13 @@ describe('createCardCreator', () => {
                 expect(labels[1].textContent).toBe('Build house');
                 expect(labels[2].textContent).toBe('Take over the world');
             })
+
+            test('returns the checklist container element', () => {
+                const result = cardCreator.setChecklistSteps(validCheckList);
+
+                expect(result).toBeTruthy();
+                expect(result.classList.contains('checklist-container')).toBe(true);
+            })
         })
     })
 })
