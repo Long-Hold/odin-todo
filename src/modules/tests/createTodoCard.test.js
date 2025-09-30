@@ -261,7 +261,7 @@ describe('createCardCreator', () => {
 
             test.each([
                 {description: 'formatted string with paragraphs', input: noWhiteSpaceParagraphs},
-                {description: 'formatted string with paragraphs and whitespace', input: paddedParagraphs}
+                {description: '    formatted string with paragraphs and whitespace    ', input: paddedParagraphs}
             ])('accepts $description and uses as textContent', ({description, input}) => {
                 const result = cardCreator.setDescription(input).textContent;
                 const expected = input.trim();
