@@ -331,6 +331,17 @@ describe('createCardCreator', () => {
                     expect(child.children[1].tagName).toBe('LABEL');
                 }
             })
+
+            test('each checklist node label has correct textContent', () => {
+                const result = cardCreator.setChecklistSteps(validCheckList);
+                const childElements = result.children;
+                const valuesArray = Object.values(validCheckList);
+
+                valuesArray.forEach((label, index) => {
+                    const child = childElements[index];
+                    expect(child.querySelector('label').textContent).toBe(label);
+                });
+            });
         })
     })
 })
