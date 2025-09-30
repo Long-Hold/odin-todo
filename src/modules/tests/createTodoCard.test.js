@@ -319,6 +319,18 @@ describe('createCardCreator', () => {
                 const result = cardCreator.setChecklistSteps(listWithEmptyInputs);
                 expect(result.children.length).toBe(3);
             });
+
+            test('each checklist node has an input and label', () => {
+                const result = cardCreator.setChecklistSteps(validCheckList);
+
+                const childElements = result.children;
+
+                for (const child of childElements) {
+                    expect(child.children.length).toBe(2);
+                    expect(child.children[0].tagName).toBe('INPUT');
+                    expect(child.children[1].tagName).toBe('LABEL');
+                }
+            })
         })
     })
 })
