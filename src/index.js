@@ -1,7 +1,7 @@
 import "./styles/styles.css";
 import { createTodoObject } from "./modules/createTodoObj";
 import { FormControl } from "./modules/formController";
-import { cardCreator, createCardCreator } from "./modules/createTodoCard";
+import { createCardCreator } from "./modules/createTodoCard";
 
 FormControl.initializeEventListeners();
 
@@ -26,10 +26,3 @@ const todoObjManager = (function() {
 })();
 
 window.todoObjManager = todoObjManager;
-window.cardCreator = createCardCreator();
-const myCard = createCardCreator();
-
-myCard.setCardID('TestID');
-myCard.setTitle('Test Title!');
-myCard.setPriority('Medium');
-console.log(myCard.getTodoCard());
