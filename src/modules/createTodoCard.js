@@ -235,6 +235,18 @@ export const createCardCreator = () => {
         },
 
         setChecklistSteps: (steps) => {
+            if (steps === null) {
+                throw new Error('Steps cannot be null');
+            }
+
+            if (typeof(steps) !== 'object' || Array.isArray(steps)) {
+                throw new TypeError(`Parameter must be passed as an object`);
+            }
+
+            if (Object.keys(steps).length === 0) {
+                throw new Error('Passed object cannot be empty');
+            }
+            
             for (const [key, value] of Object.entries(steps)) {
                 const checkListStep = createCheckboxContainer(value);
                 todoCard.querySelector('.checklist-container').append(checkListStep);
