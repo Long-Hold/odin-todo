@@ -293,5 +293,34 @@ describe('createCardCreator', () => {
                 expect(() => cardCreator.setChecklistSteps({})).toThrow(Error);
             });
         })
+
+        describe('when given valid input', () => {
+            const validCheckList = {
+                step1: 'Open fridge',
+                step2: 'Get food',
+                step3: 'Cook food',
+            }
+
+            test('creates correct number of checklist items', () => {
+                const result = cardCreator.setChecklistSteps(validCheckList);
+                expect(result.children.length).toBe(3);
+            })
+
+            test('filters out empty and whitespace only steps', () => {
+                const listWithEmptyInputs = {
+                    step1: 'Get stones',
+                    step2: ' ',
+                    step3: 'Build house',
+                    step4: '   ',
+                    step5: '  ',
+                    step6: 'Take over the world',
+                }
+                
+                const result = cardCreator.setChecklistSteps(listWithEmptyInputs);
+                expect(result.children.length).toBe(3);
+            })
+
+
+        })
     })
 })
