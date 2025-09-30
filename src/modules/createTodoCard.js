@@ -235,8 +235,8 @@ export const createCardCreator = () => {
         },
 
         setChecklistSteps: (steps) => {
-            if (steps === null) {
-                throw new Error('Steps cannot be null');
+            if (steps === null || steps === undefined) {
+                throw new Error(`Steps cannot be ${steps}`);
             }
 
             if (typeof(steps) !== 'object' || Array.isArray(steps)) {
@@ -246,7 +246,7 @@ export const createCardCreator = () => {
             if (Object.keys(steps).length === 0) {
                 throw new Error('Passed object cannot be empty');
             }
-            
+
             for (const [key, value] of Object.entries(steps)) {
                 const checkListStep = createCheckboxContainer(value);
                 todoCard.querySelector('.checklist-container').append(checkListStep);
