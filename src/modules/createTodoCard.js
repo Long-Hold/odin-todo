@@ -232,6 +232,15 @@ export const createCardCreator = () => {
             const text = description.trim();
             todoCard.querySelector('.description').textContent = text;
             return todoCard.querySelector('.description');
+        },
+
+        setChecklistSteps: (steps) => {
+            for (const [key, value] of Object.entries(steps)) {
+                const checkListStep = createCheckboxContainer(value);
+                todoCard.querySelector('.checklist-container').append(checkListStep);
+            }
+
+            return todoCard.querySelector('.checklist-container');
         }
     }
 }
