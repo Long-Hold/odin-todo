@@ -354,7 +354,7 @@ describe('createCardCreator', () => {
                     expect(label.htmlFor).toBeTruthy();
                     expect(input.id).toBeTruthy();
                 }
-            })
+            });
 
             test('checklist label and input id values match', () => {
                 const result = cardCreator.setChecklistSteps(validCheckList);
@@ -366,7 +366,7 @@ describe('createCardCreator', () => {
 
                     expect(labelID.htmlFor).toBe(inputID.id);
                 }
-            })
+            });
         })
     })
 })
