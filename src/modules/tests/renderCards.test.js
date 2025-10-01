@@ -25,4 +25,22 @@ describe('displayNewCardNode', () => {
             expect(() => displayNewCardNode(div)).toThrow(Error);
         });
     });
+
+    describe('when passed valid input', () => {
+        test.each([
+            {description: 'appends single child element', input: 1},
+            {description: 'appends 3 child elements', input: 3},
+            {description: 'appends an unknown number of child elements', input: Math.floor(Math.random() * 100) + 1},
+        ])('function $description', ({description, input}) => {
+            let result;
+
+            for (let i = 0; i < input; ++i) {
+                const simulatedCard = document.createElement('article');
+                simulatedCard.className = 'todo-card';
+                result = displayNewCardNode(simulatedCard);
+            }
+
+            expect(result.children.length).toBe(input);
+        })
+    })
 })
