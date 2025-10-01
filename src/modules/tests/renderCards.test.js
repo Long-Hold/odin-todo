@@ -41,6 +41,6 @@ describe('displayNewCardNode', () => {
             }
 
             expect(result.children.length).toBe(input);
-        })
+        });
     })
 })
