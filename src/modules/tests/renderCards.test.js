@@ -1,4 +1,4 @@
-import { displayNewCardNode } from "../renderCards";
+import { displayNewCardNode, clearDisplayBox} from "../renderCards";
 
 describe('displayNewCardNode', () => {
     beforeEach(() => {
@@ -44,3 +44,29 @@ describe('displayNewCardNode', () => {
         });
     });
 });
+
+describe('clearDisplayBox', () => {
+    beforeEach(() => {
+        document.body.innerHTML = `
+            <section class="display-box">
+            </section>
+        `;
+    });
+
+    test.each([
+        {description: 'single child element', input: 1},
+        {description: '3 child elements', input: 3},
+        {description: 'random amount of child elements', input: Math.floor(Math.random() * 100) + 1}
+    ])('removes all children, currently has $description', ({description, input}) => {
+        const container = document.querySelector('.display-box');
+
+        for (let i = 0; i < input; ++i) {
+            const child = document.createElement('div');
+            container.appendChild(child);
+        }
+
+        clearDisplayBox();
+
+        expect(container.children.length).toBe(0);
+    });
+})
