@@ -61,5 +61,13 @@ describe('renderAllCards', () => {
         ])('throws TypeError when passed $description input', ({description, input}) => {
             expect(() => renderAllCards(input)).toThrow(TypeError);
         });
+
+        test.each([
+            {description: 'array', input: []},
+            {description: 'array containing empty arrays', input: [[],[]]},
+            {description: 'array declared using New', input: new Array()},
+        ])('throws Error for empty $description', ({description, input}) => {
+            expect(() => renderAllCards(input)).toThrow(Error);
+        });
     });
 });
