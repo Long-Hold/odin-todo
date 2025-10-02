@@ -12,3 +12,5 @@ export function displayNewCardNode(todoCard) {
 
     return cardDisplayNode;
 }
+
+//TODO: Create function to iteratively render all cards from list
