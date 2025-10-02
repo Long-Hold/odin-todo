@@ -13,6 +13,8 @@ export function displayNewCardNode(todoCard) {
     return cardDisplayNode;
 }
 
-export function clearDisplay() {
-    document.querySelector('.display-box').replaceChildren();
+export function clearDisplayBox() {
+    const cardDisplayNode = document.querySelector('.display-box');
+    cardDisplayNode.replaceChildren();
+    return cardDisplayNode;
 }
