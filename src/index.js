@@ -2,7 +2,7 @@ import "./styles/styles.css";
 import { createTodoObject } from "./modules/createTodoObj";
 import { FormControl } from "./modules/formController";
 import { createCardCreator } from "./modules/createTodoCard";
-import { displayNewCardNode } from "./modules/renderCards";
+import { displayNewCardNode, clearDisplayBox } from "./modules/renderCards";
 
 FormControl.initializeEventListeners();
 
