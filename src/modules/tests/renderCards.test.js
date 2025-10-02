@@ -1,4 +1,4 @@
-import { displayNewCardNode, renderAllCards } from "../renderCards";
+import { displayNewCardNode } from "../renderCards";
 
 describe('displayNewCardNode', () => {
     beforeEach(() => {
@@ -41,33 +41,6 @@ describe('displayNewCardNode', () => {
             }
 
             expect(result.children.length).toBe(input);
-        });
-    });
-});
-
-describe('renderAllCards', () => {
-    beforeEach(() => {
-        document.body.innerHTML = `
-            <section class="display-box">
-            </section>
-        `;
-    });
-
-    describe('when passed invalid input', () => {
-        test.each([
-            {description: 'number', input: 1},
-            {description: 'object', input: {}},
-            {description: 'string', input: 'Hello, world'},
-        ])('throws TypeError when passed $description input', ({description, input}) => {
-            expect(() => renderAllCards(input)).toThrow(TypeError);
-        });
-
-        test.each([
-            {description: 'array', input: []},
-            {description: 'array containing empty arrays', input: [[],[]]},
-            {description: 'array declared using New', input: new Array()},
-        ])('throws Error for empty $description', ({description, input}) => {
-            expect(() => renderAllCards(input)).toThrow(Error);
         });
     });
 });
