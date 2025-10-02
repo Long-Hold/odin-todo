@@ -1,4 +1,4 @@
-import { displayNewCardNode } from "../renderCards";
+import { displayNewCardNode, renderAllCards } from "../renderCards";
 
 describe('displayNewCardNode', () => {
     beforeEach(() => {
