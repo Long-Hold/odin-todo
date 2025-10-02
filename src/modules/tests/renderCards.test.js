@@ -44,3 +44,12 @@ describe('displayNewCardNode', () => {
         });
     });
 });
+
+describe('renderAllCards', () => {
+    beforeEach(() => {
+        document.body.innerHTML = `
+            <section class="display-box">
+            </section>
+        `;
+    });
+});
