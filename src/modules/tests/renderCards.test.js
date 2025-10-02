@@ -52,4 +52,14 @@ describe('renderAllCards', () => {
             </section>
         `;
     });
+
+    describe('when passed invalid input', () => {
+        test.each([
+            {description: 'number', input: 1},
+            {description: 'object', input: {}},
+            {description: 'string', input: 'Hello, world'},
+        ])('throws TypeError when passed $description input', ({description, input}) => {
+            expect(() => renderAllCards(input)).toThrow(TypeError);
+        });
+    });
 });
