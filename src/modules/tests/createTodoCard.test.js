@@ -276,6 +276,8 @@ describe('createCardCreator', () => {
             test.each([
                 {description: 'null', input: null},
                 {description: 'undefined', input: undefined},
+                {description: 'empty object', input: {}},
+                {description: 'empty array', input: []},
             ])('throws Error when passed $description', ({description, input}) => {
                 expect(() => cardCreator.setChecklistSteps(input)).toThrow(Error);
             });
@@ -285,10 +287,6 @@ describe('createCardCreator', () => {
                 {description: 'number', input: 1},
             ])('throws TypeError when passed $description', ({description, input}) => {
                 expect(() => cardCreator.setChecklistSteps(input)).toThrow(TypeError);
-            });
-
-            test('throws Error when passed empty object', () => {
-                expect(() => cardCreator.setChecklistSteps({})).toThrow(Error);
             });
         })
 
