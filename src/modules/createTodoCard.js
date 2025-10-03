@@ -122,7 +122,7 @@ export const createCardCreator = () => {
                 throw new Error(`Steps cannot be ${steps}`);
             }
 
-            if (typeof(steps) !== 'object' || Array.isArray(steps)) {
+            if (typeof(steps) !== 'object') {
                 throw new TypeError(`Parameter must be passed as an object`);
             }
 
