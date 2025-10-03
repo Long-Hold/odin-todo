@@ -131,6 +131,9 @@ export const createCardCreator = () => {
             }
 
             for (const [key, value] of Object.entries(steps)) {
+                if (typeof(value) !== 'string') {
+                    throw new TypeError('Values of keys must be of type: string');
+                }
                 const text = value.trim();
 
                 // Ignore empty steps
