@@ -41,6 +41,7 @@ function customizeTodoCard(todoCardObj) {
             
             case('description'):
                 cardCreator.setDescription(todoCardObj[property]);
+                break;
             
             case('steps'):
                 cardCreator.setChecklistSteps(todoCardObj[property])
