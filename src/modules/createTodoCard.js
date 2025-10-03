@@ -24,7 +24,7 @@ export const createCardCreator = () => {
     const validPriorities = ['Low','Medium','High'];
 
     return {
-        getTodoCard: () => todoCard,
+        getTodoCard: () => todoCard.querySelector('.todo-card'),
 
         setCardID: (taskID) => {
             const cleanedID = taskID.trim();
