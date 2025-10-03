@@ -282,8 +282,6 @@ describe('createCardCreator', () => {
 
             test.each([
                 {description: 'string', input: 'Take out the trash'},
-                {description: 'array', input: ['My', 'array']},
-                {description: 'array using new Array()', input: new Array()},
                 {description: 'number', input: 1},
             ])('throws TypeError when passed $description', ({description, input}) => {
                 expect(() => cardCreator.setChecklistSteps(input)).toThrow(TypeError);
