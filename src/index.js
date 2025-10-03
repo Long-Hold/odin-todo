@@ -7,16 +7,16 @@ import { displayNewCardNode, clearDisplayBox } from "./modules/renderCards";
 FormControl.initializeEventListeners();
 
 document.addEventListener('todoSubmitted', (event) => {
-    const {data} = event.detail;
-    const newCard = createTodoObject(data);
-    todoObjManager.addTodoObj(newCard);
-
     try {
+        const {data} = event.detail;
+        const newCard = createTodoObject(data);
+
         const cardNode = customizeTodoCard(newCard);
         displayNewCardNode(cardNode);
+
+        todoObjManager.addTodoObj(newCard);
     } catch (error) {
         console.error('Error: ', error.message);
-        return null;
     }
 })
 
