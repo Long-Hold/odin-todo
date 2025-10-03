@@ -11,8 +11,13 @@ document.addEventListener('todoSubmitted', (event) => {
     const newCard = createTodoObject(data);
     todoObjManager.addTodoObj(newCard);
 
-    const cardNode = customizeTodoCard(newCard);
-    displayNewCardNode(cardNode);
+    try {
+        const cardNode = customizeTodoCard(newCard);
+        displayNewCardNode(cardNode);
+    } catch (error) {
+        console.error('Error: ', error.message);
+        return null;
+    }
 })
 
 function customizeTodoCard(todoCardObj) {
