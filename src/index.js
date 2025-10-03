@@ -16,8 +16,11 @@ document.addEventListener('todoSubmitted', (event) => {
      *  4. Display todoCard Node to the DOM
      *  5. Save the created object
      * 
-     * If any of these steps fail, the entire process must be terminated.
-     * This prevents a desynch situation from arising between the visual and internal state.
+     * If any of these steps fail, the entire process is aborted. No data is saved
+     * to the manager or local storage, and any temporary DOM changes are cleaned up automatically
+     * by garbage collection.
+     * 
+     * This ensures visual state and internal state remained synchronized.
      */
     try {
         const {data} = event.detail;
