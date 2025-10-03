@@ -7,6 +7,18 @@ import { displayNewCardNode, clearDisplayBox } from "./modules/renderCards";
 FormControl.initializeEventListeners();
 
 document.addEventListener('todoSubmitted', (event) => {
+    /**Upon form submission, initiate a transaction with try catch.
+     * 
+     * Transaction order of events:
+     *  1. Destructure and store form data
+     *  2. Create a todoCard Object from form data
+     *  3. Construct todoCard Node from Object's property values
+     *  4. Display todoCard Node to the DOM
+     *  5. Save the created object
+     * 
+     * If any of these steps fail, the entire process must be terminated.
+     * This prevents a desynch situation from arising between the visual and internal state.
+     */
     try {
         const {data} = event.detail;
         const newCard = createTodoObject(data);
