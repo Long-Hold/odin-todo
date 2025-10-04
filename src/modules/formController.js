@@ -122,3 +122,13 @@ export class FormControl {
         FormControl.#eventDelegator();
     }
 }
+
+const form = document.getElementById('new-todo-form');
+const dialog = document.querySelector('dialog');
+
+export const createFormController = () => {
+    const addTaskButton = document.getElementById('add-task');
+    const form = document.getElementById('new-todo-form');
+    const dialog = document.querySelector('dialog');
+    const checkListContainer = document.getElementById('checklist-container');
+}
