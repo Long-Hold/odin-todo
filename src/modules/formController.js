@@ -163,4 +163,8 @@ export const createFormController = () => {
         const formSubmitted = new CustomEvent('todoSubmitted', { detail: {data} });
         document.dispatchEvent(formSubmitted);
     }
+
+    function deleteChecklist() {
+        checkListContainer.querySelector('section').replaceChildren();
+    }
 }
