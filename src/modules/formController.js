@@ -133,6 +133,15 @@ export const createFormController = () => {
     const checkListContainer = document.getElementById('checklist-container');
 
     function processSubmit(event) {
+        /**The form data that represents a checklist is not grouped together
+         * when the form is submitted.
+         * 
+         * This function parses the form data and groups any checklist data together
+         * in its own object, and appends it to the formData object as a property with
+         * the name "steps".
+         * 
+         * This makes attaching form data key: values to an object easier
+         */
         const formData = new FormData(event.target);
 
         const data = {};
