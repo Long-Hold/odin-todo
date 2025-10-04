@@ -131,4 +131,27 @@ export const createFormController = () => {
     const form = document.getElementById('new-todo-form');
     const dialog = document.querySelector('dialog');
     const checkListContainer = document.getElementById('checklist-container');
+
+    function processSubmit(event) {
+        const formData = new FormData(event.target);
+
+        const data = {};
+        const steps = {};
+
+        for (const [key, value] of formData.entries()) {
+            if (key.startsWith('step') && value.trim()) {
+                steps[key] = value;
+            }
+
+            else if (value.trim()) {
+                data[key] = value;
+            }
+        }
+
+        if (Object.keys(steps).length > 0) {
+            data.steps = {...steps};
+        }
+        const formSubmitted = new CustomEvent('todoSubmitted', { detail: {data} });
+        document.dispatchEvent(formSubmitted);
+    }
 }
