@@ -126,7 +126,7 @@ export class FormControl {
 const form = document.getElementById('new-todo-form');
 const dialog = document.querySelector('dialog');
 
-export const createFormController = () => {
+export function createFormController() {
     const addTaskButton = document.getElementById('add-task');
     const form = document.getElementById('new-todo-form');
     const dialog = document.querySelector('dialog');
@@ -166,6 +166,7 @@ export const createFormController = () => {
 
     function deleteChecklist() {
         checkListContainer.querySelector('section').replaceChildren();
+        console.log('hello!');
     }
 
     function resetAndClose() {
