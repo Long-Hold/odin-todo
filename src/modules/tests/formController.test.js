@@ -82,5 +82,7 @@ describe('createFormController', () => {
                 </dialog>
             </section>
         `;
+
+        formController = createFormController();
     });
 })
