@@ -167,4 +167,10 @@ export const createFormController = () => {
     function deleteChecklist() {
         checkListContainer.querySelector('section').replaceChildren();
     }
+
+    function resetAndClose() {
+        deleteChecklist();
+        form.reset();
+        dialog.close();
+    }
 }
