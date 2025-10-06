@@ -89,11 +89,3 @@ const todoObjManager = (function() {
 window.todoObjManager = todoObjManager;
 
 const form = document.getElementById('new-todo-form');
-form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const dataObject = objectifySubmission(event);
-    console.log(dataObject);
-
-    const bundledObj = bundleKeys(dataObject, 'step', 'steps');
-    console.log(bundledObj);
-})
