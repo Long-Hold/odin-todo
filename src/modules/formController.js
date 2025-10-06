@@ -122,3 +122,9 @@ export class FormControl {
         FormControl.#eventDelegator();
     }
 }
+
+export function objectifySubmission(event) {
+    const formData = new FormData(event.target);
+    const dataObject = Object.fromEntries(formData);
+    return dataObject;
+}
