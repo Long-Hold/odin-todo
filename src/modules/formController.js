@@ -85,11 +85,11 @@ export class FormControl {
     }
 
     static #eventDelegator() {
-        FormControl.#formNode.addEventListener('submit', (event) => {
-            event.preventDefault();
-            FormControl.#processSubmit(event);
-            FormControl.#resetAndClose();
-        })
+        // FormControl.#formNode.addEventListener('submit', (event) => {
+        //     event.preventDefault();
+        //     FormControl.#processSubmit(event);
+        //     FormControl.#resetAndClose();
+        // })
 
         FormControl.#formNode.addEventListener('click', (event) => {
             if (event.target.id === 'add-step') {
@@ -149,7 +149,7 @@ export function bundleKeys(dataObject, substring, bundledKey) {
     for (const [key, value] of Object.entries(clonedObj)) {
         if (key.startsWith(substring) && value.trim()) {
             bundledData[key] = value;
-            delete clonedObj.key;
+            delete clonedObj[key];
         }
     }
 
