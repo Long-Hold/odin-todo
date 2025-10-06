@@ -123,8 +123,11 @@ export class FormControl {
     }
 }
 
-export function objectifySubmission(form) {
-    const formData = new FormData(form);
+export function objectifySubmission(formData) {
+    if (formData instanceof FormData === false) {
+        throw new TypeError('Passed parameter must be instance of: FormData');
+    }
+    
     const dataObject = Object.fromEntries(formData);
     return dataObject;
 }
