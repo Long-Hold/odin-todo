@@ -148,6 +148,7 @@ export function bundleKeys(dataObject, substring, bundledKey) {
     
     for (const [key, value] of Object.entries(clonedObj)) {
         if (key.startsWith(substring)) {
+            // Only adds non-empty fields, but still cleans them up
             if (value.trim()) {
                 bundledData[key] = value;
             }
