@@ -164,7 +164,22 @@ export function createFormController() {
         document.dispatchEvent(formSubmitted);
     }
 
-    function deleteChecklist() {
+    function clearChecklistChildren() {
         checkListContainer.querySelector('section').replaceChildren();
+    }
+
+    function resetAndClose() {
+        /**I made this function because of the checklist feaature on the form.
+         * When a form is submitted, checklist steps are not automatically deleted,
+         * so the children nodes must be erased manually.
+         */
+        clearChecklistChildren();
+        form.reset();
+        dialog.close();
+    }
+
+    return {
+        resetChecklist: clearChecklistChildren(),
+
     }
 } 
