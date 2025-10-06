@@ -147,8 +147,10 @@ export function bundleKeys(dataObject, substring, bundledKey) {
     const bundledData = {};
     
     for (const [key, value] of Object.entries(clonedObj)) {
-        if (key.startsWith(substring) && value.trim()) {
-            bundledData[key] = value;
+        if (key.startsWith(substring)) {
+            if (value.trim()) {
+                bundledData[key] = value;
+            }
             delete clonedObj[key];
         }
     }
