@@ -128,3 +128,34 @@ export function objectifySubmission(event) {
     const dataObject = Object.fromEntries(formData);
     return dataObject;
 }
+
+export function bundleKeys(dataObject, substring, bundledKey) {
+    /**Bundles related data into it's own sub-object that will be appended to the main object.
+     * 
+     * Parameters:
+     *  dataObject - the object to extract data from to bundle
+     *  substring - the common string amongst the keys whose value will be bundled
+     *  bundledKey - the key name for the nested object that holds the bundled data
+     * 
+     * The bundledData retains the same key: value names and data after they have been nested,
+     * a deep-copy, cloned object is used to perform this process. The bundled key: value pair
+     * are deleted after they have been bundled.
+     * 
+     * The cloned object is returned
+     */
+    const clonedObj = structuredClone(dataObject);
+    const bundledData = {};
+    
+    for (const [key, value] of Object.entries(clonedObj)) {
+        if (key.startsWith(substring) && value.trim()) {
+            bundledData[key] = value;
+            delete clonedObj.key;
+        }
+    }
+
+    if (Object.keys(bundledData).length > 0) {
+        clonedObj[bundledKey] = {...bundledData};
+    }
+
+    return clonedObj;
+}
