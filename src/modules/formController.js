@@ -132,6 +132,12 @@ export function createFormController() {
     const dialog = document.querySelector('dialog');
     const checkListContainer = document.getElementById('checklist-container');
 
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        processSubmit(event);
+        resetAndClose();
+    });
+
     function processSubmit(event) {
         /**The form data that represents a checklist is not grouped together
          * when the form is submitted.
