@@ -180,6 +180,6 @@ export function createFormController() {
 
     return {
         resetChecklist: clearChecklistChildren(),
-
+        resetForm: resetAndClose(),
     }
 } 
