@@ -123,8 +123,8 @@ export class FormControl {
     }
 }
 
-export function objectifySubmission(event) {
-    const formData = new FormData(event.target);
+export function objectifySubmission(form) {
+    const formData = new FormData(form);
     const dataObject = Object.fromEntries(formData);
     return dataObject;
 }
