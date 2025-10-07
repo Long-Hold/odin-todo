@@ -1,6 +1,11 @@
 import { experiments } from "webpack";
 import { objectifySubmission, bundleKeys } from "../formController";
 
+// jest.setup.js
+global.structuredClone = global.structuredClone || ((obj) => {
+  return JSON.parse(JSON.stringify(obj));
+});
+
 describe('objectifySubmission', () => {
     describe('when passed non FormData parameter', () => {
         test.each([
