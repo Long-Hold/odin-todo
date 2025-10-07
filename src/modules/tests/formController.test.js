@@ -39,5 +39,11 @@ describe('objectifySubmission', () => {
                 expect(formObj).toHaveProperty(key, value);
             }
         });
+
+        test('returns object with correct number of keys', () => {
+            const formObj = objectifySubmission(formData);
+            const formLen = Array.from(formData.keys()).length;
+            expect(Object.keys(formObj)).toHaveLength(formLen);
+        });
     })
 })
