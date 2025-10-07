@@ -68,6 +68,11 @@ describe('bundleKeys', () => {
             formObj.priority = 'low';
         });
 
+        test('returns an Object', () => {
+            const result = bundleKeys(formObj, 'title', 'titles');
+            expect(result).toBeInstanceOf(Object);
+        });
+
         test.each([
             {description: 'step + steps parameters', input: ['step', 'steps']},
             {description: 'type + types parameters', input: ['type', 'types']},
