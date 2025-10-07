@@ -94,5 +94,35 @@ describe('bundleKeys', () => {
                 expect(key).toContain(subStr);
             }
         });
+
+        test.each([
+            {description: 'one empty field', input: 1},
+            {description: '12 empty fields', input: 12},
+            {description: 'random amount of empty fields', input: Math.floor(Math.random() * 100) + 1},
+        ])('returned Object ignores and removes $description in passed Object parameter', ({description, input}) => {
+            const subString = 'key';
+
+            //append some filled fields
+            for (let i = 0; i < 3; ++i) {
+                formObj[`${subString}${i}`] = 'placeholder text';
+            }
+
+            //append the empty fields
+            for (let i = 3; i < input; ++i) {
+                formObj[`${subString}${i}`] = ' '.repeat(Math.floor(Math.random() * 10) + 1);
+            }
+
+            const result = bundleKeys(formObj, subString, 'keys');
+            
+            // Check the outer fields for empty values
+            for (const [key, value] of Object.entries(result)) {
+                expect(value).not.toBe('');
+            }
+
+            const innerFields = {...result['keys']};
+            for (const [key, value] of Object.entries(innerFields)) {
+                expect(value).not.toBe('');
+            }
+        });
     });
 });
