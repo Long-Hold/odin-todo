@@ -32,5 +32,12 @@ describe('objectifySubmission', () => {
 
             expect(result).toBeInstanceOf(Object);
         })
+
+        test('returned object retains all FormData fields', () => {
+            const formObj = objectifySubmission(formData);
+            for (const [key, value] of formData.entries()) {
+                expect(formObj).toHaveProperty(key, value);
+            }
+        });
     })
 })
