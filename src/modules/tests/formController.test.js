@@ -62,10 +62,13 @@ describe('objectifySubmission', () => {
 describe('bundleKeys', () => {
     describe('when passed valid parameters', () => {
         let formObj;
+        let formObjLen;
         beforeEach(() =>{
             formObj = {};
             formObj.title = 'some title';
             formObj.priority = 'low';
+
+            formObjLen = Object.keys(formObj).length;
         });
 
         test('returns an Object', () => {
@@ -96,33 +99,28 @@ describe('bundleKeys', () => {
         });
 
         test.each([
-            {description: 'one empty field', input: 1},
-            {description: '12 empty fields', input: 12},
-            {description: 'random amount of empty fields', input: Math.floor(Math.random() * 100) + 1},
-        ])('returned Object ignores and removes $description in passed Object parameter', ({description, input}) => {
-            const subString = 'key';
+            {description: '1 empty field', emptyCount: 1},
+            {description: '5 empty fields', emptyCount: 5},
+            {description: 'Many empty fields', emptyCount: 100},
+        ])('filters out $description from bundled result', ({description, emptyCount}) => {
+            formObj.key0 = 'valid content';
+            formObj.key1 = 'more content';
+            formObj.key2 = 'you guessed it, more content';
 
-            //append some filled fields
-            for (let i = 0; i < 3; ++i) {
-                formObj[`${subString}${i}`] = 'placeholder text';
+            for (let i = 0; i < emptyCount; ++i) {
+                formObj[`key${emptyCount + 3}`] = '     ';
             }
 
-            //append the empty fields
-            for (let i = 3; i < input; ++i) {
-                formObj[`${subString}${i}`] = ' '.repeat(Math.floor(Math.random() * 10) + 1);
-            }
+            const result = bundleKeys(formObj, 'key', 'keys');
 
-            const result = bundleKeys(formObj, subString, 'keys');
-            
-            // Check the outer fields for empty values
-            for (const [key, value] of Object.entries(result)) {
-                expect(value).not.toBe('');
-            }
+            expect(Object.keys(result)).toHaveLength(formObjLen + 1);
 
-            const innerFields = {...result['keys']};
-            for (const [key, value] of Object.entries(innerFields)) {
-                expect(value).not.toBe('');
+            const bundledKeys = result.keys;
+            expect(Object.keys(bundledKeys)).toHaveLength(3);
+
+            for (const value of Object.values(bundledKeys)) {
+                expect(value.trim()).not.toBe('');
             }
-        });
+        })
     });
 });
