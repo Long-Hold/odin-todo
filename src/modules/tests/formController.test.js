@@ -61,19 +61,33 @@ describe('objectifySubmission', () => {
 
 describe('bundleKeys', () => {
     describe('when passed valid parameters', () => {
-        let formObj = {};
+        let formObj;
         beforeEach(() =>{
+            formObj = {};
             formObj.title = 'some title';
             formObj.priority = 'low';
-            formObj.step1 = 'lorem ipsum';
-            formObj.step2 = 'banana and apple';
-            formObj.step3 = 'cinco de mayo';
         });
 
-        test('returns an object', () => {
-            const result = bundleKeys(formObj, 'step', 'steps');
+        test.each([
+            {description: 'step + steps parameters', input: ['step', 'steps']},
+            {description: 'type + types parameters', input: ['type', 'types']},
+            {description: 'knife + knives paramters', input: ['knife', 'knives']},
+        ])('returns an object containing $description as fields', ({description, input})=> {
+            const [subStr, bundleKey] = input;
 
-            expect(result).toBeInstanceOf(Object);
+            for (let i = 0; i < 3; ++i) {
+                const keyName = `${subStr}${i}`
+                formObj[keyName] = 'generic text';
+            }
+
+            const result = bundleKeys(formObj, subStr, bundleKey);
+            const bundledKeys = {...result.bundleKey};
+
+            expect(result).toHaveProperty(bundleKey);
+            
+            for (const key of Object.keys(bundledKeys)) {
+                expect(key).toContain(subStr);
+            }
         });
     });
 });
