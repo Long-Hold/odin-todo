@@ -32,7 +32,7 @@ describe('objectifySubmission', () => {
             const result = objectifySubmission(input);
 
             expect(result).toBeInstanceOf(Object);
-        })
+        });
 
         test('returned object retains all FormData fields', () => {
             const formObj = objectifySubmission(formData);
@@ -51,5 +51,5 @@ describe('objectifySubmission', () => {
             const formObj = objectifySubmission(new FormData());
             expect(formObj).toEqual({});
         });
-    })
-})
+    });
+});
