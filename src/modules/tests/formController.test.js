@@ -53,3 +53,22 @@ describe('objectifySubmission', () => {
         });
     });
 });
+
+describe('bundleKeys', () => {
+    describe('when passed valid parameters', () => {
+        let formObj = {};
+        beforeEach(() =>{
+            formObj.title = 'some title';
+            formObj.priority = 'low';
+            formObj.step1 = 'lorem ipsum';
+            formObj.step2 = 'banana and apple';
+            formObj.step3 = 'cinco de mayo';
+        });
+
+        test('returns an object', () => {
+            const result = bundleKeys(formObj, 'step', 'steps');
+
+            expect(result).toBeInstanceOf(Object);
+        });
+    });
+});
