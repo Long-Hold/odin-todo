@@ -1,3 +1,4 @@
+import { experiments } from "webpack";
 import { objectifySubmission, bundleKeys } from "../formController";
 
 describe('objectifySubmission', () => {
@@ -44,6 +45,11 @@ describe('objectifySubmission', () => {
             const formObj = objectifySubmission(formData);
             const formLen = Array.from(formData.keys()).length;
             expect(Object.keys(formObj)).toHaveLength(formLen);
+        });
+
+        test('returns an empty object when passed empty FromData', () => {
+            const formObj = objectifySubmission(new FormData());
+            expect(formObj).toEqual({});
         });
     })
 })
