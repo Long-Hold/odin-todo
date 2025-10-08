@@ -74,7 +74,7 @@ function formTransactor() {
             const todoCard = customizeTodoCard(todoObject);
 
             displayNewCardNode(todoCard);
-            todoObjManager.addTodoObj(todoCard);
+            todoObjManager.addTodoObj(todoObject);
         } catch (error) {
             console.error(`An Error occured during Form Transaction: ${error}`);
         }
