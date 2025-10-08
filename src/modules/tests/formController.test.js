@@ -7,15 +7,19 @@ global.structuredClone = global.structuredClone || ((obj) => {
 });
 
 describe('objectifySubmission', () => {
-    describe('when passed non FormData parameter', () => {
+    describe('when passed invalid parameters', () => {
         test.each([
-            {description: 'number', input: 142},
-            {description: 'array', input: ['array', 'array two']},
-            {description: 'object-literal', input: {date: 'today'}},
-            {description: 'string', input: 'some string'},
-        ])('throws TypeError for $description input', ({description, input}) => {
+            {description: 'Number() constructor', input: new Number()},
+            {description: 'number', input: 0},
+            {description: 'String constructor', input: new String()},
+            {description: 'string', input: 'Hello, world!'},
+            {description: 'Array() constructor', input: new Array()},
+            {description: 'array', input: []},
+            {description: 'Object() constructor', input: new Object()},
+            {description: 'object literal', input: {}},
+        ])('throws TypeError when passed $description as parameter', ({description, input}) => {
             expect(() => objectifySubmission(input)).toThrow(TypeError);
-        })
+        });
     });
 
     describe('when passed a FormData object', () => {
@@ -61,18 +65,7 @@ describe('objectifySubmission', () => {
 
 describe('bundleKeys', () => {
     describe('when passed invalid parameters', () => {
-        test.each([
-            {description: 'Number() constructor', input: new Number()},
-            {description: 'number', input: 0},
-            {description: 'String constructor', input: new String()},
-            {description: 'string', input: 'Hello, world!'},
-            {description: 'Array() constructor', input: new Array()},
-            {description: 'array', input: []},
-            {description: 'Object() constructor', input: new Object()},
-            {description: 'object literal', input: {}},
-        ])('throws TypeError when passed $description as parameter', ({description, input}) => {
-            expect(() => objectifySubmission(input)).toThrow(TypeError);
-        });
+
     });
 
     describe('when passed valid parameters', () => {
