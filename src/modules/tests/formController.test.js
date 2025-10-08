@@ -174,4 +174,33 @@ describe('removeEmptyFields', () => {
             expect(() => removeEmptyFields(input)).toThrow(TypeError);
         });
     });
+
+    describe('when passed valid FormData parameter', () => {
+        let formData;
+
+        beforeEach(() => {
+            formData = new FormData();
+            formData.append('Title', 'Some title');
+            formData.append('Priority', 'Urgent');
+            formData.append('Empty Field', '');
+            formData.append('Date', 'Today!');
+            formData.append('Whitespace field', '    ');
+        });
+
+        test('returns FormData object without empty or whitespace only fields', () => {
+            const cleanedFormData = removeEmptyFields(formData);
+
+            for (const [key, value] of formData.entries()) {
+                if (!value.trim()) {
+                    expect(cleanedFormData.get(key)).toBe(null);
+                }
+
+                // Expect the retained keys in cleanedFormData to contain the original forms' value
+                else {
+                    expect(cleanedFormData.get(key)).not.toBe(null);
+                    expect(cleanedFormData.get(key)).toBe(value);
+                }
+            }
+        })
+    });
 });
