@@ -3,6 +3,7 @@ import { createTodoObject } from "./modules/createTodoObj";
 import { objectifySubmission, bundleKeys, removeEmptyFields } from "./modules/formController";
 import { createCardCreator } from "./modules/createTodoCard";
 import { displayNewCardNode, clearDisplayBox } from "./modules/renderCards";
+import { createChecklistManager } from "./modules/createFormChecklistManager";
 
 function customizeTodoCard(todoCardObj) {
     const cardCreator = createCardCreator();
@@ -59,6 +60,8 @@ window.todoObjManager = todoObjManager;
 
 function formTransactor() {
     const form = document.getElementById('new-todo-form');
+    const checklistInputContainer = form.querySelector('#input-steps-container');
+    const checklistInputTemplate = document.getElementById('checklist-step-input');
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -77,6 +80,13 @@ function formTransactor() {
             todoObjManager.addTodoObj(todoObject);
         } catch (error) {
             console.error(`An Error occured during Form Transaction: ${error}`);
+        }
+    })
+
+    form.addEventListener('click', (event) => {
+        const checklistManager = createChecklistManager(checklistInputContainer, checklistInputTemplate);
+        if (event.target.id === 'add-step') {
+            checklistManager.addInputField();
         }
     })
 }
