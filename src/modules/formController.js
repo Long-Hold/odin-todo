@@ -146,6 +146,16 @@ export function bundleKeys(dataObject, substring, bundledKey) {
      * 
      * The cloned object is returned
      */
+
+    if (dataObject instanceof Object === false) {
+        throw TypeError('dataObject must be instanceof Object');
+    }
+
+    if (typeof(substring) !== 'string' || typeof(bundledKey) !== 'string') {
+        const badParameter = (typeof(substring) !== 'string') ? 'substring' : 'bundledKey';
+        throw TypeError(`${badParameter} must be of type: String`);
+    }
+
     const clonedObj = structuredClone(dataObject);
     const bundledData = {};
     
