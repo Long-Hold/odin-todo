@@ -156,3 +156,22 @@ describe('bundleKeys', () => {
         })
     });
 });
+
+describe('removeEmptyFields', () => {
+    describe('when passed a non FormData parameter', () => {
+        test.each([
+            {description: 'Object constructor', input: new Object()},
+            {description: 'object', input: {}},
+            {description: 'Array constructor', input: new Array()},
+            {description: 'array', input: []},
+            {description: 'String constructor', input: new String()},
+            {description: 'string', input: 'Hello, world'},
+            {description: 'Number constructor', input: new Number()},
+            {description: 'number', input: 123},
+            {description: 'whitespace', input: '    '},
+            {description: 'empty string', input: ''},
+        ])('throw TypeError when passed $description input', ({description, input}) => {
+            expect(() => removeEmptyFields(input)).toThrow(TypeError);
+        });
+    });
+});
