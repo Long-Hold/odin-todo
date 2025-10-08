@@ -65,7 +65,17 @@ describe('objectifySubmission', () => {
 
 describe('bundleKeys', () => {
     describe('when passed invalid parameters', () => {
-
+        test.each([
+            {description: 'FormData Object', input: new FormData()},
+            {description: 'String object constructor', input: new String()},
+            {description: 'string', input: 'test string'},
+            {description: 'Number object constructor', input: new Number()},
+            {description: 'number', input: 0},
+            {descrtiption: 'Array object constructor', input: new Array()},
+            {description: 'array', input: []},
+        ])('throws TypeError when passed $description as dataObject parameter', ({description, input}) => {
+            expect(() => bundleKeys(input, 'test', 'tests')).toThrow(TypeError);
+        });
     });
 
     describe('when passed valid parameters', () => {
