@@ -1,4 +1,3 @@
-import { experiments } from "webpack";
 import { objectifySubmission, bundleKeys } from "../formController";
 
 // jest.setup.js
