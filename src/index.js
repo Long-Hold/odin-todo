@@ -69,7 +69,7 @@ function formTransactor() {
             const cleanedFormData = removeEmptyFields(new FormData(event.target));
             let formObject = objectifySubmission(cleanedFormData);
 
-            if (Object.keys(formObject).includes('step')) {
+            if (Object.keys(formObject).some(key => key.startsWith('step'))) {
                 formObject = bundleKeys(formObject, 'step', 'steps');
             }
 
