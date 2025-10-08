@@ -88,6 +88,10 @@ function formTransactor() {
         if (event.target.id === 'add-step') {
             checklistManager.addInputField();
         }
+
+        if (event.target.dataset.action === 'delete') {
+            checklistManager.deleteInputField(event.target);
+        }
     })
 }
 
