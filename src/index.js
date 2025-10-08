@@ -92,6 +92,10 @@ function formTransactor() {
         if (event.target.dataset.action === 'delete') {
             checklistManager.deleteInputField(event.target);
         }
+
+        if (event.target.type === 'reset') {
+            checklistManager.deleteAllInputFields();
+        }
     })
 }
 
