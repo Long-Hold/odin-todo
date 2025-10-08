@@ -76,6 +76,21 @@ describe('bundleKeys', () => {
         ])('throws TypeError when passed $description as dataObject parameter', ({description, input}) => {
             expect(() => bundleKeys(input, 'test', 'tests')).toThrow(TypeError);
         });
+
+        test.each([
+            {description: 'number', input: 1},
+            {description: 'array', input: []},
+            {description: 'object', input: {}},
+        ])('throws TypeError when substring and/or bundledKey receive $description', ({description, input}) => {
+            // Invalid substring
+            expect(() => bundleKeys({}, input, 'test')).toThrow(TypeError);
+
+            // Invalid bunldedKey
+            expect(() => bundleKeys({}, 'test', input)).toThrow(TypeError);
+
+            // Invalid substring & bundledKey
+            expect(() => bundleKeys({}, input, input)).toThrow(TypeError);
+        });
     });
 
     describe('when passed valid parameters', () => {
