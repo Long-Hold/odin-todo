@@ -4,36 +4,36 @@ import { FormControl, objectifySubmission, bundleKeys } from "./modules/formCont
 import { createCardCreator } from "./modules/createTodoCard";
 import { displayNewCardNode, clearDisplayBox } from "./modules/renderCards";
 
-FormControl.initializeEventListeners();
+// FormControl.initializeEventListeners();
 
-document.addEventListener('todoSubmitted', (event) => {
-    /**Upon form submission, initiate a transaction with try catch.
-     * 
-     * Transaction order of events:
-     *  1. Destructure and store form data
-     *  2. Create a todoCard Object from form data
-     *  3. Construct todoCard Node from Object's property values
-     *  4. Display todoCard Node to the DOM
-     *  5. Save the created object
-     * 
-     * If any of these steps fail, the entire process is aborted. No data is saved
-     * to the manager or local storage, and any temporary DOM changes are cleaned up automatically
-     * by garbage collection.
-     * 
-     * This ensures visual state and internal state remained synchronized.
-     */
-    try {
-        const {data} = event.detail;
-        const newCard = createTodoObject(data);
+// document.addEventListener('todoSubmitted', (event) => {
+//     /**Upon form submission, initiate a transaction with try catch.
+//      * 
+//      * Transaction order of events:
+//      *  1. Destructure and store form data
+//      *  2. Create a todoCard Object from form data
+//      *  3. Construct todoCard Node from Object's property values
+//      *  4. Display todoCard Node to the DOM
+//      *  5. Save the created object
+//      * 
+//      * If any of these steps fail, the entire process is aborted. No data is saved
+//      * to the manager or local storage, and any temporary DOM changes are cleaned up automatically
+//      * by garbage collection.
+//      * 
+//      * This ensures visual state and internal state remained synchronized.
+//      */
+//     try {
+//         const {data} = event.detail;
+//         const newCard = createTodoObject(data);
 
-        const cardNode = customizeTodoCard(newCard);
-        displayNewCardNode(cardNode);
+//         const cardNode = customizeTodoCard(newCard);
+//         displayNewCardNode(cardNode);
 
-        todoObjManager.addTodoObj(newCard);
-    } catch (error) {
-        console.error('Error: ', error.message);
-    }
-})
+//         todoObjManager.addTodoObj(newCard);
+//     } catch (error) {
+//         console.error('Error: ', error.message);
+//     }
+// })
 
 function customizeTodoCard(todoCardObj) {
     const cardCreator = createCardCreator();
@@ -88,4 +88,24 @@ const todoObjManager = (function() {
 
 window.todoObjManager = todoObjManager;
 
-const form = document.getElementById('new-todo-form');
+function formTransactor() {
+    const form = document.getElementById('new-todo-form');
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        console.log(event.target);
+        let formObject = objectifySubmission(new FormData(event.target));
+
+        if (Object.keys(formObject).includes('step')) {
+            formObject = bundleKeys(formObject, 'step', 'steps');
+        }
+
+        const todoObject = createTodoObject(formObject);
+        const todoCard = customizeTodoCard(todoObject);
+
+        displayNewCardNode(todoCard);
+        todoObjManager.addTodoObj(todoCard);
+    })
+}
+
+formTransactor();
