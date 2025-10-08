@@ -59,7 +59,10 @@ const todoObjManager = (function() {
 window.todoObjManager = todoObjManager;
 
 function formTransactor() {
+    const dialog = document.querySelector('dialog');
+
     const form = document.getElementById('new-todo-form');
+
     const checklistInputContainer = form.querySelector('#input-steps-container');
     const checklistInputTemplate = document.getElementById('checklist-step-input');
     const checklistManager = createChecklistManager(checklistInputContainer, checklistInputTemplate);
@@ -84,6 +87,7 @@ function formTransactor() {
         } finally {
             checklistManager.deleteAllInputFields();
             form.reset();
+            dialog.close();
         }
     })
 
@@ -99,6 +103,12 @@ function formTransactor() {
 
         if (event.target.type === 'reset') {
             checklistManager.deleteAllInputFields();
+        }
+
+        if (event.target.dataset.action === 'cancel') {
+            checklistManager.deleteAllInputFields();
+            form.reset();
+            dialog.close();
         }
     })
 }
