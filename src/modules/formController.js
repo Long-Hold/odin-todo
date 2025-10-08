@@ -176,6 +176,24 @@ export function bundleKeys(dataObject, substring, bundledKey) {
     return clonedObj;
 }
 
+export function removeEmptyFields(formData) {
+    if (formData instanceof FormData === false) {
+        throw new TypeError(`Expected paramter of type FormData. Received ${typeof(formData)}`);
+    }
+
+    const cleanedFormData = new FormData();
+
+    for (const [key, value] of formData.entries()) {
+        if (!value.trim()) {
+            continue;
+        }
+
+        cleanedFormData.append(key, value);
+    }
+
+    return cleanedFormData;
+}
+
 function objectIsPrototype(object) {
     return Object.getPrototypeOf(object) === Object.prototype;
 }
