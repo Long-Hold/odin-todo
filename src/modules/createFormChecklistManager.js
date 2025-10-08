@@ -9,4 +9,26 @@ export function createChecklistManager(checklistNode, template) {
 
     const checklistContainer = checklistNode;
     const inputTemplate = template;
+
+    function createInputNode() {
+        const inputClone = inputTemplate.cloneNode(true);
+        const currentStep = checklistContainer.childElementCount + 1;
+
+        inputClone.querySelector('label').htmlFor = `step${currentStep}`;
+        inputClone.querySelector('label').textContent = `Step ${currentStep}`;
+
+        inputClone.querySelector('input').setAttribute('name', `step${currentStep}`);
+        inputClone.querySelector('input').id = `step${currentStep}`;
+
+        return inputClone;
+    }
+
+    return {
+        addInputField: () => {
+            const inputNode = createInputNode();
+            checklistContainer.appendChild(inputNode);
+
+            return checklistContainer;
+        },
+    }
 }
