@@ -62,6 +62,7 @@ function formTransactor() {
     const form = document.getElementById('new-todo-form');
     const checklistInputContainer = form.querySelector('#input-steps-container');
     const checklistInputTemplate = document.getElementById('checklist-step-input');
+    const checklistManager = createChecklistManager(checklistInputContainer, checklistInputTemplate);
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -80,11 +81,13 @@ function formTransactor() {
             todoObjManager.addTodoObj(todoObject);
         } catch (error) {
             console.error(`An Error occured during Form Transaction: ${error}`);
+        } finally {
+            checklistManager.deleteAllInputFields();
+            form.reset();
         }
     })
 
     form.addEventListener('click', (event) => {
-        const checklistManager = createChecklistManager(checklistInputContainer, checklistInputTemplate);
         if (event.target.id === 'add-step') {
             checklistManager.addInputField();
         }
