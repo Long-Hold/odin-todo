@@ -147,7 +147,7 @@ export function bundleKeys(dataObject, substring, bundledKey) {
      * The cloned object is returned
      */
 
-    if (dataObject instanceof Object === false) {
+    if (dataObject instanceof Object === false || numberOfPrototypes(dataObject) === false) {
         throw TypeError('dataObject must be instanceof Object');
     }
 
@@ -174,4 +174,8 @@ export function bundleKeys(dataObject, substring, bundledKey) {
     }
 
     return clonedObj;
+}
+
+function numberOfPrototypes(object) {
+    return Object.getPrototypeOf(object) === Object.prototype;
 }
