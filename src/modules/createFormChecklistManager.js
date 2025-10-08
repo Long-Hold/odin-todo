@@ -11,7 +11,7 @@ export function createChecklistManager(checklistNode, template) {
     const inputTemplate = template;
 
     function createInputNode() {
-        const inputClone = inputTemplate.cloneNode(true);
+        const inputClone = inputTemplate.content.cloneNode(true);
         const currentStep = checklistContainer.childElementCount + 1;
 
         inputClone.querySelector('label').htmlFor = `step${currentStep}`;
