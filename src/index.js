@@ -1,6 +1,6 @@
 import "./styles/styles.css";
 import { createTodoObject } from "./modules/createTodoObj";
-import { FormControl, objectifySubmission, bundleKeys } from "./modules/formController";
+import { FormControl, objectifySubmission, bundleKeys, removeEmptyFields } from "./modules/formController";
 import { createCardCreator } from "./modules/createTodoCard";
 import { displayNewCardNode, clearDisplayBox } from "./modules/renderCards";
 
@@ -93,8 +93,9 @@ function formTransactor() {
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
-        console.log(event.target);
-        let formObject = objectifySubmission(new FormData(event.target));
+
+        const cleanedFormData = removeEmptyFields(new FormData(event.target));
+        let formObject = objectifySubmission(cleanedFormData);
 
         if (Object.keys(formObject).includes('step')) {
             formObject = bundleKeys(formObject, 'step', 'steps');
