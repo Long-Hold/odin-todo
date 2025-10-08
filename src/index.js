@@ -62,19 +62,22 @@ function formTransactor() {
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
+        try {
+            const cleanedFormData = removeEmptyFields(new FormData(event.target));
+            let formObject = objectifySubmission(cleanedFormData);
 
-        const cleanedFormData = removeEmptyFields(new FormData(event.target));
-        let formObject = objectifySubmission(cleanedFormData);
+            if (Object.keys(formObject).includes('step')) {
+                formObject = bundleKeys(formObject, 'step', 'steps');
+            }
 
-        if (Object.keys(formObject).includes('step')) {
-            formObject = bundleKeys(formObject, 'step', 'steps');
+            const todoObject = createTodoObject(formObject);
+            const todoCard = customizeTodoCard(todoObject);
+
+            displayNewCardNode(todoCard);
+            todoObjManager.addTodoObj(todoCard);
+        } catch (error) {
+            console.error(`An Error occured during Form Transaction: ${error}`);
         }
-
-        const todoObject = createTodoObject(formObject);
-        const todoCard = customizeTodoCard(todoObject);
-
-        displayNewCardNode(todoCard);
-        todoObjManager.addTodoObj(todoCard);
     })
 }
 
