@@ -32,6 +32,7 @@ describe('createChecklistManager', () => {
         validChecklistNode = document.getElementById('checklist-container');
         validTemplate = document.getElementById('checklist-step-input');
     });
+
     describe('when passed invalid parameters', () => {
         describe('to checklistNode parameter', () => {
             test.each([
@@ -41,6 +42,19 @@ describe('createChecklistManager', () => {
                 {description: 'object', input: {}},
             ])('throws TypeError for $description input', ({description, input}) => {
                 expect(() => createChecklistManager(input, validTemplate)).toThrow(TypeError);
+            });
+        });
+
+        describe('to template parameter', () => {
+            test.each([
+                {description: 'div element', input: document.createElement('div')},
+                {description: 'checklist node', input: validChecklistNode},
+                {description: 'number', input: 12},
+                {description: 'string', input: 'Hello, world'},
+                {description: 'array', input: []},
+                {description: 'object', input: {}},
+            ])('throws TypeError when passed $description input', ({description, input}) => {
+                expect(() => createChecklistManager(validChecklistNode, input)).toThrow(TypeError);
             });
         });
     });
