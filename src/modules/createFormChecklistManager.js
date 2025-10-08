@@ -23,6 +23,25 @@ export function createChecklistManager(checklistNode, template) {
         return inputClone;
     }
 
+    function redrawLabelandInput() {
+        const childNodes = checklistContainer.children;
+        let stepCounter = 1;
+
+        for (const node of childNodes) {
+            const [label, input] = node.children;
+
+            label.htmlFor = `step${stepCounter}`;
+            label.textContent = `Step ${stepCounter}`;
+
+            input.setAttribute('name', `step${stepCounter}`);
+            input.id = `step${stepCounter}`;
+
+            ++stepCounter;
+        }
+
+        return checklistContainer;
+    }
+
     return {
         addInputField: () => {
             const inputNode = createInputNode();
@@ -36,6 +55,8 @@ export function createChecklistManager(checklistNode, template) {
             return checklistContainer; 
         },
 
-        deleteAllInputFields: () => { checklistContainer.replaceChildren(); }
+        deleteAllInputFields: () => { checklistContainer.replaceChildren(); },
+
+        renumberInputFields: () => { redrawLabelandInput(); }
     }
 }
