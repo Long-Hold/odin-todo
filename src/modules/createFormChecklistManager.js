@@ -35,5 +35,7 @@ export function createChecklistManager(checklistNode, template) {
             selectedContainer.parentElement.remove();
             return checklistContainer; 
         },
+
+        deleteAllInputFields: () => { checklistContainer.replaceChildren(); }
     }
 }
