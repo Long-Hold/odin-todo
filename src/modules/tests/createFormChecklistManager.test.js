@@ -81,8 +81,6 @@ describe('createChecklistManager', () => {
             ])('appends $description to parent container', ({description, children}) => {
                 expect(validChecklistNode.children).toHaveLength(0);
 
-                const checklistManager = createChecklistManager(validChecklistNode, validTemplate);
-
                 for (let i = 0; i < children; ++i) {
                     checklistManager.addInputField();
                 }
