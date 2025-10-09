@@ -58,4 +58,12 @@ describe('createChecklistManager', () => {
             });
         });
     });
+
+    describe('when passed valid input', () => {
+        test('returns an object', () => {
+            const result = createChecklistManager(validChecklistNode, validTemplate);
+            expect(typeof(result)).toBe('object');
+            expect(result).not.toBeNull();
+        });
+    });
 });
