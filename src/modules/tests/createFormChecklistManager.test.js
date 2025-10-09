@@ -12,7 +12,7 @@ describe('createChecklistManager', () => {
                     <span>Checklist (Optional):</span>
 
                     <!-- Dynamically populate with input fields representing checklist steps -->
-                    <section></section>
+                    <section id="input-steps-container"></section>
                 <button type="button" id="add-step">Add Step</button>
             </div>
             
@@ -29,7 +29,7 @@ describe('createChecklistManager', () => {
             </template>
         `;
 
-        validChecklistNode = document.getElementById('checklist-container');
+        validChecklistNode = document.getElementById('input-steps-container');
         validTemplate = document.getElementById('checklist-step-input');
     });
 
