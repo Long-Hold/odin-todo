@@ -123,5 +123,11 @@ describe('createChecklistManager', () => {
                 }
             });
         });
+
+        describe('deleteInputField', () => {
+            describe('when passed invalid input', () => {
+                
+            });
+        });
     });
 });
