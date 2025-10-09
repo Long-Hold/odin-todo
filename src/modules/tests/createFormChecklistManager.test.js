@@ -66,4 +66,22 @@ describe('createChecklistManager', () => {
             expect(result).not.toBeNull();
         });
     });
+
+    describe('addInputField', () => {
+        test.each([
+            {description: 'one child', children: 1},
+            {description: '5 children', children: 5},
+            {description: '25 children', children: 25},
+        ])('appends $description to parent container', ({description, children}) => {
+            expect(validChecklistNode.children).toHaveLength(0);
+
+            const checklistManager = createChecklistManager(validChecklistNode, validTemplate);
+
+            for (let i = 0; i < children; ++i) {
+                checklistManager.addInputField();
+            }
+
+            expect(validChecklistNode.children).toHaveLength(children);
+        });
+    });
 });
