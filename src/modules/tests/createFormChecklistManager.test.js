@@ -68,6 +68,10 @@ describe('createChecklistManager', () => {
     });
 
     describe('returned public methods', () => {
+        let checklistManager;
+        beforeEach(() => {
+            checklistManager = createChecklistManager(validChecklistNode, validTemplate);
+        });
 
         describe('addInputField', () => {
             test.each([
