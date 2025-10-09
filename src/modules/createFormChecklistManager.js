@@ -50,7 +50,11 @@ export function createChecklistManager(checklistNode, template) {
             return checklistContainer;
         },
 
-        deleteInputField: (selectedContainer) => { 
+        deleteInputField: (selectedContainer) => {
+            if (selectedContainer instanceof HTMLElement === false) {
+                throw new TypeError(`Expected HTMLElement. Received ${typeof(selectedContainer)}`);
+            } 
+            
             selectedContainer.parentElement.remove();
             return checklistContainer; 
         },
