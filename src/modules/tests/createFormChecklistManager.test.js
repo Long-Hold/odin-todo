@@ -95,6 +95,33 @@ describe('createChecklistManager', () => {
 
                 expect(validChecklistNode.children).toHaveLength(children);
             });
+
+            test.each([
+                {description: 'one child', children: 1},
+                {description: '5 children', children: 5},
+                {description: '10 children', children: 10},
+            ])('children properties have expected values when $description is appended', ({description, children}) => {
+                for (let i = 0; i < children; ++i) {
+                    checklistManager.addInputField();
+                }
+
+                let counter = 1;
+                for(const child of validChecklistNode.children) {
+                    const propertyValue = `step${counter}`;
+                    const text = `Step ${counter}`;
+
+                    const label = child.querySelector('label');
+                    const input = child.querySelector('input');
+
+                    expect(label.htmlFor).toMatch(propertyValue);
+                    expect(label.textContent).toMatch(text);
+
+                    expect(input.name).toMatch(propertyValue);
+                    expect(input.id).toMatch(propertyValue);
+
+                    ++counter;
+                }
+            });
         });
     });
 });
