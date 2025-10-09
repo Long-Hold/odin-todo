@@ -74,6 +74,14 @@ describe('createChecklistManager', () => {
         });
 
         describe('addInputField', () => {
+            test('created child has expected markdown structure', () => {
+                const result = checklistManager.addInputField();
+
+                expect(result.querySelector('label')).toBeTruthy();
+                expect(result.querySelector('input')).toBeTruthy();
+                expect(result.querySelector('button')).toBeTruthy();
+            });
+
             test.each([
                 {description: 'one child', children: 1},
                 {description: '5 children', children: 5},
