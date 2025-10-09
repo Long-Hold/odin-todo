@@ -67,21 +67,24 @@ describe('createChecklistManager', () => {
         });
     });
 
-    describe('addInputField', () => {
-        test.each([
-            {description: 'one child', children: 1},
-            {description: '5 children', children: 5},
-            {description: '25 children', children: 25},
-        ])('appends $description to parent container', ({description, children}) => {
-            expect(validChecklistNode.children).toHaveLength(0);
+    describe('returned public methods', () => {
 
-            const checklistManager = createChecklistManager(validChecklistNode, validTemplate);
+        describe('addInputField', () => {
+            test.each([
+                {description: 'one child', children: 1},
+                {description: '5 children', children: 5},
+                {description: '25 children', children: 25},
+            ])('appends $description to parent container', ({description, children}) => {
+                expect(validChecklistNode.children).toHaveLength(0);
 
-            for (let i = 0; i < children; ++i) {
-                checklistManager.addInputField();
-            }
+                const checklistManager = createChecklistManager(validChecklistNode, validTemplate);
 
-            expect(validChecklistNode.children).toHaveLength(children);
+                for (let i = 0; i < children; ++i) {
+                    checklistManager.addInputField();
+                }
+
+                expect(validChecklistNode.children).toHaveLength(children);
+            });
         });
     });
 });
