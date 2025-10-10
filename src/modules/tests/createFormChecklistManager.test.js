@@ -126,7 +126,14 @@ describe('createChecklistManager', () => {
 
         describe('deleteInputField', () => {
             describe('when passed invalid input', () => {
-                
+                test.each([
+                    {description: 'array', input: []},
+                    {description: 'object', input: {}},
+                    {description: 'string', input: 'Hello, world!'},
+                    {description: 'number', input: 123},
+                ])('throws TypeError when passed $description parameter', ({description, input}) => {
+                    expect(() => checklistManager.deleteInputField(input)).toThrow(TypeError);
+                });
             });
         });
     });
