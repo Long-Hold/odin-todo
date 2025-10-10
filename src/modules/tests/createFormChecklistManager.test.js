@@ -161,6 +161,33 @@ describe('createChecklistManager', () => {
 
                     expect(validChecklistNode.children).toHaveLength(0);
                 });
+
+                test.each([
+                    {description: 'first container', selectedCntnr: 1, totalCntnrs: 2},
+                    {description: 'third container', selectedCntnr: 3, totalCntnrs: 5},
+                    {description: 'tenth container', selectedCntnr: 10, totalCntnrs: 35},
+                ])('deletes the $description when selected', ({description, selectedCntnr, totalCntnrs}) => {
+                    for (let i = 0; i < totalCntnrs; ++i) {
+                        checklistManager.addInputField();
+                    }
+                    expect(validChecklistNode.children).toHaveLength(totalCntnrs);
+
+                    // subtract 1 to match zero-indexing of array
+                    const selectedChild = validChecklistNode.children[selectedCntnr - 1];
+                    checklistManager.deleteInputField(selectedChild);
+
+                    expect(validChecklistNode.children).toHaveLength(totalCntnrs - 1);
+
+                    // Check to make sure the selected child is not part of the parent container
+                    // I do this by comparing the text content of the labels, as they consist of
+                    // 'step' + a number
+                    const selectedLabel = selectedChild.querySelector('label');
+                    for (const child of validChecklistNode.children) {
+                        const label = child.querySelector('label');
+
+                        expect(label.textContent).not.toBe(selectedLabel.textContent);
+                    }
+                });
             });
         });
     });
