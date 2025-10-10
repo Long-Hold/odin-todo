@@ -97,7 +97,11 @@ function formTransactor() {
         }
 
         if (event.target.dataset.action === 'delete') {
-            checklistManager.deleteInputField(event.target);
+            /**If the delete button was selected, we pass the parent div container
+             * that encapsulates the checklist label, input, and button itself to the
+             * deletion function.
+              */
+            checklistManager.deleteInputField(event.target.parentElement);
             checklistManager.renumberInputFields();
         }
 

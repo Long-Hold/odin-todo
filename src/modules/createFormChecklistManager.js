@@ -58,7 +58,7 @@ export function createChecklistManager(checklistNode, template) {
             if (selectedContainer.querySelector('input') === null) {
                 throw new Error('Passed container must contain an input element.');
             }
-            selectedContainer.parentElement.remove();
+            selectedContainer.remove();
             return checklistContainer; 
         },
 
