@@ -211,7 +211,7 @@ describe('createChecklistManager', () => {
         describe('renumberInputFields', () => {
             const numOfChildren = 10;
             beforeEach(() => {
-                for (let i; i < numOfChildren; ++i) {
+                for (let i = 0; i < numOfChildren; ++i) {
                     checklistManager.addInputField();
                 }
             });
@@ -226,10 +226,10 @@ describe('createChecklistManager', () => {
 
                 const checklistChildren = validChecklistNode.children;
 
-                const sucessorNodeText = checklistChildren[indexToDelete].querySelector('input').textContent;
+                const successorNodeText = checklistChildren[indexToDelete].querySelector('label').textContent;
                 const deletedNodeText = childToDelete.textContent;
 
-                expect(sucessorNodeText).not.toBe(deletedNodeText);
+                expect(successorNodeText).not.toBe(deletedNodeText);
                 expect(checklistChildren).toHaveLength(numOfChildren - 1);
 
                 checklistManager.renumberInputFields();
@@ -237,7 +237,7 @@ describe('createChecklistManager', () => {
                 let stepCounter = 1;
                 for (const child of checklistChildren) {
                     const expectedText = `Step ${stepCounter}`;
-                    const childText = child.querySelector('input').textContent;
+                    const childText = child.querySelector('label').textContent;
 
                     expect(childText).toBe(expectedText);
                     ++stepCounter;
