@@ -135,6 +135,10 @@ describe('createChecklistManager', () => {
                     expect(() => checklistManager.deleteInputField(input)).toThrow(TypeError);
                 });
             });
+
+            describe('when passed valid input', () => {
+                
+            });
         });
     });
 });
