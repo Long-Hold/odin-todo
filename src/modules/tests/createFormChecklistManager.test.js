@@ -207,5 +207,42 @@ describe('createChecklistManager', () => {
                 expect(validChecklistNode.children).toHaveLength(0);
             });
         });
+
+        describe('renumberInputFields', () => {
+            const numOfChildren = 10;
+            beforeEach(() => {
+                for (let i; i < numOfChildren; ++i) {
+                    checklistManager.addInputField();
+                }
+            });
+
+            test.each([
+                {description: 'first container', indexToDelete: 0},
+                {description: 'third container', indexToDelete: 2},
+                {description: 'eighth container', indexToDelete: 8},
+            ])('renumbers to ascending, consecutive order after the $description is deleted', ({description, indexToDelete}) => {
+                const childToDelete = validChecklistNode.children[indexToDelete];
+                checklistManager.deleteInputField(childToDelete);
+
+                const checklistChildren = validChecklistNode.children;
+
+                const sucessorNodeText = checklistChildren[indexToDelete].querySelector('input').textContent;
+                const deletedNodeText = childToDelete.textContent;
+
+                expect(sucessorNodeText).not.toBe(deletedNodeText);
+                expect(checklistChildren).toHaveLength(numOfChildren - 1);
+
+                checklistManager.renumberInputFields();
+
+                let stepCounter = 1;
+                for (const child of checklistChildren) {
+                    const expectedText = `Step ${stepCounter}`;
+                    const childText = child.querySelector('input').textContent;
+
+                    expect(childText).toBe(expectedText);
+                    ++stepCounter;
+                }
+            });
+        });
     });
 });
