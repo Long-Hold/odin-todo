@@ -190,5 +190,22 @@ describe('createChecklistManager', () => {
                 });
             });
         });
+
+        describe('deleteAllInputFields', () => {
+            test.each([
+                {description: '1 container', totalCntnrs: 1},
+                {description: '5 containers', totalCntnrs: 5},
+                {description: '20 containers', totalCntnrs: 20},
+                {description: '100 containers', totalCntnrs: 100},
+            ])('deletes all $description when called', ({description, totalCntnrs}) => {
+                for (let i = 0; i < totalCntnrs; ++i) {
+                    checklistManager.addInputField();
+                }
+
+                expect(validChecklistNode.children).toHaveLength(totalCntnrs);
+                checklistManager.deleteAllInputFields();
+                expect(validChecklistNode.children).toHaveLength(0);
+            });
+        });
     });
 });
