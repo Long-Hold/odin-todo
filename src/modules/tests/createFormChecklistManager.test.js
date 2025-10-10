@@ -143,7 +143,24 @@ describe('createChecklistManager', () => {
             });
 
             describe('when passed valid input', () => {
+                test.each([
+                    {description: '1 container', containersToAppend: 1},
+                    {description: '5 containers', containersToAppend: 5},
+                    {description: '50 containers', containersToAppend: 50},
+                ])('deletes the selected $description', ({description, containersToAppend}) => {
+                    for (let i = 0; i < containersToAppend; ++i) {
+                        checklistManager.addInputField();
+                    }
+                    
+                    expect(validChecklistNode.children).toHaveLength(containersToAppend);
 
+                    // Convert the HTML COllection to an array because using a 
+                    // for... of loop while deleting the nodes will terminate the loop halfway
+                    const childrenArray = Array.from(validChecklistNode.children);
+                    childrenArray.forEach((child) => checklistManager.deleteInputField(child));
+
+                    expect(validChecklistNode.children).toHaveLength(0);
+                });
             });
         });
     });
