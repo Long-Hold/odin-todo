@@ -52,9 +52,12 @@ export function createChecklistManager(checklistNode, template) {
 
         deleteInputField: (selectedContainer) => {
             if (selectedContainer instanceof HTMLElement === false) {
-                throw new TypeError(`Expected HTMLElement. Received ${typeof(selectedContainer)}`);
+                throw new TypeError(`Expected HTMLElement. Received ${typeof(selectedContainer)}.`);
             } 
             
+            if (selectedContainer.querySelector('input') === null) {
+                throw new Error('Passed container must contain an input element.');
+            }
             selectedContainer.parentElement.remove();
             return checklistContainer; 
         },
