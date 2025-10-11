@@ -47,7 +47,7 @@ const todoObjManager = (function() {
 
     const addTodoObj = (todoObj) => { activeTodos[todoObj.taskID] = structuredClone(todoObj); };
     
-    const getAllTodoObjs = () => activeTodos;
+    const getAllTodoObjs = () => { return Object.values(activeTodos).map(obj => structuredClone(obj)); };
 
     const getTodoObj = (taskID) => { return structuredClone(activeTodos[taskID])} ;
 
