@@ -71,6 +71,16 @@ function formEventDelegator() {
         const newTodoObj = processSubmit(event);
 
         if (newTodoObj) {
+            /**If a new object was created succesfully from the form submission,
+             * it is stored into the objectManager which is the internal state of the program.
+             * 
+             * Objects are stored as deep copies and not references.
+             * 
+             * We then retrieve that a deep copy object from the internal state and render a node from it.
+             * 
+             * While we could use the newTodoObj variable as well, this gaurantees cards are only made
+             * from the internal state objects
+             */
             todoObjManager.addTodoObj(newTodoObj);
 
             const taskId = newTodoObj.taskID;
