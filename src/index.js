@@ -134,7 +134,10 @@ function formEventDelegator() {
         const newTodoObj = processSubmit(event);
 
         if (newTodoObj) {
-            const todoCard = customizeTodoCard(newTodoObj);
+            todoObjManager.addTodoObj(newTodoObj);
+
+            const taskId = newTodoObj.taskID;
+            const todoCard = customizeTodoCard(todoObjManager.getTodoObj(taskId));
             displayNewCardNode(todoCard);
         }
 
@@ -142,6 +145,32 @@ function formEventDelegator() {
         form.reset();
         dialog.close();
     })
+
+    form.addEventListener('click', (event) => {
+        if (event.target.id === 'add-step') {
+            checklistManager.addInputField();
+        }
+
+        if (event.target.dataset.action === 'delete') {
+            try {
+                checklistManager.deleteInputField(event.target.parentElement);
+            } catch (error) {
+                console.error(`${error}. Selected container could not be deleted.`);
+            } finally {
+                checklistManager.renumberInputFields();
+            }
+        }
+
+        if (event.target.type === 'reset') {
+            checklistManager.deleteAllInputFields();
+        }
+
+        if (event.target.dataset.action === 'cancel') {
+            checklistManager.deleteAllInputFields();
+            form.reset();
+            dialog.close();
+        }
+    });
 }
 
 function processSubmit(event) {
@@ -150,7 +179,7 @@ function processSubmit(event) {
         let formObject = objectifySubmission(formData);
 
         if (Object.keys(formObject).some(key => key.startsWith('step'))) {
-            formObject = bundleKeys(formObject);
+            formObject = bundleKeys(formObject, 'step', 'steps');
         }
 
         const todoObject = createTodoObject(formObject);
@@ -160,7 +189,5 @@ function processSubmit(event) {
         return null;
     }
 }
-
-formTransactor();
 
 formEventDelegator();
