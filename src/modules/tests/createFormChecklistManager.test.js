@@ -156,6 +156,18 @@ describe('createChecklistManager', () => {
                         expect(() => checklistManager.deleteInputField(toAppend)).toThrow(Error);
                     });
                 });
+
+                describe('when passed a child element that does not contain an input element', () => {
+                    test.each([
+                        {description: 'div', toAppend: document.createElement('div')},
+                        {description: 'section', toAppend: document.createElement('section')},
+                        {description: 'article', toAppend: document.createElement('article')},
+                    ])('throws Error for $description without input',({description, toAppend}) => {
+                        validChecklistNode.appendChild(toAppend);
+
+                        expect(() => checklistManager.deleteInputField(toAppend)).toThrow(Error);
+                    });
+                });
             });
 
             describe('when passed valid input', () => {
