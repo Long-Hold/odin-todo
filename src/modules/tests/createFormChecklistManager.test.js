@@ -135,6 +135,14 @@ describe('createChecklistManager', () => {
                     expect(() => checklistManager.deleteInputField(input)).toThrow(TypeError);
                 });
 
+                test.each([
+                    {description: 'div', input: document.createElement('div')},
+                    {description: 'input', input: document.createElement('input')},
+                    {description: 'section', input: document.createElement('section')},
+                ])('throws Error when passed $description input', ({description, input}) => {
+                    expect(() => checklistManager.deleteInputField(input)).toThrow(Error);
+                });
+
                 test('throws Error when passed a node that does not contain and input', () => {
                     const inputlessNode = document.createElement('div');
 
