@@ -54,10 +54,15 @@ export function createChecklistManager(checklistNode, template) {
             if (selectedContainer instanceof HTMLElement === false) {
                 throw new TypeError(`Expected HTMLElement. Received ${typeof(selectedContainer)}.`);
             } 
+
+            if (checklistContainer.contains(selectedContainer) === false) {
+                throw new Error('Container is not a child of the checklist.');
+            }
             
             if (selectedContainer.querySelector('input') === null) {
                 throw new Error('Passed container must contain an input element.');
             }
+            
             selectedContainer.remove();
             return checklistContainer; 
         },
