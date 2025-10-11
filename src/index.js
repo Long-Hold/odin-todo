@@ -121,4 +121,46 @@ function formTransactor() {
     })
 }
 
+function formEventDelegator() {
+    const form = document.getElementById('new-todo-form');
+    const dialog = form.closest('dialog');
+
+    const checklistInputContainer = form.querySelector('#input-steps-container');
+    const checklistInputTemplate = document.getElementById('checklist-step-input');
+    const checklistManager = createChecklistManager(checklistInputContainer, checklistInputTemplate);
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const newTodoObj = processSubmit(event);
+
+        if (newTodoObj) {
+            const todoCard = customizeTodoCard(newTodoObj);
+            displayNewCardNode(todoCard);
+        }
+
+        checklistManager.deleteAllInputFields();
+        form.reset();
+        dialog.close();
+    })
+}
+
+function processSubmit(event) {
+    try {
+        const formData = removeEmptyFields(new FormData(event.target));
+        let formObject = objectifySubmission(formData);
+
+        if (Object.keys(formObject).some(key => key.startsWith('step'))) {
+            formObject = bundleKeys(formObject);
+        }
+
+        const todoObject = createTodoObject(formObject);
+        return todoObject;
+    } catch (error) {
+        console.error(`An error occured during form submission processing: ${error}`);
+        return null;
+    }
+}
+
 formTransactor();
+
+formEventDelegator();
