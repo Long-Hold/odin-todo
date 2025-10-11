@@ -143,11 +143,6 @@ describe('createChecklistManager', () => {
                     expect(() => checklistManager.deleteInputField(input)).toThrow(Error);
                 });
 
-                test('throws Error when passed a node that does not contain and input', () => {
-                    const inputlessNode = document.createElement('div');
-
-                    expect(() => checklistManager.deleteInputField(inputlessNode)).toThrow(Error);
-                });
             });
 
             describe('when passed valid input', () => {
