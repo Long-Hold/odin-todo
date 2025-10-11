@@ -59,12 +59,15 @@ const todoObjManager = (function() {
 window.todoObjManager = todoObjManager;
 
 function formEventDelegator() {
+    const newTaskButton = document.getElementById('add-task');
     const form = document.getElementById('new-todo-form');
     const dialog = form.closest('dialog');
 
     const checklistInputContainer = form.querySelector('#input-steps-container');
     const checklistInputTemplate = document.getElementById('checklist-step-input');
     const checklistManager = createChecklistManager(checklistInputContainer, checklistInputTemplate);
+
+    newTaskButton.addEventListener('click', () => dialog.show());
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
