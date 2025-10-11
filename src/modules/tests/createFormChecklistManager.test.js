@@ -145,6 +145,17 @@ describe('createChecklistManager', () => {
                     });
                 });
 
+                describe('when passed an element that is a sibling of checklist container', () => {
+                    test.each([
+                        {description: 'div', toAppend: document.createElement('div')},
+                        {description: 'input', toAppend: document.createElement('input')},
+                        {description: 'section', toAppend: document.createElement('section')},
+                    ])('throws Error when $description sibling is passed', ({description, toAppend}) => {
+                        validTemplate.appendChild(toAppend);
+
+                        expect(() => checklistManager.deleteInputField(toAppend)).toThrow(Error);
+                    });
+                });
             });
 
             describe('when passed valid input', () => {
