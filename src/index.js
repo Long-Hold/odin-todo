@@ -1,9 +1,9 @@
 import "./styles/styles.css";
 import { createTodoObject } from "./modules/createTodoObj";
-import { objectifySubmission, bundleKeys, removeEmptyFields } from "./modules/formController";
+import { objectifySubmission, bundleKeys, removeEmptyFields } from "./modules/forms/formController";
 import { createCardCreator } from "./modules/createTodoCard";
 import { displayNewCardNode, clearDisplayBox } from "./modules/renderCards";
-import { createChecklistManager } from "./modules/createFormChecklistManager";
+import { createChecklistManager } from "./modules/forms/createFormChecklistManager";
 
 function customizeTodoCard(todoCardObj) {
     const cardCreator = createCardCreator();

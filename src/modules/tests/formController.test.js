@@ -1,4 +1,4 @@
-import { objectifySubmission, bundleKeys, removeEmptyFields } from "../formController";
+import { objectifySubmission, bundleKeys, removeEmptyFields } from "../forms/formController";
 
 // jest.setup.js
 global.structuredClone = global.structuredClone || ((obj) => {
