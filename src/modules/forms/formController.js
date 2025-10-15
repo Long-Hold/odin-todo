@@ -23,5 +23,30 @@ function initializeFormEventListeners() {
 function processSubmit(event) {
     event.preventDefault();
 
-    //TODO
+    let formData;
+    try {
+        formData = removeEmptyFields(new FormData(event.target));
+    } catch (error) {
+        console.error(`${removeEmptyFields.name} has encountered an Error: ${error}`);
+        return null;
+    }
+
+    let formObject;
+    try {
+        formObject = objectifySubmission(formData);
+    } catch (error) {
+        console.error(`${objectifySubmission.name} has encountered an Error: ${error}`);
+        return null;
+    }
+
+    if (Object.keys(formObject).some(key => key.startsWith('step'))) {
+        try {
+            formObject = bundleKeys(formObject, 'step', 'steps');
+        } catch (error) {
+            console.error(`${bundleKeys.name} has encountered an Error: ${error}`);
+            return null;
+        }
+    }
+
+    //TODO Trigger custom event with processed data
 }
