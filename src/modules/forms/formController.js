@@ -44,11 +44,11 @@ export function processSubmit(event) {
 
 function initializeNewTodoListener() {
     const newTodoBtn = document.getElementById('add-task');
-    newTodoBtn.addEventListener('click', DIALOG.show());
+    newTodoBtn.addEventListener('click', () => DIALOG.show());
 }
 
 function initializeFormChecklistListeners() {
-    const stepsContainer = TODO_FORM.getElementById('input-steps-container');
+    const stepsContainer = TODO_FORM.querySelector('#input-steps-container');
     const stepTemplate = document.getElementById('checklist-step-template');
     const checklistManager = createChecklistManager(stepsContainer, stepTemplate);
 
