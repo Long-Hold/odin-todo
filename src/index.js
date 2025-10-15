@@ -5,6 +5,8 @@ import { createCardCreator } from "./modules/createTodoCard";
 import { displayNewCardNode, clearDisplayBox } from "./modules/renderCards";
 import { createChecklistManager } from "./modules/forms/createFormChecklistManager";
 
+import { initializeFormControl } from "./modules/forms/formController";
+
 function customizeTodoCard(todoCardObj) {
     const cardCreator = createCardCreator();
     for (const property in todoCardObj) {
@@ -141,3 +143,5 @@ function processSubmit(event) {
 }
 
 formEventDelegator();
+
+initializeFormControl();
