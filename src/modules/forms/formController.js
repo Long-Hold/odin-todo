@@ -1,7 +1,6 @@
 import { objectifySubmission, bundleKeys, removeEmptyFields } from "./formUtils";
 import { createChecklistManager } from "./createFormChecklistManager";
 
-const newTodoForm = document.getElementById('new-todo-form');
 const dialog = document.querySelector('dialog');
 
 function initializeNewTodoListener() {
@@ -11,6 +10,18 @@ function initializeNewTodoListener() {
     })
 }
 
+function initializeFormEventListeners() {
+    const newTodoForm = document.getElementById('new-todo-form');
+
+    newTodoForm.addEventListener('submit', processSubmit);
+}
+
 export function initializeFormControl() {
     initializeNewTodoListener();
+}
+
+function processSubmit(event) {
+    event.preventDefault();
+
+    //TODO
 }
