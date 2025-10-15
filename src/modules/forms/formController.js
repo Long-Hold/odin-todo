@@ -43,7 +43,7 @@ function processSubmit(event) {
 
     if (Object.keys(formObject).some(key => key.startsWith('step'))) {
         try {
-            formObject = bundleKeys(formObject, 'step', 'steps');
+            formObject = bundleKeys(formObject, BUNDLE.substring, BUNDLE.key);
         } catch (error) {
             console.error(`${bundleKeys.name} has encountered an Error: ${error}`);
             return null;
