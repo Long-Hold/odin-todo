@@ -4,6 +4,7 @@ import { createChecklistManager } from "./createFormChecklistManager";
 const BUNDLE = {substring: 'step', key: 'steps'};
 
 const dialog = document.querySelector('dialog');
+const TODO_FORM = document.getElementById('new-todo-form');
 
 export function initializeFormControl() {
     initializeNewTodoListener();
