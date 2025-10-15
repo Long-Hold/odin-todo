@@ -10,13 +10,6 @@ export function initializeFormControl() {
     initializeNewTodoListener();
 }
 
-function initializeNewTodoListener() {
-    const newTodoBtn = document.getElementById('add-task');
-    newTodoBtn.addEventListener('click', () => {
-        dialog.show();
-    })
-}
-
 export function processSubmit(event) {
     event.preventDefault();
 
@@ -46,4 +39,11 @@ export function processSubmit(event) {
     }
 
     return formObject;
+}
+
+function initializeNewTodoListener() {
+    const newTodoBtn = document.getElementById('add-task');
+    newTodoBtn.addEventListener('click', () => {
+        dialog.show();
+    })
 }
