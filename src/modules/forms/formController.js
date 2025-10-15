@@ -46,6 +46,12 @@ export function processSubmit(event) {
     return formObject;
 }
 
+export function resetAndCloseForm() {
+    CHECKLIST_MANAGER.deleteAllInputFields();
+    TODO_FORM.reset();
+    DIALOG.close();
+}
+
 function initializeNewTodoListener() {
     const newTodoBtn = document.getElementById('add-task');
     newTodoBtn.addEventListener('click', () => DIALOG.show());
