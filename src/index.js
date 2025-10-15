@@ -1,6 +1,6 @@
 import "./styles/styles.css";
 import { createTodoObject } from "./modules/createTodoObj";
-import { objectifySubmission, bundleKeys, removeEmptyFields } from "./modules/forms/formController";
+import { objectifySubmission, bundleKeys, removeEmptyFields } from "./modules/forms/formUtils";
 import { createCardCreator } from "./modules/createTodoCard";
 import { displayNewCardNode, clearDisplayBox } from "./modules/renderCards";
 import { createChecklistManager } from "./modules/forms/createFormChecklistManager";
