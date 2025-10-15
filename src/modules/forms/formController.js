@@ -3,6 +3,10 @@ import { createChecklistManager } from "./createFormChecklistManager";
 
 const dialog = document.querySelector('dialog');
 
+export function initializeFormControl() {
+    initializeNewTodoListener();
+}
+
 function initializeNewTodoListener() {
     const newTodoBtn = document.getElementById('add-task');
     newTodoBtn.addEventListener('click', () => {
@@ -14,10 +18,6 @@ function initializeFormEventListeners() {
     const newTodoForm = document.getElementById('new-todo-form');
 
     newTodoForm.addEventListener('submit', processSubmit);
-}
-
-export function initializeFormControl() {
-    initializeNewTodoListener();
 }
 
 function processSubmit(event) {
