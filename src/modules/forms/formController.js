@@ -52,28 +52,24 @@ function initializeNewTodoListener() {
 }
 
 function initializeFormChecklistListeners() {
-    const stepsContainer = TODO_FORM.querySelector('#input-steps-container');
-    const stepTemplate = document.getElementById('checklist-step-template');
-    const checklistManager = createChecklistManager(stepsContainer, stepTemplate);
-
     TODO_FORM.addEventListener('click', (event) => {
         const clickedBtn = event.target;
-        if (clickedBtn.id === 'add-step') { checklistManager.addInputField(); }
+        if (clickedBtn.id === 'add-step') { CHECKLIST_MANAGER.addInputField(); }
 
-        if (clickedBtn.type === 'reset') { checklistManager.deleteAllInputFields(); }
+        if (clickedBtn.type === 'reset') { CHECKLIST_MANAGER.deleteAllInputFields(); }
 
         if (clickedBtn.dataset.action === 'delete') {
             try {
-                checklistManager.deleteInputField(clickedBtn.parentElement);
+                CHECKLIST_MANAGER.deleteInputField(clickedBtn.parentElement);
             } catch (error) {
-                console.error(`${checklistManager.deleteInputField.name} has encountered an Error: ${error}`);
+                console.error(`${CHECKLIST_MANAGER.deleteInputField.name} has encountered an Error: ${error}`);
             } finally {
-                checklistManager.renumberInputFields();
+                CHECKLIST_MANAGER.renumberInputFields();
             }
         }
 
         if (clickedBtn.dataset.action === 'cancel') {
-            checklistManager.deleteAllInputFields();
+            CHECKLIST_MANAGER.deleteAllInputFields();
             TODO_FORM.reset();
             DIALOG.close();
         }
