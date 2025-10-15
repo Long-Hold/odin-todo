@@ -7,6 +7,7 @@ const dialog = document.querySelector('dialog');
 
 export function initializeFormControl() {
     initializeNewTodoListener();
+    initializeFormEventListeners();
 }
 
 function initializeNewTodoListener() {
