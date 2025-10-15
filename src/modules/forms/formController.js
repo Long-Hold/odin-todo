@@ -23,7 +23,7 @@ function initializeFormEventListeners() {
     newTodoForm.addEventListener('submit', processSubmit);
 }
 
-function processSubmit(event) {
+export function processSubmit(event) {
     event.preventDefault();
 
     let formData;
