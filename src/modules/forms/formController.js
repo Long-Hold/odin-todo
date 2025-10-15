@@ -1,6 +1,8 @@
 import { objectifySubmission, bundleKeys, removeEmptyFields } from "./formUtils";
 import { createChecklistManager } from "./createFormChecklistManager";
 
+const BUNDLE = {substring: 'step', key: 'steps'};
+
 const dialog = document.querySelector('dialog');
 
 export function initializeFormControl() {
