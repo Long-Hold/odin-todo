@@ -8,7 +8,6 @@ const TODO_FORM = document.getElementById('new-todo-form');
 
 export function initializeFormControl() {
     initializeNewTodoListener();
-    initializeFormEventListeners();
 }
 
 function initializeNewTodoListener() {
@@ -16,12 +15,6 @@ function initializeNewTodoListener() {
     newTodoBtn.addEventListener('click', () => {
         dialog.show();
     })
-}
-
-function initializeFormEventListeners() {
-    const newTodoForm = document.getElementById('new-todo-form');
-
-    newTodoForm.addEventListener('submit', processSubmit);
 }
 
 export function processSubmit(event) {
