@@ -8,6 +8,7 @@ const TODO_FORM = document.getElementById('new-todo-form');
 
 export function initializeFormControl() {
     initializeNewTodoListener();
+    initializeFormChecklistListeners();
 }
 
 export function processSubmit(event) {
@@ -44,4 +45,33 @@ export function processSubmit(event) {
 function initializeNewTodoListener() {
     const newTodoBtn = document.getElementById('add-task');
     newTodoBtn.addEventListener('click', DIALOG.show());
+}
+
+function initializeFormChecklistListeners() {
+    const stepsContainer = TODO_FORM.getElementById('input-steps-container');
+    const stepTemplate = document.getElementById('checklist-step-template');
+    const checklistManager = createChecklistManager(stepsContainer, stepTemplate);
+
+    TODO_FORM.addEventListener('click', (event) => {
+        const clickedBtn = event.target;
+        if (clickedBtn.id === 'add-step') { checklistManager.addInputField(); }
+
+        if (clickedBtn.type === 'reset') { checklistManager.deleteAllInputFields(); }
+
+        if (clickedBtn.dataset.action === 'delete') {
+            try {
+                checklistManager.deleteInputField(clickedBtn.parentElement);
+            } catch (error) {
+                console.error(`${checklistManager.deleteInputField.name} has encountered an Error: ${error}`);
+            } finally {
+                checklistManager.renumberInputFields();
+            }
+        }
+
+        if (clickedBtn.dataset.action === 'cancel') {
+            checklistManager.deleteAllInputFields();
+            TODO_FORM.reset();
+            DIALOG.close();
+        }
+    });
 }
