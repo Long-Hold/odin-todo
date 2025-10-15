@@ -6,6 +6,10 @@ const BUNDLE = {substring: 'step', key: 'steps'};
 const DIALOG = document.querySelector('dialog');
 const TODO_FORM = document.getElementById('new-todo-form');
 
+const STEPS_CONTAINER = document.getElementById('input-steps-container');
+const STEP_TEMPLATE = document.getElementById('checklist-step-template');
+const CHECKLIST_MANAGER = createChecklistManager(STEPS_CONTAINER, STEP_TEMPLATE);
+
 export function initializeFormControl() {
     initializeNewTodoListener();
     initializeFormChecklistListeners();
