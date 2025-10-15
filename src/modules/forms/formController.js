@@ -51,5 +51,5 @@ function processSubmit(event) {
         }
     }
 
-    //TODO Trigger custom event with processed data
+    return formObject;
 }
