@@ -75,9 +75,7 @@ function initializeFormChecklistListeners() {
         }
 
         if (clickedBtn.dataset.action === 'cancel') {
-            CHECKLIST_MANAGER.deleteAllInputFields();
-            TODO_FORM.reset();
-            DIALOG.close();
+            resetAndCloseForm();
         }
     });
 }
