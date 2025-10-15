@@ -3,7 +3,7 @@ import { createChecklistManager } from "./createFormChecklistManager";
 
 const BUNDLE = {substring: 'step', key: 'steps'};
 
-const dialog = document.querySelector('dialog');
+const DIALOG = document.querySelector('dialog');
 const TODO_FORM = document.getElementById('new-todo-form');
 
 export function initializeFormControl() {
@@ -43,7 +43,5 @@ export function processSubmit(event) {
 
 function initializeNewTodoListener() {
     const newTodoBtn = document.getElementById('add-task');
-    newTodoBtn.addEventListener('click', () => {
-        dialog.show();
-    })
+    newTodoBtn.addEventListener('click', DIALOG.show());
 }
