@@ -15,3 +15,7 @@ export function addTodo(key, object) {
 
     activeTodos.set(key.trim(), structuredClone(object));
 }
+
+export function getAllObjects() {
+    return Array.from(activeTodos.values()).map(obj => structuredClone(obj));
+}
