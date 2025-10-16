@@ -20,20 +20,24 @@ export function getAllObjects() {
     return Array.from(activeTodos.values()).map(obj => structuredClone(obj));
 }
 
-export function getTodoObject(taskId) {
-    if (typeof(taskId) !== 'string') {
+export function getTodoObject(key) {
+    if (typeof(key) !== 'string') {
         throw new TypeError('taskId must be a string');
     }
 
-    if (!taskId.trim()) {
+    if (!key.trim()) {
         throw new TypeError('taskId cannot be empty');
     }
 
-    const clonedObject = structuredClone(activeTodos.get(taskId));
+    const clonedObject = structuredClone(activeTodos.get(key));
 
     if (clonedObject === undefined) {
-        throw new ReferenceError(`Task (${taskId}) could not be found`);
+        throw new ReferenceError(`Task (${key}) could not be found`);
     }
 
     return clonedObject;
+}
+
+export function deleteTodoObject(key) {
+    activeTodos.delete(key);
 }
