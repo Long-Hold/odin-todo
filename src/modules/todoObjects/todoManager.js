@@ -19,3 +19,21 @@ export function addTodo(key, object) {
 export function getAllObjects() {
     return Array.from(activeTodos.values()).map(obj => structuredClone(obj));
 }
+
+export function getTodoObject(taskId) {
+    if (typeof(taskId) !== 'string') {
+        throw new TypeError('taskId must be a string');
+    }
+
+    if (!taskId.trim()) {
+        throw new TypeError('taskId cannot be empty');
+    }
+
+    const clonedObject = structuredClone(activeTodos.get(taskId));
+
+    if (clonedObject === undefined) {
+        throw new ReferenceError(`Task (${taskId}) could not be found`);
+    }
+
+    return clonedObject;
+}
