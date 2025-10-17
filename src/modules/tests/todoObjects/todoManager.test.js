@@ -40,7 +40,7 @@ describe('addTodo', () => {
 
     describe('when passed valid parameters', () => {
         const validObj = new Todo();
-        
+
         test.each([
             {description: 'left padding', key: '   key'},
             {description: 'right padding', key: 'key    '},
@@ -52,8 +52,20 @@ describe('addTodo', () => {
             expect(resultKey).toBe(key.trim());
         });
 
-        test.each([
+        test('Map contains expected key: value pairs & length upon succesful exection', () => {
+            let resultMap;
+            for (let i = 0; i < 5; ++i) {
+                resultMap = addTodo(`key${i}`, validObj);
+            }
 
-        ])
+            expect(resultMap.size).toHaveLength(5);
+
+            let increment = 0;
+            for (const [key, value] of resultMap.entries()) {
+                expect(key).toBe(`step${increment}`);
+                expect(value).toBe(validObj);
+                ++increment
+            }
+        });
     });
 });
