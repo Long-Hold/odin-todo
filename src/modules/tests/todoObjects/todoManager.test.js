@@ -110,4 +110,16 @@ describe('createTodoManager', () => {
             }
         });
     });
+
+    describe('getTodoObject', () => {
+        describe('when passed invalid parameter', () => {
+            test.each([
+                {description: 'number', input: 1},
+                {description: 'array', input: []},
+                {description: 'object', input: {}},
+            ])('throws TypeError when passed $description', ({description, input}) => {
+                expect(() => todoManager.getTodoObject(input)).toThrow(TypeError);
+            });
+        });
+    });
 });
