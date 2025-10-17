@@ -75,4 +75,19 @@ describe('createTodoManager', () => {
             });
         });
     });
+
+    describe('getAllObjects', () => {
+        test.each([
+            {description: '1 entry', entriesToAdd: 1},
+            {description: '5 entries', entriesToAdd: 5},
+            {description: '50 entries', entriesToAdd: 50},
+            {description: '100 entries', entriesToAdd: 100},
+        ])('returns an Array containing all $description', ({description, entriesToAdd}) => {
+            for (let i = 0; i < entriesToAdd; ++i) {
+                todoManager.addTodo(`item${i}`, new Object());
+            }
+
+            expect(todoManager.getAllObjects()).toHaveLength(entriesToAdd);
+        });
+    });
 });
