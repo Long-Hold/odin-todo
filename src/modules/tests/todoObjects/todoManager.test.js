@@ -158,6 +158,19 @@ describe('createTodoManager', () => {
                     expect(retrievedObj[key]).toBe(genericObj[key]);
                 }
             });
+
+            test.each([
+                {description: '1st object', objToGet: 0},
+                {description: '5th object', objToGet: 4},
+                {description: '37th object', objToGet: 36},
+            ])('retrieves the $description from the Map', ({description, objToGet}) => {
+                for (let i = 0; i < 50; ++i) {
+                    todoManager.addTodo(i.toString(), {id: i.toString(), task: 'something'});
+                }
+
+                const retrievedObj = todoManager.getTodoObject(objToGet.toString());
+                expect(retrievedObj.id).toBe(objToGet.toString());
+            });
         });
     });
 });
