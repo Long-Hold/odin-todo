@@ -14,6 +14,8 @@ export function addTodo(key, object) {
     }
 
     activeTodos.set(key.trim(), structuredClone(object));
+
+    return structuredClone(activeTodos);
 }
 
 export function getAllObjects() {
@@ -40,4 +42,6 @@ export function getTodoObject(key) {
 
 export function deleteTodoObject(key) {
     activeTodos.delete(key);
+
+    return structuredClone(activeTodos);
 }
