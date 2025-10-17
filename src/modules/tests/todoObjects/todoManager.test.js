@@ -77,6 +77,10 @@ describe('createTodoManager', () => {
     });
 
     describe('getAllObjects', () => {
+        test('returns an Array', () => {
+            expect(todoManager.getAllObjects()).toBeInstanceOf(Array);
+        });
+
         test.each([
             {description: '1 entry', entriesToAdd: 1},
             {description: '5 entries', entriesToAdd: 5},
