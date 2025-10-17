@@ -52,7 +52,7 @@ describe('createTodoManager', () => {
                 {description: 'right padding', key: 'key    '},
                 {description: 'left/right padding', key: '    key    '},
             ])('strips $description whitespace from key', ({description, key}) => {
-                const result = addTodo(key, validObj);
+                const result = todoManager.addTodo(key, validObj);
                 const [resultKey] = result.keys();
 
                 expect(resultKey).toBe(key.trim());
@@ -69,7 +69,7 @@ describe('createTodoManager', () => {
                 let increment = 0;
                 for (const [key, value] of resultMap.entries()) {
                     expect(key).toBe(`key${increment}`);
-                    expect(value).toBe(validObj);
+                    expect(value).toEqual(validObj);
                     ++increment
                 }
             });
