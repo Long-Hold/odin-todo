@@ -197,6 +197,13 @@ describe('createTodoManager', () => {
 
                 expect(unalteredMapArray).toEqual(currentMapArray);
             });
+
+            test.each([
+                'gibberish', 
+                'nonsense', 
+                'insanity'])('does not throw an Error when passed invalid key: %s', (key) => {
+                expect(() => todoManager.deleteTodoObject(key)).not.toThrow();
+            })
         });
     })
 });
