@@ -139,6 +139,15 @@ describe('createTodoManager', () => {
                 todoManager.addTodo('key1', {});
                 expect(todoManager.getTodoObject('key1')).toBeInstanceOf(Object);
             });
+
+            test('returned Object is a distinct entity from passed paramter', () => {
+                const genericObj = {id: 'key1', task: 'pick up kids'};
+                todoManager.addTodo(genericObj.id, genericObj);
+
+                const retrievedObj = todoManager.getTodoObject(genericObj.id);
+
+                expect(retrievedObj).not.toBe(genericObj);
+            });
         });
     });
 });
