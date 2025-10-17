@@ -1,10 +1,5 @@
 import { objectifySubmission, bundleKeys, removeEmptyFields } from "../forms/formUtils";
 
-// jest.setup.js
-global.structuredClone = global.structuredClone || ((obj) => {
-  return JSON.parse(JSON.stringify(obj));
-});
-
 describe('objectifySubmission', () => {
     describe('when passed invalid parameters', () => {
         test.each([
