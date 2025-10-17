@@ -173,4 +173,18 @@ describe('createTodoManager', () => {
             });
         });
     });
+
+    describe('deleteTodoObject', () => {
+        beforeEach(() => {
+            const objArray = [
+                {id: 0, task: 'this'},
+                {id: 1, task: 'that'},
+                {id: 2, task: 'there'},
+            ];
+
+            for (const obj of objArray) {
+                todoManager.addTodo(obj.id.toString(), obj);
+            }
+        });
+    })
 });
