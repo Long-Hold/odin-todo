@@ -1,6 +1,5 @@
 import { addTodo, getAllObjects, getTodoObject, deleteTodoObject } from "../../todoObjects/todoManager";
-
-class Todo {}
+import { Todo } from "../../todoObjects/createTodoObj";
 
 describe('addTodo', () => {
     describe('when passed invalid parameters', () => {
