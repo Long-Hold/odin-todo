@@ -93,5 +93,21 @@ describe('createTodoManager', () => {
 
             expect(todoManager.getAllObjects()).toHaveLength(entriesToAdd);
         });
+
+        test('returned Array values preserve original Objects structure', () => {
+            const objArray = [
+                {id: '1', task: 'get groceries'},
+                {id: '2', task: 'do laundry'},
+                {id: '3', task: 'cut grass'},
+            ];
+
+            objArray.forEach(object => todoManager.addTodo(object.id, object));
+
+            const todoObjArray = todoManager.getAllObjects();
+
+            for (let i = 0; i < todoObjArray.length; ++i) {
+                expect(todoObjArray[i]).toEqual(objArray[i]);
+            }
+        });
     });
 });
