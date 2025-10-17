@@ -37,4 +37,19 @@ describe('addTodo', () => {
             });
         });
     });
+
+    describe('when passed valid parameters', () => {
+        const validObj = new Todo();
+
+        test.each([
+            {description: 'left padding', key: '   key'},
+            {description: 'right padding', key: 'key    '},
+            {description: 'left/right padding', key: '    key    '},
+        ])('strips $description whitespace from key', ({description, key}) => {
+            const result = addTodo(key, validObj);
+            const [resultKey] = result.keys();
+
+            expect(resultKey).toBe(key.trim());
+        });
+    });
 });
