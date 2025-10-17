@@ -29,7 +29,7 @@ export function createTodoManager() {
         }
 
         if (!key.trim()) {
-            throw new TypeError('taskId cannot be empty');
+            throw new Error('taskId cannot be empty');
         }
 
         const clonedObject = structuredClone(activeTodos.get(key));
