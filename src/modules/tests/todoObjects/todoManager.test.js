@@ -133,5 +133,12 @@ describe('createTodoManager', () => {
                 expect(() => todoManager.getTodoObject('validKey')).toThrow(ReferenceError);
             })
         });
+
+        describe('when passed valid parameter', () => {
+            test('returns an Object', () => {
+                todoManager.addTodo('key1', {});
+                expect(todoManager.getTodoObject('key1')).toBeInstanceOf(Object);
+            });
+        });
     });
 });
