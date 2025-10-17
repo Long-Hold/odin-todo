@@ -128,6 +128,10 @@ describe('createTodoManager', () => {
             ])('throws Error when passed $description', ({description, input}) => {
                 expect(() => todoManager.getTodoObject(input)).toThrow(Error);
             });
+
+            test('throws ReferenceError when passed a valid Key of a non-existing object', () => {
+                expect(() => todoManager.getTodoObject('validKey')).toThrow(ReferenceError);
+            })
         });
     });
 });
