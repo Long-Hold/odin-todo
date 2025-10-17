@@ -9,8 +9,8 @@ export function addTodo(key, object) {
         throw new Error('Key cannot be empty');
     }
 
-    if (object instanceof Todo === false) {
-        throw new TypeError(`${object} must be an instance of: Todo`);
+    if (object instanceof Object === false) {
+        throw new TypeError(`${object} must be an instance of: Object`);
     }
 
     activeTodos.set(key.trim(), structuredClone(object));
