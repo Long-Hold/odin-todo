@@ -62,7 +62,7 @@ describe('addTodo', () => {
 
             let increment = 0;
             for (const [key, value] of resultMap.entries()) {
-                expect(key).toBe(`step${increment}`);
+                expect(key).toBe(`key${increment}`);
                 expect(value).toBe(validObj);
                 ++increment
             }
