@@ -40,7 +40,7 @@ describe('addTodo', () => {
 
     describe('when passed valid parameters', () => {
         const validObj = new Todo();
-
+        const validKey = 'someKey';
         test.each([
             {description: 'left padding', key: '   key'},
             {description: 'right padding', key: 'key    '},
