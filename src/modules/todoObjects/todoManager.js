@@ -1,47 +1,51 @@
-const activeTodos = new Map();
+export function createTodoManager() {
+    const activeTodos = new Map();
 
-export function addTodo(key, object) {
-    if (typeof(key) !== 'string') {
-        throw new TypeError('Key must be of type: String');
+    function addTodo(key, object) {
+        if (typeof(key) !== 'string') {
+            throw new TypeError('Key must be of type: String');
+        }
+
+        if (!key.trim()) {
+            throw new Error('Key cannot be empty');
+        }
+
+        if (object instanceof Object === false) {
+            throw new TypeError(`${object} must be an instance of: Object`);
+        }
+
+        activeTodos.set(key.trim(), structuredClone(object));
+
+        return structuredClone(activeTodos);
     }
 
-    if (!key.trim()) {
-        throw new Error('Key cannot be empty');
+    function getAllObjects() {
+        return Array.from(activeTodos.values()).map(obj => structuredClone(obj));
     }
 
-    if (object instanceof Object === false) {
-        throw new TypeError(`${object} must be an instance of: Object`);
+    function getTodoObject(key) {
+        if (typeof(key) !== 'string') {
+            throw new TypeError('taskId must be a string');
+        }
+
+        if (!key.trim()) {
+            throw new TypeError('taskId cannot be empty');
+        }
+
+        const clonedObject = structuredClone(activeTodos.get(key));
+
+        if (clonedObject === undefined) {
+            throw new ReferenceError(`Task (${key}) could not be found`);
+        }
+
+        return clonedObject;
     }
 
-    activeTodos.set(key.trim(), structuredClone(object));
+    function deleteTodoObject(key) {
+        activeTodos.delete(key);
 
-    return structuredClone(activeTodos);
-}
-
-export function getAllObjects() {
-    return Array.from(activeTodos.values()).map(obj => structuredClone(obj));
-}
-
-export function getTodoObject(key) {
-    if (typeof(key) !== 'string') {
-        throw new TypeError('taskId must be a string');
+        return structuredClone(activeTodos);
     }
 
-    if (!key.trim()) {
-        throw new TypeError('taskId cannot be empty');
-    }
-
-    const clonedObject = structuredClone(activeTodos.get(key));
-
-    if (clonedObject === undefined) {
-        throw new ReferenceError(`Task (${key}) could not be found`);
-    }
-
-    return clonedObject;
-}
-
-export function deleteTodoObject(key) {
-    activeTodos.delete(key);
-
-    return structuredClone(activeTodos);
+    return {addTodo, getAllObjects, getTodoObject, deleteTodoObject}
 }
