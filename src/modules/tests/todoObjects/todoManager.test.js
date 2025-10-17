@@ -186,5 +186,17 @@ describe('createTodoManager', () => {
                 todoManager.addTodo(obj.id.toString(), obj);
             }
         });
+
+        describe('when passed a non-existent key', () => {
+            test('the map is not affected', () => {
+                const unalteredMapArray = todoManager.getAllObjects();
+
+                todoManager.deleteTodoObject('invalidKey');
+
+                const currentMapArray = todoManager.getAllObjects();
+
+                expect(unalteredMapArray).toEqual(currentMapArray);
+            });
+        });
     })
 });
