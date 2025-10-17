@@ -148,6 +148,16 @@ describe('createTodoManager', () => {
 
                 expect(retrievedObj).not.toBe(genericObj);
             });
+
+            test('returned Object preserves original structure', () => {
+                const genericObj = {id: '1', task: 'do something'};
+                todoManager.addTodo(genericObj.id, genericObj);
+
+                const retrievedObj = todoManager.getTodoObject(genericObj.id);
+                for (const key in retrievedObj) {
+                    expect(retrievedObj[key]).toBe(genericObj[key]);
+                }
+            });
         });
     });
 });
