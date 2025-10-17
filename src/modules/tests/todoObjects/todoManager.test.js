@@ -120,6 +120,14 @@ describe('createTodoManager', () => {
             ])('throws TypeError when passed $description', ({description, input}) => {
                 expect(() => todoManager.getTodoObject(input)).toThrow(TypeError);
             });
+
+            test.each([
+                {description: 'empty string', input: ''},
+                {description: 'white-space only string', input: '    '},
+                {description: 'String constructor', input: new String()},
+            ])('throws Error when passed $description', ({description, input}) => {
+                expect(() => todoManager.getTodoObject(input)).toThrow(Error);
+            });
         });
     });
 });
