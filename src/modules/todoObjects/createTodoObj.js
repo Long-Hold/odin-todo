@@ -1,4 +1,4 @@
-class Todo {
+export class Todo {
     #completed;
     #taskID;
 
