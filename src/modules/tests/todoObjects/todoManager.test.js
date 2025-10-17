@@ -205,5 +205,23 @@ describe('createTodoManager', () => {
                 expect(() => todoManager.deleteTodoObject(key)).not.toThrow();
             })
         });
+
+        describe('when passed an existing key', () => {
+            test.each([
+                {description: 'First object', objToDelete: 0},
+                {description: 'Second object', objToDelete: 1},
+                {description: 'Third object', objToDelete: 2},
+            ])('deletes the $description', ({description, objToDelete}) => {
+                const selectedObj = todoManager.getTodoObject(objToDelete.toString());
+                const resultingMap = todoManager.deleteTodoObject(objToDelete.toString());
+
+                for (const obj of resultingMap.values()) {
+                    expect(obj).not.toEqual(selectedObj);
+                }
+
+                // The retrieval method should throw a referenceError now after deletion
+                expect(() => todoManager.getTodoObject(objToDelete.toString())).toThrow(ReferenceError);
+            });
+        });
     })
 });
