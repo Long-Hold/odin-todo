@@ -1,4 +1,4 @@
-import { createChecklistManager } from "../forms/createFormChecklistManager";
+import { createChecklistManager } from "../../forms/createFormChecklistManager";
 
 describe('createChecklistManager', () => {
     let validChecklistNode;
