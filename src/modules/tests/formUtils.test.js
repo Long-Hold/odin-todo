@@ -1,4 +1,4 @@
-import { objectifySubmission, bundleKeys, removeEmptyFields } from "../forms/formUtils";
+import { objectifySubmission, bundleKeys, removeEmptyFields, setMinDateToCurrentDate } from "../forms/formUtils";
 
 describe('objectifySubmission', () => {
     describe('when passed invalid parameters', () => {
