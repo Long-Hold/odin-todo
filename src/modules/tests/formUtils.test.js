@@ -1,3 +1,4 @@
+import { set } from "date-fns/fp";
 import { objectifySubmission, bundleKeys, removeEmptyFields, setMinDateToCurrentDate } from "../forms/formUtils";
 
 describe('objectifySubmission', () => {
@@ -197,5 +198,32 @@ describe('removeEmptyFields', () => {
                 }
             }
         })
+    });
+});
+
+describe(`${setMinDateToCurrentDate.name}`, () => {
+    describe('when passed invalid parameter', () => {
+        test.each([
+            {description: 'number', input: 1},
+            {description: 'string', input: 'Hello, world!'},
+            {description: 'div', input: document.createElement('div')},
+            {description: 'section', input: document.createElement('section')},
+        ])('throws TypeError when passed $description as parameter', ({description, input}) => {
+            expect(() => setMinDateToCurrentDate(input)).toThrow(TypeError);
+        });
+
+        let inputNode;
+        beforeEach(() => {
+            inputNode = document.createElement('input');
+        });
+        
+        test.each([
+            {description: 'text', type: 'text'},
+            {description: 'button', type: 'button'},
+            {description: 'password', type: 'password'}
+        ])('throws TypeError when inputNode.type is $description', ({description, type}) => {
+            inputNode.type = type;
+            expect(() => setMinDateToCurrentDate()).toThrow(TypeError);
+        });
     });
 });
