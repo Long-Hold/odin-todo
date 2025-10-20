@@ -83,9 +83,11 @@ export function setMinDateToCurrentDate(inputNode) {
     if (inputNode.type !== 'date') {
         throw new TypeError(`Expected input element of type: date. Received: ${inputNode.type}`);
     }
-    
+
     const currentDate = format(new Date(), 'yyyy-MM-dd');
     inputNode.setAttribute('min', currentDate);
+
+    return inputNode;
 }
 
 function objectIsPrototype(object) {
