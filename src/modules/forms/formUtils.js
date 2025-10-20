@@ -72,6 +72,18 @@ export function removeEmptyFields(formData) {
 }
 
 export function setMinDateToCurrentDate(inputNode) {
+    if (inputNode instanceof HTMLElement === false) {
+        throw new TypeError(`Expected HTMLElement. Received: ${typeof(inputNode)}`);
+    }
+
+    if (inputNode.tagName.toLowerCase() !== 'input') {
+        throw new TypeError(`Expected HTMLElement of tag: input. Received: ${inputNode.tagName}`);
+    }
+
+    if (inputNode.type !== 'date') {
+        throw new TypeError(`Expected input element of type: date. Received: ${inputNode.type}`);
+    }
+    
     const currentDate = format(new Date(), 'yyyy-MM-dd');
     inputNode.setAttribute('min', currentDate);
 }
