@@ -1,5 +1,4 @@
 import { createTodoManager } from "../../todoObjects/todoManager";
-import { Todo } from "../../todoObjects/createTodoObj";
 
 describe('createTodoManager', () => {
     let todoManager;
@@ -10,7 +9,7 @@ describe('createTodoManager', () => {
     describe('addTodo', () => {
         describe('when passed invalid parameters', () => {
             describe('to key parameter', () => {
-                const validObj = new Todo();
+                const validObj = {};
                 test.each([
                     {description: 'number', input: 123},
                     {description: 'array', input: []},
@@ -45,7 +44,7 @@ describe('createTodoManager', () => {
         });
 
         describe('when passed valid parameters', () => {
-            const validObj = new Todo();
+            const validObj = {};
 
             test.each([
                 {description: 'left padding', key: '   key'},
