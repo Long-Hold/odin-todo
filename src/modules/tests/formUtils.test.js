@@ -216,7 +216,7 @@ describe(`${setMinDateToCurrentDate.name}`, () => {
         beforeEach(() => {
             inputNode = document.createElement('input');
         });
-        
+
         test.each([
             {description: 'text', type: 'text'},
             {description: 'button', type: 'button'},
@@ -226,4 +226,15 @@ describe(`${setMinDateToCurrentDate.name}`, () => {
             expect(() => setMinDateToCurrentDate()).toThrow(TypeError);
         });
     });
+
+    describe('when passed valid parameter', () => {
+        let validNode;
+        beforeEach(() => {
+            validNode = document.createElement('input');
+            validNode.type = 'date';
+        })
+        test('does not throw any errors when parameter is input with type: date', () => {
+            expect(() => setMinDateToCurrentDate(validNode)).not.toThrow();
+        });
+    })
 });
