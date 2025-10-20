@@ -6,6 +6,11 @@ export function renderSingleCard(todoCardObj) {
     displayNewCardNode(newCard);
 }
 
+export function renderAllCards(todoObjArray) {
+    clearDisplayBox();
+    todoObjArray.forEach(todoObj => renderSingleCard(todoObj));
+}
+
 function constructTodoCardFromObject(todoCardObj) {
     const cardCreator = createCardCreator();
     for (const property in todoCardObj) {
