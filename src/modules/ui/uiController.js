@@ -1,6 +1,11 @@
 import { createCardCreator } from "./createTodoCard";
 import { displayNewCardNode, clearDisplayBox } from "./renderCards";
 
+export function renderSingleCard(todoCardObj) {
+    const newCard = constructTodoCardFromObject(todoCardObj);
+    displayNewCardNode(newCard);
+}
+
 function constructTodoCardFromObject(todoCardObj) {
     const cardCreator = createCardCreator();
     for (const property in todoCardObj) {
