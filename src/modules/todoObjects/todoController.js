@@ -21,7 +21,7 @@ function initializeFormSubmissionListener() {
     });
 }
 
-function transactTodoObjectCreation(formObject) {
+export function transactTodoObjectCreation(formObject) {
     const todoObject = createTodoObject(formObject);
 
     try {
