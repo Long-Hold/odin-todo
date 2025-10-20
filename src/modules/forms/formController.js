@@ -1,4 +1,4 @@
-import { objectifySubmission, bundleKeys, removeEmptyFields } from "./formUtils";
+import { objectifySubmission, bundleKeys, removeEmptyFields, setMinDateToCurrentDate } from "./formUtils";
 import { createChecklistManager } from "./createFormChecklistManager";
 
 const BUNDLE = {substring: 'step', key: 'steps'};
@@ -13,6 +13,7 @@ const CHECKLIST_MANAGER = createChecklistManager(STEPS_CONTAINER, STEP_TEMPLATE)
 export function initializeFormControl() {
     initializeNewTodoListener();
     initializeFormChecklistListeners();
+    setMinDateToCurrentDate(TODO_FORM.querySelector('#deadline'));
 }
 
 export function processSubmit(event) {

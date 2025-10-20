@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 export function objectifySubmission(formData) {
     if (formData instanceof FormData === false) {
         throw new TypeError('Passed parameter must be instance of: FormData');
@@ -67,6 +69,11 @@ export function removeEmptyFields(formData) {
     }
 
     return cleanedFormData;
+}
+
+export function setMinDateToCurrentDate(inputNode) {
+    const currentDate = format(new Date(), 'yyyy-MM-dd');
+    inputNode.setAttribute('min', currentDate);
 }
 
 function objectIsPrototype(object) {
