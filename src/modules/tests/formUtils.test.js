@@ -232,7 +232,8 @@ describe(`${setMinDateToCurrentDate.name}`, () => {
         beforeEach(() => {
             validNode = document.createElement('input');
             validNode.type = 'date';
-        })
+        });
+        
         test('does not throw any errors when parameter is input with type: date', () => {
             expect(() => setMinDateToCurrentDate(validNode)).not.toThrow();
         });
