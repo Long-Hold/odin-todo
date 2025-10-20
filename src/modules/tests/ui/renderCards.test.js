@@ -1,4 +1,4 @@
-import { displayNewCardNode, clearDisplayBox} from "../renderCards";
+import { displayNewCardNode, clearDisplayBox } from "../../ui/renderCards";
 
 describe('displayNewCardNode', () => {
     beforeEach(() => {

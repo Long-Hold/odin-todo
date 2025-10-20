@@ -1,4 +1,4 @@
-import { createCardCreator } from "../createTodoCard";
+import { createCardCreator } from "../../ui/createTodoCard";
 import { format, addDays } from "date-fns";
 
 describe('createCardCreator', () => {
