@@ -1,4 +1,4 @@
-import { set } from "date-fns/fp";
+import { format } from "date-fns";
 import { objectifySubmission, bundleKeys, removeEmptyFields, setMinDateToCurrentDate } from "../forms/formUtils";
 
 describe('objectifySubmission', () => {
@@ -233,9 +233,16 @@ describe(`${setMinDateToCurrentDate.name}`, () => {
             validNode = document.createElement('input');
             validNode.type = 'date';
         });
-        
+
         test('does not throw any errors when parameter is input with type: date', () => {
             expect(() => setMinDateToCurrentDate(validNode)).not.toThrow();
+        });
+
+        test('min attribute shows current date on returned element', () => {
+            const result = setMinDateToCurrentDate(validNode);
+            const currentDate = format(new Date(), 'yyyy-MM-dd');
+
+            expect(result.getAttribute('min')).toBe(currentDate);
         });
     })
 });
