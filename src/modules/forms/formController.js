@@ -13,7 +13,14 @@ const CHECKLIST_MANAGER = createChecklistManager(STEPS_CONTAINER, STEP_TEMPLATE)
 export function initializeFormControl() {
     initializeNewTodoListener();
     initializeFormChecklistListeners();
-    setMinDateToCurrentDate(TODO_FORM.querySelector('#deadline'));
+
+    // Allow this to silently fail in the event the function throws an error
+    // The application can still function as intended in the event this happens
+    try {
+        setMinDateToCurrentDate(TODO_FORM.querySelector('#deadline'));
+    } catch(error) {
+        console.error(`${setMinDateToCurrentDate.name} ${error}`);
+    }
 }
 
 export function processSubmit(event) {
