@@ -1,5 +1,5 @@
 import "./styles/styles.css";
-import { createCardCreator } from "./modules/createTodoCard";
+import { createCardCreator } from "./modules/ui/createTodoCard";
 import { initializeFormControl } from "./modules/forms/formController";
 import { TODO_OBJECT_MANAGER, initializeTodoController } from "./modules/todoObjects/todoController";
 
