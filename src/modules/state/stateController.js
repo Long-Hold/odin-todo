@@ -21,11 +21,25 @@ export function handleNewTodo(formObject) {
     renderSingleCard(newTodoObj);
 }
 
-export function loadSavedTodos() {
+export function initializeStorageAndUIStates() {
+    loadSavedTodos();
+    synchUIToState();
+}
+
+function loadSavedTodos() {
     const todosObjArray = getAllTodoObjects();
     if (todosObjArray.length === 0) {
         return;
     }
 
     todosObjArray.forEach((obj) => storeTodoObj(obj));
+}
+
+function synchUIToState() {
+    const todoObjArray = TODO_OBJECT_MANAGER.getAllObjects();
+    if (todoObjArray.length === 0) {
+        console.log('No todoObjects found');
+        return;
+    }
+    renderAllCards(todoObjArray);
 }
