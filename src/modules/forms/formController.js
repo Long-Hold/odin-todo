@@ -95,6 +95,7 @@ function initializeSubmitListener() {
         const formObject = processSubmit(event);
         if (formObject === null) {
             console.error('formObject returned with null. Aborting task creation.');
+            resetAndCloseForm();
             return null;
         }
 
