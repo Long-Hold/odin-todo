@@ -25,7 +25,7 @@ export function initializeFormControl() {
     }
 }
 
-export function processSubmit(event) {
+function processSubmit(event) {
     event.preventDefault();
 
     let formData;
@@ -56,7 +56,7 @@ export function processSubmit(event) {
     return formObject;
 }
 
-export function resetAndCloseForm() {
+function resetAndCloseForm() {
     CHECKLIST_MANAGER.deleteAllInputFields();
     TODO_FORM.reset();
     DIALOG.close();
@@ -93,7 +93,7 @@ function initializeFormChecklistListeners() {
 function initializeSubmitListener() {
     TODO_FORM.addEventListener('submit', (event) => {
         resetAndCloseForm();
-        
+
         const formObject = processSubmit(event);
         if (formObject === null) {
             console.error('formObject returned with null. Aborting task creation.');
