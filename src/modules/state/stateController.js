@@ -1,5 +1,6 @@
-import { TODO_OBJECT_MANAGER, createAndSaveTodoObj} from "../todoObjects/todoController";
+import { TODO_OBJECT_MANAGER, createAndSaveTodoObj, storeTodoObj} from "../todoObjects/todoController";
 import { renderSingleCard, renderAllCards } from "../ui/uiController";
+import { getAllTodoObjects } from "../storage/localStorageManager";
 
 export function handleNewTodo(formObject) {
     const newTodoObj = createAndSaveTodoObj(formObject);
@@ -9,4 +10,13 @@ export function handleNewTodo(formObject) {
     }
 
     renderSingleCard(newTodoObj);
+}
+
+export function loadSavedTodos() {
+    const todosObjArray = getAllTodoObjects();
+    if (todosObjArray.length === 0) {
+        return;
+    }
+
+    todosObjArray.forEach((obj) => storeTodoObj(obj));
 }
