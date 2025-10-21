@@ -30,3 +30,18 @@ export function getTodoObject(key) {
 
   return todoObj;
 }
+
+export function getAllTodoObjects() {
+  const todoObjectsArray = [];
+
+  for (let i = 0; i < localStorage.length; ++i) {
+    const key = localStorage.key(i);
+
+    if (localStorage.hasOwnProperty(key)) {
+      const todoObj = JSON.parse(localStorage.getItem(key));
+      todoObjectsArray.push(todoObj);
+    }
+  }
+
+  return todoObjectsArray;
+}
