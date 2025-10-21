@@ -1,3 +1,5 @@
+const KEY_PREFIX = 'todo_';
+
 export function saveToLocalStorage(key, item) {
   if (item instanceof Object === false) {
     throw new TypeError(`Expect item to be instanceof Object. Received ${typeof(item)}`);
@@ -12,7 +14,9 @@ export function saveToLocalStorage(key, item) {
     throw new Error('Key cannot be a blank or whitespace-only string');
   }
 
-  localStorage.setItem(trimKey, JSON.stringify(item));
+  const customKey = `${KEY_PREFIX}${trimKey}`;
+
+  localStorage.setItem(customKey, JSON.stringify(item));
 }
 
 export function getTodoObject(key) {
