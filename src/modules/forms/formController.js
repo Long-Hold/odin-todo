@@ -14,6 +14,7 @@ const CHECKLIST_MANAGER = createChecklistManager(STEPS_CONTAINER, STEP_TEMPLATE)
 export function initializeFormControl() {
     initializeNewTodoListener();
     initializeFormChecklistListeners();
+    initializeSubmitListener();
 
     // Allow this to silently fail in the event the function throws an error
     // The application can still function as intended in the event this happens
@@ -91,6 +92,8 @@ function initializeFormChecklistListeners() {
 
 function initializeSubmitListener() {
     TODO_FORM.addEventListener('submit', (event) => {
+        resetAndCloseForm();
+        
         const formObject = processSubmit(event);
         if (formObject === null) {
             console.error('formObject returned with null. Aborting task creation.');
