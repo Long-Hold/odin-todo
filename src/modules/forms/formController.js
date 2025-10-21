@@ -92,8 +92,6 @@ function initializeFormChecklistListeners() {
 
 function initializeSubmitListener() {
     TODO_FORM.addEventListener('submit', (event) => {
-        resetAndCloseForm();
-
         const formObject = processSubmit(event);
         if (formObject === null) {
             console.error('formObject returned with null. Aborting task creation.');
@@ -101,5 +99,6 @@ function initializeSubmitListener() {
         }
 
         handleNewTodo(formObject);
+        resetAndCloseForm();
     })
 }
