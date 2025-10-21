@@ -1,5 +1,6 @@
 import { objectifySubmission, bundleKeys, removeEmptyFields, setMinDateToCurrentDate } from "./formUtils";
 import { createChecklistManager } from "./createFormChecklistManager";
+import { handleNewTodo } from "../state/stateController";
 
 const BUNDLE = {substring: 'step', key: 'steps'};
 
@@ -86,4 +87,16 @@ function initializeFormChecklistListeners() {
             resetAndCloseForm();
         }
     });
+}
+
+function initializeSubmitListener() {
+    TODO_FORM.addEventListener('submit', (event) => {
+        const formObject = processSubmit(event);
+        if (formObject === null) {
+            console.error('formObject returned with null. Aborting task creation.');
+            return null;
+        }
+
+        handleNewTodo(formObject);
+    })
 }
