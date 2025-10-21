@@ -40,9 +40,10 @@ export function getAllTodoObjects() {
 
   for (let i = 0; i < localStorage.length; ++i) {
     const key = localStorage.key(i);
-
-    const todoObj = JSON.parse(localStorage.getItem(key));
-    todoObjectsArray.push(todoObj);
+    if (key && key.startsWith(KEY_PREFIX)) {
+      const todoObj = JSON.parse(localStorage.getItem(key));
+      todoObjectsArray.push(todoObj);
+    }
   }
 
   return todoObjectsArray;
