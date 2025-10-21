@@ -5,7 +5,7 @@ import { handleNewTodo } from "../state/stateController";
 const BUNDLE = {substring: 'step', key: 'steps'};
 
 const DIALOG = document.querySelector('dialog');
-export const TODO_FORM = document.getElementById('new-todo-form');
+const TODO_FORM = document.getElementById('new-todo-form');
 
 const STEPS_CONTAINER = document.getElementById('input-steps-container');
 const STEP_TEMPLATE = document.getElementById('checklist-step-template');
