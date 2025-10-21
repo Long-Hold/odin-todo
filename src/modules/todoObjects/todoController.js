@@ -15,3 +15,12 @@ export function createAndSaveTodoObj(formObject) {
 
     return todoObject;
 }
+
+export function storeTodoObj(todoObject) {
+    try {
+        TODO_OBJECT_MANAGER.addTodo(todoObject.taskID, todoObject);
+    } catch(error) {
+        console.error(`${storeTodoObj.name} -> ${TODO_OBJECT_MANAGER.addTodo.name}: ${error}`);
+        return null;
+    }
+}
