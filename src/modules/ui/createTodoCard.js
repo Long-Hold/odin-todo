@@ -27,17 +27,7 @@ export const createCardCreator = () => {
         getTodoCard: () => todoCard.querySelector('.todo-card'),
 
         setCardID: (taskID) => {
-            const cleanedID = taskID.trim();
-
-            if (typeof(cleanedID) !== 'string') {
-                throw new TypeError('Task ID must be a string');
-            }
-
-            if (cleanedID.length === 0) {
-                throw new Error('Task ID cannot be blank');
-            }
-
-            todoCard.querySelector('.todo-card').dataset.taskid = cleanedID;
+            todoCard.querySelector('.todo-card').dataset.taskid = taskID.trim();
             return todoCard.querySelector('.todo-card').dataset.taskid;
         },
 

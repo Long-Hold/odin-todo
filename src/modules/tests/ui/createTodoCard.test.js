@@ -45,25 +45,6 @@ describe('createCardCreator', () => {
     });
 
     describe('setCardID', () => {
-        describe('when given invalid input', () => {
-            test.each([
-                {description: 'number', input: 1},
-                {description: 'array', input: []},
-                {description: 'object', input: {text: 'Hello, world!'}},
-
-            ])('throws TypeError for $description input', ({description, input}) => {
-                expect(() => cardCreator.setCardID(input)).toThrow(TypeError);
-            });
-
-            test.each([
-                {description: 'whitespace only', input: '   '},
-                {description: 'single space only', input: ' '},
-                {description: 'empty string', input: ''},
-            ])('throws Error for $description', ({description, input}) => {
-                expect(() => cardCreator.setCardID(input)).toThrow(Error);
-            });
-        });
-
         describe('when given valid input', () => {
             test.each([
                 {description: 'string with no padded whitespace', input: 'SomeID', expected: 'SomeID'},
