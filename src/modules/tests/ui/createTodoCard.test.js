@@ -58,32 +58,6 @@ describe('createCardCreator', () => {
     });
 
     describe('setTitle', () => {
-        describe('when given invalid input', () => {
-            test.each([
-                {description: 'number', input: 1},
-                {description: 'array', input: ['Title in array!']},
-                {description: 'object', input: {title: 'Title in object!'}},
-            ])('throws TypeError for $description input', ({description, input}) => {
-                expect(() => cardCreator.setTitle(input)).toThrow(TypeError);
-            });
-
-            test.each([
-                {description: 'empty string', input: ''},
-                {description: 'whitespace only', input: '    '},
-                {description: 'single space only', input: ' '},
-            ])('throws Error for $description input', ({description, input}) => {
-                expect(() => cardCreator.setTitle(input)).toThrow(Error);
-            });
-
-            test.each([
-                {description: '65 char string', input: 'A'.repeat(65)},
-                {description: '70 char string', input: 'A'.repeat(70)},
-                {description: 'string with chars and spaces', input:'A A'.repeat(64)}
-            ])('throws Error for $description input', ({description, input}) => {
-                expect(() => cardCreator.setTitle(input)).toThrow(Error);
-            });
-        });
-
         describe('when given valid input', () => {
             test.each([
                 {description: 'character limit string', input: 'A'.repeat(64)},

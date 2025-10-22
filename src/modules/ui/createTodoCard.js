@@ -32,21 +32,7 @@ export const createCardCreator = () => {
         },
 
         setTitle: (title) => {
-            if (typeof(title) !== 'string') {
-                throw new TypeError('Title must be of type: String');
-            }
-
-            const cleanedTitle = title.trim();
-
-            if (cleanedTitle.length === 0) {
-                throw new Error('Title cannot be empty');
-            }
-            
-            if (cleanedTitle.length > 64) {
-                throw new Error('Title cannot be longer than 64 characters');
-            }
-
-            todoCard.querySelector('.todo-title').textContent = cleanedTitle; 
+            todoCard.querySelector('.todo-title').textContent = title.trim(); 
             return todoCard.querySelector('.todo-title');
         },
 
