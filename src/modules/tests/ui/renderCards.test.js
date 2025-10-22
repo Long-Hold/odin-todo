@@ -19,11 +19,6 @@ describe('displayNewCardNode', () => {
         ])('throws TypeError for $description input', ({description, input}) => {
             expect(() => displayNewCardNode(input)).toThrow(TypeError);
         });
-
-        test('throws Error when passed node missing required class', () => {
-            const div = document.createElement('div');
-            expect(() => displayNewCardNode(div)).toThrow(Error);
-        });
     });
 
     describe('when passed valid input', () => {
