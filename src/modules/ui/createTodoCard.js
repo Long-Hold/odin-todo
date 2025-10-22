@@ -21,7 +21,6 @@ function createCheckboxContainer(label) {
 export const createCardCreator = () => {
     const template = document.getElementById('todo-card-template');
     const todoCard = template.content.cloneNode(true);
-    const validPriorities = ['Low','Medium','High'];
 
     return {
         getTodoCard: () => todoCard.querySelector('.todo-card'),
@@ -37,22 +36,7 @@ export const createCardCreator = () => {
         },
 
         setPriority: (priority) => {
-            if (typeof(priority) !== 'string') {
-                throw new TypeError('Priority must be passed as string');
-            }
-
-            const text = priority.trim();
-
-            if (text.length === 0) {
-                throw new Error('Priority field cannot be blank');
-            }
-
-            if (!validPriorities.includes(text)) {
-                throw new TypeError('Invalid string passed as priority');
-            }
-
-            todoCard.querySelector('.priority').textContent = text;
-
+            todoCard.querySelector('.priority').textContent = priority.trim();
             return todoCard.querySelector('.priority');
         },
 

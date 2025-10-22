@@ -74,33 +74,6 @@ describe('createCardCreator', () => {
     });
 
     describe('setPriority', () => {
-        describe('when given invalid input', () => {
-            test.each([
-                {description: 'number', input: 1},
-                {description: 'array', input: ['Priority in Array!']},
-                {description: 'object', input: {title: 'Title in an object!'}},
-            ])('throws TypeError for $description input', ({description, input}) => {
-                expect(() => cardCreator.setPriority(input)).toThrow(TypeError);
-            });
-
-            test.each([
-                {description: 'empty string', input: ''},
-                {description: 'whitespace only', input: '    '},
-                {description: 'single space', input: ' '},
-                {description: 'formatted empty string', input: `  `}
-            ])('throws Error for $description input', ({description, input}) => {
-                expect(() => cardCreator.setPriority(input)).toThrow(Error);
-            });
-
-            test.each([
-                {description: 'invalid keyword', input: 'Super Important'},
-                {description: 'improper capitalization', input: 'lOw'},
-                {description: 'uppercase', input: 'MEDIUM'}
-            ])('throws TypeError for $description input', ({description, input}) => {
-                expect(() => cardCreator.setPriority(input)).toThrow(TypeError);
-            });
-        });
-
         describe('when given valid input', () => {
             test.each([
                 {description: 'Low priority', input: 'Low'},
