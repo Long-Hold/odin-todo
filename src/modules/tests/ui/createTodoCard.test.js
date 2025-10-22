@@ -127,17 +127,6 @@ describe('createCardCreator', () => {
     });
 
     describe('setDescription', () => {
-        describe('when given invalid input', () => {
-            test.each([
-                {description: 'number', input: 1},
-                {description: 'array', input: ['ARRRRRRRGHHH']},
-                {description: 'object', input: {}},
-                {description: 'new String() constructor', input: new String()}
-            ])('throws TypeError when given $description', ({description, input}) => {
-                expect(() => cardCreator.setDescription(input)).toThrow(TypeError);
-            });
-        });
-
         describe('when given valid input', () => {
             const noWhiteSpaceParagraphs = `Hello world,
             

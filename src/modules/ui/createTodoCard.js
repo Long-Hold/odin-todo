@@ -51,12 +51,7 @@ export const createCardCreator = () => {
         },
 
         setDescription: (description) => {
-            if (typeof(description) !== 'string') {
-                throw new TypeError('Description must be passed as string');
-            }
-
-            const text = description.trim();
-            todoCard.querySelector('.description').textContent = text;
+            todoCard.querySelector('.description').textContent = description.trim();
             return todoCard.querySelector('.description');
         },
 
