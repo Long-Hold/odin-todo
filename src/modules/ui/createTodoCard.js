@@ -46,18 +46,6 @@ export const createCardCreator = () => {
         },
 
         setDeadline: (date) => {
-            if ((date instanceof Date) === false) {
-                throw new TypeError('Date must be passed as Date Object');
-            }
-
-            if (isNaN(date.getTime())) {
-                throw new Error('Invalid Date object passed');
-            }
-
-            if (startOfDay(date) < startOfToday()) {
-                throw new Error('Deadline cannot be past date');
-            }
-
             todoCard.querySelector('time').textContent = format(date, 'yyyy-MM-dd');
             return todoCard.querySelector('time');
         },
