@@ -1,4 +1,4 @@
-import { format, startOfDay, startOfToday } from "date-fns"
+import { format } from "date-fns"
 
 function createCheckboxContainer(label) {
     const div = document.createElement('div');
