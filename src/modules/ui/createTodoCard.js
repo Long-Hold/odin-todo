@@ -41,12 +41,7 @@ export const createCardCreator = () => {
         },
 
         setProject: (project) => {
-            if (typeof(project) !== 'string') {
-                throw new TypeError('Project must be passed as string');
-            }
-
-            const text = project.trim();
-            todoCard.querySelector('.project-category').textContent = text;
+            todoCard.querySelector('.project-category').textContent = project.trim();
             return todoCard.querySelector('.project-category');
         },
 
