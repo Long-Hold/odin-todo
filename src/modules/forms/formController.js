@@ -5,7 +5,7 @@ import { EVENTS } from "../events/events";
 
 const BUNDLE = {substring: 'step', key: 'steps'};
 
-const DIALOG = document.querySelector('dialog');
+const DIALOG = document.getElementById('new-todo-dialog');
 const TODO_FORM = document.getElementById('new-todo-form');
 
 const STEPS_CONTAINER = document.getElementById('input-steps-container');
