@@ -7,5 +7,5 @@ export function initializeNewProjectListeners() {
 }
 
 function showNewProjectForm() {
-    NEW_PROJECT_BUTTON.addEventListener('click', NEW_PROJECT_DIALOG.show());
+    NEW_PROJECT_BUTTON.addEventListener('click', () => NEW_PROJECT_DIALOG.show());
 }
