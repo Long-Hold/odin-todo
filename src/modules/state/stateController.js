@@ -1,8 +1,9 @@
 import { TODO_OBJECT_MANAGER, createAndSaveTodoObj, storeTodoObj} from "../todoObjects/todoController";
 import { renderSingleCard, renderAllCards } from "../ui/uiController";
 import { getAllTodoObjects, saveToLocalStorage } from "../storage/localStorageManager";
+import { EVENTS } from "../events/events";
 
-export function handleNewTodo(formObject) {
+function handleNewTodo(formObject) {
     const newTodoObj = createAndSaveTodoObj(formObject);
     if (newTodoObj === null) {
         console.error(`${createAndSaveTodoObj.name} returned with null. Aborting task creation.`);
@@ -43,3 +44,7 @@ function synchUIToState() {
     }
     renderAllCards(todoObjArray);
 }
+
+document.addEventListener(EVENTS.FORM_SUBMITTED, (event) => {
+    handleNewTodo(event.detail.data);
+})
