@@ -1,6 +1,5 @@
 import { objectifySubmission, bundleKeys, removeEmptyFields, setMinDateToCurrentDate } from "./formUtils";
 import { createChecklistManager } from "./createFormChecklistManager";
-import { handleNewTodo } from "../state/stateController";
 import { triggerCustomEvent } from "../events/eventProducer";
 import { EVENTS } from "../events/events";
 
