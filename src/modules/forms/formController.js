@@ -1,6 +1,8 @@
 import { objectifySubmission, bundleKeys, removeEmptyFields, setMinDateToCurrentDate } from "./formUtils";
 import { createChecklistManager } from "./createFormChecklistManager";
 import { handleNewTodo } from "../state/stateController";
+import { triggerCustomEvent } from "../events/eventProducer";
+import { EVENTS } from "../events/events";
 
 const BUNDLE = {substring: 'step', key: 'steps'};
 
@@ -99,7 +101,7 @@ function initializeSubmitListener() {
             return null;
         }
 
-        handleNewTodo(formObject);
+        triggerCustomEvent(TODO_FORM, EVENTS.FORM_SUBMITTED, formObject);
         resetAndCloseForm();
     })
 }
