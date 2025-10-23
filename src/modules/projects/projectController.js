@@ -1,0 +1,1 @@
+const NEW_PROJECT_BUTTON = document.getElementById('add-project-btn');
