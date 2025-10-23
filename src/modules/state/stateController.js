@@ -3,25 +3,6 @@ import { renderSingleCard, renderAllCards } from "../ui/uiController";
 import { getAllTodoObjects, saveToLocalStorage } from "../storage/localStorageManager";
 import { EVENTS } from "../events/events";
 
-function handleNewTodo(formObject) {
-    const newTodoObj = createAndSaveTodoObj(formObject);
-    if (newTodoObj === null) {
-        console.error(`${createAndSaveTodoObj.name} returned with null. Aborting task creation.`);
-        return null;
-    }
-
-    try {
-        saveToLocalStorage(newTodoObj.taskID, newTodoObj);
-    } catch (error) {
-        // If an error occurs while saving to localStorage, delete the object from the map
-        console.error(`An error occured saving task to localStorage: ${error}`);
-        TODO_OBJECT_MANAGER.deleteTodoObject(newTodoObj.taskID);
-        return null;
-    }
-
-    renderSingleCard(newTodoObj);
-}
-
 export function initializeStorageAndUIStates() {
     loadSavedTodos();
     synchUIToState();
@@ -43,6 +24,25 @@ function synchUIToState() {
         return;
     }
     renderAllCards(todoObjArray);
+}
+
+function handleNewTodo(formObject) {
+    const newTodoObj = createAndSaveTodoObj(formObject);
+    if (newTodoObj === null) {
+        console.error(`${createAndSaveTodoObj.name} returned with null. Aborting task creation.`);
+        return null;
+    }
+
+    try {
+        saveToLocalStorage(newTodoObj.taskID, newTodoObj);
+    } catch (error) {
+        // If an error occurs while saving to localStorage, delete the object from the map
+        console.error(`An error occured saving task to localStorage: ${error}`);
+        TODO_OBJECT_MANAGER.deleteTodoObject(newTodoObj.taskID);
+        return null;
+    }
+
+    renderSingleCard(newTodoObj);
 }
 
 document.addEventListener(EVENTS.FORM_SUBMITTED, (event) => {
