@@ -8,6 +8,12 @@ export function initializeStorageAndUIStates() {
     synchUIToState();
 }
 
+export function initializeStateListeners() {
+    document.addEventListener(EVENTS.FORM_SUBMITTED, (event) => {
+        handleNewTodo(event.detail.data);
+    });
+}
+
 function loadSavedTodos() {
     const todosObjArray = getAllTodoObjects();
     if (todosObjArray.length === 0) {
@@ -44,7 +50,3 @@ function handleNewTodo(formObject) {
 
     renderSingleCard(newTodoObj);
 }
-
-document.addEventListener(EVENTS.FORM_SUBMITTED, (event) => {
-    handleNewTodo(event.detail.data);
-})
