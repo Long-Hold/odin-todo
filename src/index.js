@@ -2,11 +2,11 @@ import "./styles/styles.css";
 import { initializeFormControl } from "./modules/forms/formController";
 import { initializeStateListeners, initializeStorageAndUIStates } from "./modules/state/stateController";
 import { TODO_OBJECT_MANAGER } from "./modules/todoObjects/todoController";
-import { initializeNewProjectListeners } from "./modules/projects/projectController";
+import { initializeProjectFormControl } from "./modules/forms/projectFormController";
 
 initializeStorageAndUIStates();
 initializeStateListeners();
 initializeFormControl();
-initializeNewProjectListeners();
+initializeProjectFormControl();
 
 window.todoMan = TODO_OBJECT_MANAGER;
