@@ -4,6 +4,14 @@ export class Project {
         this.linkedTasks = structuredClone(linkedTasks);
     }
 
+    set linkedTasks(linkedTasks) {
+        if (linkedTasks instanceof Set === false) {
+            throw new TypeError(`linkedTasks expected assignment of Set. Received ${typeof(linkedTasks)}`);
+        }
+
+        this.linkedTasks = structuredClone(linkedTasks);
+    }
+
     linkTaskId(taskId) {
         if (this.linkedTasks.has(taskId)) {
             console.log('Task is already in this project category');
