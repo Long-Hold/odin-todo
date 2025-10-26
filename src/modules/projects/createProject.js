@@ -18,7 +18,7 @@ export class Project {
             return;
         }
 
-        this.linkedTasks.add(taskId);
+        this.linkedTasks.add(structuredClone(taskId));
         return structuredClone(this.linkedTasks);
     }
 
