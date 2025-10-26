@@ -12,6 +12,10 @@ export function initializeStateListeners() {
     document.addEventListener(EVENTS.FORM_SUBMITTED, (event) => {
         handleNewTodo(event.detail.data);
     });
+
+    document.addEventListener(EVENTS.PROJECT_SUBMITTED, (event) => {
+        handleNewProject(event.detail.data);
+    })
 }
 
 function loadSavedTodos() {
@@ -49,4 +53,8 @@ function handleNewTodo(formObject) {
     }
 
     renderSingleCard(newTodoObj);
+}
+
+function handleNewProject(formData) {
+    // TODO
 }
