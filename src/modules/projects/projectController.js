@@ -7,6 +7,7 @@ const NEW_PROJECT_FORM = document.getElementById('new-project-form');
 
 export function initializeNewProjectListeners() {
     showNewProjectForm();
+    handleProjectFormSubmit();
 }
 
 function showNewProjectForm() {
