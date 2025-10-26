@@ -4,22 +4,6 @@ export class Project {
         this.linkedTasks = structuredClone(linkedTasks);
     }
 
-    set projectName(projectName) {
-        if(!projectName.trim()) {
-            throw new Error('Project name cannot be empty');
-        }
-
-        this.projectName = projectName;
-    }
-
-    set linkedTasks(linkedTasks) {
-        if (linkedTasks instanceof Set === false) {
-            throw new TypeError(`linkedTasks expected assignment of Set. Received ${typeof(linkedTasks)}`);
-        }
-
-        this.linkedTasks = structuredClone(linkedTasks);
-    }
-
     linkTaskId(taskId) {
         if (this.linkedTasks.has(taskId)) {
             console.log('Task is already in this project category');
