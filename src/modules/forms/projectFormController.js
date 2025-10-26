@@ -5,3 +5,22 @@ const NEW_PROJECT_FORM = document.getElementById('new-project-form');
 function initializeAddProjectBtnListener() {
     ADD_PROJECT_BTN.addEventListener('click', () => { NEW_PROJECT_DIALOG.show(); });
 }
+
+function initializeFormListeners() {
+    NEW_PROJECT_FORM.addEventListener('click', (event) => {
+        if (event.target.data.action === 'cancel') {
+            resetAndClose();
+        }
+    })
+
+    NEW_PROJECT_FORM.addEventListener('submit', (event) => {
+        //TODO: Process Submit
+        //TODO: Emit Project Submit event
+        resetAndClose();
+    })
+}
+
+function resetAndClose() {
+    NEW_PROJECT_FORM.reset();
+    NEW_PROJECT_DIALOG.close();
+}
