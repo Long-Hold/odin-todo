@@ -13,7 +13,7 @@ function initializeAddProjectBtnListener() {
 
 function initializeFormListeners() {
     NEW_PROJECT_FORM.addEventListener('click', (event) => {
-        if (event.target.data.action === 'cancel') {
+        if (event.target.dataset.action === 'cancel') {
             resetAndClose();
         }
     })
