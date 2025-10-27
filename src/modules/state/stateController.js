@@ -28,7 +28,7 @@ function loadSavedTodos() {
 }
 
 function synchUIToState() {
-    const todoObjArray = TODO_OBJECT_MANAGER.getAllObjects();
+    const todoObjArray = TODO_OBJECT_MANAGER.getAllTodos();
     if (todoObjArray.length === 0) {
         console.log('No todoObjects found');
         return;
