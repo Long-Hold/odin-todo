@@ -41,7 +41,7 @@ function initializeFormListeners() {
 
         let formObject;
         try {
-            formObject = objectifySubmission(new FormData(event.target));
+            formObject = objectifySubmission(formData);
         } catch (error) {
             console.log(`${objectifySubmission.name} has encountered an Error: ${error}`);
             resetAndClose();
