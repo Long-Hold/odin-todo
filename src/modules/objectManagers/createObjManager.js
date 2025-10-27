@@ -25,17 +25,17 @@ export function createObjectManager() {
 
     function getObject(key) {
         if (typeof(key) !== 'string') {
-            throw new TypeError('taskId must be a string');
+            throw new TypeError('Key must be a string');
         }
 
         if (!key.trim()) {
-            throw new Error('taskId cannot be empty');
+            throw new Error('Key cannot be empty');
         }
 
         const clonedObject = structuredClone(storedObjects.get(key));
 
         if (clonedObject === undefined) {
-            throw new ReferenceError(`Task (${key}) could not be found`);
+            throw new ReferenceError(`Key (${key}) could not be found`);
         }
 
         return clonedObject;
