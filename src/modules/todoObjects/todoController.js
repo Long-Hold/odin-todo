@@ -1,7 +1,20 @@
 import { createTodoObject } from "./createTodoObj";
 import { createTodoManager } from "./todoManager";
+import { createObjectManager } from "../objectManagers/createObjManager";
 
-export const TODO_OBJECT_MANAGER = createTodoManager();
+const {
+    addObject: addTodo,
+    getAllObjects: getAllTodos,
+    getObject: getTodoObject,
+    deleteObject: deleteTodoObject,
+} = createObjectManager();
+
+export const TODO_OBJECT_MANAGER = {
+    addTodo,
+    getAllTodos,
+    getTodoObject,
+    deleteTodoObject,
+};
 
 export function createAndSaveTodoObj(formObject) {
     const todoObject = createTodoObject(formObject);
