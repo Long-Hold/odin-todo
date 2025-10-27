@@ -1,3 +1,7 @@
+import { EVENTS } from "../events/events";
+import { triggerCustomEvent } from "../events/eventProducer";
+import { objectifySubmission } from "./formUtils";
+
 const ADD_PROJECT_BTN = document.getElementById('add-project-btn');
 const NEW_PROJECT_DIALOG = document.getElementById('new-project-dialog');
 const NEW_PROJECT_FORM = document.getElementById('new-project-form');
@@ -19,8 +23,18 @@ function initializeFormListeners() {
     })
 
     NEW_PROJECT_FORM.addEventListener('submit', (event) => {
-        //TODO: Process Submit
-        //TODO: Emit Project Submit event
+        event.preventDefault();
+
+        let formObject;
+        try {
+            formObject = objectifySubmission(new FormData(event.target));
+        } catch (error) {
+            console.log(`${objectifySubmission.name} has encountered an Error: ${error}`);
+            resetAndClose();
+            return null;
+        }
+
+        triggerCustomEvent(NEW_PROJECT_FORM, EVENTS.PROJECT_SUBMITTED, formObject);
         resetAndClose();
     })
 }
