@@ -56,5 +56,5 @@ function handleNewTodo(formObject) {
 }
 
 function handleNewProject(formObject) {
-    // TODO
+    console.log(formObject);
 }
