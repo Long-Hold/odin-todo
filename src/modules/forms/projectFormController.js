@@ -1,6 +1,6 @@
 import { EVENTS } from "../events/events";
 import { triggerCustomEvent } from "../events/eventProducer";
-import { objectifySubmission } from "./formUtils";
+import { objectifySubmission, removeEmptyFields } from "./formUtils";
 
 const ADD_PROJECT_BTN = document.getElementById('add-project-btn');
 const NEW_PROJECT_DIALOG = document.getElementById('new-project-dialog');
@@ -24,6 +24,20 @@ function initializeFormListeners() {
 
     NEW_PROJECT_FORM.addEventListener('submit', (event) => {
         event.preventDefault();
+
+        let formData;
+        try {
+            formData = removeEmptyFields(new FormData(event.target));
+        } catch (error) {
+            console.error(`${removeEmptyFields.name} has encountered an Error: ${error}`);
+            resetAndClose();
+            return null;
+        }
+        if (formData.entries().next().done) {
+            console.error('Cannot submit blank project');
+            resetAndClose();
+            return null;
+        }
 
         let formObject;
         try {
