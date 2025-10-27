@@ -23,7 +23,7 @@ export function createObjectManager() {
         return Array.from(storedObjects.values()).map(obj => structuredClone(obj));
     }
 
-    function getTodoObject(key) {
+    function getObject(key) {
         if (typeof(key) !== 'string') {
             throw new TypeError('taskId must be a string');
         }
@@ -41,11 +41,11 @@ export function createObjectManager() {
         return clonedObject;
     }
 
-    function deleteTodoObject(key) {
+    function deleteObject(key) {
         storedObjects.delete(key);
 
         return structuredClone(storedObjects);
     }
 
-    return {addTodo, getAllObjects, getTodoObject, deleteTodoObject}
+    return {addTodo, getAllObjects, getObject, deleteObject}
 }
