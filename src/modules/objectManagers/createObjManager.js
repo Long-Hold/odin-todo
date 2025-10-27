@@ -1,5 +1,5 @@
-export function createTodoManager() {
-    const activeTodos = new Map();
+export function createObjectManager() {
+    const storedObjects = new Map();
 
     function addTodo(key, object) {
         if (typeof(key) !== 'string') {
@@ -14,13 +14,13 @@ export function createTodoManager() {
             throw new TypeError(`${object} must be an instance of: Object`);
         }
 
-        activeTodos.set(key.trim(), structuredClone(object));
+        storedObjects.set(key.trim(), structuredClone(object));
 
-        return structuredClone(activeTodos);
+        return structuredClone(storedObjects);
     }
 
     function getAllObjects() {
-        return Array.from(activeTodos.values()).map(obj => structuredClone(obj));
+        return Array.from(storedObjects.values()).map(obj => structuredClone(obj));
     }
 
     function getTodoObject(key) {
@@ -32,7 +32,7 @@ export function createTodoManager() {
             throw new Error('taskId cannot be empty');
         }
 
-        const clonedObject = structuredClone(activeTodos.get(key));
+        const clonedObject = structuredClone(storedObjects.get(key));
 
         if (clonedObject === undefined) {
             throw new ReferenceError(`Task (${key}) could not be found`);
@@ -42,9 +42,9 @@ export function createTodoManager() {
     }
 
     function deleteTodoObject(key) {
-        activeTodos.delete(key);
+        storedObjects.delete(key);
 
-        return structuredClone(activeTodos);
+        return structuredClone(storedObjects);
     }
 
     return {addTodo, getAllObjects, getTodoObject, deleteTodoObject}
