@@ -1,7 +1,7 @@
 export function createObjectManager() {
     const storedObjects = new Map();
 
-    function addTodo(key, object) {
+    function addObject(key, object) {
         if (typeof(key) !== 'string') {
             throw new TypeError('Key must be of type: String');
         }
@@ -47,5 +47,5 @@ export function createObjectManager() {
         return structuredClone(storedObjects);
     }
 
-    return {addTodo, getAllObjects, getObject, deleteObject}
+    return {addObject, getAllObjects, getObject, deleteObject}
 }
