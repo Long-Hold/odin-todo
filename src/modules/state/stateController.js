@@ -55,6 +55,6 @@ function handleNewTodo(formObject) {
     renderSingleCard(newTodoObj);
 }
 
-function handleNewProject(formData) {
+function handleNewProject(formObject) {
     // TODO
 }
