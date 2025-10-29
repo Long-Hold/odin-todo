@@ -34,4 +34,14 @@ describe('class Project', () => {
             });
         });
     });
+
+    describe('when passed valid paramters to constructor', () => {
+        test('does not throw when passed only a projectName param', () => {
+            expect(() => new Project('My project')).not.toThrow();
+        });
+
+        test('does not throw when passed valid parameters', () => {
+            expect(() => new Project('My project', new Set())).not.toThrow();
+        })
+    });
 });
