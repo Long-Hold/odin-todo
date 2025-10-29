@@ -44,7 +44,7 @@ export class Project {
 }
 
 export function createProjectObject(object) {
-    const objKeys = Object.keys(object);
+    const objKeys = Object.values(object);
 
     if (objKeys.length === 1) {
         try {
