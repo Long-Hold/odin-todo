@@ -1,5 +1,4 @@
-import { Project } from "../projects/createProject";
-import { PROJECT_MANAGER } from "../projects/projectController";
+import { PROJECT_MANAGER, createAndSaveProjectObject } from "../projects/projectController";
 import { NEW_PROJECT_FORM } from "../forms/projectFormController";
 import { EVENTS } from "../events/events";
 
@@ -10,5 +9,11 @@ export function initializeProjectState() {
 }
 
 function handleNewProject(formObject) {
-    console.log(formObject);
+    const projectObj = createAndSaveProjectObject(formObject);
+    if (projectObj === null) {
+        console.error(`${createAndSaveProjectObject.name} returned with null. Aborting process`);
+        return null;
+    }
+
+
 }
