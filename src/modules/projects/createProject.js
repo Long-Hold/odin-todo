@@ -4,6 +4,13 @@ export class Project {
         this.linkedTasks = structuredClone(linkedTasks);
     }
 
+    toJSON() {
+        return {
+            projectName: this.projectName,
+            linkedTasks: Array.from(this.linkedTasks);
+        }
+    }
+
     linkTaskId(taskId) {
         if (this.linkedTasks.has(taskId)) {
             console.log('Task is already in this project category');
