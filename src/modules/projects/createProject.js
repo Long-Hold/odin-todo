@@ -7,7 +7,7 @@ export class Project {
     toJSON() {
         return {
             projectName: this.projectName,
-            linkedTasks: Array.from(this.linkedTasks);
+            linkedTasks: Array.from(this.linkedTasks),
         }
     }
 
