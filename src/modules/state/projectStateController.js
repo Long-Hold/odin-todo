@@ -1,6 +1,7 @@
 import { PROJECT_MANAGER, createAndSaveProjectObject } from "../projects/projectController";
 import { NEW_PROJECT_FORM } from "../forms/projectFormController";
 import { EVENTS } from "../events/events";
+import { saveProject } from "../storage/projectStorageService";
 
 export function initializeProjectState() {
     NEW_PROJECT_FORM.addEventListener(EVENTS.PROJECT_SUBMITTED, (event) => {
@@ -14,6 +15,6 @@ function handleNewProject(formObject) {
         console.error(`${createAndSaveProjectObject.name} returned with null. Aborting process`);
         return null;
     }
-
-
+    
+    saveProject(projectObj.projectName, projectObj);
 }
