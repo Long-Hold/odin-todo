@@ -78,4 +78,15 @@ describe('class Project', () => {
             }
         });
     });
+
+    describe('.removeTask() method', () => {
+        test('return value omits the passed parameter', () => {
+            const tasksArray = myProject.getAllLinkedTasks();
+
+            for (const task of tasksArray) {
+                const result = myProject.removeTask(task);
+                expect(result).not.toContain(task);
+            }
+        });
+    });
 });
