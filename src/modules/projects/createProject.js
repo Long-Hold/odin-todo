@@ -42,3 +42,29 @@ export class Project {
         return Array.from(structuredClone(this.linkedTasks));
     }
 }
+
+export function createProjectObject(object) {
+    const objKeys = Object.keys(object);
+
+    if (objKeys.length === 1) {
+        try {
+            return new Project(objKeys[0]);
+        } catch (error) {
+            console.error(`${createProjectObject.name} has caught an error: ${error}`);
+        }
+    }
+
+    else if (objKeys.length === 2) {
+        try {
+            return new Project(objKeys[0], objKeys[1]);
+        } catch (error) {
+            console.error(`${createProjectObject.name} has caught an error: ${error}`);
+        }
+    }
+
+    else {
+        console.error(`Passed object keys exceed maximum length.\nExpected: up to 2\nReceived: ${objKeys.length}`);
+    }
+
+    return null;
+}
