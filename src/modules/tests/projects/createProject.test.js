@@ -44,4 +44,19 @@ describe('class Project', () => {
             expect(() => new Project('My project', new Set())).not.toThrow();
         })
     });
+
+    describe('.toJSON() method', () => {
+        test('correctly converts object properties to a string', () => {
+            const tasksArray = myProject.getAllLinkedTasks();
+
+            const jsonString = JSON.stringify(myProject);
+            const parsedJson = JSON.parse(jsonString);
+
+            expect(parsedJson.projectName).toBe(myProject.projectName);
+            
+            for (let i = 0; i < tasksArray.length; ++i) {
+                expect(parsedJson.linkedTasks[i]).toBe(tasksArray[i]);
+            }
+        });
+    });
 });
