@@ -8,7 +8,7 @@ export class Project {
         if (!name) {
             throw new Error('projectName cannot be whitespace or blank');
         }
-        this.projectName = projectName;
+        this.projectName = name;
 
         if (linkedTasks instanceof Set === false) {
             throw new TypeError('linkedTasks must be Set');
