@@ -76,6 +76,6 @@ describe('class Project', () => {
                 const result = newProject.addTaskId(taskId);
                 expect(result.has(taskId)).toBe(true);
             }
-        })
+        });
     });
 });
