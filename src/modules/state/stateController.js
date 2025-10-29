@@ -2,6 +2,7 @@ import { TODO_OBJECT_MANAGER, createAndSaveTodoObj, storeTodoObj} from "../todoO
 import { renderSingleCard, renderAllCards } from "../ui/uiController";
 import { getAllTodoObjects, saveToLocalStorage } from "../storage/localStorageManager";
 import { EVENTS } from "../events/events";
+import { Project } from "../projects/createProject";
 
 export function initializeStorageAndUIStates() {
     loadSavedTodos();
@@ -57,4 +58,5 @@ function handleNewTodo(formObject) {
 
 function handleNewProject(formObject) {
     console.log(formObject);
+    const projectObj = new Project(formObject.projectName);
 }
