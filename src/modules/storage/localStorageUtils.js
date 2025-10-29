@@ -16,3 +16,12 @@ export function storageAvailable(type) {
     );
   }
 }
+
+export function normalizeKey(keyText) {
+    const lowerAndTrimmed = keyText.trim().toLowerCase();
+
+    // Replace ALL spaces with underscores
+    const spaceToUnderscore = lowerAndTrimmed.replace(/\s+/g, "_");
+    const normalized = spaceToUnderscore.normalize('NFC');
+    return normalized;
+}
