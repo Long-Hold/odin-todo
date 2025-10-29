@@ -53,10 +53,29 @@ describe('class Project', () => {
             const parsedJson = JSON.parse(jsonString);
 
             expect(parsedJson.projectName).toBe(myProject.projectName);
-            
+
             for (let i = 0; i < tasksArray.length; ++i) {
                 expect(parsedJson.linkedTasks[i]).toBe(tasksArray[i]);
             }
         });
+    });
+
+    describe('.addTaskId() method', () => {
+        test('does not throw when attempting to add duplicate id', () => {
+            const taskIdArray = myProject.getAllLinkedTasks();
+            for (const taskId of taskIdArray) {
+                expect(() => myProject.addTaskId(taskId)).not.toThrow();
+            }
+        });
+
+        test('adds taskId and returns the new Set', () => {
+            const newIdsArray = ['5','6','7','8'];
+            const newProject = new Project('My project!');
+
+            for (const taskId of newIdsArray) {
+                const result = newProject.addTaskId(taskId);
+                expect(result.has(taskId)).toBe(true);
+            }
+        })
     });
 });

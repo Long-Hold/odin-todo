@@ -26,10 +26,10 @@ export class Project {
     addTaskId(taskId) {
         if (this.linkedTasks.has(taskId)) {
             console.log('Task is already in this project category');
-            return;
         }
-
-        this.linkedTasks.add(structuredClone(taskId));
+        else {
+            this.linkedTasks.add(structuredClone(taskId));
+        }
         return structuredClone(this.linkedTasks);
     }
 
