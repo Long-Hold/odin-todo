@@ -23,7 +23,7 @@ export class Project {
         }
     }
 
-    linkTaskId(taskId) {
+    addTaskId(taskId) {
         if (this.linkedTasks.has(taskId)) {
             console.log('Task is already in this project category');
             return;
