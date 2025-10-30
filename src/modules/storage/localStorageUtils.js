@@ -25,3 +25,15 @@ export function normalizeKey(keyText) {
     const normalized = spaceToUnderscore.normalize('NFC');
     return normalized;
 }
+
+export function saveObject(key, item) {
+    if (!key.trim()) {
+        throw new Error ('Key cannot be blank or whitespace only');
+    }
+
+    if (item instanceof Object === false) {
+        throw new TypeError(`Item must be an Object. Received ${typeof(item)}`);
+    }
+
+	localStorage.setItem(key, JSON.stringify(item));
+}
