@@ -16,5 +16,10 @@ function handleNewProject(formObject) {
         return null;
     }
     
-    saveProject(projectObj.projectName, projectObj);
+    saveSuccess = saveProject(projectObj.projectName, projectObj);
+    if (!saveSuccess) {
+        console.error('An error occured while saving project to localStorage. Aborting process');
+        PROJECT_MANAGER.deleteProject(projectObj.projectName);
+        return null;
+    }
 }
