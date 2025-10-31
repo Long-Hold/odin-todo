@@ -26,3 +26,7 @@ function handleNewProject(formObject) {
 
     renderProjectTabButton(projectObj);
 }
+
+function loadProjects() {
+    //TODO
+}
