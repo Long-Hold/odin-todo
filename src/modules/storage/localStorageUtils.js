@@ -37,3 +37,17 @@ export function saveObject(key, item) {
 
 	localStorage.setItem(key, JSON.stringify(item));
 }
+
+export function getAllObjects(keyPrefix) {
+	const objectsArray = [];
+
+	for (let i = 0; i < localStorage.length; ++i) {
+		const key = localStorage.key(i);
+		if (key && key.startsWith(keyPrefix)) {
+			const object = JSON.parse(localStorage.getItem(key));
+			objectsArray.push(object);
+		}
+	}
+
+	return objectsArray;
+}
