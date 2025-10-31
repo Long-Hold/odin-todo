@@ -1,4 +1,4 @@
-import { normalizeKey, saveObject } from "./localStorageUtils";
+import { getAllObjects, normalizeKey, saveObject } from "./localStorageUtils";
 const KEY_PREFIX = 'project_';
 
 export function saveProject(key, project) {
@@ -12,4 +12,8 @@ export function saveProject(key, project) {
     }
 
     return true;
+}
+
+export function getAllProjects() {
+    return getAllObjects(KEY_PREFIX);
 }
