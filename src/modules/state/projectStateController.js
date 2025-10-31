@@ -2,6 +2,7 @@ import { PROJECT_MANAGER, createAndSaveProjectObject } from "../projects/project
 import { NEW_PROJECT_FORM } from "../forms/projectFormController";
 import { EVENTS } from "../events/events";
 import { saveProject } from "../storage/projectStorageService";
+import { renderProjectTabButton } from "../ui/projects/projectsUIController";
 
 export function initializeProjectState() {
     NEW_PROJECT_FORM.addEventListener(EVENTS.PROJECT_SUBMITTED, (event) => {
@@ -16,10 +17,12 @@ function handleNewProject(formObject) {
         return null;
     }
     
-    saveSuccess = saveProject(projectObj.projectName, projectObj);
+    const saveSuccess = saveProject(projectObj.projectName, projectObj);
     if (!saveSuccess) {
         console.error('An error occured while saving project to localStorage. Aborting process');
         PROJECT_MANAGER.deleteProject(projectObj.projectName);
         return null;
     }
+
+    renderProjectTabButton(projectObj);
 }
