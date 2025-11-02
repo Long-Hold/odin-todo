@@ -1,5 +1,5 @@
 import { createObjectManager } from "../objectManagers/createObjManager";
-import { createProjectObject } from "./createProject";
+import { createProjectObject, Project } from "./createProject";
 
 // Destructure factory for custom aliasing of methods
 const { 
@@ -27,4 +27,14 @@ export function createAndSaveProjectObject(formObject) {
     } 
 
     return newProjObj;
+}
+
+export function storeProjectObj(object) {
+    try {
+        const project = Project.fromJSON(object);
+        PROJECT_MANAGER.addProject(project.projectName, project);
+    } catch (error) {
+        console.error(`${storeProjectObj.name} has caught an error: ${error}`);
+        return null;
+    }
 }
