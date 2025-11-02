@@ -29,7 +29,7 @@ export function createAndSaveProjectObject(formObject) {
     return newProjObj;
 }
 
-export function storeProjectObj(object) {
+export function storeJSONProjectObj(object) {
     try {
         const project = Project.fromJSON(object);
         PROJECT_MANAGER.addProject(project.projectName, project);
