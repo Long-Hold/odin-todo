@@ -1,10 +1,11 @@
-import { PROJECT_MANAGER, createAndSaveProjectObject } from "../projects/projectController";
+import { PROJECT_MANAGER, createAndSaveProjectObject, storeJSONProjectObj } from "../projects/projectController";
 import { NEW_PROJECT_FORM } from "../forms/projectFormController";
 import { EVENTS } from "../events/events";
 import { saveProject, getAllProjects } from "../storage/projectStorageService";
 import { renderProjectTabButton } from "../ui/projects/projectsUIController";
 
 export function initializeProjectState() {
+    loadProjects();
     NEW_PROJECT_FORM.addEventListener(EVENTS.PROJECT_SUBMITTED, (event) => {
         handleNewProject(event.detail.data)
     });
@@ -35,5 +36,5 @@ function loadProjects() {
         return;
     }
 
-    projectsArray.forEach((object) => handleNewProject(object));
+    projectsArray.forEach((project) => { storeJSONProjectObj(project); });
 }
