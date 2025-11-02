@@ -16,6 +16,14 @@ export class Project {
         this.linkedTasks = structuredClone(linkedTasks);
     }
 
+    static fromJSON(jsonObj) {
+        /**Since JSON.stringify cannot accept Sets, they were converted to an Array
+         * in the custom toJSON class method. Therefore when retrieving JSON data to 
+         * create Projects from, we need to turn that array back into a set
+         */
+        return new Project(jsonObj.projectName, new Set(jsonObj.linkedTasks));
+    }
+
     toJSON() {
         return {
             projectName: this.projectName,
