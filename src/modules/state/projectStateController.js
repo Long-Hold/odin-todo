@@ -1,7 +1,7 @@
 import { PROJECT_MANAGER, createAndSaveProjectObject } from "../projects/projectController";
 import { NEW_PROJECT_FORM } from "../forms/projectFormController";
 import { EVENTS } from "../events/events";
-import { saveProject } from "../storage/projectStorageService";
+import { saveProject, getAllProjects } from "../storage/projectStorageService";
 import { renderProjectTabButton } from "../ui/projects/projectsUIController";
 
 export function initializeProjectState() {
@@ -28,5 +28,12 @@ function handleNewProject(formObject) {
 }
 
 function loadProjects() {
-    //TODO
+    const projectsArray = getAllProjects();
+
+    if (projectsArray.length === 0) {
+        console.log('No saved projects found.');
+        return;
+    }
+
+    projectsArray.forEach((object) => handleNewProject(object));
 }
