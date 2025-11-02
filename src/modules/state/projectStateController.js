@@ -6,6 +6,8 @@ import { renderProjectTabButton } from "../ui/projects/projectsUIController";
 
 export function initializeProjectState() {
     loadProjects();
+    synchUIToState();
+    
     NEW_PROJECT_FORM.addEventListener(EVENTS.PROJECT_SUBMITTED, (event) => {
         handleNewProject(event.detail.data)
     });
@@ -37,4 +39,14 @@ function loadProjects() {
     }
 
     projectsArray.forEach((project) => { storeJSONProjectObj(project); });
+}
+
+function synchUIToState() {
+    const projectsArray = PROJECT_MANAGER.getAllProjects();
+    if (projectsArray.length === 0) {
+        console.log('No stored projects found to render.');
+        return;
+    }
+
+    projectsArray.forEach((project) => renderProjectTabButton(project));
 }
