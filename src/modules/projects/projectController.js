@@ -38,3 +38,8 @@ export function storeJSONProjectObj(object) {
         return null;
     }
 }
+
+export function getAllProjectNames() {
+    const projectNamesArray = PROJECT_MANAGER.getAllProjects().map(project => project.projectName);
+    return projectNamesArray;
+}
