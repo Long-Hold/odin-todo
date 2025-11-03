@@ -2,11 +2,14 @@ import { objectifySubmission, bundleKeys, removeEmptyFields, setMinDateToCurrent
 import { createChecklistManager } from "./createFormChecklistManager";
 import { triggerCustomEvent } from "../events/eventProducer";
 import { EVENTS } from "../events/events";
+import { getAllProjectNames } from "../projects/projectController";
+import { createOptions } from "./newTodoForm/projectsDropdownUtils";
 
 const BUNDLE = {substring: 'step', key: 'steps'};
 
 const DIALOG = document.getElementById('new-todo-dialog');
 const TODO_FORM = document.getElementById('new-todo-form');
+const PROJECT_SELECT_ELEMENT = document.getElementById('projects');
 
 const STEPS_CONTAINER = document.getElementById('input-steps-container');
 const STEP_TEMPLATE = document.getElementById('checklist-step-template');
@@ -65,7 +68,14 @@ function resetAndCloseForm() {
 
 function initializeNewTodoListener() {
     const newTodoBtn = document.getElementById('add-task');
-    newTodoBtn.addEventListener('click', () => DIALOG.show());
+    newTodoBtn.addEventListener('click', () => {
+        /**Update the projects dropdown menu
+         * everytime the dialog is opened
+         */
+        const projects = getAllProjectNames();
+        createOptions(projects, PROJECT_SELECT_ELEMENT);
+        DIALOG.show()
+    });
 }
 
 function initializeFormChecklistListeners() {
