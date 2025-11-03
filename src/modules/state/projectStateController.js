@@ -1,5 +1,5 @@
 import { PROJECT_MANAGER, createAndSaveProjectObject, storeJSONProjectObj } from "../projects/projectController";
-import { NEW_PROJECT_FORM } from "../forms/projectFormController";
+import { NEW_PROJECT_FORM } from "../forms/newProjectForm/projectFormController";
 import { EVENTS } from "../events/events";
 import { saveProject, getAllProjects } from "../storage/projectStorageService";
 import { renderProjectTabButton } from "../ui/projects/projectsUIController";

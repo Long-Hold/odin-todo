@@ -1,6 +1,6 @@
-import { EVENTS } from "../events/events";
-import { triggerCustomEvent } from "../events/eventProducer";
-import { objectifySubmission, removeEmptyFields } from "./formUtils";
+import { EVENTS } from "../../events/events";
+import { triggerCustomEvent } from "../../events/eventProducer";
+import { objectifySubmission, removeEmptyFields } from "../formUtils";
 
 const ADD_PROJECT_BTN = document.getElementById('add-project-btn');
 const NEW_PROJECT_DIALOG = document.getElementById('new-project-dialog');
