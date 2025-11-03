@@ -40,6 +40,6 @@ export function storeJSONProjectObj(object) {
 }
 
 export function getAllProjectNames() {
-    const projectNamesArray = PROJECT_MANAGER.getAllProjects().map(project => project.projectName);
+    const projectNamesArray = PROJECT_MANAGER.getAllProjects().map(project => structuredClone(project.projectName));
     return projectNamesArray;
 }
