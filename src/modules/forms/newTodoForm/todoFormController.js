@@ -8,7 +8,7 @@ import { createOptions } from "./projectsDropdownUtils";
 const BUNDLE = {substring: 'step', key: 'steps'};
 
 const DIALOG = document.getElementById('new-todo-dialog');
-const TODO_FORM = document.getElementById('new-todo-form');
+export const TODO_FORM = document.getElementById('new-todo-form');
 const PROJECT_SELECT_ELEMENT = document.getElementById('projects');
 
 const STEPS_CONTAINER = document.getElementById('input-steps-container');
