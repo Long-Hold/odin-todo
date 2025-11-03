@@ -3,12 +3,13 @@ export function createOptions(optionsArray, selectElement) {
 
     const defaultOption = document.createElement('option');
     defaultOption.value = '';
+    defaultOption.textContent = 'None';
     defaultOption.selected = true;
 
     selectElement.appendChild(defaultOption);
 
     optionsArray.forEach((option) => {
-        const newOption = document.createElement('otpion');
+        const newOption = document.createElement('option');
         newOption.value = option;
         newOption.textContent = option;
         selectElement.appendChild(newOption);
