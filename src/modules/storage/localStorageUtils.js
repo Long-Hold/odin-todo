@@ -51,3 +51,10 @@ export function getAllObjects(keyPrefix) {
 
 	return objectsArray;
 }
+
+export function getObject(key) {
+	const objectJSON = localStorage.getItem(key);
+	const parsedObject = JSON.parse(objectJSON);
+
+	return parsedObject;
+}
