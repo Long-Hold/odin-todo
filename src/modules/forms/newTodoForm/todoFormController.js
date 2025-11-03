@@ -1,9 +1,9 @@
-import { objectifySubmission, bundleKeys, removeEmptyFields, setMinDateToCurrentDate } from "./formUtils";
+import { objectifySubmission, bundleKeys, removeEmptyFields, setMinDateToCurrentDate } from "../formUtils";
 import { createChecklistManager } from "./createFormChecklistManager";
-import { triggerCustomEvent } from "../events/eventProducer";
-import { EVENTS } from "../events/events";
-import { getAllProjectNames } from "../projects/projectController";
-import { createOptions } from "./newTodoForm/projectsDropdownUtils";
+import { triggerCustomEvent } from "../../events/eventProducer";
+import { EVENTS } from "../../events/events";
+import { getAllProjectNames } from "../../projects/projectController";
+import { createOptions } from "./projectsDropdownUtils";
 
 const BUNDLE = {substring: 'step', key: 'steps'};
 
