@@ -2,7 +2,7 @@ import { TODO_OBJECT_MANAGER, createAndSaveTodoObj, storeTodoObj} from "../todoO
 import { renderSingleCard, renderAllCards } from "../ui/todoCards/uiController";
 import { getAllTodoObjects, saveToLocalStorage } from "../storage/localStorageManager";
 import { EVENTS } from "../events/events";
-import { initializeProjectState } from "./projectStateController";
+import { initializeProjectState } from "./projects/projectStateController";
 
 export function initializeStorageAndUIStates() {
     loadSavedTodos();
