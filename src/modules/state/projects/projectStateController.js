@@ -13,6 +13,25 @@ export function initializeProjectState() {
     });
 }
 
+export function linktTodoToProject(projectName, taskID) {
+    const projectObject = PROJECT_MANAGER.getProject(projectName);
+    if (!projectObject) {
+        console.log(`${linktTodoToProject.name} could not find ${projectName}.`);
+        return null;
+    }
+
+    projectObject.addTaskId(taskID);
+    const saveSuccess = saveProject(projectObject.projectName, projectObject);
+
+    if (!saveSuccess) {
+        console.error('An error occured while adding task to project category. Aborting process');
+        projectObject.removeTask(taskID);
+        return null;
+    }
+
+    return projectObject.getAllLinkedTasks();
+}
+
 function handleNewProject(formObject) {
     const projectObj = createAndSaveProjectObject(formObject);
     if (projectObj === null) {
