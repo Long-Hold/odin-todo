@@ -4,6 +4,8 @@ import { EVENTS } from "../../events/events";
 import { saveTodo, getAllTodoObjects, getTodoObject} from "../../storage/todoStorageService";
 import { renderTodoCard } from "../../ui/todoCards/todoUIController";
 
+import { linktTodoToProject } from "../projects/projectStateController";
+
 export function initializeTodoState() {
     loadTodoObjects();
     synchUIToState();
@@ -39,6 +41,14 @@ function handleNewTodo(formObject) {
     if (todoObject === null) {
         console.error(`${createAndSaveTodoObj.name} encountered an error. Aborting task creation.`);
         return null;
+    }
+
+    if (todoObject.projects) {
+        const linkState = linktTodoToProject(todoObject.projects, todoObject.taskID);
+        if (linkState === null) {
+            console.error('Task could not be added to project, removing project from task.');
+            delete todoObject.projects;
+        }
     }
 
     const saveSuccess = saveTodo(todoObject.taskID, todoObject);
