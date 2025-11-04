@@ -110,7 +110,7 @@ function initializeSubmitListener() {
             return null;
         }
 
-        triggerCustomEvent(TODO_FORM, EVENTS.FORM_SUBMITTED, formObject);
+        triggerCustomEvent(TODO_FORM, EVENTS.TODO_SUBMITTED, formObject);
         resetAndCloseForm();
     })
 }

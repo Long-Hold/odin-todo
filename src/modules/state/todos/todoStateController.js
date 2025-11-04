@@ -8,7 +8,7 @@ export function initializeTodoState() {
     loadTodoObjects();
     synchUIToState();
 
-    TODO_FORM.addEventListener(EVENTS.FORM_SUBMITTED, (event) => {
+    TODO_FORM.addEventListener(EVENTS.TODO_SUBMITTED, (event) => {
         handleNewTodo(event.detail.data);
     });
 }
