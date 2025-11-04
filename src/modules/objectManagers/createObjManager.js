@@ -10,7 +10,7 @@ export function createObjectManager() {
             throw new TypeError(`${object} must be an instance of: Object`);
         }
 
-        storedObjects.set(key.trim(), structuredClone(object));
+        storedObjects.set(key.trim(), object);
 
         return structuredClone(storedObjects);
     }
@@ -20,9 +20,7 @@ export function createObjectManager() {
     }
 
     function getObject(key) {
-        const clonedObject = structuredClone(storedObjects.get(key));
-
-        return clonedObject;
+        return storedObjects.get(key);
     }
 
     function deleteObject(key) {
