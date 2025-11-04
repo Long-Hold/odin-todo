@@ -2,10 +2,6 @@ export function createObjectManager() {
     const storedObjects = new Map();
 
     function addObject(key, object) {
-        if (typeof(key) !== 'string') {
-            throw new TypeError('Key must be of type: String');
-        }
-
         if (!key.trim()) {
             throw new Error('Key cannot be empty');
         }
@@ -24,19 +20,7 @@ export function createObjectManager() {
     }
 
     function getObject(key) {
-        if (typeof(key) !== 'string') {
-            throw new TypeError('Key must be a string');
-        }
-
-        if (!key.trim()) {
-            throw new Error('Key cannot be empty');
-        }
-
         const clonedObject = structuredClone(storedObjects.get(key));
-
-        if (clonedObject === undefined) {
-            throw new ReferenceError(`Key (${key}) could not be found`);
-        }
 
         return clonedObject;
     }
