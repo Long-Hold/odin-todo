@@ -5,6 +5,9 @@ import { saveProject, getAllProjects } from "../../storage/projectStorageService
 import { renderProjectTabButton } from "../../ui/projects/projectsUIController";
 import { PROJECTS_TAB_CONTAINER } from "../../ui/tabs/projectTabController";
 
+import { TODO_OBJECT_MANAGER } from "../../todoObjects/todoController";
+import { clearAllCards, renderTodoCard } from "../../ui/todoCards/todoUIController";
+
 export function initializeProjectState() {
     loadProjects();
     synchUIToState();
@@ -13,7 +16,7 @@ export function initializeProjectState() {
         handleNewProject(event.detail.data)
     });
 
-    PROJECTS_TAB_CONTAINER.addEventListener(EVENTS.PROJECT_TABBED, (event) => { filterTodosByProject(event); });
+    PROJECTS_TAB_CONTAINER.addEventListener(EVENTS.PROJECT_TABBED, (event) => { filterTodosByProject(event.detail.data); });
 }
 
 export function linktTodoToProject(projectName, taskID) {
@@ -74,5 +77,23 @@ function synchUIToState() {
 }
 
 function filterTodosByProject(projectName) {
-    // TODO
+    const projectObj = PROJECT_MANAGER.getProject(projectName);
+    if (projectObj === undefined) {
+        console.error(`${filterTodosByProject.name} could not retrieve project information.`);
+        return null;
+    }
+
+    clearAllCards();
+
+    const taskIdsArray = projectObj.getAllLinkedTasks();
+    taskIdsArray.forEach((taskId) => {
+        const todoObj = TODO_OBJECT_MANAGER.getTodoObject(taskId);
+
+        if (todoObj === undefined) {
+            console.error(`${filterTodosByProject.name} could not locate todoObject`);
+        }
+        else {
+            renderTodoCard(todoObj);
+        }
+    })
 }
