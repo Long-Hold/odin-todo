@@ -9,5 +9,10 @@ export function initializeTabsListener() {
             const projectName = event.target.dataset.projectName;
             triggerCustomEvent(PROJECTS_TAB_CONTAINER, EVENTS.PROJECT_TABBED, projectName);
         }
+
+        if (event.target.classList.contains('delete-project-btn')) {
+            const selectedProject = event.target.dataset.projectName;
+            triggerCustomEvent(PROJECTS_TAB_CONTAINER, EVENTS.PROJECT_DELETED, selectedProject);
+        }
     })
 }
