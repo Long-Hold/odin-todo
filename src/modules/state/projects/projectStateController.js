@@ -17,6 +17,7 @@ export function initializeProjectState() {
     });
 
     PROJECTS_TAB_CONTAINER.addEventListener(EVENTS.PROJECT_TABBED, (event) => { filterTodosByProject(event.detail.data); });
+    PROJECTS_TAB_CONTAINER.addEventListener(EVENTS.PROJECT_DELETED, (event) => { handleProjectDeleted(event.detail.data); });
 }
 
 export function linktTodoToProject(projectName, taskID) {
@@ -95,5 +96,26 @@ function filterTodosByProject(projectName) {
         else {
             renderTodoCard(todoObj);
         }
+    })
+}
+
+function handleProjectDeleted(projectName) {
+    /**
+     * 1. Get all the linked tasks
+     * 2. For each task, delete the project property from the object
+     *      - Then delete the task from manager, JSON, and DOM
+     * 3. Update the JSON of the modified object
+     * 4. Redraw ALL cards (home page default)
+     */
+
+    const projectObject = PROJECT_MANAGER.getProject(projectName);
+    if (projectObject === undefined) {
+        console.error(`${handleProjectDeleted.name} could not located the targeted project.`);
+        return null;
+    }
+
+    const linkedTasksArray = projectObject.getAllLinkedTasks();
+    linkedTasksArray.forEach((taskId) => { 
+        //TODO: Call the todoState controller to process the transaction
     })
 }
