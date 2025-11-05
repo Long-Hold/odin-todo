@@ -4,4 +4,5 @@ export const EVENTS = {
     TODO_FAILED: 'todo:failed',
     PROJECT_SUBMITTED: 'project:submitted',
     PROJECT_TABBED: 'project:tabbed',
+    PROJECT_DELETED: 'project:deleted',
 }
