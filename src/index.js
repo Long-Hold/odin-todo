@@ -6,8 +6,12 @@ import { initializeProjectFormControl } from "./modules/forms/newProjectForm/pro
 import { initializeTodoState } from "./modules/state/todos/todoStateController";
 import { initializeProjectState } from "./modules/state/projects/projectStateController";
 
+import { initializeTabsListener } from "./modules/ui/tabs/projectTabController";
+
 initializeTodoState();
 initializeProjectState();
 
 initializeTodoFormControl();
 initializeProjectFormControl();
+
+initializeTabsListener();
