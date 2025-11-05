@@ -3,6 +3,7 @@ import { NEW_PROJECT_FORM } from "../../forms/newProjectForm/projectFormControll
 import { EVENTS } from "../../events/events";
 import { saveProject, getAllProjects } from "../../storage/projectStorageService";
 import { renderProjectTabButton } from "../../ui/projects/projectsUIController";
+import { PROJECTS_TAB_CONTAINER } from "../../ui/tabs/projectTabController";
 
 export function initializeProjectState() {
     loadProjects();
@@ -11,6 +12,8 @@ export function initializeProjectState() {
     NEW_PROJECT_FORM.addEventListener(EVENTS.PROJECT_SUBMITTED, (event) => {
         handleNewProject(event.detail.data)
     });
+
+    PROJECTS_TAB_CONTAINER.addEventListener(EVENTS.PROJECT_TABBED, (event) => { filterTodosByProject(event); });
 }
 
 export function linktTodoToProject(projectName, taskID) {
@@ -68,4 +71,8 @@ function synchUIToState() {
     }
 
     projectsArray.forEach((project) => renderProjectTabButton(project));
+}
+
+function filterTodosByProject(projectName) {
+    // TODO
 }
