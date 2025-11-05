@@ -1,11 +1,15 @@
 import { createCardCreator } from "./createTodoCard";
-import { renderChildElement, removeChildElement } from "../renderUtils";
+import { renderChildElement, removeChildElement, clearContainer } from "../renderUtils";
 
 const TODO_CARDS_CONTAINER = document.querySelector('.display-box');
 
 export function renderTodoCard(todoObject) {
     const todoCard = constructTodoCardFromObject(todoObject);
     renderChildElement(TODO_CARDS_CONTAINER, todoCard);
+}
+
+export function clearAllCards() {
+    clearContainer(TODO_CARDS_CONTAINER);
 }
 
 function constructTodoCardFromObject(todoCardObj) {
