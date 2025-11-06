@@ -1,5 +1,4 @@
 import { createTodoObject } from "./createTodoObj";
-import { createTodoManager } from "./todoManager";
 import { createObjectManager } from "../objectManagers/createObjManager";
 
 const {
