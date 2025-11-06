@@ -15,6 +15,17 @@ export const TODO_OBJECT_MANAGER = {
     deleteTodoObject,
 };
 
+TODO_OBJECT_MANAGER.removeProperty = function (taskId, property) {
+    const todoObj = getTodoObject(taskId);
+    if (todoObj === undefined) {
+        console.error(`${removeProperty.name} could not locate object.`);
+        return null;
+    }
+
+    delete todoObj[property];
+    return structuredClone(todoObj);
+}
+
 export function createAndSaveTodoObj(formObject) {
     const todoObject = createTodoObject(formObject);
 
