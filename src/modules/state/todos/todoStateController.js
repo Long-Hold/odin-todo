@@ -15,6 +15,10 @@ export function initializeTodoState() {
     });
 }
 
+export function updateTodosAfterProjectDeleted(taskId) {
+    TODO_OBJECT_MANAGER.removeProperty(taskId, 'projects');
+}
+
 function loadTodoObjects() {
     const todosArray = getAllTodoObjects();
 
