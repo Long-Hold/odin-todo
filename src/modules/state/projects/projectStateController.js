@@ -7,6 +7,7 @@ import { PROJECTS_TAB_CONTAINER } from "../../ui/tabs/projectTabController";
 
 import { TODO_OBJECT_MANAGER } from "../../todoObjects/todoController";
 import { clearAllCards, renderTodoCard } from "../../ui/todoCards/todoUIController";
+import { updateTodosAfterProjectDeleted } from "../todos/todoStateController";
 
 export function initializeProjectState() {
     loadProjects();
@@ -116,6 +117,6 @@ function handleProjectDeleted(projectName) {
 
     const linkedTasksArray = projectObject.getAllLinkedTasks();
     linkedTasksArray.forEach((taskId) => { 
-        //TODO: Call the todoState controller to process the transaction
+        updateTodosAfterProjectDeleted(taskId);
     })
 }
