@@ -16,7 +16,16 @@ export function initializeTodoState() {
 }
 
 export function updateTodosAfterProjectDeleted(taskId) {
+    const originalObj = structuredClone(TODO_OBJECT_MANAGER.getTodoObject(taskId));
+
     TODO_OBJECT_MANAGER.removeProperty(taskId, 'projects');
+
+    const saveSuccess = saveTodo(TODO_OBJECT_MANAGER.getTodoObject(taskId));
+    if (saveSuccess === false) {
+        TODO_OBJECT_MANAGER.addTodo(originalObj);
+        console.error(`${updateTodosAfterProjectDeleted.name} caught an exception while saving the object. Original todo restored`);
+        return null;
+    }
 }
 
 function loadTodoObjects() {
