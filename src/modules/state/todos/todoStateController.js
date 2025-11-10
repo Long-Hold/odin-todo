@@ -20,13 +20,13 @@ export function updateTodosAfterProjectDeleted(taskId) {
 
     TODO_OBJECT_MANAGER.removeProperty(taskId, 'projects');
 
-    const saveSuccess = saveTodo(TODO_OBJECT_MANAGER.getTodoObject(taskId));
+    const saveSuccess = saveTodo(taskId, TODO_OBJECT_MANAGER.getTodoObject(taskId));
     if (saveSuccess === false) {
         TODO_OBJECT_MANAGER.addTodo(originalObj);
         console.error(`${updateTodosAfterProjectDeleted.name} caught an exception while saving the object. Original todo restored`);
         return null;
     }
-
+    synchUIToState();
     return true;
 }
 
