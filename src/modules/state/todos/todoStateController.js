@@ -26,6 +26,8 @@ export function updateTodosAfterProjectDeleted(taskId) {
         console.error(`${updateTodosAfterProjectDeleted.name} caught an exception while saving the object. Original todo restored`);
         return null;
     }
+
+    return true;
 }
 
 function loadTodoObjects() {
