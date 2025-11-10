@@ -16,3 +16,8 @@ export function initializeTabsListener() {
         }
     })
 }
+
+export function clearProjectTabs() {
+    const buttons = PROJECTS_TAB_CONTAINER.querySelectorAll('.project-btn');
+    Array.from(buttons).forEach(button => button.remove() );
+}

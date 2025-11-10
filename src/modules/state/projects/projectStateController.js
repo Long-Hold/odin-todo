@@ -1,9 +1,9 @@
 import { PROJECT_MANAGER, createAndSaveProjectObject, storeJSONProjectObj } from "../../projects/projectController";
 import { NEW_PROJECT_FORM } from "../../forms/newProjectForm/projectFormController";
 import { EVENTS } from "../../events/events";
-import { saveProject, getAllProjects } from "../../storage/projectStorageService";
+import { saveProject, getAllProjects, deleteProject } from "../../storage/projectStorageService";
 import { renderProjectTabButton } from "../../ui/projects/projectsUIController";
-import { PROJECTS_TAB_CONTAINER } from "../../ui/tabs/projectTabController";
+import { clearProjectTabs, PROJECTS_TAB_CONTAINER } from "../../ui/tabs/projectTabController";
 
 import { TODO_OBJECT_MANAGER } from "../../todoObjects/todoController";
 import { clearAllCards, renderTodoCard } from "../../ui/todoCards/todoUIController";
@@ -117,6 +117,15 @@ function handleProjectDeleted(projectName) {
 
     const linkedTasksArray = projectObject.getAllLinkedTasks();
     linkedTasksArray.forEach((taskId) => { 
-        updateTodosAfterProjectDeleted(taskId);
+        const result = updateTodosAfterProjectDeleted(taskId);
+        if (result === null) {
+            console.error(`${updateTodosAfterProjectDeleted.name} could not delete all linked projects. Aborting deletion transaction.`);
+            return null;
+        }
     })
+
+    PROJECT_MANAGER.deleteProject(projectObject.projectName);
+    deleteProject(projectObject.projectName);
+    clearProjectTabs();
+    synchUIToState();
 }
