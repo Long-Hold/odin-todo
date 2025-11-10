@@ -58,3 +58,7 @@ export function getObject(key) {
 
 	return parsedObject;
 }
+
+export function deleteObject(key) {
+	localStorage.removeItem(key);
+}
