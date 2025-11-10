@@ -2,6 +2,7 @@ const TODO_FORM = document.getElementById('todo-form');
 const ADD_TODO_BTN = document.getElementById('add-todo');
 const TODO_DIALOG = document.getElementById('todo-dialog');
 const FORM_BUTTONS = document.getElementById('form-control-btns');
+const CHECKLIST_CONTAINER = document.getElementById('checklist-container');
 
 export function initializeTodoFormListeners() {
     ADD_TODO_BTN.addEventListener('click', () => { TODO_DIALOG.show(); });
@@ -25,4 +26,13 @@ export function initializeTodoFormListeners() {
         const formData = new FormData(event.target);
         //TODO: Emit custom event that todoForm was submitted
     });
+
+    CHECKLIST_CONTAINER.addEventListener('click', (event) => {
+        if (event.target.type !== 'button') { return; }
+
+        const clickedAction = event.target.dataset.action;
+        if (clickedAction === 'add-step') { 
+            //TODO: Add checklist step
+        }
+    })
 }
