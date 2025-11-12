@@ -29,6 +29,7 @@ export function initializeTodoFormListeners() {
         const formData = new FormData(event.target);
         // TODO: Emit custom event for checklist item
         resetForm();
+        TODO_DIALOG.close();
     });
 
     CHECKLIST_CONTAINER.addEventListener('click', (event) => {
