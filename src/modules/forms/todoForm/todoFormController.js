@@ -38,5 +38,9 @@ export function initializeTodoFormListeners() {
             const checklist_template = document.getElementById('checklist-template');
             addStep(checklist_input_container, checklist_template);
         }
+
+        if (clickedAction === 'delete') {
+            //TODO: Call delete function
+        }
     })
 }
