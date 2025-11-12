@@ -24,7 +24,7 @@ export function initializeTodoFormListeners() {
             resetForm();
             TODO_DIALOG.close();
         }
-    })
+    });
 
     TODO_FORM.addEventListener('submit', (event) => { 
         event.preventDefault();
@@ -48,7 +48,7 @@ export function initializeTodoFormListeners() {
             const stepDivContainer = event.target.parentElement;
             deleteStep(stepDivContainer);
         }
-    })
+    });
 }
 
 function resetForm() {
