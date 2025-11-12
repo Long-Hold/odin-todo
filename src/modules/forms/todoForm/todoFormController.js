@@ -33,8 +33,8 @@ export function initializeTodoFormListeners() {
         if (event.target.type !== 'button') { return; }
 
         const clickedAction = event.target.dataset.action;
+        const checklist_input_container = document.getElementById('checklist-input-container');
         if (clickedAction === 'add-step') { 
-            const checklist_input_container = document.getElementById('checklist-input-container');
             const checklist_template = document.getElementById('checklist-template');
             addStep(checklist_input_container, checklist_template);
         }
