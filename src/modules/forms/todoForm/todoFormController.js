@@ -12,13 +12,13 @@ export function initializeTodoFormListeners() {
     ADD_TODO_BTN.addEventListener('click', () => { TODO_DIALOG.show(); });
 
     FORM_BUTTONS.addEventListener('click', (event) => {
-        const controlBtn = event.target;
+        const controlBtn = event.target.dataset.action;
 
-        if (controlBtn.dataset.action === 'reset') {
+        if (controlBtn === 'reset') {
             resetForm();
         }
 
-        if (controlBtn.dataset.action === 'cancel') {
+        if (controlBtn === 'cancel') {
             resetForm();
             TODO_DIALOG.close();
         }
