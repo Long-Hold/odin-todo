@@ -1,9 +1,10 @@
+import { addStep } from "./checklistManager";
+
 const TODO_FORM = document.getElementById('todo-form');
 const ADD_TODO_BTN = document.getElementById('add-todo');
 const TODO_DIALOG = document.getElementById('todo-dialog');
 const FORM_BUTTONS = document.getElementById('form-control-btns');
 const CHECKLIST_CONTAINER = document.getElementById('checklist-container');
-const CHECKLIST_TEMPLATE = document.getElementById('checklist-template');
 
 export function initializeTodoFormListeners() {
     ADD_TODO_BTN.addEventListener('click', () => { TODO_DIALOG.show(); });
@@ -33,7 +34,9 @@ export function initializeTodoFormListeners() {
 
         const clickedAction = event.target.dataset.action;
         if (clickedAction === 'add-step') { 
-            //TODO: Add checklist step
+            const checklist_input_container = document.getElementById('checklist-input-container');
+            const checklist_template = document.getElementById('checklist-template');
+            addStep(checklist_input_container, checklist_template);
         }
     })
 }
