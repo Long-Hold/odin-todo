@@ -3,6 +3,7 @@ const ADD_TODO_BTN = document.getElementById('add-todo');
 const TODO_DIALOG = document.getElementById('todo-dialog');
 const FORM_BUTTONS = document.getElementById('form-control-btns');
 const CHECKLIST_CONTAINER = document.getElementById('checklist-container');
+const CHECKLIST_TEMPLATE = document.getElementById('checklist-template');
 
 export function initializeTodoFormListeners() {
     ADD_TODO_BTN.addEventListener('click', () => { TODO_DIALOG.show(); });
