@@ -1,17 +1,14 @@
 export function addStep(parentContainer, template) {
-    const stepNumber = parentContainer.childElementCount + 1;
     const templateClone = template.content.cloneNode(true);
 
     const label = templateClone.querySelector('label');
     const input = templateClone.querySelector('input');
-    const attributeValue = `step${stepNumber}`;
 
-    label.textContent = `Step ${stepNumber}`;
-    label.htmlFor = attributeValue;
-    input.id = attributeValue;
-    input.name = attributeValue;
+    const uniqueId = Date.now();
+    const idValue = `checklist-item-${uniqueId}`;
 
-    label.appendChild(input);
+    label.htmlFor = idValue;
+    input.id = idValue;
 
     parentContainer.appendChild(templateClone);
 
