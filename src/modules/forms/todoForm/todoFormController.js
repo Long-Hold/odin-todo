@@ -1,5 +1,5 @@
-import { triggerCustomEvent } from "../../../events/eventProducer";
-import { EVENTS } from "../../../events/events";
+import { triggerCustomEvent } from "../../events/eventProducer";
+import { EVENTS } from "../../events/events";
 import { addStep, clearChecklistContainer, deleteStep } from "./checklistManager";
 
 const TODO_FORM = document.getElementById('todo-form');
