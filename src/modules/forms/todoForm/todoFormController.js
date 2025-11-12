@@ -27,7 +27,8 @@ export function initializeTodoFormListeners() {
     TODO_FORM.addEventListener('submit', (event) => { 
         event.preventDefault();
         const formData = new FormData(event.target);
-        //TODO: Emit custom event that todoForm was submitted
+        // TODO: Emit custom event for checklist item
+        resetForm();
     });
 
     CHECKLIST_CONTAINER.addEventListener('click', (event) => {
