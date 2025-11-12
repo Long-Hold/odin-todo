@@ -1,10 +1,12 @@
-import { addStep, deleteStep } from "./checklistManager";
+import { addStep, clearChecklistContainer, deleteStep } from "./checklistManager";
 
 const TODO_FORM = document.getElementById('todo-form');
 const ADD_TODO_BTN = document.getElementById('add-todo');
 const TODO_DIALOG = document.getElementById('todo-dialog');
 const FORM_BUTTONS = document.getElementById('form-control-btns');
+
 const CHECKLIST_CONTAINER = document.getElementById('checklist-container');
+const CHECKLIST_INPUT_CONTAINER = document.getElementById('checklist-input-container');
 
 export function initializeTodoFormListeners() {
     ADD_TODO_BTN.addEventListener('click', () => { TODO_DIALOG.show(); });
@@ -13,7 +15,7 @@ export function initializeTodoFormListeners() {
         const controlBtn = event.target;
 
         if (controlBtn.dataset.action === 'reset') {
-            // TODO: Reset checklist steps
+            clearChecklistContainer(CHECKLIST_INPUT_CONTAINER);
             TODO_FORM.reset();
         }
 
@@ -33,10 +35,10 @@ export function initializeTodoFormListeners() {
         if (event.target.type !== 'button') { return; }
 
         const clickedAction = event.target.dataset.action;
-        const checklist_input_container = document.getElementById('checklist-input-container');
+
         if (clickedAction === 'add-step') { 
             const checklist_template = document.getElementById('checklist-template');
-            addStep(checklist_input_container, checklist_template);
+            addStep(CHECKLIST_INPUT_CONTAINER, checklist_template);
         }
 
         if (clickedAction === 'delete') {
