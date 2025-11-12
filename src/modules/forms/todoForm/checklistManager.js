@@ -17,3 +17,12 @@ export function addStep(parentContainer, template) {
 
     return templateClone.firstElementChild;
 }
+
+export function deleteStep(parentContainer, selectedStep) {
+    selectedStep.remove();
+    renumberSteps(parentContainer.childElementCount);
+}
+
+function renumberSteps(childrenCount) {
+    //TODO: Renumber each step based on remaining children
+}
