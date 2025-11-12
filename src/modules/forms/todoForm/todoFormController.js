@@ -41,7 +41,7 @@ export function initializeTodoFormListeners() {
 
         if (clickedAction === 'delete') {
             const stepDivContainer = event.target.parentElement;
-            deleteStep(checklist_input_container, stepDivContainer);
+            deleteStep(stepDivContainer);
         }
     })
 }

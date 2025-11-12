@@ -15,6 +15,6 @@ export function addStep(parentContainer, template) {
     return templateClone.firstElementChild;
 }
 
-export function deleteStep(parentContainer, selectedStep) {
+export function deleteStep(selectedStep) {
     selectedStep.remove();
 }
