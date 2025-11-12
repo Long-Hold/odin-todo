@@ -1,25 +1,19 @@
-export function addStep(parentContainer) {
-    const newStep = createStepElement(parentContainer.childElementCount + 1);
-}
+export function addStep(parentContainer, template) {
+    const stepNumber = parentContainer.childElementCount + 1;
+    const templateClone = template.content.cloneNode(true);
 
-function createStepElement(stepNumber) {
-    const uniqueId = `step_${crypto.randomUUID()}`;
+    const label = templateClone.querySelector('label');
+    const input = templateClone.querySelector('input');
+    const attributeValue = `step${stepNumber}`;
 
-    const div = document.createElement('div');
-
-    const label = document.createElement('label');
-    label.htmlFor = uniqueId;
-    label.textContent = `Step ${stepNumber}:`;
-
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.id = uniqueId;
-    input.name = uniqueId;
-    input.placeholder = 'Enter step here';
+    label.textContent = `Step ${stepNumber}`;
+    label.htmlFor = attributeValue;
+    input.id = attributeValue;
+    input.name = attributeValue;
 
     label.appendChild(input);
 
-    const deleteBtn = document.createElement('button');
+    parentContainer.appendChild(templateClone);
 
-    div.appendChild(label);
+    return templateClone.firstElementChild;
 }
