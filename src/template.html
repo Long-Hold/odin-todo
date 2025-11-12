@@ -68,7 +68,10 @@
                                 type="text" 
                                 name="title" 
                                 id="title" 
-                                maxlength="64" 
+                                maxlength="64"
+                                placeholder="Enter title..."
+                                pattern=".*\S+.*"
+                                title="This input requires at least 1 character." 
                                 required>
                             </label>
                         </div>
@@ -216,7 +219,7 @@
 
     <template id="checklist-template">
         <div>
-            <label for="">Item: 
+            <label for="">Item*: 
                 <input
                     type="text"
                     id=""
