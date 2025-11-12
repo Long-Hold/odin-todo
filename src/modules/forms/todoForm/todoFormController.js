@@ -15,12 +15,11 @@ export function initializeTodoFormListeners() {
         const controlBtn = event.target;
 
         if (controlBtn.dataset.action === 'reset') {
-            clearChecklistContainer(CHECKLIST_INPUT_CONTAINER);
-            TODO_FORM.reset();
+            resetForm();
         }
 
         if (controlBtn.dataset.action === 'cancel') {
-            // TODO: Reset checklist steps
+            resetForm();
             TODO_DIALOG.close();
         }
     })
@@ -46,4 +45,9 @@ export function initializeTodoFormListeners() {
             deleteStep(stepDivContainer);
         }
     })
+}
+
+function resetForm() {
+    clearChecklistContainer(CHECKLIST_INPUT_CONTAINER);
+    TODO_FORM.reset();
 }
