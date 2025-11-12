@@ -216,8 +216,13 @@
 
     <template id="checklist-template">
         <div>
-            <label for="">Step #:
-                <input type="text" name="" id="" maxlength="64">
+            <label for="">Item: 
+                <input
+                    type="text"
+                    id=""
+                    name="checklistItem[]"
+                    maxlength="64"
+                    placeholder="Enter text...">
             </label>
             <button type="button" data-action="delete">X</button>
         </div>
