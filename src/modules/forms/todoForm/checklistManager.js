@@ -18,3 +18,8 @@ export function addStep(parentContainer, template) {
 export function deleteStep(selectedStep) {
     selectedStep.remove();
 }
+
+export function clearChecklistContainer(parentContainer) {
+    parentContainer.replaceChildren();
+    return parentContainer;
+}
