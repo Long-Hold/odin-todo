@@ -1,4 +1,4 @@
-import { addStep } from "./checklistManager";
+import { addStep, deleteStep } from "./checklistManager";
 
 const TODO_FORM = document.getElementById('todo-form');
 const ADD_TODO_BTN = document.getElementById('add-todo');
@@ -40,7 +40,8 @@ export function initializeTodoFormListeners() {
         }
 
         if (clickedAction === 'delete') {
-            //TODO: Call delete function
+            const stepDivContainer = event.target.parentElement;
+            deleteStep(checklist_input_container, stepDivContainer);
         }
     })
 }
