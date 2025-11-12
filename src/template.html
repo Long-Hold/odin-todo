@@ -222,7 +222,10 @@
                     id=""
                     name="checklistItem"
                     maxlength="64"
-                    placeholder="Enter text...">
+                    placeholder="Enter text..."
+                    required
+                    pattern=".*\S+.*"
+                    title="This input requires at least 1 character.">
             </label>
             <button type="button" data-action="delete">X</button>
         </div>
