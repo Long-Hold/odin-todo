@@ -7,7 +7,7 @@ const {
     deleteObject: deleteTodo,
 } = createObjectManager();
 
-const TODO_OBJECT_MANAGER = {
+export const TODO_OBJECT_MANAGER = {
     addTodo,
     getAllTodos,
     getTodo,
