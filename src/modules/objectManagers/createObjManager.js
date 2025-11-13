@@ -1,4 +1,13 @@
 export function createObjectManager() {
+    /**This object manager is a general purpose utility.
+     * 
+     * I make this factory so that I could keep track of objects
+     * as is, basicalaly "in-memory" so they persist rather than
+     * needing to do constant I/O read operations with JSON data from
+     * local storage.
+     * 
+     * Objects are stored in a map for faster retrieval, and can be mutated.
+     */
     const storedObjects = new Map();
 
     function addObject(key, object) {
