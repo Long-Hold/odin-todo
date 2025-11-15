@@ -1,6 +1,8 @@
+export const TODO_ID_PREFIX = 'todo_';
+
 export class Todo {
     constructor(title, priority, project = null , deadline = null, description = null, checklist = null) {
-        this.todoId = `todo_${crypto.randomUUID()}`;
+        this.todoId = `${TODO_ID_PREFIX}${crypto.randomUUID()}`;
         this.completed = false;
         this.title = title;
         this.priority = priority;
