@@ -18,7 +18,7 @@ export function initializeProjectFormListeners() {
 
     PROJECT_FORM.addEventListener('submit', (event) => {
         event.preventDefault();
-        const formData = new formData(event.target);
+        const formData = new FormData(event.target);
         triggerCustomEvent(PROJECT_FORM, EVENTS.PROJECT_FORM_SUBMITTED, formData);
         PROJECT_FORM.reset();
         PROJECT_DIALOG.close();
