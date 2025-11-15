@@ -14,7 +14,7 @@ export function initializeProjectFormListeners() {
             PROJECT_FORM.reset();
             PROJECT_DIALOG.close();
         }
-    })
+    });
 
     PROJECT_FORM.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -22,5 +22,5 @@ export function initializeProjectFormListeners() {
         triggerCustomEvent(PROJECT_FORM, EVENTS.PROJECT_FORM_SUBMITTED, formData);
         PROJECT_FORM.reset();
         PROJECT_DIALOG.close();
-    })
+    });
 }
