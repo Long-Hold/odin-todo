@@ -1,3 +1,5 @@
+import { deleteItem, saveItem } from "../storage/localStorageUtils"; 
+
 export function createObjectManager() {
     /**This object manager is a general purpose utility.
      * 
@@ -12,7 +14,7 @@ export function createObjectManager() {
 
     function addObject(key, object) {
         storedObjects.set(key.trim(), object);
-
+        saveItem(key, object);
         return storedObjects;
     }
 
@@ -26,7 +28,7 @@ export function createObjectManager() {
 
     function deleteObject(key) {
         storedObjects.delete(key);
-
+        deleteItem(key);
         return storedObjects;
     }
 
