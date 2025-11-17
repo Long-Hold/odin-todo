@@ -1,7 +1,7 @@
 import { EVENTS } from "../../events/events";
 import { TODO_FORM } from "../../forms/todoForm/todoFormController";
 import { Todo } from "../../objects/todos/todoClass";
-import { createTodoFromFormData } from "../../objects/todos/todoObjectController";
+import { createTodoFromFormData, createTodoFromLocalStorage } from "../../objects/todos/todoObjectController";
 import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
 import { getAllPrefixedItems } from "../../storage/localStorageUtils";
 
@@ -20,6 +20,10 @@ function loadLocalStorageToManager() {
         return null;
     }
 
-    todoObjectArray.forEach(todo => TODO_OBJECT_MANAGER.addTodo(todo.todoId, todo));
+    todoObjectArray.forEach(jsonTodo => {
+        const todo = createTodoFromLocalStorage(jsonTodo);
+        TODO_OBJECT_MANAGER.addTodo(todo.todoId, todo)
+    });
+    
     return TODO_OBJECT_MANAGER.getAllTodos();
 }
