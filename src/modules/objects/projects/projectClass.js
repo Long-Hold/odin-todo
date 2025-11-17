@@ -1,8 +1,12 @@
 export class Project {
     static ID_PREFIX = 'project_';
-    constructor(name) {
+    constructor(name, linkedIds = new Set()) {
         this.id = `${Project.ID_PREFIX}${crypto.randomUUID()}`;
         this.name = name;
+
+        if (!(linkedIds instanceof Set)) { 
+            throw new Error('linkedIds must be a Set');
+        }
         this.linkedIds = new Set();
     }
 
