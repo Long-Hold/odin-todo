@@ -10,6 +10,9 @@ export function initializeTodoObjState() {
     TODO_FORM.addEventListener(EVENTS.TODO_FORM_SUBMITTED, (event) => {
         const todoObject = createTodoFromFormData(event.detail.data);
         TODO_OBJECT_MANAGER.addTodo(todoObject.id, todoObject);
+
+        //TODO: Check if project was selected, if so, emit custom event containing the todoID and project value
+        //TODO: Then, in project State, listen for the event and add the todo ID to the selected project
     })
 }
 
