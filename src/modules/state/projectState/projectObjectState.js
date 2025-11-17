@@ -1,3 +1,4 @@
+import { triggerCustomEvent } from "../../events/eventProducer";
 import { EVENTS } from "../../events/events";
 import { PROJECT_FORM } from "../../forms/projectForm/projectFormController";
 import { Project } from "../../objects/projects/projectClass";
@@ -10,6 +11,7 @@ export function initializeProjectObjectState() {
     PROJECT_FORM.addEventListener(EVENTS.PROJECT_FORM_SUBMITTED, (event) => {
         const projectObj = createProjectFromFormData(event.detail.data);
         PROJECT_OBJECT_MANAGER.addProject(projectObj.id, projectObj);
+        triggerCustomEvent(document, EVENTS.PROJECT_CREATED, PROJECT_OBJECT_MANAGER.getAllProjects());
     });
 }
 
