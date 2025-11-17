@@ -9,7 +9,7 @@ export function initializeTodoObjState() {
     loadLocalStorageToManager();
     TODO_FORM.addEventListener(EVENTS.TODO_FORM_SUBMITTED, (event) => {
         const todoObject = createTodoFromFormData(event.detail.data);
-        TODO_OBJECT_MANAGER.addTodo(todoObject.todoId, todoObject);
+        TODO_OBJECT_MANAGER.addTodo(todoObject.id, todoObject);
     })
 }
 
@@ -22,7 +22,7 @@ function loadLocalStorageToManager() {
 
     todoObjectArray.forEach(jsonTodo => {
         const todo = createTodoFromLocalStorage(jsonTodo);
-        TODO_OBJECT_MANAGER.addTodo(todo.todoId, todo)
+        TODO_OBJECT_MANAGER.addTodo(todo.id, todo)
     });
     
     return TODO_OBJECT_MANAGER.getAllTodos();
