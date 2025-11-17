@@ -1,7 +1,7 @@
 import { EVENTS } from "../../events/events";
 import { PROJECT_FORM } from "../../forms/projectForm/projectFormController";
 import { Project } from "../../objects/projects/projectClass";
-import { createProjectFromFormData } from "../../objects/projects/projectObjectController";
+import { createProjectFromFormData, createProjectFromLocalStorage } from "../../objects/projects/projectObjectController";
 import { PROJECT_OBJECT_MANAGER } from "../../objects/projects/projectObjectManager";
 import { getAllPrefixedItems } from "../../storage/localStorageUtils";
 
@@ -16,7 +16,7 @@ export function initializeProjectObjectState() {
 function loadProjectsFromLocalStorage() {
     const projectsArray = getAllPrefixedItems(Project.ID_PREFIX);
     projectsArray.forEach(jsonProj => {
-        const project = Project.fromJSON(jsonProj);
+        const project = createProjectFromLocalStorage(jsonProj);
         PROJECT_OBJECT_MANAGER.addProject(project.id, project);
     });
 
