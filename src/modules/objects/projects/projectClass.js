@@ -8,7 +8,7 @@ export class Project {
         project.linkedIds = new Set(jsonObj.linkedIds);
         return project;
     }
-    
+
     constructor(name, linkedIds = new Set()) {
         this.id = `${Project.ID_PREFIX}${crypto.randomUUID()}`;
         this.name = name;
@@ -25,5 +25,13 @@ export class Project {
             name: this.name,
             linkedIds: Array.from(this.linkedIds),
         }
+    }
+
+    addLinkedId(id) {
+        this.linkedIds.add(id);
+    }
+
+    removeLinkedId(id) {
+        this.linkedIds.delete(id);
     }
 }
