@@ -15,6 +15,11 @@ export function initializeProjectObjectState() {
 
 function loadProjectsFromLocalStorage() {
     const projectsArray = getAllPrefixedItems(Project.ID_PREFIX);
+    if (projectsArray.length === 0) {
+        console.log('No project objects to load from localStorage.');
+        return null;
+    }
+
     projectsArray.forEach(jsonProj => {
         const project = createProjectFromLocalStorage(jsonProj);
         PROJECT_OBJECT_MANAGER.addProject(project.id, project);
