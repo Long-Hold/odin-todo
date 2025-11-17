@@ -1,5 +1,14 @@
 export class Project {
     static ID_PREFIX = 'project_';
+
+    static fromJSON(jsonObj) {
+        const project = Object.create(Project.prototype);
+        project.id = jsonObj.id;
+        project.name = jsonObj.name;
+        project.linkedIds = new Set(jsonObj.linkedIds);
+        return project;
+    }
+    
     constructor(name, linkedIds = new Set()) {
         this.id = `${Project.ID_PREFIX}${crypto.randomUUID()}`;
         this.name = name;
