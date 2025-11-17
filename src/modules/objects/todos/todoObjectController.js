@@ -23,6 +23,6 @@ export function createTodoFromFormData(formData) {
     return new Todo(title, priority, project, deadline, description, checklist);
 }
 
-export function createTodoFromLocalStorage(data) {
-    //TODO
+export function createTodoFromLocalStorage(jsonObj) {
+    return Todo.fromJSON(jsonObj);
 }
