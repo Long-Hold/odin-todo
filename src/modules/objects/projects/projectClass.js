@@ -21,7 +21,7 @@ export class Project {
 
     toJSON() {
         return {
-            id: this.is,
+            id: this.id,
             name: this.name,
             linkedIds: Array.from(this.linkedIds),
         }
