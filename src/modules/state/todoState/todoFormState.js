@@ -8,6 +8,7 @@ export function initializeTodoFormState() {
     })
 }
 
+// TODO: Move this function into the forms UI module for the todo form
 function updateProjectOptions(projectsArray) {
     projectsArray.forEach(project => {
         const option = document.createElement('option');
