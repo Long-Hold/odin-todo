@@ -27,5 +27,6 @@ function loadProjectsFromLocalStorage() {
         PROJECT_OBJECT_MANAGER.addProject(project.id, project);
     });
 
+    triggerCustomEvent(document, EVENTS.PROJECT_CREATED, PROJECT_OBJECT_MANAGER.getAllProjects());
     return PROJECT_OBJECT_MANAGER.getAllProjects();
 }
