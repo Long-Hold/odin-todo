@@ -39,3 +39,11 @@ function emitProjectLinkEvent(todoObject) {
 
     triggerCustomEvent(document, EVENTS.PROJECT_ASSIGNED, identifierIds);
 }
+
+function cascadeUnlinkTodosFromProject(idArray) {
+    idArray.forEach((todoId) => {
+        const todo = TODO_OBJECT_MANAGER.getTodo(todoId);
+        todo.project = null;
+        TODO_OBJECT_MANAGER.addTodo(todo);
+    });
+}
