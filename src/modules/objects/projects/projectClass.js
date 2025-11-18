@@ -16,7 +16,7 @@ export class Project {
         if (!(linkedIds instanceof Set)) { 
             throw new Error('linkedIds must be a Set');
         }
-        this.linkedIds = new Set();
+        this.linkedIds = linkedIds;
     }
 
     toJSON() {
