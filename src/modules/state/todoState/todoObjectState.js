@@ -1,3 +1,4 @@
+import { triggerCustomEvent } from "../../events/eventProducer";
 import { EVENTS } from "../../events/events";
 import { TODO_FORM } from "../../forms/todoForm/todoFormController";
 import { Todo } from "../../objects/todos/todoClass";
@@ -12,6 +13,7 @@ export function initializeTodoObjState() {
         TODO_OBJECT_MANAGER.addTodo(todoObject.id, todoObject);
 
         //TODO: Check if project was selected, if so, emit custom event containing the todoID and project value
+        if (todoObject.project !== null) { emitProjectLinkEvent(todoObject); }
         //TODO: Then, in project State, listen for the event and add the todo ID to the selected project
     })
 }
@@ -29,4 +31,13 @@ function loadLocalStorageToManager() {
     });
     
     return TODO_OBJECT_MANAGER.getAllTodos();
+}
+
+function emitProjectLinkEvent(todoObject) {
+    const identifierIds = { 
+        projectId: todoObject.project,
+        todoId: todoObject.id,
+    } 
+
+    triggerCustomEvent(document, EVENTS.PROJECT_ASSIGNED, identifierIds);
 }
