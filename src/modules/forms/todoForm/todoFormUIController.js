@@ -1,6 +1,8 @@
 import { addSelectOption, clearParentContainer } from "../formUIUtils";
 import { addStep, clearChecklistContainer, deleteStep } from "./checklistManager";
 
+const TODO_FORM = document.getElementById('todo-form');
+
 const ADD_TODO_BTN = document.getElementById('add-todo');
 const TODO_DIALOG = document.getElementById('todo-dialog');
 const FORM_BUTTONS = document.getElementById('form-control-btns');
