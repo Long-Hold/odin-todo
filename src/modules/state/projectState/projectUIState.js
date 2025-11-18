@@ -1,5 +1,4 @@
 import { EVENTS } from "../../events/events";
-import { PROJECT_OBJECT_MANAGER } from "../../objects/projects/projectObjectManager";
 import { renderProjectTabs } from "../../ui/projects/projectsTabRenderer";
 
 export function initializeProjectUIState() {
