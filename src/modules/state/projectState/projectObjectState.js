@@ -8,11 +8,7 @@ import { getAllPrefixedItems } from "../../storage/localStorageUtils";
 
 export function initializeProjectObjectState() {
     loadProjectsFromLocalStorage();
-    PROJECT_FORM.addEventListener(EVENTS.PROJECT_FORM_SUBMITTED, (event) => {
-        const projectObj = createProjectFromFormData(event.detail.data);
-        PROJECT_OBJECT_MANAGER.addProject(projectObj.id, projectObj);
-        triggerCustomEvent(document, EVENTS.PROJECT_CREATED, PROJECT_OBJECT_MANAGER.getAllProjects());
-    });
+    listenForProjectSubmitEvent();
     listenForProjectLinkEvents();
 }
 
@@ -30,6 +26,14 @@ function loadProjectsFromLocalStorage() {
 
     triggerCustomEvent(document, EVENTS.PROJECT_CREATED, PROJECT_OBJECT_MANAGER.getAllProjects());
     return PROJECT_OBJECT_MANAGER.getAllProjects();
+}
+
+function listenForProjectSubmitEvent() {
+    PROJECT_FORM.addEventListener(EVENTS.PROJECT_FORM_SUBMITTED, (event) => {
+        const projectObj = createProjectFromFormData(event.detail.data);
+        PROJECT_OBJECT_MANAGER.addProject(projectObj.id, projectObj);
+        triggerCustomEvent(document, EVENTS.PROJECT_CREATED, PROJECT_OBJECT_MANAGER.getAllProjects());
+    });
 }
 
 function listenForProjectLinkEvents() {
