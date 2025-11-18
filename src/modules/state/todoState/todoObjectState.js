@@ -12,10 +12,8 @@ export function initializeTodoObjState() {
         const todoObject = createTodoFromFormData(event.detail.data);
         TODO_OBJECT_MANAGER.addTodo(todoObject.id, todoObject);
 
-        //TODO: Check if project was selected, if so, emit custom event containing the todoID and project value
         if (todoObject.project !== null) { emitProjectLinkEvent(todoObject); }
-        //TODO: Then, in project State, listen for the event and add the todo ID to the selected project
-    })
+    });
 }
 
 function loadLocalStorageToManager() {
