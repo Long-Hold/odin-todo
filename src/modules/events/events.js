@@ -3,4 +3,5 @@ export const EVENTS = {
     PROJECT_FORM_SUBMITTED: "project:formSubmitted",
     PROJECT_CREATED: "project:created",
     PROJECT_ASSIGNED: "project:assigned",
+    PROJECT_DELETED: "project:deleted",
 }
