@@ -13,6 +13,7 @@ export function initializeProjectObjectState() {
         PROJECT_OBJECT_MANAGER.addProject(projectObj.id, projectObj);
         triggerCustomEvent(document, EVENTS.PROJECT_CREATED, PROJECT_OBJECT_MANAGER.getAllProjects());
     });
+    listenForProjectLinkEvents();
 }
 
 function loadProjectsFromLocalStorage() {
@@ -29,4 +30,18 @@ function loadProjectsFromLocalStorage() {
 
     triggerCustomEvent(document, EVENTS.PROJECT_CREATED, PROJECT_OBJECT_MANAGER.getAllProjects());
     return PROJECT_OBJECT_MANAGER.getAllProjects();
+}
+
+function listenForProjectLinkEvents() {
+    document.addEventListener(EVENTS.PROJECT_ASSIGNED, (event) => {
+        const {projectId, todoId} = event.detail.data;
+        const project = PROJECT_OBJECT_MANAGER.getProject(projectId);
+
+        /**After modifying the object, I add it back to it's respective object manager
+         * to synch the changes in both memory and localStorage, since the object manager
+         * will save added items to localStorage, and overwrite existing data with the same key.
+         */
+        project.addLinkedId(todoId);
+        PROJECT_OBJECT_MANAGER.addProject(projectId, project);
+    });
 }
