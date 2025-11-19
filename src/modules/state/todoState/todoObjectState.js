@@ -35,9 +35,8 @@ function listenForTodoSubmissionEvent() {
         TODO_OBJECT_MANAGER.addTodo(todoObject.id, todoObject);
 
         if (todoObject.project !== null) { emitProjectLinkEvent(todoObject); }
+        triggerTodoCreationEvent();
     });
-
-    triggerTodoCreationEvent();
 }
 
 function emitProjectLinkEvent(todoObject) {
