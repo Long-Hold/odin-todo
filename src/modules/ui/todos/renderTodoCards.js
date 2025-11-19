@@ -18,7 +18,7 @@ export function renderTodoCards(todoObjectArray) {
         title.textContent = todo.title;
 
         const priority = todoTemplateClone.querySelector('.priority');
-        priority = todo.priority;
+        priority.textContent = todo.priority;
 
         const project = todoTemplateClone.querySelector('.project-category');
         project.textContent = todo.project || '';
