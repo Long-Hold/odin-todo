@@ -10,6 +10,7 @@ export function initializeProjectObjectState() {
     loadProjectsFromLocalStorage();
     listenForProjectSubmitEvent();
     listenForProjectLinkEvents();
+    listenForProjectDeleteRequestEvent();
 }
 
 function loadProjectsFromLocalStorage() {
@@ -47,5 +48,19 @@ function listenForProjectLinkEvents() {
          */
         project.addLinkedId(todoId);
         PROJECT_OBJECT_MANAGER.addProject(projectId, project);
+    });
+}
+
+function listenForProjectDeleteRequestEvent() {
+    document.addEventListener(EVENTS.PROJECT_DELETE_REQUESTED, (event) => {
+        const projectId = event.detail.data;
+        const projectObject = PROJECT_OBJECT_MANAGER.getProject(projectId);
+        const linkedTodos = Array.from(projectObject.linkedIds);
+
+        PROJECT_OBJECT_MANAGER.deleteProject(projectId);
+        if (linkedTodos.length === 0) {
+            return null;
+        }
+        triggerCustomEvent(document, EVENTS.PROJECT_DELETED, linkedTodos);
     });
 }
