@@ -2,14 +2,14 @@ import { triggerCustomEvent } from "../../events/eventProducer";
 import { EVENTS } from "../../events/events";
 
 const PROJECT_TAB_TEMPLATE = document.getElementById('project-tab-template');
-const PROJECTS_LIST = document.getElementById('projects-list');
+export const PROJECTS_LIST = document.getElementById('projects-list');
 
 export function initializeProjectTabListeners() {
     PROJECTS_LIST.addEventListener('click', (event) => {
         if (event.target.classList.contains('delete-project-btn')) {
             const projectId = event.target.dataset.projectId;
             event.target.parentElement.remove();
-            triggerCustomEvent(document, EVENTS.PROJECT_DELETE_REQUESTED, projectId);
+            triggerCustomEvent(PROJECTS_LIST, EVENTS.PROJECT_DELETE_REQUESTED, projectId);
         }
     });
 }

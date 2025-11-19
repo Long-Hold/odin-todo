@@ -5,6 +5,7 @@ import { Project } from "../../objects/projects/projectClass";
 import { createProjectFromFormData, createProjectFromLocalStorage } from "../../objects/projects/projectObjectController";
 import { PROJECT_OBJECT_MANAGER } from "../../objects/projects/projectObjectManager";
 import { getAllPrefixedItems } from "../../storage/localStorageUtils";
+import { PROJECTS_LIST } from "../../ui/projects/projectsTabHandler";
 
 export function initializeProjectObjectState() {
     loadProjectsFromLocalStorage();
@@ -52,7 +53,7 @@ function listenForProjectLinkEvents() {
 }
 
 function listenForProjectDeleteRequestEvent() {
-    document.addEventListener(EVENTS.PROJECT_DELETE_REQUESTED, (event) => {
+    PROJECTS_LIST.addEventListener(EVENTS.PROJECT_DELETE_REQUESTED, (event) => {
         const projectId = event.detail.data;
         const projectObject = PROJECT_OBJECT_MANAGER.getProject(projectId);
         const linkedTodos = Array.from(projectObject.linkedIds);
