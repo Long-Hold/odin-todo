@@ -9,7 +9,7 @@ export function initializeProjectTabListeners() {
         if (event.target.classList.contains('delete-project-btn')) {
             const projectId = event.target.dataset.projectId;
             event.target.parentElement.remove();
-            triggerCustomEvent(PROJECTS_LIST, EVENTS.PROJECT_DELETED, projectId);
+            triggerCustomEvent(document, EVENTS.PROJECT_DELETED, projectId);
         }
     });
 }
