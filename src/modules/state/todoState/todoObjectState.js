@@ -8,12 +8,7 @@ import { getAllPrefixedItems } from "../../storage/localStorageUtils";
 
 export function initializeTodoObjState() {
     loadLocalStorageToManager();
-    TODO_FORM.addEventListener(EVENTS.TODO_FORM_SUBMITTED, (event) => {
-        const todoObject = createTodoFromFormData(event.detail.data);
-        TODO_OBJECT_MANAGER.addTodo(todoObject.id, todoObject);
-
-        if (todoObject.project !== null) { emitProjectLinkEvent(todoObject); }
-    });
+    listenForTodoSubmissionEvent();
     listenForProjectDeleteEvent();
 }
 
@@ -30,6 +25,15 @@ function loadLocalStorageToManager() {
     });
     
     return TODO_OBJECT_MANAGER.getAllTodos();
+}
+
+function listenForTodoSubmissionEvent() {
+    TODO_FORM.addEventListener(EVENTS.TODO_FORM_SUBMITTED, (event) => {
+        const todoObject = createTodoFromFormData(event.detail.data);
+        TODO_OBJECT_MANAGER.addTodo(todoObject.id, todoObject);
+
+        if (todoObject.project !== null) { emitProjectLinkEvent(todoObject); }
+    });
 }
 
 function emitProjectLinkEvent(todoObject) {
