@@ -14,6 +14,7 @@ export function initializeTodoObjState() {
 
         if (todoObject.project !== null) { emitProjectLinkEvent(todoObject); }
     });
+    listenForProjectDeleteEvent();
 }
 
 function loadLocalStorageToManager() {
@@ -40,10 +41,14 @@ function emitProjectLinkEvent(todoObject) {
     triggerCustomEvent(document, EVENTS.PROJECT_ASSIGNED, identifierIds);
 }
 
+function listenForProjectDeleteEvent() {
+    document.addEventListener(EVENTS.PROJECT_DELETED, (event) => { cascadeUnlinkTodosFromProject(event.detail.data); });
+}
+
 function cascadeUnlinkTodosFromProject(idArray) {
     idArray.forEach((todoId) => {
         const todo = TODO_OBJECT_MANAGER.getTodo(todoId);
         todo.project = null;
-        TODO_OBJECT_MANAGER.addTodo(todo);
+        TODO_OBJECT_MANAGER.addTodo(todo.id, todo);
     });
 }
