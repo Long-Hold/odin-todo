@@ -6,7 +6,7 @@ export function initializeTodoUIState() {
 }
 
 function listenForNewTodos() {
-    document.addEventListener(EVENTS.PROJECT_CREATED, (event) => {
+    document.addEventListener(EVENTS.TODO_CREATED, (event) => {
         const todoObjArray = event.detail.data;
         renderTodoCards(todoObjArray);
     });
