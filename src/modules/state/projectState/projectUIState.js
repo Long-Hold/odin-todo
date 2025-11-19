@@ -1,5 +1,5 @@
 import { EVENTS } from "../../events/events";
-import { renderProjectTabs } from "../../ui/projects/projectsTabRenderer";
+import { renderProjectTabs } from "../../ui/projects/projectsTabHandler";
 
 export function initializeProjectUIState() {
     listenForNewProjects();
