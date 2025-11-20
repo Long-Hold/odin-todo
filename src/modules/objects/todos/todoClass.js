@@ -10,7 +10,7 @@ export class Todo {
         todo.project = jsonObj.project;
         todo.deadline = jsonObj.deadline;
         todo.description = jsonObj.description;
-        todo.checklist = jsonObj.checklist;
+        todo.checklist = jsonObj.checklist ? new Map(jsonObj.checklist) : null;
 
         return todo;
     }
@@ -24,5 +24,18 @@ export class Todo {
         this.deadline = deadline;
         this.description = description;
         this.checklist = checklist;
+    }
+
+    toJSON() {
+        return {
+            id: this.id,
+            completed: this.completed,
+            title: this.title,
+            priority: this.priority,
+            project: this.project,
+            deadline: this.deadline,
+            description: this.description,
+            checklist: this.checklist ? Array.from(this.checklist) : null,
+        }
     }
 }
