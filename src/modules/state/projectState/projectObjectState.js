@@ -26,7 +26,6 @@ function loadProjectsFromLocalStorage() {
         PROJECT_OBJECT_MANAGER.addProject(project.id, project);
     });
 
-    triggerCustomEvent(document, EVENTS.PROJECT_CREATED, PROJECT_OBJECT_MANAGER.getAllProjects());
     return PROJECT_OBJECT_MANAGER.getAllProjects();
 }
 
@@ -34,7 +33,7 @@ function listenForProjectSubmitEvent() {
     PROJECT_FORM.addEventListener(EVENTS.PROJECT_FORM_SUBMITTED, (event) => {
         const projectObj = createProjectFromFormData(event.detail.data);
         PROJECT_OBJECT_MANAGER.addProject(projectObj.id, projectObj);
-        triggerCustomEvent(document, EVENTS.PROJECT_CREATED, PROJECT_OBJECT_MANAGER.getAllProjects());
+        broadcastProjects();
     });
 }
 
