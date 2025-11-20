@@ -65,3 +65,7 @@ function listenForProjectDeleteRequestEvent() {
         triggerCustomEvent(document, EVENTS.PROJECT_DELETED, linkedTodos);
     });
 }
+
+export function broadcastProjects() {
+    triggerCustomEvent(document, EVENTS.PROJECT_CREATED, PROJECT_OBJECT_MANAGER.getAllProjects());
+}
