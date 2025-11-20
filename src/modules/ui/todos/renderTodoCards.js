@@ -30,8 +30,36 @@ export function renderTodoCards(todoObjectArray) {
             deadline.textContent = format(new Date(todo.deadline), 'MMM dd, yyyy');
         }
 
-
+        const description = todoTemplateClone.querySelector('.todo-description');
+        description.textContent = todo.description;
+        
+        if (todo.checklist) {
+            const checklist = todoTemplateClone.querySelector('.todo-checklist');
+            todo.checklist.forEach((item) => {
+                const checklistElement = createChecklistItem(item);
+                checklist.appendChild(checklistElement);
+            });
+        }
 
         TODO_CARD_DISPLAY.appendChild(todoTemplateClone);
     });
+}
+
+function createChecklistItem(checklistItem) {
+    const checklistId = `checklist_${crypto.randomUUID()}`;
+
+    const checkboxInput = document.createElement('input');
+    checkboxInput.type = 'checkbox';
+    checkboxInput.id = checklistId;
+    checkboxInput.name = checklistId;
+
+    const label = document.createElement('label');
+    label.htmlFor = checklistId;
+    label.textContent = checklistItem;
+
+    const div = document.createElement('div');
+    div.appendChild(checkboxInput);
+    div.appendChild(label);
+
+    return div;
 }
