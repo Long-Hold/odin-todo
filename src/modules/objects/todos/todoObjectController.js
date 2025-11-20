@@ -17,7 +17,11 @@ export function createTodoFromFormData(formData) {
     const checklistItems = Array.from(formData.getAll('checklistItem'));
     let checklist = null;
     if (checklistItems.length > 0) {
-        checklist = checklistItems.map(str => str.trim());
+        checklist = new Map();
+        checklistItems.forEach((item) => {
+            const itemId = `checklist_${crypto.randomUUID()}`;
+            checklist.set(itemId, item.trim());
+        });
     }
 
     return new Todo(title, priority, project, deadline, description, checklist);
