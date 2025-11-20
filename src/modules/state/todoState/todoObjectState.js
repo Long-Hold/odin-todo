@@ -1,6 +1,7 @@
 import { triggerCustomEvent } from "../../events/eventProducer";
 import { EVENTS } from "../../events/events";
 import { TODO_FORM } from "../../forms/todoForm/todoFormController";
+import { PROJECT_OBJECT_MANAGER } from "../../objects/projects/projectObjectManager";
 import { Todo } from "../../objects/todos/todoClass";
 import { createTodoFromFormData, createTodoFromLocalStorage } from "../../objects/todos/todoObjectController";
 import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
@@ -63,5 +64,11 @@ function cascadeUnlinkTodosFromProject(idArray) {
 }
 
 function triggerTodoCreationEvent() {
-    triggerCustomEvent(document, EVENTS.TODO_CREATED, TODO_OBJECT_MANAGER.getAllTodos());
+    const rawTodos = TODO_OBJECT_MANAGER.getAllTodos();
+    const enrichedTodos = rawTodos.map((todo) => ({
+        ...todo,
+        project: todo.project ? PROJECT_OBJECT_MANAGER.getProject(todo.project).name : null,
+        projectId: todo.project,
+    }));
+    triggerCustomEvent(document, EVENTS.TODO_CREATED, enrichedTodos);
 }
