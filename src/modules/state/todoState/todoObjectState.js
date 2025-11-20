@@ -24,8 +24,6 @@ function loadLocalStorageToManager() {
         const todo = createTodoFromLocalStorage(jsonTodo);
         TODO_OBJECT_MANAGER.addTodo(todo.id, todo)
     });
-
-    triggerTodoCreationEvent();
     
     return TODO_OBJECT_MANAGER.getAllTodos();
 }
@@ -36,7 +34,7 @@ function listenForTodoSubmissionEvent() {
         TODO_OBJECT_MANAGER.addTodo(todoObject.id, todoObject);
 
         if (todoObject.project !== null) { emitProjectLinkEvent(todoObject); }
-        triggerTodoCreationEvent();
+        broadcastTodos();
     });
 }
 
@@ -60,10 +58,10 @@ function cascadeUnlinkTodosFromProject(idArray) {
         TODO_OBJECT_MANAGER.addTodo(todo.id, todo);
     });
 
-    triggerTodoCreationEvent();
+    broadcastTodos();
 }
 
-function triggerTodoCreationEvent() {
+function broadcastTodos() {
     const rawTodos = TODO_OBJECT_MANAGER.getAllTodos();
     const enrichedTodos = rawTodos.map((todo) => ({
         ...todo,
