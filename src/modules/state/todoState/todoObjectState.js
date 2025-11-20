@@ -62,6 +62,12 @@ function cascadeUnlinkTodosFromProject(idArray) {
 }
 
 export function broadcastTodos() {
+    /**Enriches todo object data before broadcasting them in an event.
+     * 
+     * This is because todo objects store a project's unique ID rather than the name of the project.
+     * This is primarily done for rendering them onto the DOM to make referencing to the project object faster
+     * when a todo is edited or deleted
+     */
     const rawTodos = TODO_OBJECT_MANAGER.getAllTodos();
     const enrichedTodos = rawTodos.map((todo) => ({
         ...todo,
