@@ -13,5 +13,8 @@ initializeTodoFormListeners();
 initializeProjectStates();
 initializeTodoStates();
 
+/**After the todo and project states have been initialized,
+ * I manually broadcast their data out for the listeners of respective objects to catch
+ */
 broadcastProjects();
 broadcastTodos();
