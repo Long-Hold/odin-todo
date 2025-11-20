@@ -17,10 +17,10 @@ export function renderTodoCards(todoObjectArray) {
         const title = todoTemplateClone.querySelector('.todo-title');
         title.textContent = todo.title;
 
-        const priority = todoTemplateClone.querySelector('.priority');
+        const priority = todoTemplateClone.querySelector('.todo-priority');
         priority.textContent = todo.priority;
 
-        const project = todoTemplateClone.querySelector('.project-category');
+        const project = todoTemplateClone.querySelector('.todo-project');
         project.textContent = todo.project || '';
 
         const deadline = todoTemplateClone.querySelector('time');
@@ -29,6 +29,8 @@ export function renderTodoCards(todoObjectArray) {
             deadline.setAttribute('datetime', todo.deadline);
             deadline.textContent = format(new Date(todo.deadline), 'MMM dd, yyyy');
         }
+
+
 
         TODO_CARD_DISPLAY.appendChild(todoTemplateClone);
     });
