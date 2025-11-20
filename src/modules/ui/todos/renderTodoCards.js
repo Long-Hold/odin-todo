@@ -2,6 +2,7 @@ import { format } from "date-fns";
 
 const TODO_CARD_TEMPLATE = document.getElementById('todo-card-template');
 const TODO_CARD_DISPLAY = document.getElementById('todo-card-display');
+const CARD_CHECKLIST_ITEM_TEMPLATE = document.getElementById('card-checklist-item-template');
 
 export function renderTodoCards(todoObjectArray) {
     TODO_CARD_DISPLAY.replaceChildren();
@@ -35,8 +36,8 @@ export function renderTodoCards(todoObjectArray) {
         
         if (todo.checklist) {
             const checklist = todoTemplateClone.querySelector('.todo-checklist');
-            todo.checklist.forEach((item) => {
-                const checklistElement = createChecklistItem(item);
+            todo.checklist.forEach((text, id) => {
+                const checklistElement = createChecklistItem(id, text);
                 checklist.appendChild(checklistElement);
             });
         }
@@ -45,21 +46,17 @@ export function renderTodoCards(todoObjectArray) {
     });
 }
 
-function createChecklistItem(checklistItem) {
-    const checklistId = `checklist_${crypto.randomUUID()}`;
+function createChecklistItem(itemId, itemText) {
+    const checklistItem = CARD_CHECKLIST_ITEM_TEMPLATE.content.cloneNode(true);
 
-    const checkboxInput = document.createElement('input');
-    checkboxInput.type = 'checkbox';
-    checkboxInput.id = checklistId;
-    checkboxInput.name = checklistId;
+    const input = checklistItem.querySelector('input');
+    const label = checklistItem.querySelector('label');
 
-    const label = document.createElement('label');
-    label.htmlFor = checklistId;
-    label.textContent = checklistItem;
+    input.id = itemId;
+    input.name = itemId;
 
-    const div = document.createElement('div');
-    div.appendChild(checkboxInput);
-    div.appendChild(label);
+    label.htmlFor = itemId;
+    label.textContent = itemText;
 
-    return div;
+    return checklistItem;
 }
