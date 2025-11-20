@@ -67,7 +67,7 @@ function triggerTodoCreationEvent() {
     const rawTodos = TODO_OBJECT_MANAGER.getAllTodos();
     const enrichedTodos = rawTodos.map((todo) => ({
         ...todo,
-        project: todo.project ? PROJECT_OBJECT_MANAGER.getProject(todo.project).name : null,
+        project: todo.project ? PROJECT_OBJECT_MANAGER.getProject(todo.project)?.name : null,
         projectId: todo.project,
     }));
     triggerCustomEvent(document, EVENTS.TODO_CREATED, enrichedTodos);
