@@ -61,7 +61,7 @@ function cascadeUnlinkTodosFromProject(idArray) {
     broadcastTodos();
 }
 
-function broadcastTodos() {
+export function broadcastTodos() {
     const rawTodos = TODO_OBJECT_MANAGER.getAllTodos();
     const enrichedTodos = rawTodos.map((todo) => ({
         ...todo,

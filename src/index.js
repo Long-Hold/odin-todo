@@ -2,6 +2,7 @@ import { initializeProjectFormListeners } from "./modules/forms/projectForm/proj
 import { initializeTodoFormListeners } from "./modules/forms/todoForm/todoFormController";
 
 import { initializeProjectStates } from "./modules/state/projectState/projectStateController";
+import { broadcastTodos } from "./modules/state/todoState/todoObjectState";
 import { initializeTodoStates } from "./modules/state/todoState/todoStateController";
 import "./styles/styles.css";
 
@@ -10,3 +11,5 @@ initializeTodoFormListeners();
 
 initializeProjectStates();
 initializeTodoStates();
+
+broadcastTodos();
