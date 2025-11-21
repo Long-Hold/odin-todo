@@ -1,7 +1,7 @@
 import { triggerCustomEvent } from "../../events/eventProducer";
 import { EVENTS } from "../../events/events";
 
-const GENERAL_CATEGORIES = document.getElementById('general-categories');
+export const GENERAL_CATEGORIES = document.getElementById('general-categories');
 
 export function initializeDefaultTabListener() {
     GENERAL_CATEGORIES.addEventListener('click', (event) => {
