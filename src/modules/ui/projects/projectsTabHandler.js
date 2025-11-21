@@ -8,8 +8,12 @@ export const PROJECTS_LIST = document.getElementById('projects-list');
  */
 export function initializeProjectTabListeners() {
     PROJECTS_LIST.addEventListener('click', (event) => {
-        if (event.target.classList.contains('delete-project-btn')) {
-            const projectId = event.target.dataset.projectId;
+        if (event.target.tagName !== 'BUTTON') { return null; }
+
+        const buttonAction = event.target.dataset.action;
+        const projectId = event.target.dataset.projectId;
+
+        if (buttonAction === 'delete') {
             event.target.parentElement.remove();
             triggerCustomEvent(PROJECTS_LIST, EVENTS.PROJECT_DELETE_REQUESTED, projectId);
         }
