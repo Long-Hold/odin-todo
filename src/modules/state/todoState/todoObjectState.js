@@ -6,6 +6,7 @@ import { Todo } from "../../objects/todos/todoClass";
 import { createTodoFromFormData, createTodoFromLocalStorage } from "../../objects/todos/todoObjectController";
 import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
 import { getAllPrefixedItems } from "../../storage/localStorageUtils";
+import { enrichTodos } from "./todoStateUtils";
 
 export function initializeTodoObjState() {
     loadLocalStorageToManager();
@@ -61,18 +62,11 @@ function cascadeUnlinkTodosFromProject(idArray) {
     broadcastTodos();
 }
 
+/**Retrieves all Todo objects currently in the object memory manager
+ * Emits a custom event containing all the created todo objects.
+ */
 export function broadcastTodos() {
-    /**Enriches todo object data before broadcasting them in an event.
-     * 
-     * This is because todo objects store a project's unique ID rather than the name of the project.
-     * This is primarily done for rendering them onto the DOM to make referencing to the project object faster
-     * when a todo is edited or deleted
-     */
     const rawTodos = TODO_OBJECT_MANAGER.getAllTodos();
-    const enrichedTodos = rawTodos.map((todo) => ({
-        ...todo,
-        project: todo.project ? PROJECT_OBJECT_MANAGER.getProject(todo.project)?.name : null,
-        projectId: todo.project,
-    }));
+    const enrichedTodos = enrichTodos(rawTodos);
     triggerCustomEvent(document, EVENTS.TODO_CREATED, enrichedTodos);
 }
