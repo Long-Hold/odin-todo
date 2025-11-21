@@ -39,7 +39,7 @@ export function filterTodosByDate(todosArray, filterType) {
     if (filterType === 'week') {
         return todosArray.filter((todo) => {
             todo.deadline && isThisWeek(new Date(todo.deadline));
-        })
+        });
     }
 
     return todosArray;
