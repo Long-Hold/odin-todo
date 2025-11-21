@@ -1,6 +1,15 @@
 export const EVENTS = {
     TODO_FORM_SUBMITTED: "todo:formSubmitted",
     TODO_CREATED: "todo:created",
+
+    /**This event signals that specific Todo objects are being requested by
+     * a filter button, either a project tab button or the default filter buttons.
+     * 
+     * The data carried by this event carries an array of todo object id's that can be used
+     * to retrieve the relevant objects from the todo object manager for rendering to the UI
+     */
+    TODO_FILTER_REQUESTED: "todo:filterRequested",
+    
     PROJECT_FORM_SUBMITTED: "project:formSubmitted",
     PROJECT_CREATED: "project:created",
     PROJECT_ASSIGNED: "project:assigned",
