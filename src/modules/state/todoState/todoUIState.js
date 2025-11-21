@@ -1,6 +1,7 @@
 import { EVENTS } from "../../events/events";
 import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
 import { renderTodoCards } from "../../ui/todos/renderTodoCards";
+import { enrichTodos } from "./todoStateUtils";
 
 export function initializeTodoUIState() {
     listenForNewTodos();
@@ -17,13 +18,9 @@ function listenForNewTodos() {
 function listenForTodoFilterEvents() {
     document.addEventListener(EVENTS.TODO_FILTER_REQUESTED, (event) => {
         const todoIdsArray = event.detail.data;
-        const todoObjectsArray = [];
+        const rawTodos = todoIdsArray.map(id => TODO_OBJECT_MANAGER.getTodo(id));
+        const enrichedTodos = enrichTodos(rawTodos);
 
-        todoIdsArray.forEach((id) => {
-            const todoObject = TODO_OBJECT_MANAGER.getTodo(id);
-            todoObjectsArray.push(todoObject);
-        });
-
-        renderTodoCards(todoObjectsArray);
+        renderTodoCards(enrichedTodos);
     });
 }
