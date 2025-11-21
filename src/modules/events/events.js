@@ -22,12 +22,6 @@ export const EVENTS = {
      */
     PROJECT_TAB_CLICKED: "project:tabClicked",
 
-    /**Signals that all todo cards should be display. */
-    TAB_DISPLAY_ALL: "tab:displayAll",
-
-    /**Signals to display all Todo's with a deadline of current day. */
-    TAB_DISPLAY_TODAY: "tab:displayToday",
-
-    /**Signals to display all Todo's with a deadline date in range of current week. */
-    TAB_DISPLAY_WEEK: "tab:displayWeek",
+    /**Signals that one of the general-use filter tab buttons have been clicked. */
+    TAB_GENERAL_CLICKED: "tab:generalClicked",
 }
