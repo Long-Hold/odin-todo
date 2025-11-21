@@ -6,4 +6,10 @@ export const EVENTS = {
     PROJECT_ASSIGNED: "project:assigned",
     PROJECT_DELETE_REQUESTED: "project:deleteRequested",
     PROJECT_DELETED: "project:deleted",
+
+    /**Signals that a user wants to filter the Todo cards
+     * displayed on screen by project. Only todo's with the respective
+     * tab that was clicked will be displayed when this event is emitted.
+     */
+    PROJECT_TAB_CLICKED: "project:tabClicked",
 }
