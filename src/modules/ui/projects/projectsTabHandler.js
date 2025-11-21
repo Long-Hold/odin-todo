@@ -19,7 +19,7 @@ export function initializeProjectTabListeners() {
         }
 
         if (buttonAction === "filter") {
-            //TODO
+            triggerCustomEvent(PROJECTS_LIST, EVENTS.PROJECT_TAB_CLICKED, projectId);
         }
     });
 }
