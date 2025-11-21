@@ -31,15 +31,15 @@ export function filterTodosByDate(todosArray, filterType) {
     if (filterType === 'all') { return todosArray; }
 
     if (filterType === 'today') {
-        return todosArray.filter((todo) => {
-            todo.deadline && isToday(new Date(todo.deadline));
-        });
+        return todosArray.filter(todo => 
+            todo.deadline && isToday(new Date(todo.deadline))
+        );
     }
 
     if (filterType === 'week') {
-        return todosArray.filter((todo) => {
-            todo.deadline && isThisWeek(new Date(todo.deadline));
-        });
+        return todosArray.filter(todo => 
+            todo.deadline && isThisWeek(new Date(todo.deadline))
+        );
     }
 
     return todosArray;
