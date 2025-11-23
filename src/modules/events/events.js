@@ -6,6 +6,8 @@ export const EVENTS = {
      * 
      * When this event is emitted, state listeners listening for it begin deleting
      * the respective object the card was made from.
+     * 
+     * This event passses the Todo Object Id stored in the card metadata.
      */
     TODO_DELETE_REQUESTED: "todo:deleteRequested",
 
