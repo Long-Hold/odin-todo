@@ -2,6 +2,13 @@ export const EVENTS = {
     TODO_FORM_SUBMITTED: "todo:formSubmitted",
     TODO_CREATED: "todo:created",
 
+    /**This event signals that the delete button on a todo card has been clicked.
+     * 
+     * When this event is emitted, state listeners listening for it begin deleting
+     * the respective object the card was made from.
+     */
+    TODO_DELETE_REQUESTED: "todo:deleteRequested",
+
     /**This event signals that specific Todo objects are being requested by
      * a filter button, either a project tab button or the default filter buttons.
      * 
