@@ -11,7 +11,7 @@ export function initializeTodoCardListeners() {
         const buttonAction = event.target.dataset.action;
 
         if (buttonAction === 'delete') {
-            triggerCustomEvent(TODO_CARD_DISPLAY, EVENTS.TODO_DELETE_REQUESTED, cardId);
+            triggerCustomEvent(document, EVENTS.TODO_DELETE_REQUESTED, cardId);
         }
     });
 }
