@@ -12,6 +12,7 @@ export function initializeTodoObjState() {
     loadLocalStorageToManager();
     listenForTodoSubmissionEvent();
     listenForProjectDeleteEvent();
+    listenForTodoDeleteRequestEvent();
 }
 
 function loadLocalStorageToManager() {
@@ -60,6 +61,17 @@ function cascadeUnlinkTodosFromProject(idArray) {
     });
 
     broadcastTodos();
+}
+
+function listenForTodoDeleteRequestEvent() {
+    document.addEventListener(EVENTS.TODO_DELETE_REQUESTED, (event) => {
+        const todoId = event.detail.data;
+        const todoObj = TODO_OBJECT_MANAGER.getTodo(todoId);
+
+        TODO_OBJECT_MANAGER.deleteTodo(todoId);
+
+        //TODO: Broadcast the todo has been deleted with the Id and the project Id if there is one.
+    });
 }
 
 /**Retrieves all Todo objects currently in the object memory manager
