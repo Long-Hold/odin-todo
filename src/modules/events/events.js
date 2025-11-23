@@ -11,6 +11,15 @@ export const EVENTS = {
      */
     TODO_DELETE_REQUESTED: "todo:deleteRequested",
 
+    /**This event signals that a Todo Object has been deleted.
+     * 
+     * When this event is emitted, state listeners listening for it will begin
+     * unlinking this object's ID from any data structures that are tracking it.
+     * 
+     * This event passes the Todo Object Id.
+     */
+    TODO_DELETED: "todo:deleted",
+
     /**This event signals that specific Todo objects are being requested by
      * a filter button, either a project tab button or the default filter buttons.
      * 
