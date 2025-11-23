@@ -2,12 +2,14 @@ import { EVENTS } from "../../events/events";
 import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
 import { GENERAL_CATEGORIES, initializeDefaultTabListener } from "../../ui/defaultTabs/defaultTabController";
 import { renderTodoCards } from "../../ui/todos/renderTodoCards";
+import { initializeTodoCardListeners } from "../../ui/todos/todoCardController";
 import { enrichTodos, filterTodosByDate } from "./todoStateUtils";
 
 export function initializeTodoUIState() {
     listenForNewTodos();
     listenForTodoFilterEvents();
     initializeDefaultTabListener();
+    initializeTodoCardListeners();
 }
 
 function listenForNewTodos() {
