@@ -8,10 +8,12 @@ export function initializeTodoCardListeners() {
         if (event.target.tagName !== 'BUTTON') { return null; }
 
         const cardId = event.target.closest('article').dataset.todoId;
+        const parentContainer = event.target.closest('article');
         const buttonAction = event.target.dataset.action;
 
         if (buttonAction === 'delete') {
             triggerCustomEvent(document, EVENTS.TODO_DELETE_REQUESTED, cardId);
+            parentContainer.remove();
         }
     });
 }
