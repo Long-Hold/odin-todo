@@ -1,3 +1,6 @@
+import { triggerCustomEvent } from "../../events/eventProducer";
+import { EVENTS } from "../../events/events";
+
 const GENERAL_TABS = document.getElementById('general-categories');
 const PROJECT_TABS = document.getElementById('projects-list');
 
@@ -33,4 +36,5 @@ export function initializeFilterTabListeners() {
 function updateFilterState(type, display) {
     filterState.type = type;
     filterState.display = display;
+    triggerCustomEvent(document, EVENTS.FILTER_CHANGED, filterState);
 }
