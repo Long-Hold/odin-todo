@@ -42,4 +42,11 @@ export const EVENTS = {
 
     /**Signals that one of the general-use filter tab buttons have been clicked. */
     TAB_GENERAL_CLICKED: "tab:generalClicked",
+
+    /**Signals that a filter tab has been selected.
+     * 
+     * This event's data stores the type of filter clicked, and what type of
+     * filtering the render engine should use.
+     */
+    FILTER_CHANGED: "filter:changed",
 }
