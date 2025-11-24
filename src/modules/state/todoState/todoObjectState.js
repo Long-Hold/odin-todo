@@ -70,7 +70,12 @@ function listenForTodoDeleteRequestEvent() {
 
         TODO_OBJECT_MANAGER.deleteTodo(todoId);
 
-        //TODO: Broadcast the todo has been deleted with the Id and the project Id if there is one.
+        const todoIdAndProjectId = { 
+            todoId: todoId,
+            projectId: todoObj.project,
+        }
+
+        triggerCustomEvent(document, EVENTS.TODO_DELETED, todoIdAndProjectId);
     });
 }
 
