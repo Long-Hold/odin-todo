@@ -71,6 +71,9 @@ function listenForTodoDeleteEvent() {
         const {todoId, projectId} = event.detail.data;
         const project = PROJECT_OBJECT_MANAGER.getProject(projectId);
         project.removeLinkedId(todoId);
+
+        // This updates the local storage save of the modified project
+        PROJECT_OBJECT_MANAGER.addProject(project.id, project);
     });
 }
 
