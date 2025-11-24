@@ -69,6 +69,9 @@ function listenForProjectDeleteRequestEvent() {
 function listenForTodoDeleteEvent() {
     document.addEventListener(EVENTS.TODO_DELETED, (event) => {
         const {todoId, projectId} = event.detail.data;
+
+        if (projectId === null) { return; }
+        
         const project = PROJECT_OBJECT_MANAGER.getProject(projectId);
         project.removeLinkedId(todoId);
 
