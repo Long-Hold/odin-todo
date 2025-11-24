@@ -13,7 +13,16 @@ export function initializeTodoCardListeners() {
 
         if (buttonAction === 'delete') {
             triggerCustomEvent(document, EVENTS.TODO_DELETE_REQUESTED, cardId);
-            parentContainer.remove();
         }
+    });
+
+    listenForTodoDeleteEvent();
+}
+
+function listenForTodoDeleteEvent() {
+    document.addEventListener(EVENTS.TODO_DELETED, (event) => {
+        const { todoId } = event.detail.data;
+        const todoCard = document.querySelector(`[data-todo-id="${todoId}"]`);
+        if (todoCard) { todoCard.remove(); }
     });
 }
