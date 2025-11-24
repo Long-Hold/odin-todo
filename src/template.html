@@ -18,15 +18,15 @@
             <h2>General</h2>
 
             <div>
-                <button type="button" class="category-btn" data-filter-display="all">All Todos</button>
+                <button type="button" class="category-btn" data-filter-type="general" data-filter-display="all">All Todos</button>
             </div>
 
             <div>
-                <button type="button" class="category-btn" data-filter-display="today">Today</button>
+                <button type="button" class="category-btn" data-filter-type="general" data-filter-display="today">Today</button>
             </div>
 
             <div>
-                <button type="button" class="category-btn" data-filter-display="week">This Week</button>
+                <button type="button" class="category-btn" data-filter-type="general" data-filter-display="week">This Week</button>
             </div>
         </nav>
 
@@ -210,7 +210,7 @@
 
     <template id="project-tab-template">
         <div class="project-tab">
-            <button type="button" class="category-btn project-btn"  data-action="filter" data-project-id=""></button>
+            <button type="button" class="category-btn project-btn"  data-action="filter" data-filter-type="project" data-project-id=""></button>
             <button type="button" class="delete-project-btn" data-action = "delete" data-project-id="">&times;</button>
         </div>
     </template>
