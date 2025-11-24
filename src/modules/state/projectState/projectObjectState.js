@@ -12,6 +12,7 @@ export function initializeProjectObjectState() {
     listenForProjectSubmitEvent();
     listenForProjectLinkEvents();
     listenForProjectDeleteRequestEvent();
+    listenForTodoDeleteEvent();
 }
 
 function loadProjectsFromLocalStorage() {
@@ -62,6 +63,14 @@ function listenForProjectDeleteRequestEvent() {
             return null;
         }
         triggerCustomEvent(document, EVENTS.PROJECT_DELETED, linkedTodos);
+    });
+}
+
+function listenForTodoDeleteEvent() {
+    document.addEventListener(EVENTS.TODO_DELETED, (event) => {
+        const {todoId, projectId} = event.detail.data;
+        const project = PROJECT_OBJECT_MANAGER.getProject(projectId);
+        project.removeLinkedId(todoId);
     });
 }
 
