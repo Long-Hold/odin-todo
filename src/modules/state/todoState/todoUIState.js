@@ -35,3 +35,9 @@ function listenForTodoFilterEvents() {
         renderTodoCards(enrichedTodos);
     });
 }
+
+function listenForFilterEvent() {
+    document.addEventListener(EVENTS.FILTER_CHANGED, (event) => {
+        const {type, display} = event.detail.data;
+    })
+}
