@@ -59,9 +59,7 @@ function listenForProjectDeleteRequestEvent() {
         const linkedTodos = Array.from(projectObject.linkedIds);
 
         PROJECT_OBJECT_MANAGER.deleteProject(projectId);
-        if (linkedTodos.length === 0) {
-            return null;
-        }
+
         triggerCustomEvent(document, EVENTS.PROJECT_DELETED, linkedTodos);
     });
 }
