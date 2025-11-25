@@ -1,5 +1,6 @@
 import { triggerCustomEvent } from "../../events/eventProducer";
 import { EVENTS } from "../../events/events";
+import { getFilterState, resetFilterStateToDefault } from "../../state/filterState/filterStateController";
 
 const PROJECT_TAB_TEMPLATE = document.getElementById('project-tab-template');
 export const PROJECTS_LIST = document.getElementById('projects-list');
@@ -12,6 +13,13 @@ export function initializeProjectTabListeners() {
         const projectId = event.target.dataset.projectId;
 
         if (buttonAction === 'delete') {
+            /**If we are deleting the project we are currently filtering by,
+             * then we need to reset the filterState() back to a default value,
+             * otherwise it will try to filter the UI by a condition that no longer exists.
+             */
+            const {display} = getFilterState();
+            if (display === projectId) { resetFilterStateToDefault(); }
+
             event.target.parentElement.remove();
             triggerCustomEvent(PROJECTS_LIST, EVENTS.PROJECT_DELETE_REQUESTED, projectId);
         }
