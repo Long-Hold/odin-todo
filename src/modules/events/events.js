@@ -1,4 +1,9 @@
 export const EVENTS = {
+    /**An event that signals the New Todo Form has sent a POST request.
+     * 
+     * State managers listen for this event and use the event's data to construct
+     * new Todo Objects.
+     */
     TODO_FORM_SUBMITTED: "todo:formSubmitted",
 
     /**This event signals that the delete button on a todo card has been clicked.
@@ -19,6 +24,11 @@ export const EVENTS = {
      */
     TODO_DELETED: "todo:deleted",
     
+    /**An event that signals the New Project form has sent a POST request.
+     * 
+     * State managers listen for this event and use the event's data to construct
+     * new Project Objects.
+     */
     PROJECT_FORM_SUBMITTED: "project:formSubmitted",
     PROJECT_ASSIGNED: "project:assigned",
 
