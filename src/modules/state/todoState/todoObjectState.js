@@ -19,13 +19,16 @@ function loadLocalStorageToManager() {
     const todoObjectArray = getAllPrefixedItems(Todo.ID_PREFIX);
     if (todoObjectArray.length === 0) {
         console.log('No Todo objects to load from localStorage.');
-        return null;
+    }
+    
+    else {
+        todoObjectArray.forEach(jsonTodo => {
+            const todo = createTodoFromLocalStorage(jsonTodo);
+            TODO_OBJECT_MANAGER.addTodo(todo.id, todo)
+        });
     }
 
-    todoObjectArray.forEach(jsonTodo => {
-        const todo = createTodoFromLocalStorage(jsonTodo);
-        TODO_OBJECT_MANAGER.addTodo(todo.id, todo)
-    });
+    triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
     
     return TODO_OBJECT_MANAGER.getAllTodos();
 }
