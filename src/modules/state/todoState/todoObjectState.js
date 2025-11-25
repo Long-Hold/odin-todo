@@ -1,12 +1,12 @@
 import { triggerCustomEvent } from "../../events/eventProducer";
 import { EVENTS } from "../../events/events";
 import { TODO_FORM } from "../../forms/todoForm/todoFormController";
-import { PROJECT_OBJECT_MANAGER } from "../../objects/projects/projectObjectManager";
+
 import { Todo } from "../../objects/todos/todoClass";
 import { createTodoFromFormData, createTodoFromLocalStorage } from "../../objects/todos/todoObjectController";
 import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
 import { getAllPrefixedItems } from "../../storage/localStorageUtils";
-import { enrichTodos } from "./todoStateUtils";
+
 
 export function initializeTodoObjState() {
     loadLocalStorageToManager();
