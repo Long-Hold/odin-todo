@@ -9,8 +9,8 @@ import { enrichTodos, filterTodosByDate } from "./todoStateUtils";
 
 export function initializeTodoUIState() {
     listenForNewTodos();
-    listenForTodoFilterEvents();
-    initializeDefaultTabListener();
+    // listenForTodoFilterEvents();
+    // initializeDefaultTabListener();
     initializeTodoCardListeners();
     listenForFilterEvent();
 }
@@ -39,8 +39,7 @@ export function renderAllTodos() {
 
 function listenForNewTodos() {
     document.addEventListener(EVENTS.TODO_CREATED, (event) => {
-        const todoObjArray = event.detail.data;
-        renderTodoCards(todoObjArray);
+        renderAllTodos();
     });
 }
 
