@@ -76,6 +76,7 @@ function listenForTodoDeleteRequestEvent() {
         }
 
         triggerCustomEvent(document, EVENTS.TODO_DELETED, todoIdAndProjectId);
+        broadcastTodos();
     });
 }
 
