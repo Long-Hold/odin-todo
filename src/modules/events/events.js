@@ -32,4 +32,14 @@ export const EVENTS = {
      * filtering the render engine should use.
      */
     FILTER_CHANGED: "filter:changed",
+
+    /**A synchronization event that signals the DOM to be refreshed with
+     * current data from the internal state.
+     * 
+     * State managers listen for this event and invoke their DOM functions with relevant information
+     * retrieved from localStorage and / or object managers.
+     * 
+     * Triggered by CRUD operations.
+     */
+    UPDATE_DISPLAY: "update:display",
 }
