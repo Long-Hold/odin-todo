@@ -1,6 +1,5 @@
 export const EVENTS = {
     TODO_FORM_SUBMITTED: "todo:formSubmitted",
-    TODO_CREATED: "todo:created",
 
     /**This event signals that the delete button on a todo card has been clicked.
      * 
