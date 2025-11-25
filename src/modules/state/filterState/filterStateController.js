@@ -27,6 +27,11 @@ export function initializeFilterTabListeners() {
 
         updateFilterState(filterType, projectId);
     });
+
+    document.addEventListener(EVENTS.PROJECT_DELETED, () => {
+        FILTER_STATE.type = 'general';
+        FILTER_STATE.display = 'all';
+    });
 }
 
 export function getFilterState() {
