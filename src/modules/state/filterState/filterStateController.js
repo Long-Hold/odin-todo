@@ -1,5 +1,6 @@
 import { triggerCustomEvent } from "../../events/eventProducer";
 import { EVENTS } from "../../events/events";
+import { PROJECTS_LIST } from "../../ui/projects/projectsTabHandler";
 
 const GENERAL_TABS = document.getElementById('general-categories');
 const PROJECT_TABS = document.getElementById('projects-list');
@@ -28,9 +29,11 @@ export function initializeFilterTabListeners() {
         updateFilterState(filterType, projectId);
     });
 
-    document.addEventListener(EVENTS.PROJECT_DELETED, () => {
-        FILTER_STATE.type = 'general';
-        FILTER_STATE.display = 'all';
+    PROJECTS_LIST.addEventListener(EVENTS.PROJECT_DELETE_REQUESTED, (event) => {
+        const deletedId = event.detail.data;
+        if (FILTER_STATE.type === 'project' && FILTER_STATE.display === deletedId) {
+            updateFilterState('general', 'all');
+        }
     });
 }
 
