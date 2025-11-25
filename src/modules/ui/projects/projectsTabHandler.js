@@ -15,10 +15,6 @@ export function initializeProjectTabListeners() {
             event.target.parentElement.remove();
             triggerCustomEvent(PROJECTS_LIST, EVENTS.PROJECT_DELETE_REQUESTED, projectId);
         }
-
-        if (buttonAction === "filter") {
-            triggerCustomEvent(PROJECTS_LIST, EVENTS.PROJECT_TAB_CLICKED, projectId);
-        }
     });
 }
 
