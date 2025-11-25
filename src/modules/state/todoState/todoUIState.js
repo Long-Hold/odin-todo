@@ -10,6 +10,7 @@ export function initializeTodoUIState() {
     listenForNewTodos();
     initializeTodoCardListeners();
     listenForFilterEvent();
+    listenForDisplayUpdates();
 }
 
 /**Renders Todo Objects to the display depending on the last filter condition.
@@ -42,6 +43,12 @@ function listenForNewTodos() {
 
 function listenForFilterEvent() {
     document.addEventListener(EVENTS.FILTER_CHANGED, () => {
+        renderAllTodos();
+    });
+}
+
+function listenForDisplayUpdates() {
+    document.addEventListener(EVENTS.UPDATE_DISPLAY, () => {
         renderAllTodos();
     });
 }
