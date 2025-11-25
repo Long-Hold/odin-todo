@@ -79,11 +79,7 @@ function listenForTodoDeleteRequestEvent() {
     });
 }
 
-/**Retrieves all Todo objects currently in the object memory manager
- * Emits a custom event containing all the created todo objects.
- */
+/**Triggers a custom event that signifies todos have been created. */
 export function broadcastTodos() {
-    const rawTodos = TODO_OBJECT_MANAGER.getAllTodos();
-    const enrichedTodos = enrichTodos(rawTodos);
-    triggerCustomEvent(document, EVENTS.TODO_CREATED, enrichedTodos);
+    triggerCustomEvent(document, EVENTS.TODO_CREATED);
 }
