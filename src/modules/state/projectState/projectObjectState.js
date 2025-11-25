@@ -19,13 +19,16 @@ function loadProjectsFromLocalStorage() {
     const projectsArray = getAllPrefixedItems(Project.ID_PREFIX);
     if (projectsArray.length === 0) {
         console.log('No project objects to load from localStorage.');
-        return null;
     }
 
-    projectsArray.forEach(jsonProj => {
-        const project = createProjectFromLocalStorage(jsonProj);
-        PROJECT_OBJECT_MANAGER.addProject(project.id, project);
-    });
+    else {
+        projectsArray.forEach(jsonProj => {
+            const project = createProjectFromLocalStorage(jsonProj);
+            PROJECT_OBJECT_MANAGER.addProject(project.id, project);
+        });
+    }
+    
+    triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
 
     return PROJECT_OBJECT_MANAGER.getAllProjects();
 }
@@ -34,7 +37,7 @@ function listenForProjectSubmitEvent() {
     PROJECT_FORM.addEventListener(EVENTS.PROJECT_FORM_SUBMITTED, (event) => {
         const projectObj = createProjectFromFormData(event.detail.data);
         PROJECT_OBJECT_MANAGER.addProject(projectObj.id, projectObj);
-        broadcastProjects();
+        triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
     });
 }
 
@@ -76,8 +79,4 @@ function listenForTodoDeleteEvent() {
         // This updates the local storage save of the modified project
         PROJECT_OBJECT_MANAGER.addProject(project.id, project);
     });
-}
-
-export function broadcastProjects() {
-    triggerCustomEvent(document, EVENTS.PROJECT_CREATED, PROJECT_OBJECT_MANAGER.getAllProjects());
 }
