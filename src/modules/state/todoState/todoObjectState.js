@@ -36,7 +36,7 @@ function listenForTodoSubmissionEvent() {
         TODO_OBJECT_MANAGER.addTodo(todoObject.id, todoObject);
 
         if (todoObject.project !== null) { emitProjectLinkEvent(todoObject); }
-        broadcastTodos();
+        triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
     });
 }
 
@@ -60,7 +60,7 @@ function cascadeUnlinkTodosFromProject(idArray) {
         TODO_OBJECT_MANAGER.addTodo(todo.id, todo);
     });
 
-    broadcastTodos();
+    triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
 }
 
 function listenForTodoDeleteRequestEvent() {
@@ -76,7 +76,7 @@ function listenForTodoDeleteRequestEvent() {
         }
 
         triggerCustomEvent(document, EVENTS.TODO_DELETED, todoIdAndProjectId);
-        broadcastTodos();
+        triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
     });
 }
 
