@@ -8,21 +8,10 @@ export function initializeTodoCardListeners() {
         if (event.target.tagName !== 'BUTTON') { return null; }
 
         const cardId = event.target.closest('article').dataset.todoId;
-        const parentContainer = event.target.closest('article');
         const buttonAction = event.target.dataset.action;
 
         if (buttonAction === 'delete') {
             triggerCustomEvent(document, EVENTS.TODO_DELETE_REQUESTED, cardId);
         }
-    });
-
-    listenForTodoDeleteEvent();
-}
-
-function listenForTodoDeleteEvent() {
-    document.addEventListener(EVENTS.TODO_DELETED, (event) => {
-        const { todoId } = event.detail.data;
-        const todoCard = document.querySelector(`[data-todo-id="${todoId}"]`);
-        if (todoCard) { todoCard.remove(); }
     });
 }
