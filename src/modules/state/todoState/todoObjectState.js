@@ -20,7 +20,7 @@ function loadLocalStorageToManager() {
     if (todoObjectArray.length === 0) {
         console.log('No Todo objects to load from localStorage.');
     }
-    
+
     else {
         todoObjectArray.forEach(jsonTodo => {
             const todo = createTodoFromLocalStorage(jsonTodo);
@@ -81,9 +81,4 @@ function listenForTodoDeleteRequestEvent() {
         triggerCustomEvent(document, EVENTS.TODO_DELETED, todoIdAndProjectId);
         triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
     });
-}
-
-/**Triggers a custom event that signifies todos have been created. */
-export function broadcastTodos() {
-    triggerCustomEvent(document, EVENTS.TODO_CREATED);
 }
