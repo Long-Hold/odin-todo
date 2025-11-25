@@ -1,13 +1,15 @@
 import { triggerCustomEvent } from "../../events/eventProducer";
 import { EVENTS } from "../../events/events";
-import { PROJECTS_LIST } from "../../ui/projects/projectsTabHandler";
 
 const GENERAL_TABS = document.getElementById('general-categories');
 const PROJECT_TABS = document.getElementById('projects-list');
 
+const DEFAULT_TYPE = 'general';
+const DEFUALT_DISPLAY = 'all';
+
 const FILTER_STATE = {
-    type: 'general',
-    display: 'all',
+    type: DEFAULT_TYPE,
+    display: DEFUALT_DISPLAY,
 }
 
 export function initializeFilterTabListeners() {
@@ -28,17 +30,15 @@ export function initializeFilterTabListeners() {
 
         updateFilterState(filterType, projectId);
     });
-
-    PROJECTS_LIST.addEventListener(EVENTS.PROJECT_DELETE_REQUESTED, (event) => {
-        const deletedId = event.detail.data;
-        if (FILTER_STATE.type === 'project' && FILTER_STATE.display === deletedId) {
-            updateFilterState('general', 'all');
-        }
-    });
 }
 
 export function getFilterState() {
     return structuredClone(FILTER_STATE);
+}
+
+export function resetFilterStateToDefault() {
+    FILTER_STATE.type = DEFAULT_TYPE;
+    FILTER_STATE.display = DEFUALT_DISPLAY;
 }
 
 /**Updates the FILTER_STATE to track the last clicked filter button.
