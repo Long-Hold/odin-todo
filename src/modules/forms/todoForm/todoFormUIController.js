@@ -1,3 +1,4 @@
+import { PROJECT_OBJECT_MANAGER } from "../../objects/projects/projectObjectManager";
 import { addSelectOption, clearParentContainer } from "../formUIUtils";
 import { addStep, clearChecklistContainer, deleteStep } from "./checklistManager";
 
@@ -11,7 +12,10 @@ const CHECKLIST_CONTAINER = document.getElementById('checklist-container');
 const CHECKLIST_INPUT_CONTAINER = document.getElementById('checklist-input-container');
 
 export function initializeTodoFormUIButtons() {
-    ADD_TODO_BTN.addEventListener('click', () => { TODO_DIALOG.show(); });
+    ADD_TODO_BTN.addEventListener('click', () => { 
+        renderProjectOptions();
+        TODO_DIALOG.show(); 
+    });
 
     FORM_BUTTONS.addEventListener('click', (event) => {
         const controlBtn = event.target.dataset.action;
@@ -43,19 +47,20 @@ export function initializeTodoFormUIButtons() {
     });
 }
 
-export function renderProjectOptions(projectsArray) {
+export function resetForm() {
+    clearChecklistContainer(CHECKLIST_INPUT_CONTAINER);
+    TODO_FORM.reset();
+}
+
+function renderProjectOptions() {
     const selectElement = document.getElementById('projects-dropdown');
     clearParentContainer(selectElement);
    
     // Adds a default option
     addSelectOption(selectElement, '', 'None');
 
+    const projectsArray = PROJECT_OBJECT_MANAGER.getAllProjects();
     projectsArray.forEach(project => addSelectOption(selectElement, project.id, project.name));
 
     return selectElement;
-}
-
-export function resetForm() {
-    clearChecklistContainer(CHECKLIST_INPUT_CONTAINER);
-    TODO_FORM.reset();
 }
