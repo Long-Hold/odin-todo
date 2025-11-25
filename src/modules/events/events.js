@@ -21,6 +21,13 @@ export const EVENTS = {
     
     PROJECT_FORM_SUBMITTED: "project:formSubmitted",
     PROJECT_ASSIGNED: "project:assigned",
+
+    /**An event that signals an HTML element representing a Project Object has been
+     * deleted by the user.
+     * 
+     * State managers listen for this event and invoke thei respective Object manager delete
+     * methods.
+     */
     PROJECT_DELETE_REQUESTED: "project:deleteRequested",
     PROJECT_DELETED: "project:deleted",
 
