@@ -35,7 +35,7 @@ export function renderAllTodos() {
 }
 
 function listenForNewTodos() {
-    document.addEventListener(EVENTS.TODO_CREATED, (event) => {
+    document.addEventListener(EVENTS.TODO_CREATED, () => {
         renderAllTodos();
     });
 }
