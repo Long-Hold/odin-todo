@@ -29,6 +29,13 @@ export const EVENTS = {
      * methods.
      */
     PROJECT_DELETE_REQUESTED: "project:deleteRequested",
+
+    /**An event that signals an internal Project Object has been deleted from
+     * it's Object manager.
+     * 
+     * State managers listen for this event to unlink any Objects that had a relationship
+     * with the deleted Project Object.
+     */
     PROJECT_DELETED: "project:deleted",
 
     /**Signals that a filter tab has been selected.
