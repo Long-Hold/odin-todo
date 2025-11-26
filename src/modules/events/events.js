@@ -6,6 +6,13 @@ export const EVENTS = {
      */
     TODO_FORM_SUBMITTED: "todo:formSubmitted",
 
+    /**An event that signals the 'edit' button on a Todo card has been clicked.
+     * 
+     * State managers listen for this event and use the event's data to retrieve the object
+     * it is representing. Then, that object's properties are used to pre-populate a form.
+     */
+    TODO_EDIT_REQUESTED: "todo:editRequested",
+
     /**This event signals that the delete button on a todo card has been clicked.
      * 
      * When this event is emitted, state listeners listening for it begin deleting
