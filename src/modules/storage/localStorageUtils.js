@@ -1,4 +1,11 @@
+import { storageAvailable } from "./storageAvailable";
+
 export function saveItem(key, item) {
+    if (!storageAvailable('localStorage')) {
+        console.error('localStorage is unavailable. Data will be lost upon page refresh or close.');
+        return null;
+    }
+
     localStorage.setItem(normalizeKey(key), JSON.stringify(item));
 }
 
