@@ -3,7 +3,7 @@ import { PROJECT_OBJECT_MANAGER } from "../../objects/projects/projectObjectMana
 import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
 import { renderTodoCards } from "../../ui/todos/renderTodoCards";
 import { initializeTodoCardListeners } from "../../ui/todos/todoCardController";
-import { getFilterState } from "../filterState/filterStateController";
+import { getFilterState, resetFilterStateToDefault } from "../filterState/filterStateController";
 import { enrichTodos, filterTodosByDate } from "./todoStateUtils";
 
 export function initializeTodoUIState() {
@@ -26,6 +26,10 @@ export function renderAllTodos() {
 
     if (type === 'project') {
         const projectObject = PROJECT_OBJECT_MANAGER.getProject(display);
+        if (!projectObject) {
+            resetFilterStateToDefault();
+            return renderAllTodos();
+        }
         const todoIdsArray = Array.from(projectObject.linkedIds);
         const rawTodos = todoIdsArray.map(id => TODO_OBJECT_MANAGER.getTodo(id));
         const enrichedTodos = enrichTodos(rawTodos);
