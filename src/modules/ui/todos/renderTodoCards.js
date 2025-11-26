@@ -6,7 +6,9 @@ const CARD_CHECKLIST_ITEM_TEMPLATE = document.getElementById('card-checklist-ite
 
 export function renderTodoCards(todoObjectArray) {
     TODO_CARD_DISPLAY.replaceChildren();
-    todoObjectArray.forEach((todo) => {
+
+    const sortedTodoArray = [...todoObjectArray].sort((a, b) => a.createdAt - b.createdAt);
+    sortedTodoArray.forEach((todo) => {
         const todoTemplateClone = TODO_CARD_TEMPLATE.content.cloneNode(true);
 
         const article = todoTemplateClone.querySelector('.todo-card');
