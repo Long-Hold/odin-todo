@@ -56,13 +56,6 @@ export const EVENTS = {
      */
     PROJECT_DELETED: "project:deleted",
 
-    /**Signals that a filter tab has been selected.
-     * 
-     * This event's data stores the type of filter clicked, and what type of
-     * filtering the render engine should use.
-     */
-    FILTER_CHANGED: "filter:changed",
-
     /**A synchronization event that signals the DOM to be refreshed with
      * current data from the internal state.
      * 
