@@ -4,7 +4,14 @@ export function createTodoFromFormData(formData) {
     const title = formData.get('title').trim();
     const priority = formData.get('priority').trim();
     const project = formData.get('projects')?.trim() || null;
-    const deadline = formData.get('deadline')?.trim() || null;
+
+    // Convert date string to local midnight, then to ISO
+    // This prevents off-by-one errors when using Date() from different timezones
+    const deadlineInput = formData.get('deadline')?.trim() || null;
+    const deadline = deadlineInput
+        ? new Date(deadlineInput + 'T00:00:00').toISOString()
+        : null;
+
     const description = formData.get('description')?.trim() || null;
 
     /**If there are no checklist items, then checklist will remain as null.
