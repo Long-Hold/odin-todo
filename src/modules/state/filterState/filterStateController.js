@@ -5,11 +5,11 @@ const GENERAL_TABS = document.getElementById('general-categories');
 const PROJECT_TABS = document.getElementById('projects-list');
 
 const DEFAULT_TYPE = 'general';
-const DEFUALT_DISPLAY = 'all';
+const DEFAULT_DISPLAY = 'all';
 
 const FILTER_STATE = {
     type: DEFAULT_TYPE,
-    display: DEFUALT_DISPLAY,
+    display: DEFAULT_DISPLAY,
 }
 
 export function initializeFilterTabListeners() {
@@ -38,7 +38,7 @@ export function getFilterState() {
 
 export function resetFilterStateToDefault() {
     FILTER_STATE.type = DEFAULT_TYPE;
-    FILTER_STATE.display = DEFUALT_DISPLAY;
+    FILTER_STATE.display = DEFAULT_DISPLAY;
 }
 
 /**Updates the FILTER_STATE to track the last clicked filter button.
