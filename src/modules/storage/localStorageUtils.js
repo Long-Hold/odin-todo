@@ -13,20 +13,39 @@ export function initializeStorage() {
 }
 
 export function saveItem(key, item) {
-    localStorage.setItem(normalizeKey(key), JSON.stringify(item));
+    if (!IS_STORAGE_AVAILABLE) { return null; }
+
+    try {
+        localStorage.setItem(normalizeKey(key), JSON.stringify(item));
+    } catch (error) {
+        console.error('Failed to save to localStorage:', error);
+        return null;
+    }
 }
 
 export function deleteItem(key) {
+    if (!IS_STORAGE_AVAILABLE) { return null; }
     localStorage.removeItem(normalizeKey(key));
 }
 
 export function getItem(key) {
+    if (!IS_STORAGE_AVAILABLE) { return null; }
+    
     const JSONItem = localStorage.getItem(normalizeKey(key));
-    const parsedItem = JSON.parse(JSONItem);
+
+    let parsedItem;
+    try {
+        parsedItem = JSON.parse(JSONItem);
+    } catch (error) {
+        console.error('Failed to parse JSON from localStorage', error);
+    }
+
     return parsedItem;
 }
 
 export function getAllPrefixedItems(keyPefix) {
+    if (!IS_STORAGE_AVAILABLE) { return null; }
+    
     const itemsArray = [];
 
     for (let i = 0; i < localStorage.length; ++i) {
