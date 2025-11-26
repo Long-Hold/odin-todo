@@ -9,7 +9,6 @@ import { enrichTodos, filterTodosByDate } from "./todoStateUtils";
 export function initializeTodoUIState() {
     listenForDisplayUpdates();
     initializeTodoCardListeners();
-    listenForFilterEvent();
 }
 
 /**Renders Todo Objects to the display depending on the last filter condition.
@@ -36,12 +35,6 @@ export function renderAllTodos() {
 
 function listenForDisplayUpdates() {
     document.addEventListener(EVENTS.UPDATE_DISPLAY, () => {
-        renderAllTodos();
-    });
-}
-
-function listenForFilterEvent() {
-    document.addEventListener(EVENTS.FILTER_CHANGED, () => {
         renderAllTodos();
     });
 }
