@@ -13,5 +13,9 @@ export function initializeTodoCardListeners() {
         if (buttonAction === 'delete') {
             triggerCustomEvent(document, EVENTS.TODO_DELETE_REQUESTED, cardId);
         }
+
+        if (buttonAction === 'edit') {
+            triggerCustomEvent(document, EVENTS.TODO_EDIT_REQUESTED, cardId);
+        }
     });
 }
