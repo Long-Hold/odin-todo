@@ -28,7 +28,10 @@ export function initializeProjectTabListeners() {
 
 export function renderProjectTabs(projectsArray) {
     PROJECTS_LIST.replaceChildren();
-    projectsArray.forEach((project) => {
+
+    // Sorts projects by name, in alphabetical order
+    const sortedProjects = [...projectsArray].sort((a, b) => a.name.localeCompare(b.name));
+    sortedProjects.forEach((project) => {
         const clonedTemplate = PROJECT_TAB_TEMPLATE.content.cloneNode(true);
         const tabButton = clonedTemplate.querySelector('.project-btn');
         const deleteButton = clonedTemplate.querySelector('.delete-project-btn');
