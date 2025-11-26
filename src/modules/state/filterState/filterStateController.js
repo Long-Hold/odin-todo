@@ -48,5 +48,5 @@ export function resetFilterStateToDefault() {
 function updateFilterState(type, display) {
     FILTER_STATE.type = type;
     FILTER_STATE.display = display;
-    triggerCustomEvent(document, EVENTS.FILTER_CHANGED);
+    triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
 }
