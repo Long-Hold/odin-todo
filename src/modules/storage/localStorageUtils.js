@@ -1,5 +1,17 @@
 import { storageAvailable } from "./storageAvailable";
 
+let IS_STORAGE_AVAILABLE = null;
+
+export function initializeStorage() {
+    IS_STORAGE_AVAILABLE = storageAvailable('localStorage');
+    
+    if (!IS_STORAGE_AVAILABLE) {
+        console.error('localStorage is not available. Data will not persist in this session.');
+    }
+
+    return IS_STORAGE_AVAILABLE;
+}
+
 export function saveItem(key, item) {
     localStorage.setItem(normalizeKey(key), JSON.stringify(item));
 }
