@@ -4,6 +4,7 @@ export class Todo {
     static fromJSON(jsonObj) {
         const todo = Object.create(Todo.prototype);
         todo.id = jsonObj.id;
+        this.createdAt = jsonObj.createdAt;
         todo.completed = jsonObj.completed;
         todo.title = jsonObj.title;
         todo.priority = jsonObj.priority;
@@ -17,6 +18,7 @@ export class Todo {
 
     constructor(title, priority, project = null , deadline = null, description = null, checklist = null) {
         this.id = `${Todo.ID_PREFIX}${crypto.randomUUID()}`;
+        this.createdAt = Date.now();
         this.completed = false;
         this.title = title;
         this.priority = priority;
@@ -29,6 +31,7 @@ export class Todo {
     toJSON() {
         return {
             id: this.id,
+            createdAt: this.createdAt,
             completed: this.completed,
             title: this.title,
             priority: this.priority,
