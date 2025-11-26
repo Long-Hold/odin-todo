@@ -30,6 +30,14 @@ export const EVENTS = {
      * new Project Objects.
      */
     PROJECT_FORM_SUBMITTED: "project:formSubmitted",
+
+    /**An event that signals a project has been assigned to a Todo object.
+     * 
+     * State managers emit this event when a Project has been assigned to an object.
+     * 
+     * The Project State manager listens for this event to link the assigned project
+     * and todo object together.
+     */
     PROJECT_ASSIGNED: "project:assigned",
 
     /**An event that signals an HTML element representing a Project Object has been
