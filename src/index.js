@@ -1,3 +1,5 @@
+import { initializeStorage } from "./modules/storage/localStorageUtils";
+
 import { initializeProjectFormListeners } from "./modules/forms/projectForm/projectFormController";
 import { initializeTodoFormListeners } from "./modules/forms/todoForm/todoFormController";
 
@@ -7,6 +9,8 @@ import { initializeTodoStates } from "./modules/state/todoState/todoStateControl
 import { initializeFilterTabListeners } from "./modules/state/filterState/filterStateController";
 
 import "./styles/styles.css";
+
+initializeStorage();
 
 initializeProjectFormListeners();
 initializeTodoFormListeners();
