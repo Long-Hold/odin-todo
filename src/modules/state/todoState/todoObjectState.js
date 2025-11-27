@@ -6,6 +6,7 @@ import { Todo } from "../../objects/todos/todoClass";
 import { createTodoFromFormData, createTodoFromLocalStorage } from "../../objects/todos/todoObjectController";
 import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
 import { getAllPrefixedItems } from "../../storage/localStorageUtils";
+import { isExistingTodo, projectFieldEdited } from "./todoStateUtils";
 
 
 export function initializeTodoObjState() {
@@ -36,6 +37,27 @@ function loadLocalStorageToManager() {
 function listenForTodoSubmissionEvent() {
     TODO_FORM.addEventListener(EVENTS.TODO_FORM_SUBMITTED, (event) => {
         const todoObject = createTodoFromFormData(event.detail.data);
+        
+        /**I check if the todo object already exists in the manager.
+         * If it does, then that means it is being edited (overwritten) with new data.
+         */
+        if (isExistingTodo(todoObject.id)) {
+            const originalTodo = TODO_OBJECT_MANAGER.getTodo(todoObject.id);
+
+            /**If the originalTodo (unedited version) was linked to a project previously and
+             * that object property has changed, then we need to notify the project state manager
+             * to unlink that todo's ID from it's linked storage structure.
+             */
+            if (originalTodo.project && projectFieldEdited(originalTodo.id, todoObject.project)) {
+                const identifierIds = {
+                    projectId : originalTodo.project,
+                    todoId: todoObject.id,
+                }
+
+                triggerCustomEvent(document, EVENTS.PROJECT_UNASSIGNED, identifierIds);
+            }
+        }
+
         TODO_OBJECT_MANAGER.addTodo(todoObject.id, todoObject);
 
         if (todoObject.project !== null) { emitProjectLinkEvent(todoObject); }
