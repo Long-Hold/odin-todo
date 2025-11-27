@@ -31,7 +31,10 @@ export function createTodoFromFormData(formData) {
         });
     }
 
-    return new Todo(title, priority, project, deadline, description, checklist);
+    const todoId = formData.get('todo-id') || null;
+    const createdAt = formData.get('created-at') || null;
+
+    return new Todo(title, priority, project, deadline, description, checklist, todoId, createdAt);
 }
 
 export function createTodoFromLocalStorage(jsonObj) {
