@@ -10,9 +10,10 @@ export function addStep(parentContainer, template) {
     label.htmlFor = idValue;
     input.id = idValue;
 
+    const stepElement = templateClone.firstElementChild;
     parentContainer.appendChild(templateClone);
 
-    return templateClone.firstElementChild;
+    return stepElement;
 }
 
 export function deleteStep(selectedStep) {
