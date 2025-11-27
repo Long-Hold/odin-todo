@@ -51,7 +51,7 @@ export function isExistingTodo(todoId) {
 }
 
 export function projectFieldEdited(todoId, submittedProject) {
-    const todo = TODO_OBJECT_MANAGER(todoId);
+    const todo = TODO_OBJECT_MANAGER.getTodo(todoId);
 
     if (!todo) { return false; }
     return todo.project !== submittedProject;
