@@ -1,5 +1,6 @@
 import { PROJECT_OBJECT_MANAGER } from "../../objects/projects/projectObjectManager";
 import { isToday, isThisWeek } from "date-fns";
+import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
 /**
  * Enriches todo objects by replacing project ID with project name for display.
  * 
@@ -43,4 +44,15 @@ export function filterTodosByDate(todosArray, filterType) {
     }
 
     return todosArray;
+}
+
+export function isExistingTodo(todoId) {
+    return TODO_OBJECT_MANAGER.getTodo(todoId) !== undefined;
+}
+
+export function projectFieldEdited(todoId, submittedProject) {
+    const todo = TODO_OBJECT_MANAGER(todoId);
+
+    if (!todo) { return false; }
+    return todo.project !== submittedProject;
 }
