@@ -4,7 +4,7 @@ export function addStep(parentContainer, template) {
     const label = templateClone.querySelector('label');
     const input = templateClone.querySelector('input');
 
-    const uniqueId = Date.now();
+    const uniqueId = Date.now() + Math.random();
     const idValue = `checklist-item-${uniqueId}`;
 
     label.htmlFor = idValue;
