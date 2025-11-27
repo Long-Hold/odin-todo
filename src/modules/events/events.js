@@ -47,6 +47,19 @@ export const EVENTS = {
      */
     PROJECT_ASSIGNED: "project:assigned",
 
+    /**An event that signals a project has been removed from 
+     * a Todo's linkedProject map.
+     * 
+     * Controllers like forms emit this event when an edited object
+     * changes it's project value.
+     * 
+     * State managers listening for this event will retrieve the referenced project,
+     * and remove the mutated todo's ID from its set.
+     * 
+     * This event is triggered by CRUD events.
+     */
+    PROJECT_UNASSIGNED: "project:unassigned",
+
     /**An event that signals an HTML element representing a Project Object has been
      * deleted by the user.
      * 
