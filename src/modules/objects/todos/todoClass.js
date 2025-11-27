@@ -4,7 +4,7 @@ export class Todo {
     static fromJSON(jsonObj) {
         const todo = Object.create(Todo.prototype);
         todo.id = jsonObj.id;
-        this.createdAt = jsonObj.createdAt;
+        todo.createdAt = jsonObj.createdAt;
         todo.completed = jsonObj.completed;
         todo.title = jsonObj.title;
         todo.priority = jsonObj.priority;
