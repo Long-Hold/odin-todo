@@ -51,8 +51,11 @@ export function renderTodoCards(todoObjectArray) {
 function createChecklistItem(itemId, itemText) {
     const checklistItem = CARD_CHECKLIST_ITEM_TEMPLATE.content.cloneNode(true);
 
+    const div = checklistItem.querySelector('div');
     const input = checklistItem.querySelector('input');
     const label = checklistItem.querySelector('label');
+
+    div.dataset.itemId = itemId;
 
     input.id = itemId;
     input.name = itemId;
