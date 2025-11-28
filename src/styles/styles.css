@@ -17,3 +17,9 @@ html, dialog {
     background-color: rgb(44, 42, 42);
     color: white;
 }
+
+.todo-checklist .completed {
+    opacity: 0.5;
+    pointer-events: none;
+    text-decoration: line-through;
+}
