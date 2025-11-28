@@ -14,6 +14,7 @@ export function initializeTodoObjState() {
     listenForTodoSubmissionEvent();
     listenForProjectDeleteEvent();
     listenForTodoDeleteRequestEvent();
+    listenForChecklistClickEvent();
 }
 
 function loadLocalStorageToManager() {
@@ -102,5 +103,14 @@ function listenForTodoDeleteRequestEvent() {
 
         triggerCustomEvent(document, EVENTS.TODO_DELETED, todoIdAndProjectId);
         triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
+    });
+}
+
+function listenForChecklistClickEvent() {
+    document.addEventListener(EVENTS.TODO_CHECKLIST_CLICKED, (event) => {
+        const {todoId, checklistId} = event.detail.data;
+        const todo = TODO_OBJECT_MANAGER.getTodo(todoId);
+        todo.checklist.delete(checklistId);
+        TODO_OBJECT_MANAGER.addTodo(todo.id, todo);
     });
 }
