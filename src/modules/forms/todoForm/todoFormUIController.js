@@ -80,7 +80,6 @@ function renderProjectOptions() {
 }
 
 function populateFormForEdit(todo) {
-    console.log(todo);
     // Populate hidden fields for edit mode
     TODO_FORM.querySelector('#todo-id').value = todo.id;
     TODO_FORM.querySelector('#created-at').value = todo.createdAt;
