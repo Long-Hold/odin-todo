@@ -1,5 +1,5 @@
 import { PROJECT_OBJECT_MANAGER } from "../../objects/projects/projectObjectManager";
-import { isToday, isThisWeek } from "date-fns";
+import { isToday, isThisWeek, isPast, isBefore, startOfDay } from "date-fns";
 import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
 /**
  * Enriches todo objects by replacing project ID with project name for display.
@@ -40,6 +40,12 @@ export function filterTodosByDate(todosArray, filterType) {
     if (filterType === 'week') {
         return todosArray.filter(todo => 
             todo.deadline && isThisWeek(new Date(todo.deadline))
+        );
+    }
+
+    if (filterType === 'overdue') {
+        return todosArray.filter(todo => 
+            todo.deadline && isBefore(new Date(todo.deadline), startOfDay(new Date()))
         );
     }
 
