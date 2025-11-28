@@ -1,0 +1,5 @@
+# Add event listener in todoObjectState for checklist clicked event, remove
+checklist item from todo todoObject 
+
+# Add css class ".completed" that adds a strikethrough line on element, and disables
+interaction with element
