@@ -30,6 +30,14 @@ export const EVENTS = {
      * This event passes the Todo Object Id.
      */
     TODO_DELETED: "todo:deleted",
+
+    /**An event that signals a checklist input / label has been clicked on
+     * a Todo card.
+     * 
+     * The todoCardController in the /ui module will trigger this event to tell
+     * the Object state controller to remove the checklist item from the object.
+     */
+    TODO_CHECKLIST_CLICKED: "todo:checklistClicked",
     
     /**An event that signals the New Project form has sent a POST request.
      * 
