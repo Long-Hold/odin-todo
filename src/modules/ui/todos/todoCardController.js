@@ -8,7 +8,9 @@ export function initializeTodoCardListeners() {
         const cardId = event.target.closest('article').dataset.todoId;
 
         if (isChecklistItem(event.target)) {
-            //TODO: Emit event to signal checklist item deletion
+            const parentDiv = event.target.closest('div');
+            const itemId = parentDiv.dataset.itemId;
+            handleChecklistClick(cardId, itemId, parentDiv);
         }
 
         if (event.target.tagName !== 'BUTTON') { return null; }
@@ -29,4 +31,16 @@ function isChecklistItem(element) {
     const isInChecklist = element.closest('.todo-checklist');
     const isValidTag = element.tagName === 'INPUT' || element.tagName === 'LABEL';
     return isInChecklist && isValidTag;
+}
+
+function handleChecklistClick(cardId, itemId, parentContainer) {
+    if (parentContainer.classList.contains('completed')) { return; }
+    
+    parentContainer.classList.add('completed');
+    const identifiers = {
+        todoId: cardId,
+        checklistId: itemId,
+    }
+
+    triggerCustomEvent(document, EVENTS.TODO_CHECKLIST_CLICKED, identifiers);
 }
