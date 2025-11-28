@@ -5,14 +5,14 @@ const TODO_CARD_DISPLAY = document.getElementById('todo-card-display');
 
 export function initializeTodoCardListeners() {
     TODO_CARD_DISPLAY.addEventListener('click', (event) => {
+        const cardId = event.target.closest('article').dataset.todoId;
 
         if (isChecklistItem(event.target)) {
-            removeChecklistItem(event.target.parentElement);
+            //TODO: Emit event to signal checklist item deletion
         }
 
         if (event.target.tagName !== 'BUTTON') { return null; }
 
-        const cardId = event.target.closest('article').dataset.todoId;
         const buttonAction = event.target.dataset.action;
 
         if (buttonAction === 'delete') {
@@ -23,10 +23,6 @@ export function initializeTodoCardListeners() {
             triggerCustomEvent(document, EVENTS.TODO_EDIT_REQUESTED, cardId);
         }
     });
-}
-
-function removeChecklistItem(checklistItem) {
-    setTimeout(() => checklistItem.remove(), 2000);
 }
 
 function isChecklistItem(element) {
