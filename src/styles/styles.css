@@ -31,6 +31,7 @@
     sans-serif;
 
     --light-mint-green: rgba(83, 203, 139, 0.893);
+    --button-red: rgb(169,41,27);
     --dark-gray: rgb(24,26,27);
     --dark-brown: rgb(40,28,17);
 }
@@ -94,7 +95,7 @@ button:hover, button:focus-visible {
 
 button {
     color: whitesmoke;
-    background-color: var(--light-mint-green);
+    background-color: var(--button-red);
     filter: brightness(1);
     transition: 0.2s ease;
 }
