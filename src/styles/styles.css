@@ -102,3 +102,8 @@ button:active {
     filter: brightness(0.5);
     transition: 0.2s;
 }
+
+/* Sidebar styling */
+.side-bar {
+    background-color: rgb(35, 22, 7);
+}
