@@ -34,6 +34,7 @@
     --button-red: rgb(169,41,27);
     --dark-gray: rgb(24,26,27);
     --dark-brown: rgb(40,28,17);
+    --light-beige: rgb(212,208,202);
 }
 
 html {
@@ -43,7 +44,7 @@ html {
 
 html, dialog {
     background-color: var(--dark-gray);
-    color: white;
+    color: var(--light-beige);
 }
 
 button, label, input,
@@ -89,6 +90,8 @@ button {
 
     filter: brightness(1);
     transition: 0.2s ease;
+
+    color: inherit;
 }
 
 button:hover, button:focus-visible {
@@ -105,4 +108,23 @@ button:active {
 /* Sidebar styling */
 .side-bar {
     background-color: var(--dark-brown);
+
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+
+    padding: 0 0.8rem;
+}
+
+.side-bar nav {
+    button {
+        width: 100%;
+        text-align: left;
+        background: transparent;
+        border-radius: 5px;
+    }
+
+    button:hover {
+        background-color: rgb(93, 75, 75);
+    }
 }
