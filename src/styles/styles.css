@@ -31,7 +31,8 @@
     sans-serif;
 
     --light-mint-green: rgba(83, 203, 139, 0.893);
-    --dark-gray: rgb(28,28,28);
+    --dark-gray: rgb(24,26,27);
+    --dark-brown: rgb(40,28,17);
 }
 
 html {
@@ -105,5 +106,5 @@ button:active {
 
 /* Sidebar styling */
 .side-bar {
-    background-color: rgb(35, 22, 7);
+    background-color: var(--dark-brown);
 }
