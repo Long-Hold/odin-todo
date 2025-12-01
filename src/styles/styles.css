@@ -31,6 +31,7 @@
     sans-serif;
 
     --light-mint-green: rgba(83, 203, 139, 0.893);
+    --dark-gray: rgb(28,28,28);
 }
 
 html {
@@ -39,7 +40,7 @@ html {
 }
 
 html, dialog {
-    background-color: rgb(44, 42, 42);
+    background-color: var(--dark-gray);
     color: white;
 }
 
