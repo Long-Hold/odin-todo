@@ -50,6 +50,23 @@ option, select, textarea {
     width: 150px;
 }
 
+/* general grid layout */
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    grid-template-areas: "sidebar main-content";
+}
+
+.side-bar {
+    grid-area: sidebar;
+}
+
+.content-view {
+    grid-area: main-content;
+}
+
+
 /* the completed class is assigned to elements to represent
     a 'crossed' out and non-interactable element.
 */
