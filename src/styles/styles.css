@@ -6,19 +6,29 @@
 }
 
 /* Reset / Normalize */
+*,
 *::before,
 *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     appearance: none;
+    -webkit-appearance: none;
 }
 
 :root {
-    font-family: 'fira_sansregular', system-ui, -apple-system, 
-    BlinkMacSystemFont, 'Segoe UI', Roboto, 
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 
-    'Helvetica Neue', sans-serif;
+    font-family: 'fira_sansregular', 
+    system-ui, 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'Segoe UI', 
+    Roboto, 
+    Oxygen, 
+    Ubuntu, 
+    Cantarell, 
+    'Open Sans', 
+    'Helvetica Neue', 
+    sans-serif;
 }
 
 html {
@@ -32,12 +42,23 @@ html, dialog {
 }
 
 button, label, input,
-option, select {
+option, select, textarea {
     font:inherit;
+    font-size: 100%;
+    width: 150px;
 }
 
+/* the completed class is assigned to elements to represent
+    a 'crossed' out and non-interactable element.
+*/
 .todo-checklist .completed {
     opacity: 0.5;
     pointer-events: none;
     text-decoration: line-through;
+}
+
+/* Dedicated button styling */
+button {
+    margin: 0;
+    padding: 0;
 }
