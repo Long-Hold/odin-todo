@@ -12,7 +12,11 @@ const FILTER_STATE = {
     display: DEFAULT_DISPLAY,
 }
 
+const CSS_CURRENT_TAB = "current-tab";
+const DEFAULT_BUTTON = document.querySelector(`[data-filter-type="${FILTER_STATE.type}"][data-filter-display="${FILTER_STATE.display}"]`);
+
 export function initializeFilterTabListeners() {
+    assignCurrentTabColor();
     GENERAL_TABS.addEventListener('click', (event) => {
         if (event.target.classList.contains('category-btn') === false) { return; }
 
@@ -20,6 +24,7 @@ export function initializeFilterTabListeners() {
         const filterDisplay = event.target.dataset.filterDisplay;
 
         updateFilterState(filterType, filterDisplay);
+        assignCurrentTabColor(event.target);
     });
 
     PROJECT_TABS.addEventListener('click', (event) => {
@@ -49,4 +54,12 @@ function updateFilterState(type, display) {
     FILTER_STATE.type = type;
     FILTER_STATE.display = display;
     triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
+}
+
+function assignCurrentTabColor(currentButton = DEFAULT_BUTTON) {
+    document.querySelectorAll(`.${CSS_CURRENT_TAB}`).forEach(btn => {
+        btn.classList.remove(CSS_CURRENT_TAB);
+    });
+
+    currentButton.classList.add(CSS_CURRENT_TAB);
 }
