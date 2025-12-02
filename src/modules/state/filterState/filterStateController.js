@@ -13,7 +13,6 @@ const FILTER_STATE = {
 }
 
 const CSS_CURRENT_TAB = "current-tab";
-const DEFAULT_BUTTON = document.querySelector(`[data-filter-type="${FILTER_STATE.type}"][data-filter-display="${FILTER_STATE.display}"]`);
 
 export function initializeFilterTabListeners() {
     assignCurrentTabColor();
@@ -24,7 +23,6 @@ export function initializeFilterTabListeners() {
         const filterDisplay = event.target.dataset.filterDisplay;
 
         updateFilterState(filterType, filterDisplay);
-        assignCurrentTabColor(event.target);
     });
 
     PROJECT_TABS.addEventListener('click', (event) => {
@@ -54,12 +52,38 @@ function updateFilterState(type, display) {
     FILTER_STATE.type = type;
     FILTER_STATE.display = display;
     triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
+
+    assignCurrentTabColor();
 }
 
-function assignCurrentTabColor(currentButton = DEFAULT_BUTTON) {
+/**Assigns a custom class to filter button element
+ * that visually represents it is the most recent button to be clicked.
+ * 
+ * The DOM is queried for all elements with the .css class, and then the class
+ * is removed from those elements in a forEach loop to prevent
+ * multiple elements having this class at the same time.
+ * 
+ * Then, depending on the filter state it either looks for a filter-type
+ * or project-id dataset before assigning the class to the button.
+ * 
+ * If the element could not be located, then this function terminates by returning null,
+ * silently failing. This is fine because the visual representation of the last clicked button
+ * is not critically important to the usage and function of the website.
+ */
+function assignCurrentTabColor() {
     document.querySelectorAll(`.${CSS_CURRENT_TAB}`).forEach(btn => {
         btn.classList.remove(CSS_CURRENT_TAB);
     });
 
+    let currentButton;
+    if (FILTER_STATE.type === 'general') {
+        currentButton = document.querySelector(`[data-filter-type="${FILTER_STATE.type}"][data-filter-display="${FILTER_STATE.display}"]`);
+    }
+
+    if (FILTER_STATE.type === 'project') {
+        currentButton = document.querySelector(`[data-filter-type="${FILTER_STATE.type}"][data-project-id="${FILTER_STATE.display}"]`);
+    }
+
+    if (!currentButton) { return null; }
     currentButton.classList.add(CSS_CURRENT_TAB);
 }
