@@ -152,14 +152,20 @@ button:active {
 /* Project tab container styling */
 .side-bar nav#projects-navigator {
     /* Aligns the add project button with the header */
-    div:first-of-type {
+    div {
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
         justify-content: space-between;
+        width: 100%;
     }
 
-    button#add-project-btn {
+    div#projects-list {
+        display: flex;
+        flex-flow: column nowrap;
+    }
+
+    button#add-project-btn, button.delete-project-btn {
         width: auto;
     }
 }
