@@ -81,7 +81,7 @@ body {
 }
 
 /* This ID is applied to the currently selected filter tab */
-button #current-tab {
+button .current-tab {
     background-color: var(--button-red);
 }
 
