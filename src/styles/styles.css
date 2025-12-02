@@ -54,6 +54,11 @@ option, select, textarea {
     width: 150px;
 }
 
+/* Hides the container of the svgs we reference later */
+#reference-svgs {
+    display: none;
+}
+
 /* general grid layout */
 body {
     min-height: 100vh;
@@ -112,7 +117,6 @@ button:active {
     display: flex;
     flex-flow: column nowrap;
     width: 100%;
-
     padding: 0 0.8rem;
 }
 
@@ -128,9 +132,15 @@ button:active {
         background: transparent;
         border-radius: 5px;
 
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        gap: 0.5rem;
+
         svg {
-            height: 1.5em;
-            width: 1.5em;
+            height: 1.8em;
+            width: 1.8em;
+            flex-shrink: 0;
         }
     }
 
