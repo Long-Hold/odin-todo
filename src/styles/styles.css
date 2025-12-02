@@ -148,3 +148,18 @@ button:active {
         background-color: rgb(93, 75, 75);
     }
 }
+
+/* Project tab container styling */
+.side-bar nav#projects-navigator {
+    /* Aligns the add project button with the header */
+    div:first-of-type {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    button#add-project-btn {
+        width: auto;
+    }
+}
