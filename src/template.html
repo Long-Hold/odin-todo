@@ -40,6 +40,11 @@
             <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </symbol>
+
+            <symbol id="plus" viewBox="0 0 24 24">
+            <path d="M12 5V19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 12H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </symbol>
         </defs>
     </svg>
 
@@ -108,8 +113,10 @@
         </nav>
 
         <nav id="projects-navigator">
-            <h2>Projects</h2>
-            <button id="add-project-btn">+</button>
+            <div>
+                <h2>Projects</h2>
+                <button id="add-project-btn"><svg><use href="#plus"></use></svg></button>
+            </div>
             
             <div id="projects-list">
 
