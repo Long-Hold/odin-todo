@@ -37,7 +37,10 @@ export function renderProjectTabs(projectsArray) {
         const deleteButton = clonedTemplate.querySelector('.delete-project-btn');
 
         tabButton.dataset.projectId = project.id;
-        tabButton.textContent = project.name;
+
+        // Append the project.name to preserve the SVG icon that is already part of the
+        // buttons text
+        tabButton.append(project.name);
         deleteButton.dataset.projectId = project.id;
 
         PROJECTS_LIST.appendChild(clonedTemplate);
