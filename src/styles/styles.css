@@ -127,11 +127,14 @@ button:active {
         text-align: left;
         background: transparent;
         border-radius: 5px;
+
+        svg {
+            height: 1.5em;
+            width: 1.5em;
+        }
     }
 
     button:hover {
         background-color: rgb(93, 75, 75);
     }
 }
-
-/* Sidebar nav-specific button styling */
