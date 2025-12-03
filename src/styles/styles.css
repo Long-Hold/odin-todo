@@ -179,6 +179,11 @@ button:active {
         z-index: 1;
     }
 
+    button.project-btn span {
+        font-style: italic;
+        margin-left: auto;
+    }
+
     button.delete-project-btn {
         background-color: var(--button-red);
         z-index: 2;
