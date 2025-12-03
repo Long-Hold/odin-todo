@@ -175,14 +175,8 @@ button:active {
         width: auto;
     }
 
-    /* Put the delete button on top of the tab button itself */
-    button.project-btn {
-        z-index: 1;
-    }
-
     button.delete-project-btn {
         background-color: var(--button-red);
-        z-index: 2;
         position: absolute;
         right: 0;
         visibility: hidden;
