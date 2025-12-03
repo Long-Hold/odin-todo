@@ -137,10 +137,11 @@ button:active {
         align-items: center;
         gap: 0.5rem;
 
-        svg {
+        svg, span.todo-counter {
             height: 1.8em;
             width: 1.8em;
             flex-shrink: 0;
+            text-align: center;
         }
     }
 
@@ -179,17 +180,16 @@ button:active {
         z-index: 1;
     }
 
-    button.project-btn span {
-        font-style: italic;
-        margin-left: auto;
-    }
-
     button.delete-project-btn {
         background-color: var(--button-red);
         z-index: 2;
         position: absolute;
         right: 0;
         visibility: hidden;
+    }
+
+    span.todo-counter {
+        margin-left: auto;
     }
 
     /* Show delete button on hover, focus, or active state */
