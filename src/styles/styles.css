@@ -182,8 +182,16 @@ button:active {
         visibility: hidden;
     }
 
+    span.project-name {
+        flex: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
     span.todo-counter {
         margin-left: auto;
+        flex-shrink: 0;
     }
 
     /* Show delete button on hover, focus, or active state */
