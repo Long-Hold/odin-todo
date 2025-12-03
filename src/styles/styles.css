@@ -165,12 +165,32 @@ button:active {
         flex-flow: column nowrap;
     }
 
+    div.project-tab {
+        position: relative;
+    }
+
     button#add-project-btn, button.delete-project-btn {
         text-align: center;
         width: auto;
     }
 
+    /* Put the delete button on top of the tab button itself */
+    button.project-btn {
+        z-index: 1;
+    }
+
     button.delete-project-btn {
         background-color: var(--button-red);
+        z-index: 2;
+        position: absolute;
+        right: 0;
+        visibility: hidden;
+    }
+
+    /* Show delete button on hover, focus, or active state */
+    div.project-tab:hover button.delete-project-btn,
+    div.project-tab:has(button:focus-visible) button.delete-project-btn,
+    div.project-tab:has(button:active) button.delete-project-btn {
+        visibility: visible;
     }
 }
