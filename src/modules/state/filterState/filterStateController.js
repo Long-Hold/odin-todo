@@ -17,19 +17,21 @@ const CSS_CURRENT_TAB = "current-tab";
 export function initializeFilterTabListeners() {
     assignCurrentTabColor();
     GENERAL_TABS.addEventListener('click', (event) => {
-        if (event.target.classList.contains('category-btn') === false) { return; }
+        const categoryButton = event.target.closest('button');
+        if (categoryButton.classList.contains('category-btn') === false) { return; }
 
-        const filterType = event.target.dataset.filterType;
-        const filterDisplay = event.target.dataset.filterDisplay;
+        const filterType = categoryButton.dataset.filterType;
+        const filterDisplay = categoryButton.dataset.filterDisplay;
 
         updateFilterState(filterType, filterDisplay);
     });
 
     PROJECT_TABS.addEventListener('click', (event) => {
-        if (event.target.dataset.action !== 'filter') { return; }
+        const projectButton = event.target.closest('button');
+        if (projectButton.dataset.action !== 'filter') { return; }
 
-        const filterType = event.target.dataset.filterType;
-        const projectId = event.target.dataset.projectId;
+        const filterType = projectButton.dataset.filterType;
+        const projectId = projectButton.dataset.projectId;
 
         updateFilterState(filterType, projectId);
     });
