@@ -111,6 +111,11 @@ button:active {
 }
 
 /* Sidebar styling */
+.dropdown-btn-container {
+    /* This button is normally hidden unless a smaller screen is here */
+    display: none;
+}
+
 .side-bar {
     background-color: var(--dark-brown);
 
@@ -120,7 +125,7 @@ button:active {
     padding: 0 0.8rem;
 }
 
-.side-bar nav {
+.side-bar nav, .dropdown-btn-container {
     /* This ID is applied to the currently selected filter tab */
     button.current-tab {
         background-color: var(--button-red);
@@ -199,5 +204,42 @@ button:active {
     div.project-tab:has(button:focus-visible) button.delete-project-btn,
     div.project-tab:has(button:active) button.delete-project-btn {
         visibility: visible;
+    }
+}
+
+/* Sidebar transformations for smaller screens */
+@media screen and (max-width: 1024px) {
+    /* Make the dropdown button visible */
+    .dropdown-btn-container {
+        display: block;
+    }
+
+    body {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: 'main-content';
+    }
+
+    .content-view {
+        grid-area: main-content;
+        place-self: center;
+    }
+
+    .side-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+    }
+    
+    .side-bar.open {
+        transform: translateX(0);
+    }
+
+    .dropdown-btn-container {
+        position: fixed;
     }
 }
