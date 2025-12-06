@@ -208,10 +208,11 @@ button:active {
 }
 
 /* Sidebar transformations for smaller screens */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
     /* Make the dropdown button visible */
     .dropdown-btn-container {
         display: block;
+        position: fixed;
     }
 
     body {
@@ -230,16 +231,20 @@ button:active {
         top: 0;
         left: 0;
         height: 100vh;
+        width: clamp(280px, 25%, 400px);
         transform: translateX(-100%);
         transition: transform 0.3s ease;
-        z-index: 1000;
+        z-index: 1;
     }
     
     .side-bar.open {
         transform: translateX(0);
     }
 
-    .dropdown-btn-container {
-        position: fixed;
+    /* Take up the entire screen on smaller devices */
+    @media (max-width: 425px) {
+        .side-bar {
+            width: 100vw;
+        }
     }
 }
