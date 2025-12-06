@@ -52,10 +52,24 @@
                 <path d="M10 3L8 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M16 3L14 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </symbol>
+
+            <symbol id="menu" viewBox="0 0 24 24">
+                <path d="M4 7H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 12H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 17H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </symbol>
         </defs>
     </svg>
 
     <section class="side-bar">
+        <div class="dropdown-btn-container">
+            <button class="burger-btn" type="button">
+                <svg>
+                    <use href="#menu"></use>
+                </svg>
+            </button>
+        </div>
+
         <!-- Contains the todo categories -->
          <header>
             <h1>Task Flow</h1>
