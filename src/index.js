@@ -9,6 +9,7 @@ import { initializeTodoStates } from "./modules/state/todoState/todoStateControl
 import { initializeFilterTabListeners } from "./modules/state/filterState/filterStateController";
 
 import "./styles/styles.css";
+import { initializeMobileMenuListeners } from "./modules/ui/mobileSidebar/mobileSidebarController";
 
 initializeStorage();
 
@@ -19,3 +20,4 @@ initializeProjectStates();
 initializeTodoStates();
 
 initializeFilterTabListeners();
+initializeMobileMenuListeners();
