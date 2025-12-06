@@ -18,6 +18,8 @@ export function initializeFilterTabListeners() {
     assignCurrentTabColor();
     GENERAL_TABS.addEventListener('click', (event) => {
         const categoryButton = event.target.closest('button');
+
+        if(!categoryButton) { return; }
         if (categoryButton.classList.contains('category-btn') === false) { return; }
 
         const filterType = categoryButton.dataset.filterType;
@@ -28,6 +30,8 @@ export function initializeFilterTabListeners() {
 
     PROJECT_TABS.addEventListener('click', (event) => {
         const projectButton = event.target.closest('button');
+
+        if (!projectButton) { return; }
         if (projectButton.dataset.action !== 'filter') { return; }
 
         const filterType = projectButton.dataset.filterType;
