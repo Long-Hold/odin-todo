@@ -111,7 +111,7 @@ button:active {
 }
 
 /* Sidebar styling */
-.dropdown-btn-container {
+.dropdown-btn-container, .close-btn {
     /* This button is normally hidden unless a smaller screen is here */
     display: none;
 }
@@ -213,6 +213,12 @@ button:active {
     .dropdown-btn-container {
         display: block;
         position: fixed;
+    }
+
+    .close-btn {
+        display: block;
+        width: fit-content;
+        background-color: var(--button-red);
     }
 
     body {
