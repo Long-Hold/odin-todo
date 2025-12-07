@@ -110,6 +110,32 @@ button:active {
     transition: 0.2s;
 }
 
+/* Form styling */
+dialog {
+    z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form, fieldset {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+fieldset {
+    align-items: flex-start;
+    min-width: 100%;
+    border: none;
+}
+
+fieldset div {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
 /* Sidebar styling */
 .dropdown-btn-container, .close-btn {
     /* This button is normally hidden unless a smaller screen is here */
