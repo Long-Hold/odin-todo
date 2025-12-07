@@ -16,6 +16,11 @@ const CSS_CURRENT_TAB = "current-tab";
 
 export function initializeFilterTabListeners() {
     assignCurrentTabColor();
+
+    document.addEventListener(EVENTS.UPDATE_DISPLAY, () => {
+        assignCurrentTabColor();
+    });
+
     GENERAL_TABS.addEventListener('click', (event) => {
         const categoryButton = event.target.closest('button');
 
