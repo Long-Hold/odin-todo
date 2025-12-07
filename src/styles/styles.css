@@ -247,6 +247,11 @@ button:active {
         transform: translateX(0);
     }
 
+    /* Make project delete button visisble for mobile users */
+    .side-bar nav#projects-navigator button.delete-project-btn {
+        visibility: visible;
+    }
+
     /* Take up the entire screen on smaller devices */
     @media (max-width: 425px) {
         .side-bar {
