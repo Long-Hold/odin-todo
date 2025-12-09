@@ -145,18 +145,44 @@ dialog {
 }
 
 form {
-    padding: rem;
+    padding: 1rem;
     text-align: justify;
+
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1.5rem;
 }
 
-form, 
+label {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+    "label"
+    "input";
+
+    > * {
+        grid-area: input;
+        width: 100%;
+    }
+}
+
+section#form-control-btns {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+/* form, 
 form > *, 
 fieldset div {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     gap: 0.5rem;
-}
+} */
 
 fieldset {
     min-width: 100%;
