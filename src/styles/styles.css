@@ -47,6 +47,10 @@ html, dialog {
     color: var(--light-beige);
 }
 
+dialog {
+    margin: auto;
+}
+
 button, label, input,
 option, select, textarea {
     font:inherit;
@@ -75,6 +79,26 @@ body {
     grid-area: main-content;
 }
 
+/* Content view grid layout */
+.content-view {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 1fr;
+
+    grid-template-areas: 
+    "header"
+    "content";
+
+    >header {
+        grid-area: header;
+    }
+
+    section#todo-card-display {
+        grid-area: "content";
+    }
+}
 
 /* the completed class is assigned to elements to represent
     a 'crossed' out and non-interactable element.
@@ -111,10 +135,9 @@ button:active {
 }
 
 /* Form styling */
-dialog {
+/* dialog {
     z-index: 1;
-    margin: auto;
-}
+} */
 
 form, fieldset {
     display: flex;
