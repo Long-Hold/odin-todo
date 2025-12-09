@@ -85,14 +85,19 @@ body {
     height: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 0.1fr 1fr;
+    grid-template-rows: 0.1fr 0.1fr 1fr;
 
     grid-template-areas: 
     "header"
+    "form"
     "content";
 
     >header {
         grid-area: header;
+    }
+    
+    section.form-section {
+        grid-area: form;
     }
 
     section#todo-card-display {
@@ -135,11 +140,18 @@ button:active {
 }
 
 /* Form styling */
-/* dialog {
+dialog {
     z-index: 1;
-} */
+}
 
-form, fieldset {
+form {
+    padding: rem;
+    text-align: justify;
+}
+
+form, 
+form > *, 
+fieldset div {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -149,16 +161,6 @@ form, fieldset {
 fieldset {
     min-width: 100%;
     border: none;
-}
-
-fieldset div {
-    width: 100%;
-    display: flex;
-    flex-flow: column nowrap;
-}
-
-form input, form select {
-    width: 250px;
 }
 
 /* Sidebar styling */
