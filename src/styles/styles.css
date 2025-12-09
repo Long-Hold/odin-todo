@@ -113,8 +113,7 @@ button:active {
 /* Form styling */
 dialog {
     z-index: 1;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
 }
 
 form, fieldset {
