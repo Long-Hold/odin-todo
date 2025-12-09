@@ -5,7 +5,11 @@ const TODO_CARD_DISPLAY = document.getElementById('todo-card-display');
 
 export function initializeTodoCardListeners() {
     TODO_CARD_DISPLAY.addEventListener('click', (event) => {
-        const cardId = event.target.closest('article').dataset.todoId;
+        
+        const card = event.target.closest('article');
+        if (!card) { return; }
+
+        const cardId = card.dataset.todoId;
 
         if (isChecklistItem(event.target)) {
             const parentDiv = event.target.closest('div');
