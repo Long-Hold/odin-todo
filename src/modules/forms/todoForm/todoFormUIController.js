@@ -18,7 +18,7 @@ export function initializeTodoFormUIButtons() {
     ADD_TODO_BTN.addEventListener('click', () => {
         resetForm(); 
         renderProjectOptions();
-        TODO_DIALOG.show(); 
+        TODO_DIALOG.showModal(); 
     });
 
     FORM_BUTTONS.addEventListener('click', (event) => {
@@ -57,7 +57,7 @@ export function initializeTodoFormUIButtons() {
         resetForm();
         renderProjectOptions();
         populateFormForEdit(todoObj);
-        TODO_DIALOG.show();
+        TODO_DIALOG.showModal();
     })
 }
 
