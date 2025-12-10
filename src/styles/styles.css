@@ -101,6 +101,9 @@ body {
 
     >header {
         grid-area: header;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
     }
     
     section.form-section {
