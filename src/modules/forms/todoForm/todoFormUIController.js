@@ -63,6 +63,10 @@ export function initializeTodoFormUIButtons() {
 
 export function resetForm() {
     clearChecklistContainer(CHECKLIST_INPUT_CONTAINER);
+    
+    TODO_FORM.querySelector('#todo-id').value = '';
+    TODO_FORM.querySelector('#created-at').value = '';
+
     TODO_FORM.reset();
 }
 

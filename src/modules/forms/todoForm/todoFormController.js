@@ -8,6 +8,10 @@ const TODO_DIALOG = document.getElementById('todo-dialog');
 export function initializeTodoFormListeners() {
     initializeTodoFormUIButtons();
 
+    TODO_DIALOG.addEventListener('close', () => {
+        resetForm();
+    });
+
     TODO_FORM.addEventListener('submit', (event) => { 
         event.preventDefault();
         const formData = new FormData(event.target);
