@@ -156,6 +156,9 @@ button:active {
 /* Form styling */
 dialog {
     z-index: 1;
+    max-height: 90vh;
+    width: clamp(300px, 90vw, 600px);
+    overflow-y: auto;
 }
 
 dialog::backdrop {
