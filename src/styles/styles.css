@@ -65,6 +65,10 @@ option, select, textarea {
     appearance: none;
 }
 
+input, option, select, textarea {
+    background-color: var(--light-beige);
+}
+
 /* Hides the container of the svgs we reference later */
 #reference-svgs {
     display: none;
@@ -238,6 +242,12 @@ fieldset {
     button:hover {
         background-color: rgb(93, 75, 75);
     }
+}
+
+/* Form Button visuals */
+
+form button {
+    color: black;
 }
 
 /* Project tab container styling */
