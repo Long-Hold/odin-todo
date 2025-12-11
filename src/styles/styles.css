@@ -170,6 +170,15 @@ form {
     display: flex;
     flex-flow: column nowrap;
     gap: 1.5rem;
+
+    div:not(:first-of-type) {
+        margin-top: 1rem;
+    }
+
+    button {
+        background-color: var(--button-red);
+        color: var(--light-beige);
+    }
 }
 
 label {
@@ -243,13 +252,6 @@ fieldset {
         background-color: rgb(93, 75, 75);
     }
 }
-
-/* Form Button visuals */
-
-form button {
-    color: black;
-}
-
 /* Project tab container styling */
 .side-bar nav#projects-navigator {
     /* Aligns the add project button with the header */
