@@ -229,6 +229,8 @@ form section#checklist-input-container div {
 fieldset {
     min-width: 100%;
     border: none;
+    border-bottom: 2px solid var(--light-beige);
+    padding-bottom: 0.5rem;
 }
 
 /* Sidebar styling */
