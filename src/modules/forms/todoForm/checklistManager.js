@@ -13,6 +13,8 @@ export function addStep(parentContainer, template) {
     const stepElement = templateClone.firstElementChild;
     parentContainer.appendChild(templateClone);
 
+    input.focus();
+
     return stepElement;
 }
 
