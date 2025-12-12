@@ -161,6 +161,9 @@ dialog {
     max-height: 90vh;
     width: clamp(300px, 90vw, 600px);
     overflow-y: auto;
+
+    position: fixed;
+    left: var(--sidebar-width);
 }
 
 dialog::backdrop {
@@ -333,6 +336,11 @@ fieldset {
 
 /* Sidebar transformations for smaller screens */
 @media screen and (max-width: 768px) {
+    /* Allow the dialog to center automatically */
+    dialog {
+        left: 0;
+    }
+
     /* Make the dropdown button visible */
     .dropdown-btn-container {
         display: block;
