@@ -351,6 +351,11 @@ article.todo-card {
 
     div.extra-details {
         border: 1px solid red;
+        display: none;
+    }
+
+    div.extra-details.open {
+        display:block;
     }
 }
 

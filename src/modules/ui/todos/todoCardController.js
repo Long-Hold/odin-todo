@@ -17,7 +17,12 @@ export function initializeTodoCardListeners() {
             handleChecklistClick(cardId, itemId, parentDiv);
         }
 
-        if (event.target.tagName !== 'BUTTON') { return null; }
+        if (event.target.tagName !== 'BUTTON') {
+            // Open or closes the dropdown when the container is clicked
+            const dropDown = card.querySelector('.extra-details');
+            if (dropDown.classList.contains('open')) { dropDown.classList.remove('open'); }
+            else { dropDown.classList.add('open'); }
+        }
 
         const buttonAction = event.target.dataset.action;
 
