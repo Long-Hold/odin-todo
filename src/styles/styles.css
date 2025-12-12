@@ -159,7 +159,7 @@ button:active {
 dialog {
     z-index: 1;
     max-height: 90vh;
-    width: clamp(300px, 90vw, 600px);
+    width: clamp(300px, 90vw, 550px);
     overflow-y: auto;
 
     position: fixed;
