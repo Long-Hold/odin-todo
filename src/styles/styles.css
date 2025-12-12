@@ -348,6 +348,10 @@ article.todo-card {
     button {
         background-color: var(--button-lighter-gray);
     }
+
+    div.extra-details {
+        border: 1px solid red;
+    }
 }
 
 /* Sidebar transformations for smaller screens */
