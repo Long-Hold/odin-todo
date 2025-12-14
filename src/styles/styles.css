@@ -353,6 +353,12 @@ article.todo-card {
     background-color: rgb(35, 36, 37);
 
     header {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-areas: 'button title priority project date';
+        align-items: center;
+        text-align: center;
+
         border-bottom: 2px solid var(--light-beige);
     }
 
