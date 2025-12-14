@@ -16,7 +16,7 @@ export function renderTodoCards(todoObjectArray) {
 
         const statusButton = todoTemplateClone.querySelector('.todo-status');
         if (todo.completed) {
-            statusButton.querySelector('use').href='#circle-filled';
+            statusButton.querySelector('use').setAttribute('href', '#circle-filled');
         }
 
         const title = todoTemplateClone.querySelector('.todo-title');
