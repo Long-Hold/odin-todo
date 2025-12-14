@@ -14,9 +14,6 @@ export function renderTodoCards(todoObjectArray) {
         const article = todoTemplateClone.querySelector('.todo-card');
         article.dataset.todoId = todo.id;
 
-        const statusButton = todoTemplateClone.querySelector('.todo-status');
-        statusButton.textContent = todo.completed ? 'Completed' : 'Incomplete';
-
         const title = todoTemplateClone.querySelector('.todo-title');
         title.textContent = todo.title;
 
