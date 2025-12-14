@@ -364,6 +364,10 @@ article.todo-card {
         align-items: center;
     }
 
+    use[href="#circle-filled"] {
+        color: var(--light-mint-green);
+    }
+
     button {
         background-color: var(--button-lighter-gray);
     }
