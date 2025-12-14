@@ -29,7 +29,7 @@ export function initializeTodoCardListeners() {
         const buttonAction = event.target.closest('button').dataset.action;
 
         if (buttonAction === 'change-status') {
-            triggerCustomEvent(document, EVENTS.TODO_STATUS_UPDATED);
+            triggerCustomEvent(document, EVENTS.TODO_STATUS_UPDATED, cardId);
         }
 
         if (buttonAction === 'delete') {
