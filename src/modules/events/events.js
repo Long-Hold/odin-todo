@@ -31,6 +31,16 @@ export const EVENTS = {
      */
     TODO_DELETED: "todo:deleted",
 
+    /**This event signals that a Todo Cards mark complete button has been clicked.
+     * 
+     * When this event is emitted, the Todo Object state controller listens for it
+     * and will modify the completed property of the respective object, then 
+     * tell UI state listeners to re-render the card with updated visuals.
+     * 
+     * This event passes the Todo Object Id.
+     */
+    TODO_STATUS_UPDATED: "todo:statusUpdated",
+
     /**An event that signals a checklist input / label has been clicked on
      * a Todo card.
      * 
