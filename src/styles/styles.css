@@ -337,6 +337,7 @@ fieldset {
 
 /* Todo card styling */
 article.todo-card {
+    transition: 0.2s;
     border: 0.1rem solid var(--light-beige);
     border-radius: 10px;
 
@@ -357,6 +358,13 @@ article.todo-card {
     div.extra-details.open {
         display:block;
     }
+}
+
+article.todo-card:hover,
+article.todo-card:focus-visible {
+    filter: brightness(1.50);
+    cursor: pointer;
+    box-shadow: 2px 2px var(--light-mint-green);
 }
 
 /* Sidebar transformations for smaller screens */
