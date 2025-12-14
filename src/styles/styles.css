@@ -346,12 +346,15 @@ article.todo-card {
 
     background-color: rgb(35, 36, 37);
 
+    header {
+        border-bottom: 2px solid var(--light-beige);
+    }
+
     button {
         background-color: var(--button-lighter-gray);
     }
 
     div.extra-details {
-        border: 1px solid red;
         display: none;
     }
 
