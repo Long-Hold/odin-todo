@@ -15,6 +15,7 @@ export function initializeTodoObjState() {
     listenForProjectDeleteEvent();
     listenForTodoDeleteRequestEvent();
     listenForChecklistClickEvent();
+    listenForTodoStatusUpdateEvent();
 }
 
 function loadLocalStorageToManager() {
@@ -112,5 +113,17 @@ function listenForChecklistClickEvent() {
         const todo = TODO_OBJECT_MANAGER.getTodo(todoId);
         todo.checklist.delete(checklistId);
         TODO_OBJECT_MANAGER.addTodo(todo.id, todo);
+    });
+}
+
+function listenForTodoStatusUpdateEvent() {
+    document.addEventListener(EVENTS.TODO_STATUS_UPDATED, (event) => {
+        const todoId = event.detail.data;
+        const todoObj = TODO_OBJECT_MANAGER.getTodo(todoId);
+
+        todoObj.completed = !todoObj.completed;
+        TODO_OBJECT_MANAGER.addTodo(todoObj.id, todoObj);
+
+        triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
     });
 }
