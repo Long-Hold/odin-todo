@@ -17,14 +17,20 @@ export function initializeTodoCardListeners() {
             handleChecklistClick(cardId, itemId, parentDiv);
         }
 
-        if (event.target.tagName !== 'BUTTON') {
+        if (event.target.tagName !== 'BUTTON' && !event.target.closest('button')) {
             // Open or closes the dropdown when the container is clicked
             const dropDown = card.querySelector('.extra-details');
             if (dropDown.classList.contains('open')) { dropDown.classList.remove('open'); }
             else { dropDown.classList.add('open'); }
+
+            return;
         }
 
-        const buttonAction = event.target.dataset.action;
+        const buttonAction = event.target.closest('button').dataset.action;
+
+        if (buttonAction === 'change-status') {
+            triggerCustomEvent(document, EVENTS.TODO_STATUS_UPDATED);
+        }
 
         if (buttonAction === 'delete') {
             triggerCustomEvent(document, EVENTS.TODO_DELETE_REQUESTED, cardId);
