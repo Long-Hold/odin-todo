@@ -143,6 +143,12 @@ button {
     transition: 0.2s ease;
 
     color: inherit;
+
+    svg {
+        height: 1.8em;
+        width: 1.8em;
+        text-align: center;
+    }
 }
 
 button:hover, button:focus-visible {
@@ -348,6 +354,14 @@ article.todo-card {
 
     header {
         border-bottom: 2px solid var(--light-beige);
+    }
+
+    button.todo-status {
+        display: flex;
+        width: fit-content;
+        background: none;
+        justify-content: center;
+        align-items: center;
     }
 
     button {
