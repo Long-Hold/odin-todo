@@ -14,6 +14,11 @@ export function renderTodoCards(todoObjectArray) {
         const article = todoTemplateClone.querySelector('.todo-card');
         article.dataset.todoId = todo.id;
 
+        const statusButton = todoTemplateClone.querySelector('.todo-status');
+        if (todo.completed) {
+            statusButton.querySelector('use').href='#circle-filled';
+        }
+
         const title = todoTemplateClone.querySelector('.todo-title');
         title.textContent = todo.title;
 
