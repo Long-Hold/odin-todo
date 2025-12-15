@@ -24,6 +24,7 @@ export function renderTodoCards(todoObjectArray) {
 
         const priority = todoTemplateClone.querySelector('.todo-priority');
         priority.textContent = todo.priority;
+        createPriorityColorBorder(priority, todo.priority);
 
         const project = todoTemplateClone.querySelector('.todo-project');
         project.textContent = todo.project || '';
@@ -66,4 +67,26 @@ function createChecklistItem(itemId, itemText) {
     label.textContent = itemText;
 
     return checklistItem;
+}
+
+/**
+ * Applies a priority-specific CSS class to an element based on the todo's priority level.
+ * 
+ * @param {HTMLElement} priorityElement - The DOM element to apply the class to
+ * @param {string} todoPriority - The priority level ('Low', 'Medium', or 'High')
+ * @returns {HTMLElement} The modified element with the appropriate priority class applied
+ */
+function createPriorityColorBorder(priorityElement, todoPriority) {
+const priorityClasses = {
+        'Low': 'low-priority',
+        'Medium': 'medium-priority',
+        'High': 'high-priority'
+    };
+    
+    const className = priorityClasses[todoPriority];
+    if (className) {
+        priorityElement.classList.add(className);
+    }
+    
+    return priorityElement;
 }
