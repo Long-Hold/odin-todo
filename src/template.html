@@ -294,6 +294,15 @@
                 <p class="todo-priority"></p>
                 <p class="todo-project"></p>
                 <time datetime=""></time>
+
+                <div class="todo-control-buttons">
+                    <button type="button" class="edit-btn" data-action="edit">
+                        <svg>
+                            <use href="#edit"></use>
+                        </svg>
+                    </button>
+                    <button type="button" class="delete-btn" data-action="delete">X</button>
+                </div>
             </header>
 
             <div class="extra-details">
@@ -308,15 +317,6 @@
                         </div>
                     </fieldset>
                 </div>
-            </div>
-
-            <div class="todo-control-buttons">
-                <button type="button" class="edit-btn" data-action="edit">
-                    <svg>
-                        <use href="#edit"></use>
-                    </svg>
-                </button>
-                <button type="button" class="delete-btn" data-action="delete">X</button>
             </div>
         </article>
     </template>
