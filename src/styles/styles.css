@@ -120,8 +120,11 @@ body {
 
     section#todo-card-display {
         grid-area: "content";
-        justify-self: center;
         width: 100%;
+
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
     }
 }
 
@@ -346,6 +349,7 @@ fieldset {
 
 /* Todo card styling */
 article.todo-card {
+    width: min(800px, 100%);
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: start;
