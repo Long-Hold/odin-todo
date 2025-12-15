@@ -500,7 +500,7 @@ article.todo-card {
         position: fixed;
         top: 0;
         left: 0;
-        height: 100vh;
+        height: 100%;
         width: clamp(280px, 25%, 400px);
         transform: translateX(-100%);
         transition: transform 0.3s ease;
