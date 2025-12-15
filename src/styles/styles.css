@@ -523,3 +523,28 @@ article.todo-card {
         }
     }
 }
+
+@media screen and (max-width: 426px) {
+    article.todo-card header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, auto);
+        grid-template-areas:
+        'title title'
+        'priority project'
+        'control date';
+
+        row-gap: 0.2rem;
+        align-items: end;
+
+        .todo-control-buttons {
+            display: flex;
+            flex-flow: row nowrap;
+            gap: 0.2rem;
+        }
+
+        .todo-project, time {
+            text-align: right;
+        }
+    }
+}
