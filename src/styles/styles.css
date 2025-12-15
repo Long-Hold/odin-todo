@@ -32,6 +32,7 @@
 
     --light-mint-green: rgba(83, 203, 139, 0.893);
     --button-red: rgb(169,41,27);
+    --button-orange: orange;
     --button-lighter-gray: #454a4d;
     --dark-gray: rgb(24,26,27);
     --dark-brown: rgb(40,28,17);
@@ -367,6 +368,23 @@ article.todo-card {
 
         .todo-project, time {
             text-align: right;
+        }
+    }
+
+    .todo-priority {
+        width: fit-content;
+        border: 3px solid;
+        border-radius: 10px;
+        padding: 0 0.2rem;
+
+        &.low-priority {
+            border-color: var(--light-mint-green);
+        }
+        &.medium-priority {
+            border-color: var(--button-orange);
+        }
+        &.high-priority {
+            border-color: var(--button-red);
         }
     }
 
