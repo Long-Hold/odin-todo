@@ -450,6 +450,15 @@ article.todo-card {
 
     div.extra-details {
         display: none;
+
+        >div {
+            margin: 0.5rem 0;
+        }
+
+        >div:first-child {
+            border-bottom: 2px solid var(--light-beige);
+            padding-bottom: 0.5rem;
+        }
     }
 
     div.extra-details.open {
