@@ -457,6 +457,10 @@ article.todo-card {
         border-top: 2px solid var(--light-beige);
         margin: 0.5rem 0;
     }
+
+    .todo-description {
+        white-space: pre-line;
+    }
 }
 
 .card-content:hover,
