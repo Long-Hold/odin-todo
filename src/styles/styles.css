@@ -365,8 +365,20 @@ article.todo-card {
             text-align: left;
         }
 
-        .todo-project, time, .todo-control-buttons button {
+        .todo-project, time {
             text-align: right;
+        }
+    }
+
+    .todo-control-buttons {
+        display: flex;
+        flex-flow: column nowrap;
+
+        align-items: end;
+
+        button {
+            width:50%;
+            text-align: center;
         }
     }
 
@@ -393,12 +405,13 @@ article.todo-card {
     div.extra-details.open {
         display:block;
         border-top: 2px solid var(--light-beige);
+        margin: 0.5rem 0;
     }
 }
 
 article.todo-card:hover,
 article.todo-card:focus-visible {
-    filter: brightness(1.50);
+    filter: brightness(1.25);
     cursor: pointer;
     box-shadow: 2px 2px var(--light-mint-green);
 }
