@@ -354,20 +354,21 @@ article.todo-card {
 
     header {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-template-areas: 'button title priority project date';
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-areas: 'button title priority project date control-btns';
         align-items: center;
 
         border-bottom: 2px solid var(--light-beige);
 
-        .todo-status, .todo-title {
+        .todo-status {
+            justify-self: start;
+        }
+        .todo-title, .todo-priority {
             text-align: left;
         }
-        .todo-priority {
-            text-align: center;
-        }
-        .todo-project, time {
-           text-align: right;
+
+        .todo-project, time, .todo-control-buttons button {
+            text-align: right;
         }
     }
 
