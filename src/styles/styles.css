@@ -355,18 +355,35 @@ article.todo-card {
 
     header {
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        grid-template-areas: 'button title priority project date control-btns';
+        grid-template-columns: auto 1fr 1fr 1fr auto;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            'status title title title control'
+            'priority priority project date date';
+
         align-items: center;
 
+        /* Component grid placement */
         .todo-status {
-            justify-self: start;
+            grid-area: status;
         }
-        .todo-title, .todo-priority {
+        .todo-title {
+            grid-area: title;
+            text-align: center;
+        }
+        .todo-control-buttons {
+            grid-area: control;
+        }
+        .todo-priority {
+            grid-area: priority;
             text-align: left;
         }
-
-        .todo-project, time {
+        .todo-project {
+            grid-area: project;
+            text-align: center;
+        }
+        time {
+            grid-area: date;
             text-align: right;
         }
     }
@@ -390,12 +407,13 @@ article.todo-card {
 
     .todo-control-buttons {
         display: flex;
-        flex-flow: column nowrap;
+        flex-flow: row nowrap;
+        gap: 0.5rem;
 
         align-items: end;
 
         button {
-            width:50%;
+            width: 100%;
             text-align: center;
         }
     }
