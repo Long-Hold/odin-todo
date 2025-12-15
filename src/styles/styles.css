@@ -357,9 +357,18 @@ article.todo-card {
         grid-template-columns: repeat(5, 1fr);
         grid-template-areas: 'button title priority project date';
         align-items: center;
-        text-align: center;
 
         border-bottom: 2px solid var(--light-beige);
+
+        .todo-status, .todo-title {
+            text-align: left;
+        }
+        .todo-priority {
+            text-align: center;
+        }
+        .todo-project, time {
+           text-align: right;
+        }
     }
 
     button.todo-status {
