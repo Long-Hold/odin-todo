@@ -344,6 +344,10 @@ fieldset {
 
 /* Todo card styling */
 article.todo-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    
     .card-content {
         transition: 0.2s;
         border: 0.1rem solid var(--light-beige);
