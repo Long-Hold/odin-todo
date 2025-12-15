@@ -519,7 +519,7 @@ article.todo-card {
     /* Take up the entire screen on smaller devices */
     @media (max-width: 425px) {
         .side-bar {
-            width: 100vw;
+            width: 100%;
         }
     }
 }
