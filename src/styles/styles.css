@@ -358,8 +358,6 @@ article.todo-card {
         grid-template-areas: 'button title priority project date control-btns';
         align-items: center;
 
-        border-bottom: 2px solid var(--light-beige);
-
         .todo-status {
             justify-self: start;
         }
@@ -394,6 +392,7 @@ article.todo-card {
 
     div.extra-details.open {
         display:block;
+        border-top: 2px solid var(--light-beige);
     }
 }
 
