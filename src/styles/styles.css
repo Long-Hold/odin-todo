@@ -344,14 +344,16 @@ fieldset {
 
 /* Todo card styling */
 article.todo-card {
-    transition: 0.2s;
-    border: 0.1rem solid var(--light-beige);
-    border-radius: 10px;
+    .card-content {
+        transition: 0.2s;
+        border: 0.1rem solid var(--light-beige);
+        border-radius: 10px;
 
-    padding: 0.5rem;
-    margin: 0.5rem 1rem;
+        padding: 0.5rem;
+        margin: 0.5rem 1rem;
 
-    background-color: rgb(35, 36, 37);
+        background-color: rgb(35, 36, 37);
+    }
 
     header {
         display: grid;
@@ -445,8 +447,8 @@ article.todo-card {
     }
 }
 
-article.todo-card:hover,
-article.todo-card:focus-visible {
+.card-content:hover,
+.card-content:focus-visible {
     filter: brightness(1.25);
     cursor: pointer;
     box-shadow: 2px 2px var(--light-mint-green);
