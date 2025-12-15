@@ -18,6 +18,10 @@ export function initializeTodoCardListeners() {
         }
 
         if (event.target.tagName !== 'BUTTON' && !event.target.closest('button')) {
+
+            // Check if the visual div was clicked, and not just anywhere on the invisible article element
+            if (!event.target.closest('.card-content')) { return; }
+
             // Open or closes the dropdown when the container is clicked
             const dropDown = card.querySelector('.extra-details');
             if (dropDown.classList.contains('open')) { dropDown.classList.remove('open'); }
