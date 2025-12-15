@@ -149,6 +149,7 @@ button {
     transition: 0.2s ease;
 
     color: inherit;
+    background-color: var(--button-red);
 
     svg {
         height: 1.8em;
