@@ -126,6 +126,6 @@ function listenForTodoStatusUpdateEvent() {
         todoObj.completed = !todoObj.completed;
         TODO_OBJECT_MANAGER.addTodo(todoObj.id, todoObj);
 
-        triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
+        triggerCustomEvent(document, EVENTS.TODO_OBJECT_EDITED, todoId);
     });
 }
