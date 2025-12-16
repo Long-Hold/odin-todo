@@ -87,6 +87,7 @@ function populateFormForEdit(todo) {
     // Populate hidden fields for edit mode
     TODO_FORM.querySelector('#todo-id').value = todo.id;
     TODO_FORM.querySelector('#created-at').value = todo.createdAt;
+    TODO_FORM.querySelector('#completed').value = todo.completed;
 
     // The rest are visible fields
 
