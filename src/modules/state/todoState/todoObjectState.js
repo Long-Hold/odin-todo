@@ -105,7 +105,6 @@ function listenForTodoDeleteRequestEvent() {
         }
 
         triggerCustomEvent(document, EVENTS.TODO_DELETED, todoIdAndProjectId);
-        triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
     });
 }
 
