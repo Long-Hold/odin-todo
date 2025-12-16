@@ -23,7 +23,9 @@ export function renderTodoCards(todoObjectArray) {
 export function updateExistingCard(todoId, todoObject) {
     const selector = `[data-todo-id="${todoId}"]`;
     const todoCard = TODO_CARD_DISPLAY.querySelector(selector);
-    console.log(todoCard, todoObject);
+    todoCard.replaceWith(createCard(todoObject));
+
+    //TODO: Preserve the open state if todoObjecct is completed
 }
 
 /**
