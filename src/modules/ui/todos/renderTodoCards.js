@@ -51,6 +51,16 @@ export function renderTodoCards(todoObjectArray) {
     });
 }
 
+/**
+ * querySelects an existing Todo Card element by using a todoId value.
+ * The selected element is updated in place rather.
+ * 
+ * @param {string} todoId - The unique ID value from a todo object
+ */
+export function updateExistingCard(todoId) {
+
+}
+
 function createChecklistItem(itemId, itemText) {
     const checklistItem = CARD_CHECKLIST_ITEM_TEMPLATE.content.cloneNode(true);
 
