@@ -36,6 +36,17 @@ export function updateExistingCard(todoId, todoObject) {
 }
 
 /**
+ * Removes a todo card from the DOM.
+ * 
+ * @param {string} todoId - The unique ID of the todo card to remove
+ */
+export function removeTodoCard(todoId) {
+    const todoCard = TODO_CARD_DISPLAY.querySelector(`[data-todo-id="${todoId}"]`);
+    if (!todoCard) { return; }
+    todoCard.remove();
+}
+
+/**
  * Creates a populated todo card element from a todo object.
  * Returns a document fragment ready to be appended or used to replace an existing card.
  * @param {Object} todo  - An enriched todo object
