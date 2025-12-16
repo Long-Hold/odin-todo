@@ -6,6 +6,7 @@ import { Todo } from "../../objects/todos/todoClass";
 import { createTodoFromFormData, createTodoFromLocalStorage } from "../../objects/todos/todoObjectController";
 import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
 import { getAllPrefixedItems } from "../../storage/localStorageUtils";
+import { updateExistingCard } from "../../ui/todos/renderTodoCards";
 import { isExistingTodo, projectFieldEdited } from "./todoStateUtils";
 
 
@@ -40,10 +41,11 @@ function listenForTodoSubmissionEvent() {
     TODO_FORM.addEventListener(EVENTS.TODO_FORM_SUBMITTED, (event) => {
         const todoObject = createTodoFromFormData(event.detail.data);
         
+        const todoEdited = isExistingTodo(todoObject.id);
         /**I check if the todo object already exists in the manager.
          * If it does, then that means it is being edited (overwritten) with new data.
          */
-        if (isExistingTodo(todoObject.id)) {
+        if (todoEdited) {
             const originalTodo = TODO_OBJECT_MANAGER.getTodo(todoObject.id);
 
             /**If the originalTodo (unedited version) was linked to a project previously and
