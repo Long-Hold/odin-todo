@@ -15,6 +15,7 @@ export function initializeTodoCardListeners() {
             const parentDiv = event.target.closest('div');
             const itemId = parentDiv.dataset.itemId;
             handleChecklistClick(cardId, itemId, parentDiv);
+            return;
         }
 
         if (event.target.tagName !== 'BUTTON' && !event.target.closest('button')) {
