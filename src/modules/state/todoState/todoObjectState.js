@@ -6,7 +6,6 @@ import { Todo } from "../../objects/todos/todoClass";
 import { createTodoFromFormData, createTodoFromLocalStorage } from "../../objects/todos/todoObjectController";
 import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
 import { getAllPrefixedItems } from "../../storage/localStorageUtils";
-import { updateExistingCard } from "../../ui/todos/renderTodoCards";
 import { isExistingTodo, projectFieldEdited } from "./todoStateUtils";
 
 
@@ -63,9 +62,10 @@ function listenForTodoSubmissionEvent() {
         }
 
         TODO_OBJECT_MANAGER.addTodo(todoObject.id, todoObject);
-
         if (todoObject.project !== null) { emitProjectLinkEvent(todoObject); }
-        triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
+
+        if (todoEdited) { triggerCustomEvent(document, EVENTS.TODO_OBJECT_EDITED, todoObject.id); }
+        else { triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY) };
     });
 }
 
