@@ -65,7 +65,7 @@ function listenForTodoSubmissionEvent() {
         if (todoObject.project !== null) { emitProjectLinkEvent(todoObject); }
 
         if (todoEdited) { triggerCustomEvent(document, EVENTS.TODO_OBJECT_EDITED, todoObject.id); }
-        else { triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY) };
+        else { triggerCustomEvent(document, EVENTS.TODO_CREATED, todoObject.id); }
     });
 }
 
