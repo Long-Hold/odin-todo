@@ -13,6 +13,16 @@ export const EVENTS = {
      */
     TODO_EDIT_REQUESTED: "todo:editRequested",
 
+    /**This event signals that an existing Todo Object has been modified.
+     * 
+     * The Todo Object State manager will emit this event if an existing object has had
+     * it's data mutated in some way.
+     * 
+     * The Todo UI State manager listens for this event and calls a UI function that will
+     * modify the visual representation of the object with the updated details.
+     */
+    TODO_OBJECT_EDITED: "todo:objectEdited",
+
     /**This event signals that the delete button on a todo card has been clicked.
      * 
      * When this event is emitted, state listeners listening for it begin deleting
