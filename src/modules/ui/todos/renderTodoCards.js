@@ -57,10 +57,57 @@ export function renderTodoCards(todoObjectArray) {
  * 
  * @param {string} todoId - The unique ID value from a todo object
  */
-export function updateExistingCard(todoId) {
+export function updateExistingCard(todoId, todoObject) {
     const selector = `[data-todo-id="${todoId}"]`;
     const todoCard = TODO_CARD_DISPLAY.querySelector(selector);
-    console.log(todoCard);
+    console.log(todoCard, todoObject);
+}
+
+/**
+ * Creates a populated todo card element from a todo object.
+ * Returns a document fragment ready to be appended or used to replace an existing card.
+ * @param {Object} todo  - An enriched todo object
+ * @returns {DocumentFragment} Populated card template
+ */
+function createCard(todo) {
+    const todoTemplateClone = TODO_CARD_TEMPLATE.content.cloneNode(true);
+    const article = todoTemplateClone.querySelector('.todo-card');
+    article.dataset.todoId = todo.id;
+
+    const statusButton = todoTemplateClone.querySelector('.todo-status');
+    if (todo.completed) {
+        statusButton.querySelector('use').setAttribute('href', '#circle-filled');
+    }
+
+    const title = todoTemplateClone.querySelector('.todo-title');
+    title.textContent = todo.title;
+
+    const priority = todoTemplateClone.querySelector('.todo-priority');
+    priority.textContent = todo.priority;
+    createPriorityColorBorder(priority, todo.priority);
+
+    const project = todoTemplateClone.querySelector('.todo-project');
+    project.textContent = todo.project || '';
+
+    const deadline = todoTemplateClone.querySelector('time');
+    if (todo.deadline === null) { deadline.textContent = ''; }
+    else if (todo.deadline) {
+        deadline.setAttribute('datetime', todo.deadline);
+        deadline.textContent = format(new Date(todo.deadline), 'MMM dd, yyyy');
+    }
+
+    const description = todoTemplateClone.querySelector('.todo-description');
+    description.textContent = todo.description;
+    
+    if (todo.checklist) {
+        const checklist = todoTemplateClone.querySelector('.todo-checklist');
+        todo.checklist.forEach((text, id) => {
+            const checklistElement = createChecklistItem(id, text);
+            checklist.appendChild(checklistElement);
+        });
+    }
+
+    return todoTemplateClone;
 }
 
 function createChecklistItem(itemId, itemText) {
