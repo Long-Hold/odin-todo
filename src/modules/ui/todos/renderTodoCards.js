@@ -99,11 +99,11 @@ function createChecklistItem(itemId, itemText) {
  * @returns {HTMLElement} The modified element with the appropriate priority class applied
  */
 function createPriorityColorBorder(priorityElement, todoPriority) {
-const priorityClasses = {
+    const priorityClasses = {
         'Low': 'low-priority',
         'Medium': 'medium-priority',
         'High': 'high-priority'
-    };
+    }
     
     const className = priorityClasses[todoPriority];
     if (className) {
