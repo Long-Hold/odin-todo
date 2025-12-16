@@ -1,7 +1,7 @@
 import { EVENTS } from "../../events/events";
 import { PROJECT_OBJECT_MANAGER } from "../../objects/projects/projectObjectManager";
 import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
-import { renderTodoCards } from "../../ui/todos/renderTodoCards";
+import { renderTodoCards, updateExistingCard } from "../../ui/todos/renderTodoCards";
 import { initializeTodoCardListeners } from "../../ui/todos/todoCardController";
 import { getFilterState, resetFilterStateToDefault } from "../filterState/filterStateController";
 import { enrichTodos, filterCompletedTodos, filterTodosByDate } from "./todoStateUtils";
@@ -50,4 +50,11 @@ function listenForDisplayUpdates() {
     document.addEventListener(EVENTS.UPDATE_DISPLAY, () => {
         renderAllTodos();
     });
+
+    document.addEventListener(EVENTS.TODO_OBJECT_EDITED, (event) => {
+        const todoId = event.detail.data;
+        const todoObject = TODO_OBJECT_MANAGER.getTodo(todoId);
+        const enrichedTodo = enrichTodos([todoObject]);
+        updateExistingCard(todoId, enrichedTodo);
+    })
 }
