@@ -1,1 +1,9 @@
-# Add an overdue filter button that shows all todo's with a date before the current date
+Create a new module that handles updating cards *in place* when the edit form is used.
+
+When a card is edited, the form will be submitted with the todoId, we will use this todoId
+to querySelect the existing article element and update it's child elements with the form data.
+
+This means we need to not call the UPDATE_DISPLAY event on form submission, but rather
+call an UPDATE_CARD event when the todoId field is filled on form submission.
+
+This new updateCard module will listen for this event, and handle it from there.
