@@ -54,7 +54,7 @@ function listenForDisplayUpdates() {
     document.addEventListener(EVENTS.TODO_OBJECT_EDITED, (event) => {
         const todoId = event.detail.data;
         const todoObject = TODO_OBJECT_MANAGER.getTodo(todoId);
-        const enrichedTodo = enrichTodos([todoObject]);
+        const [enrichedTodo] = enrichTodos([todoObject]);
         updateExistingCard(todoId, enrichedTodo);
-    })
+    });
 }
