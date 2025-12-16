@@ -4,7 +4,7 @@ import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
 import { renderTodoCards } from "../../ui/todos/renderTodoCards";
 import { initializeTodoCardListeners } from "../../ui/todos/todoCardController";
 import { getFilterState, resetFilterStateToDefault } from "../filterState/filterStateController";
-import { enrichTodos, filterTodosByDate } from "./todoStateUtils";
+import { enrichTodos, filterCompletedTodos, filterTodosByDate } from "./todoStateUtils";
 
 export function initializeTodoUIState() {
     listenForDisplayUpdates();
@@ -19,7 +19,16 @@ export function initializeTodoUIState() {
 export function renderAllTodos() {
     const {type, display} = getFilterState();
     if (type === 'general') {
-        const rawTodos = filterTodosByDate(TODO_OBJECT_MANAGER.getAllTodos(), display);
+        let rawTodos;
+
+        if (display === 'completed') {
+            rawTodos = filterCompletedTodos(TODO_OBJECT_MANAGER.getAllTodos());
+        }
+
+        else {
+            rawTodos = filterTodosByDate(TODO_OBJECT_MANAGER.getAllTodos(), display);
+        }
+        
         const enrichedTodos = enrichTodos(rawTodos);
         renderTodoCards(enrichedTodos);
     }
