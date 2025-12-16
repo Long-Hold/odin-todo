@@ -52,6 +52,17 @@ export function filterTodosByDate(todosArray, filterType) {
     return todosArray;
 }
 
+/**
+ * Filters todo objects based on their completed property value.
+ * Objects that are marked as completed are returned.
+ * 
+ * @param {Array} todosArray - Array of raw todo objects
+ * @returns {Array} Array of filtered objects
+ */
+export function filterCompletedTodos(todosArray) {
+    return todosArray.filter(todo => todo.completed === true);
+}
+
 export function isExistingTodo(todoId) {
     return TODO_OBJECT_MANAGER.getTodo(todoId) !== undefined;
 }
