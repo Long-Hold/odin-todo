@@ -41,6 +41,17 @@ export const EVENTS = {
      */
     TODO_DELETED: "todo:deleted",
 
+    /**This event signals that a new Todo Object has been created.
+     * 
+     * The Todo Object State manager emits this event when a new todo is added.
+     * 
+     * The Todo UI State manager listens for this event and executes
+     * logic that updates the UI with a card representation of the card.
+     * 
+     * This event passes the Todo Object Id.
+     */
+    TODO_CREATED: "todo:created",
+
     /**This event signals that a Todo Cards mark complete button has been clicked.
      * 
      * When this event is emitted, the Todo Object state controller listens for it
