@@ -19,10 +19,10 @@ export class Todo {
     /**existingId and existingTimestamp are parameters passed when an existing Object has been modified in some way directly,
      * usually by an edit form or mutating function.
      */
-    constructor(title, priority, project = null , deadline = null, description = null, checklist = null, existingId = null, existingTimestamp = null) {
+    constructor(title, priority, project = null , deadline = null, description = null, checklist = null, existingId = null, existingTimestamp = null, existingCompleted = false) {
         this.id = existingId || `${Todo.ID_PREFIX}${crypto.randomUUID()}`;
         this.createdAt = existingTimestamp || Date.now();
-        this.completed = false;
+        this.completed = existingCompleted;
         this.title = title;
         this.priority = priority;
         this.project = project;

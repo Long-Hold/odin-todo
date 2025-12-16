@@ -34,7 +34,12 @@ export function createTodoFromFormData(formData) {
     const todoId = formData.get('todo-id') || null;
     const createdAt = formData.get('created-at') || null;
 
-    return new Todo(title, priority, project, deadline, description, checklist, todoId, createdAt);
+    /**The object.completed property always has a value: true or false.
+     * Instead of checking if this field is empty like the other two, I instead check
+     * if it has been marked as a completed object.
+     */
+    const completed = (formData.get('completed') === 'true');
+    return new Todo(title, priority, project, deadline, description, checklist, todoId, createdAt, completed);
 }
 
 export function createTodoFromLocalStorage(jsonObj) {
