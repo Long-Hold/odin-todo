@@ -58,7 +58,9 @@ export function renderTodoCards(todoObjectArray) {
  * @param {string} todoId - The unique ID value from a todo object
  */
 export function updateExistingCard(todoId) {
-
+    const selector = `[data-todo-id="${todoId}"]`;
+    const todoCard = TODO_CARD_DISPLAY.querySelector(selector);
+    console.log(todoCard);
 }
 
 function createChecklistItem(itemId, itemText) {
