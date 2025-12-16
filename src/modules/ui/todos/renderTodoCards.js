@@ -47,6 +47,16 @@ export function removeTodoCard(todoId) {
 }
 
 /**
+ * Appends newly created cards to the DOM as they're made.
+ * 
+ * @param {Object} todoObject 
+ */
+export function appendNewCard(todoObject) {
+    const newCard = createCard(todoObject);
+    TODO_CARD_DISPLAY.appendChild(newCard);
+}
+
+/**
  * Creates a populated todo card element from a todo object.
  * Returns a document fragment ready to be appended or used to replace an existing card.
  * @param {Object} todo  - An enriched todo object
