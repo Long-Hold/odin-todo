@@ -69,4 +69,13 @@ function listenForDisplayUpdates() {
         const { todoId } = event.detail.data;
         removeTodoCard(todoId);
     });
+
+    document.addEventListener(EVENTS.PROJECT_UNASSIGNED, (event) => {
+        const { projectId, todoId } = event.detail.data;
+        const { type, display } = getFilterState();
+
+        if (type === 'project' && display === projectId) {
+            removeTodoCard(todoId);
+        }
+    });
 }
