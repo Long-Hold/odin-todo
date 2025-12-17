@@ -1,6 +1,7 @@
 import { EVENTS } from "../../events/events";
 import { PROJECT_OBJECT_MANAGER } from "../../objects/projects/projectObjectManager";
 import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
+import { updateTodoCounter } from "../../ui/generalTabs/generalTabsController";
 import { appendNewCard, removeTodoCard, renderTodoCards, updateExistingCard } from "../../ui/todos/renderTodoCards";
 import { initializeTodoCardListeners } from "../../ui/todos/todoCardController";
 import { getFilterState, resetFilterStateToDefault } from "../filterState/filterStateController";
@@ -8,6 +9,7 @@ import { enrichTodos, filterActiveTodos, filterCompletedTodos, filterTodosByDate
 
 export function initializeTodoUIState() {
     listenForDisplayUpdates();
+    listenForCounterUpdates();
     initializeTodoCardListeners();
 }
 
@@ -98,18 +100,40 @@ function updateAllGeneralCounters() {
     const allTodos = TODO_OBJECT_MANAGER.getAllTodos();
 
     const activeTodos = filterActiveTodos(allTodos);
+    updateTodoCounter('all', activeTodos.length);
 
     const todayTodos = filterActiveTodos(
         filterTodosByDate(allTodos, 'today')
     );
+    updateTodoCounter('today', todayTodos.length);
 
     const weekTodos = filterActiveTodos(
         filterTodosByDate(allTodos, 'week')
     );
+    updateTodoCounter('week', weekTodos.length);
 
     const overdueTodos = filterActiveTodos(
-        filterTodosByDate(allTodos, 'overude')
+        filterTodosByDate(allTodos, 'overdue')
     );
+    updateTodoCounter('overdue', overdueTodos.length);
 
     const completedTodos = filterCompletedTodos(allTodos);
+    updateTodoCounter('completed', completedTodos.length);
+}
+
+/**
+ * Adds an event to each Todo mutation event to update the general tab counters,
+ * similar to the project tab counters.
+ */
+function listenForCounterUpdates() {
+    const todoMutationEvents = [
+        EVENTS.UPDATE_DISPLAY,
+        EVENTS.TODO_CREATED,
+        EVENTS.TODO_OBJECT_EDITED,
+        EVENTS.TODO_DELETED,
+    ];
+
+    todoMutationEvents.forEach(eventName => {
+        document.addEventListener(eventName, updateAllGeneralCounters);
+    });
 }
