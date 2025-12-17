@@ -16,12 +16,15 @@ export function initializeProjectTabListeners() {
             /**If we are deleting the project we are currently filtering by,
              * then we need to reset the filterState() back to a default value,
              * otherwise it will try to filter the UI by a condition that no longer exists.
+             * 
+             * We also need to refresh the display so it resets back to the default filter.
              */
             const {display} = getFilterState();
             if (display === projectId) { resetFilterStateToDefault(); }
 
             event.target.parentElement.remove();
             triggerCustomEvent(PROJECTS_LIST, EVENTS.PROJECT_DELETE_REQUESTED, projectId);
+            triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
         }
     });
 }
