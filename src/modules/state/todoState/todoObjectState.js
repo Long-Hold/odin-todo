@@ -87,9 +87,8 @@ function cascadeUnlinkTodosFromProject(idArray) {
         const todo = TODO_OBJECT_MANAGER.getTodo(todoId);
         todo.project = null;
         TODO_OBJECT_MANAGER.addTodo(todo.id, todo);
+        triggerCustomEvent(document, EVENTS.TODO_OBJECT_EDITED, todo.id);
     });
-
-    triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
 }
 
 function listenForTodoDeleteRequestEvent() {
