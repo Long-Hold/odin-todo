@@ -37,7 +37,7 @@ function listenForProjectSubmitEvent() {
     PROJECT_FORM.addEventListener(EVENTS.PROJECT_FORM_SUBMITTED, (event) => {
         const projectObj = createProjectFromFormData(event.detail.data);
         PROJECT_OBJECT_MANAGER.addProject(projectObj.id, projectObj);
-        triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
+        triggerCustomEvent(document, EVENTS.PROJECT_CREATED, projectObj);
     });
 }
 
