@@ -126,6 +126,19 @@ export const EVENTS = {
      */
     PROJECT_CREATED: "project:created",
 
+    /**This event signals that the Set() Project Objects use has changed.
+     * 
+     * The Project Object manager emits this event anytime the Set() has been mutated, either
+     * from adding or removing items to them.
+     * 
+     * The Project UI state manager listens for this event and triggers the UI controller to
+     * update the visual counter user's see that shows them how many tasks are linked
+     * to a project.
+     * 
+     * This event carries the projectId and the length of the Set().
+     */
+    PROJECT_SET_MUTATED: "project:setMutated",
+
     /**A synchronization event that signals the DOM to be refreshed with
      * current data from the internal state.
      * 
