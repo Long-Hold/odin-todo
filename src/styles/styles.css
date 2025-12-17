@@ -267,6 +267,16 @@ fieldset {
     padding: 0 0.8rem;
 }
 
+nav#general-categories {
+    top: 0;
+    position: sticky;
+}
+
+nav#projects-navigator {
+    top: 14.5rem;
+    position: sticky;
+}
+
 .side-bar nav, .dropdown-btn-container {
     /* This ID is applied to the currently selected filter tab */
     button.current-tab {
