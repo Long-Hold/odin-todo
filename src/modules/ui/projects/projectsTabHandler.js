@@ -20,11 +20,15 @@ export function initializeProjectTabListeners() {
              * We also need to refresh the display so it resets back to the default filter.
              */
             const {display} = getFilterState();
-            if (display === projectId) { resetFilterStateToDefault(); }
+            const isDeletingActiveFilter = (display === projectId);
 
             event.target.parentElement.remove();
             triggerCustomEvent(PROJECTS_LIST, EVENTS.PROJECT_DELETE_REQUESTED, projectId);
-            triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
+            
+            if (isDeletingActiveFilter) { 
+                resetFilterStateToDefault();
+                triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
+            }
         }
     });
 }
