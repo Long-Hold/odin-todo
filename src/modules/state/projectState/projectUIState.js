@@ -1,6 +1,8 @@
 import { EVENTS } from "../../events/events";
 import { PROJECT_OBJECT_MANAGER } from "../../objects/projects/projectObjectManager";
+import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
 import { appendNewProject, initializeProjectTabListeners, renderProjectTabs, updateTodoCounter } from "../../ui/projects/projectsTabHandler";
+import { filterActiveTodos } from "../todoState/todoStateUtils";
 
 export function initializeProjectUIState() {
     listenForDisplayUpdates();
@@ -18,7 +20,18 @@ function listenForDisplayUpdates() {
     });
 
     document.addEventListener(EVENTS.PROJECT_SET_MUTATED, (event) => {
-        const { projectId, setLength } = event.detail.data;
-        updateTodoCounter(projectId, setLength);
+        const projectId = event.detail.data;
+
+        // Calculate the amount of todo's not marked completed
+        const project = PROJECT_OBJECT_MANAGER.getProject(projectId);
+        
+        // Construct an array containing all the todo objects linked to the project
+        const rawTodos = Array.from(
+            project.linkedIds, 
+            id => TODO_OBJECT_MANAGER.getTodo(id)
+        );
+        const activeTodos = filterActiveTodos(rawTodos);
+        console.log(activeTodos.length);
+        updateTodoCounter(projectId, activeTodos.length);
     });
 }

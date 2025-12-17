@@ -53,11 +53,7 @@ function listenForProjectLinkEvents() {
         project.addLinkedId(todoId);
         PROJECT_OBJECT_MANAGER.addProject(projectId, project);
 
-        const eventDetails = {
-            projectId: project.id,
-            setLength: project.linkedIds.size,
-        }
-        triggerCustomEvent(document, EVENTS.PROJECT_SET_MUTATED, eventDetails);
+        triggerCustomEvent(document, EVENTS.PROJECT_SET_MUTATED, project.id);
     });
 
     document.addEventListener(EVENTS.PROJECT_UNASSIGNED, (event) => {
@@ -66,11 +62,7 @@ function listenForProjectLinkEvents() {
         project.removeLinkedId(todoId);
         PROJECT_OBJECT_MANAGER.addProject(project.id, project);
 
-        const eventDetails = {
-            projectId: project.id,
-            setLength: project.linkedIds.size,
-        }
-        triggerCustomEvent(document, EVENTS.PROJECT_SET_MUTATED, eventDetails);
+        triggerCustomEvent(document, EVENTS.PROJECT_SET_MUTATED, project.id);
     });
 }
 
@@ -97,10 +89,7 @@ function listenForTodoDeleteEvent() {
 
         // This updates the local storage save of the modified project
         PROJECT_OBJECT_MANAGER.addProject(project.id, project);
-        const eventDetails = {
-            projectId: project.id,
-            setLength: project.linkedIds.size,
-        }
-        triggerCustomEvent(document, EVENTS.PROJECT_SET_MUTATED, eventDetails);
+
+        triggerCustomEvent(document, EVENTS.PROJECT_SET_MUTATED, project.id);
     });
 }
