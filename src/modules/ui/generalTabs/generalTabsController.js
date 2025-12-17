@@ -6,7 +6,6 @@ const GENERAL_TABS = document.getElementById('general-categories');
  * 
  * @param {string} filterType - Which general tab to query for.
  * @param {int} todoCount - The amount of todo's that are part of this category
-
  */
 export function updateTodoCounter(filterType, todoCount) {
     const selector = `[data-filter-type="${filterType}"]`;
