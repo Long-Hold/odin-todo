@@ -64,7 +64,7 @@ function listenForProjectLinkEvents() {
          * filtering by that project, we want the display to update to visually show 
          * that it is no longer part of that project anymore.
          */
-        triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
+        // triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
     })
 }
 
