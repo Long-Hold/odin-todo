@@ -91,3 +91,25 @@ function listenForDisplayUpdates() {
         }
     });
 }
+
+/**Updates the counters beside each general tab with todos that fit their filter condition.
+ */
+function updateAllGeneralCounters() {
+    const allTodos = TODO_OBJECT_MANAGER.getAllTodos();
+
+    const activeTodos = filterActiveTodos(allTodos);
+
+    const todayTodos = filterActiveTodos(
+        filterTodosByDate(allTodos, 'today')
+    );
+
+    const weekTodos = filterActiveTodos(
+        filterTodosByDate(allTodos, 'week')
+    );
+
+    const overdueTodos = filterActiveTodos(
+        filterTodosByDate(allTodos, 'overude')
+    );
+
+    const completedTodos = filterCompletedTodos(allTodos);
+}
