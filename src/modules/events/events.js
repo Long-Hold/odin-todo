@@ -122,7 +122,7 @@ export const EVENTS = {
      * The Project UI State manager listens for this event, and signals the UI controller
      * to render the tab to the sidebar.
      * 
-     * This event passes the Project Id.
+     * This event passes the Project Object.
      */
     PROJECT_CREATED: "project:created",
 
