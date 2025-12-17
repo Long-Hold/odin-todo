@@ -23,6 +23,7 @@ export function renderTodoCards(todoObjectArray) {
 export function updateExistingCard(todoId, todoObject) {
     const selector = `[data-todo-id="${todoId}"]`;
     const todoCard = TODO_CARD_DISPLAY.querySelector(selector);
+    if (!todoCard) { return; }
 
     const wasOpen = todoCard.querySelector('.extra-details').classList.contains('open');
 
