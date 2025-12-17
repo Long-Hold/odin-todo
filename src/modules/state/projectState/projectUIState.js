@@ -31,7 +31,7 @@ function listenForDisplayUpdates() {
             id => TODO_OBJECT_MANAGER.getTodo(id)
         );
         const activeTodos = filterActiveTodos(rawTodos);
-        console.log(activeTodos.length);
+
         updateTodoCounter(projectId, activeTodos.length);
     });
 }
