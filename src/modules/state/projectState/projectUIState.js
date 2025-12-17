@@ -1,6 +1,6 @@
 import { EVENTS } from "../../events/events";
 import { PROJECT_OBJECT_MANAGER } from "../../objects/projects/projectObjectManager";
-import { appendNewProject, initializeProjectTabListeners, renderProjectTabs } from "../../ui/projects/projectsTabHandler";
+import { appendNewProject, initializeProjectTabListeners, renderProjectTabs, updateTodoCounter } from "../../ui/projects/projectsTabHandler";
 
 export function initializeProjectUIState() {
     listenForDisplayUpdates();
@@ -15,5 +15,10 @@ function listenForDisplayUpdates() {
     document.addEventListener(EVENTS.PROJECT_CREATED, (event) => {
         const projectObj = event.detail.data;
         appendNewProject(projectObj);
+    });
+
+    document.addEventListener(EVENTS.PROJECT_SET_MUTATED, (event) => {
+        const { projectId, setLength } = event.detail.data;
+        updateTodoCounter(projectId, setLength);
     });
 }
