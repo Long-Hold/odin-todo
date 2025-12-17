@@ -26,26 +26,22 @@ export function initializeProjectTabListeners() {
     });
 }
 
+/**
+ * Renders all existing projects into the sidebar.
+ * 
+ * This function is called upon page load, refresh, or display update events.
+ * All project tabs are removed, sorted alphabetically, and then rendered in a loop.
+ * 
+ * @param {Array<Object>} projectsArray - An array containing all existing Project Objects.
+ */
 export function renderProjectTabs(projectsArray) {
     PROJECTS_LIST.replaceChildren();
 
     // Sorts projects by name, in alphabetical order
     const sortedProjects = [...projectsArray].sort((a, b) => a.name.localeCompare(b.name));
     sortedProjects.forEach((project) => {
-        const clonedTemplate = PROJECT_TAB_TEMPLATE.content.cloneNode(true);
-        const tabButton = clonedTemplate.querySelector('.project-btn');
-        const deleteButton = clonedTemplate.querySelector('.delete-project-btn');
-        const projectName = clonedTemplate.querySelector('.project-name');
-        const todoCounter = clonedTemplate.querySelector('.todo-counter');
-
-        tabButton.dataset.projectId = project.id;
-
-        projectName.textContent = project.name;
-        todoCounter.textContent = project.linkedIds.size;
-
-        deleteButton.dataset.projectId = project.id;
-
-        PROJECTS_LIST.appendChild(clonedTemplate);
+        const newTab = createProjectTab(project);
+        PROJECTS_LIST.appendChild(newTab);
     });
 }
 
