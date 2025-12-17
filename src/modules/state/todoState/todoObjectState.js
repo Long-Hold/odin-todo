@@ -124,6 +124,10 @@ function listenForTodoStatusUpdateEvent() {
         todoObj.completed = !todoObj.completed;
         TODO_OBJECT_MANAGER.addTodo(todoObj.id, todoObj);
 
+        if (todoObj.project !== null) {
+            triggerCustomEvent(document, EVENTS.PROJECT_SET_MUTATED, todoObj.project);
+        }
+
         triggerCustomEvent(document, EVENTS.TODO_OBJECT_EDITED, todoId);
     });
 }
