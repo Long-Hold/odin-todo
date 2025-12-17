@@ -56,6 +56,21 @@ export function appendNewProject(projectObj) {
 }
 
 /**
+ * Selects a project tab element that matches the passed ID and removes it from the DOM.
+ * Returns if the element could not be found.
+ * 
+ * @param {String} projectId - The unique ID of a project.
+ * @returns 
+ */
+export function removeProjectTab(projectId) {
+    const selector = `[data-project-id="${projectId}"]`;
+    const projectTab = PROJECTS_LIST.querySelector(selector);
+
+    if (!projectTab) { return; }
+    projectTab.remove();
+}
+
+/**
  * Creates a project tab that represents the internal object
  * 
  * @param {Object} project - A Project Object
