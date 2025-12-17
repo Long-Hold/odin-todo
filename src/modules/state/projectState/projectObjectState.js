@@ -59,13 +59,7 @@ function listenForProjectLinkEvents() {
         const project = PROJECT_OBJECT_MANAGER.getProject(projectId);
         project.removeLinkedId(todoId);
         PROJECT_OBJECT_MANAGER.addProject(project.id, project);
-
-        /**If the user unlinked the project from their Todo card while
-         * filtering by that project, we want the display to update to visually show 
-         * that it is no longer part of that project anymore.
-         */
-        // triggerCustomEvent(document, EVENTS.UPDATE_DISPLAY);
-    })
+    });
 }
 
 function listenForProjectDeleteRequestEvent() {
