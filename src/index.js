@@ -17,8 +17,8 @@ initializeStorage();
 initializeProjectFormListeners();
 initializeTodoFormListeners();
 
-initializeProjectStates();
 initializeTodoStates();
+initializeProjectStates();
 
 initializeFilterTabListeners();
 initializeMobileMenuListeners();
