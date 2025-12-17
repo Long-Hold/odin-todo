@@ -115,6 +115,17 @@ export const EVENTS = {
      */
     PROJECT_DELETED: "project:deleted",
 
+    /**This event signals that a Project Object has been created and recorded in storage.
+     * 
+     * The Project Object State manager emits this event.
+     * 
+     * The Project UI State manager listens for this event, and signals the UI controller
+     * to render the tab to the sidebar.
+     * 
+     * This event passes the Project Id.
+     */
+    PROJECT_CREATED: "project:created",
+
     /**A synchronization event that signals the DOM to be refreshed with
      * current data from the internal state.
      * 
