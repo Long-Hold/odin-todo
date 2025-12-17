@@ -70,6 +70,13 @@ function listenForDisplayUpdates() {
         removeTodoCard(todoId);
     });
 
+    /**
+     * I am checking to see if the card that changed or removed it's project field
+     * after editing was being displayed by the current filter.
+     * 
+     * If it was, then I want to visually remove it from the DOM as it would no longer
+     * belong to that filter condition.
+     */
     document.addEventListener(EVENTS.PROJECT_UNASSIGNED, (event) => {
         const { projectId, todoId } = event.detail.data;
         const { type, display } = getFilterState();
