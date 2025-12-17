@@ -73,3 +73,13 @@ export function projectFieldEdited(todoId, submittedProject) {
     if (!todo) { return false; }
     return todo.project !== submittedProject;
 }
+
+/**
+ * Filters out completed todos from an array.
+ * 
+ * @param {Array<Object>} todosArray - Array of raw todo objects.
+ * @returns {Array<Object>} Array containing only active (non-completed) todos
+ */
+export function filterActiveTodos(todosArray) {
+    return todosArray.filter(todo => todo.completed === false);
+}
