@@ -48,3 +48,36 @@ export function renderProjectTabs(projectsArray) {
         PROJECTS_LIST.appendChild(clonedTemplate);
     });
 }
+
+/**
+ * Creates and appends new project tabs to the sidebar.
+ * 
+ * @param {Object} projectObj - A Project Object
+ */
+export function appendNewProject(projectObj) {
+    const newTab = createProjectTab(projectObj);
+    PROJECTS_LIST.appendChild(newTab);
+}
+
+/**
+ * Creates a project tab that represents the internal object
+ * 
+ * @param {Object} project - A Project Object
+ * @returns {DocumentFragment} Populated tab template
+ */
+function createProjectTab(project) {
+    const clonedTemplate = PROJECT_TAB_TEMPLATE.content.cloneNode(true);
+    const tabButton = clonedTemplate.querySelector('.project-btn');
+    const deleteButton = clonedTemplate.querySelector('.delete-project-btn');
+    const projectName = clonedTemplate.querySelector('.project-name');
+    const todoCounter = clonedTemplate.querySelector('.todo-counter');
+
+    tabButton.dataset.projectId = project.id;
+
+    projectName.textContent = project.name;
+    todoCounter.textContent = project.linkedIds.size;
+
+    deleteButton.dataset.projectId = project.id;
+
+    return clonedTemplate;
+}
