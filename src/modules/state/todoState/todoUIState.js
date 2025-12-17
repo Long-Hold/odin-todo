@@ -48,7 +48,11 @@ export function renderAllTodos() {
         }
         const todoIdsArray = Array.from(projectObject.linkedIds);
         const rawTodos = todoIdsArray.map(id => TODO_OBJECT_MANAGER.getTodo(id));
-        const enrichedTodos = enrichTodos(rawTodos);
+
+        //Only display todo's not marked completed
+        const activeTodos = filterActiveTodos(rawTodos);
+        const enrichedTodos = enrichTodos(activeTodos);
+
         renderTodoCards(enrichedTodos);
     }
 }
