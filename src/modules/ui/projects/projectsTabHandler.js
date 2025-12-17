@@ -78,6 +78,21 @@ export function removeProjectTab(projectId) {
 }
 
 /**
+ * Updates the visual counter that is display alongside a Project tab's name to
+ * show how many elements are linked to the project.
+ * 
+ * @param {String} projectId - The unique ID of project.
+ * @param {Int} linkedTodosLength - The length of the Set() that stores linked todos.
+ */
+export function updateTodoCounter(projectId, linkedTodosLength) {
+    const selector = `[data-project-id="${projectId}"]`;
+    const projectTab = PROJECTS_LIST.querySelector(selector);
+
+    const todoCounter = projectTab.querySelector('.todo-counter');
+    todoCounter.textContent = linkedTodosLength;
+}
+
+/**
  * Creates a project tab that represents the internal object
  * 
  * @param {Object} project - A Project Object
