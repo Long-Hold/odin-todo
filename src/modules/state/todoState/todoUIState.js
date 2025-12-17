@@ -4,7 +4,7 @@ import { TODO_OBJECT_MANAGER } from "../../objects/todos/todoObjectManager";
 import { appendNewCard, removeTodoCard, renderTodoCards, updateExistingCard } from "../../ui/todos/renderTodoCards";
 import { initializeTodoCardListeners } from "../../ui/todos/todoCardController";
 import { getFilterState, resetFilterStateToDefault } from "../filterState/filterStateController";
-import { enrichTodos, filterCompletedTodos, filterTodosByDate } from "./todoStateUtils";
+import { enrichTodos, filterActiveTodos, filterCompletedTodos, filterTodosByDate } from "./todoStateUtils";
 
 export function initializeTodoUIState() {
     listenForDisplayUpdates();
@@ -25,8 +25,13 @@ export function renderAllTodos() {
             rawTodos = filterCompletedTodos(TODO_OBJECT_MANAGER.getAllTodos());
         }
 
+        /**I remove any todos that have been marked as completed from the array before
+         * displaying them to the screen, showing only incomplete todos.
+         */
         else {
-            rawTodos = filterTodosByDate(TODO_OBJECT_MANAGER.getAllTodos(), display);
+            rawTodos = filterActiveTodos(
+                filterTodosByDate(TODO_OBJECT_MANAGER.getAllTodos(), display)
+            );
         }
         
         const enrichedTodos = enrichTodos(rawTodos);
