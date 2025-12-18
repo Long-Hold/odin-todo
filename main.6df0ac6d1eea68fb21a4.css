@@ -68,9 +68,10 @@ option, select, textarea {
     box-sizing: border-box;
     appearance: none;
 }
-
-select {
+option {
     color: black;
+}
+select {
     /* Add padding-right to prevent text overlap with arrow */
     padding-right: 2rem;
     
