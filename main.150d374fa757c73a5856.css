@@ -71,15 +71,21 @@ option, select, textarea {
 
 input[type="date"] {
     width: 100%;
-    -webkit-appearance: none;
-    appearance: none;
+    -webkit-appearance: auto;
+    appearance: auto;
     padding: 0.5rem;
     min-height: 2.5rem; /* Give iOS enough tap target */
     background-color: var(--light-beige);
 }
 
+select {
+    color: black;
+    -webkit-text-fill-color: black; /* iOS override */
+}
+
 option {
     color: black;
+    background-color: var(--light-beige);
 }
 select {
     /* Add padding-right to prevent text overlap with arrow */
