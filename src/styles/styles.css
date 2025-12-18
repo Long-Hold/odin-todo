@@ -70,12 +70,13 @@ option, select, textarea {
 }
 
 input[type="date"] {
-    width: 100%;
-    -webkit-appearance: auto;
+    max-width: 100%;
     appearance: auto;
+    -webkit-appearance: aut;
     padding: 0.5rem;
     min-height: 2.5rem; /* Give iOS enough tap target */
     background-color: var(--light-beige);
+    box-sizing: border-box;
 }
 
 select {
