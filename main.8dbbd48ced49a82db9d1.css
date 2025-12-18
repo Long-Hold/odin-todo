@@ -69,8 +69,8 @@ option, select, textarea {
     appearance: none;
 }
 
-/* Update your select styling */
 select {
+    color: black;
     /* Add padding-right to prevent text overlap with arrow */
     padding-right: 2rem;
     
