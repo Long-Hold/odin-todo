@@ -5,7 +5,7 @@ import { updateTodoCounter } from "../../ui/generalTabs/generalTabsController";
 import { appendNewCard, removeTodoCard, renderTodoCards, updateExistingCard } from "../../ui/todos/renderTodoCards";
 import { initializeTodoCardListeners } from "../../ui/todos/todoCardController";
 import { getFilterState, resetFilterStateToDefault } from "../filterState/filterStateController";
-import { enrichTodos, filterActiveTodos, filterCompletedTodos, filterTodosByDate } from "./todoStateUtils";
+import { enrichTodos, filterActiveTodos, filterCompletedTodos, filterTodosByDate, shouldDisplayTodo } from "./todoStateUtils";
 
 export function initializeTodoUIState() {
     listenForDisplayUpdates();
@@ -73,7 +73,11 @@ function listenForDisplayUpdates() {
         const todoId = event.detail.data;
         const todoObject = TODO_OBJECT_MANAGER.getTodo(todoId);
         const [enrichedTodo] = enrichTodos([todoObject]);
-        appendNewCard(enrichedTodo);
+
+        const filterState = getFilterState();
+        if (shouldDisplayTodo(enrichedTodo, filterState)) {
+            appendNewCard(enrichedTodo);
+        }
     });
 
     document.addEventListener(EVENTS.TODO_DELETED, (event) => {

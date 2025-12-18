@@ -83,3 +83,41 @@ export function projectFieldEdited(todoId, submittedProject) {
 export function filterActiveTodos(todosArray) {
     return todosArray.filter(todo => todo.completed === false);
 }
+
+/**
+ * Checks if a single todo should be displayed based on current filter criteria.
+ * 
+ * @param {Object} todo - A single todo object
+ * @param {Object} filterState - Current filter state {type, display}
+ * @returns {boolean} True if todo matches filter criteria
+ */
+export function shouldDisplayTodo(todo, filterState) {
+    const { type, display } = filterState;
+
+    if (type === 'general') {
+        // 'all' shows all active todos
+        if (display === 'all') {
+            return !todo.completed;
+        }
+
+        // 'completed' only shows completed todos
+        if (display === 'completed') {
+            return todo.completed;
+        }
+
+        // Date-based filters only show active todos that match the date range
+        if (display === 'today' || display === 'week' || display === 'overdue') {
+            if (todo.completed) return false;
+            
+            const filtered = filterTodosByDate([todo], display);
+            return filtered.length > 0;
+        }
+    }
+
+    if (type === 'project') {
+        // Project filter: must match project ID and be active
+        return todo.projectId === display && !todo.completed;
+    }
+
+    return false;
+}
