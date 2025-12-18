@@ -68,6 +68,15 @@ option, select, textarea {
     box-sizing: border-box;
     appearance: none;
 }
+
+input[type="date"] {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 0.5rem;
+    min-height: 2.5rem; /* Give iOS enough tap target */
+}
+
 option {
     color: black;
 }
@@ -617,7 +626,7 @@ article.todo-card {
     }
 }
 
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 700px) {
     article.todo-card header {
         display: grid;
         grid-template-columns: 1fr 1fr;
