@@ -72,7 +72,7 @@ option, select, textarea {
 input[type="date"] {
     max-width: 100%;
     appearance: auto;
-    -webkit-appearance: aut;
+    -webkit-appearance: auto;
     padding: 0.5rem;
     min-height: 2.5rem; /* Give iOS enough tap target */
     background-color: var(--light-beige);
