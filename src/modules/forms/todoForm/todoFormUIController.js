@@ -66,6 +66,7 @@ export function resetForm() {
     
     TODO_FORM.querySelector('#todo-id').value = '';
     TODO_FORM.querySelector('#created-at').value = '';
+    TODO_FORM.querySelector('#completed').value = '';
 
     TODO_FORM.reset();
 }
