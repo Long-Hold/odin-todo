@@ -1,18 +1,17 @@
-# 📝 To-Do List App
-
-A simple and fun web app to help you organize your tasks, set due dates, and stay on top of your day! 🎯
+# To-Do List App
 
 ## Live Demo
 
-🎮 [Play Now on GitHub Pages](https://long-hold.github.io/odin-todo/)
+[Play Now on GitHub Pages](https://long-hold.github.io/odin-todo/)
 
 ## Features
 
-- ✅ Add, edit, and delete tasks
-- 📅 Set due dates, priority levels, and assign to projects
-- 📂 Categorize tasks: Inbox, Today, This Week, Overdue, Completed, and Custom Projects
-- ✔️ Add checklists within tasks
-- 💾 Tasks persist using localStorage
+- Add, edit, and delete tasks
+- Set due dates, priority levels, and assign to projects
+- Categorize tasks: Inbox, Today, This Week, Overdue, Completed, and Custom Projects
+- Add checklists within tasks
+- 💾
+Tasks persist using localStorage
 
 ## Built With
 
